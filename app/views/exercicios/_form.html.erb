@@ -1,0 +1,41 @@
+<%= form_for(@exercicio) do |f| %>
+  <% if @exercicio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@exercicio.errors.count, "error") %> prohibited this exercicio from being saved:</h2>
+
+      <ul>
+      <% @exercicio.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :instrucao %><br />
+    <%= f.text_area :instrucao %>
+  </div>
+  <div class="field">
+    <%= f.label :restricao %><br />
+    <%= f.text_area :restricao %>
+  </div>
+  <div class="field">
+    <%= f.label :indicacao %><br />
+    <%= f.text_area :indicacao %>
+  </div>
+  <div class="field">
+    <%= f.label :ativo %><br />
+    <%= f.check_box :ativo %>
+  </div>
+  <div class="field">
+    <%= f.label :membro %><br />
+    <%= f.select :membro_id, @membro.collect { |m| [ m.nome, m.id ] } %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

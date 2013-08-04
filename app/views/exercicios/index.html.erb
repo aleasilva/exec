@@ -1,0 +1,35 @@
+<h1><%=t :hello_world %></h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Instrucao</th>
+    <th>Restricao</th>
+    <th>Indicacao</th>
+    <th>Ativo</th>
+    <th>Partescorpo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @exercicios.each do |exercicio| %>
+  <tr>
+    <td><%= exercicio.nome %></td>
+    <td><%= exercicio.instrucao %></td>
+    <td><%= exercicio.restricao %></td>
+    <td><%= exercicio.indicacao %></td>
+    <td><%= exercicio.ativo %></td>
+    <td><%= exercicio.membro.nome %></td>
+    <td><%= link_to 'Show', exercicio %></td>
+    <td><%= link_to 'Edit', edit_exercicio_path(exercicio) %></td>
+    <td><%= link_to 'Destroy', exercicio, method: :delete, data: { confirm: 'Excluir o registro?' } %></td>
+  </tr>
+  
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo Exercicio', new_exercicio_path %>
+
