@@ -46,7 +46,7 @@ class ExerciciosController < ApplicationController
   # POST /exercicios
   # POST /exercicios.json
   def create
-    @exercicio = Exercicio.new(params[:exercicio])
+    @exercicio = Exercicio.new(param_exercicio)
     @membro = Membro.all
     
     respond_to do |format|
@@ -87,4 +87,11 @@ class ExerciciosController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  ##Declaracao de variaveis  
+  private
+  def param_exercicio
+    params.require(:exercicio).permit(:ativo, :indicacao, :instrucao, :nome, :restricao,membros_attributes: [ :membro_id  ])
+  end
+  
 end

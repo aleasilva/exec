@@ -1,5 +1,6 @@
 class MembrosController < ApplicationController
   respond_to :html, :json, :xml
+    
   # GET /partescorpos
   # GET /partescorpos.json
   def index
@@ -32,11 +33,12 @@ class MembrosController < ApplicationController
   # POST /partescorpos
   # POST /partescorpos.json
   def create
-    @membro = Membro.new(params[:membro])
+    @membro = Membro.new(membro_params)
     @membro.save
 
     respond_with(@membro)
   end
+
 
   # PUT /partescorpos/1
   # PUT /partescorpos/1.json
@@ -65,4 +67,11 @@ class MembrosController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  #Declaracao dos atributos
+  private
+  def membro_params
+    params.require(:membro).permit(:nome)
+  end
+  
 end

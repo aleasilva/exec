@@ -4,9 +4,4 @@ class Exercicio < ActiveRecord::Base
   #Validações
   validates_presence_of :nome
 
-  private
-  def app_params
-    params.require(:list).permit(:ativo, :indicacao, :instrucao, :nome, :restricao,:membro_id)
-  end
-
 end
