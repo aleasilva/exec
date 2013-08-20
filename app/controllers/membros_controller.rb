@@ -46,7 +46,7 @@ class MembrosController < ApplicationController
     @membro = Membro.find(params[:id])
 
     respond_to do |format|
-      if @membro.update_attributes(params[:membro])
+      if @membro.update_attributes(membro_params)
         format.html { redirect_to @membro, notice: 'Partescorpo was successfully updated.' }
         format.json { head :no_content }
       else
@@ -59,7 +59,7 @@ class MembrosController < ApplicationController
   # DELETE /partescorpos/1
   # DELETE /partescorpos/1.json
   def destroy
-    @membro = Membros.find(params[:id])
+    @membro = Membro.find(params[:id])
     @membro.destroy
 
     respond_to do |format|
