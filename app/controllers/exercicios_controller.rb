@@ -10,7 +10,6 @@ class ExerciciosController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @exercicios }
     end
   end
 
@@ -18,18 +17,18 @@ class ExerciciosController < ApplicationController
   # GET /exercicios/1.json
   def show
     @exercicio = Exercicio.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @exercicio }
     end
+    
   end
 
   # GET /exercicios/new
   # GET /exercicios/new.json
   def new
     @exercicio = Exercicio.new
-    @membro = Membro.all
+    @membro = Membro.all   
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,14 +47,12 @@ class ExerciciosController < ApplicationController
   def create
     @exercicio = Exercicio.new(param_exercicio)
     @membro = Membro.all
-    
+
     respond_to do |format|
       if @exercicio.save
         format.html { redirect_to @exercicio, notice: 'Exercicio was successfully created.' }
-        format.json { render json: @exercicio, status: :created, location: @exercicio }
       else
         format.html { render action: "new" }
-        format.json { render json: @exercicio.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -68,10 +65,8 @@ class ExerciciosController < ApplicationController
     respond_to do |format|
       if @exercicio.update_attributes(params[:exercicio])
         format.html { redirect_to @exercicio, notice: 'Exercicio was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @exercicio.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -91,7 +86,7 @@ class ExerciciosController < ApplicationController
   ##Declaracao de variaveis  
   private
   def param_exercicio
-    params.require(:exercicio).permit(:ativo, :indicacao, :instrucao, :nome, :restricao,membros_attributes: [ :membro_id  ])
+    params.require(:exercicio).permit(:ativo, :indicacao, :instrucao, :nome, :restricao, :membro_id , membro_attributes: [:nome,:id ])
   end
   
 end

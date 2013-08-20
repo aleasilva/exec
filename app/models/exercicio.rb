@@ -1,7 +1,8 @@
 class Exercicio < ActiveRecord::Base
-  belongs_to :membro
+  has_many :membros
+  accepts_nested_attributes_for :membros
 
   #Validações
-  validates_presence_of :nome
+  #validates_presence_of :nome
 
 end

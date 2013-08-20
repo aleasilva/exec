@@ -33,7 +33,7 @@
   </div>
   <div class="field">
     <%= f.label :membro %><br />
-    <%= f.select :membro_id, @membro.collect { |m| [ m.nome, m.id ] } %>
+	<%= f.collection_select(:membro_ids, @membro , :id, :nome, {:prompt => "Please select"} ) %>    
   </div>
   <div class="actions">
     <%= f.submit %>
