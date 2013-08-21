@@ -20,7 +20,9 @@
     <td><%= exercicio.restricao %></td>
     <td><%= exercicio.indicacao %></td>
     <td><%= exercicio.ativo %></td>
-    <td><%= exercicio.membro.nome %></td>
+    <td><%= exercicio.membros.count  %></td>
+    
+    
     <td><%= link_to 'Show', exercicio %></td>
     <td><%= link_to 'Edit', edit_exercicio_path(exercicio) %></td>
     <td><%= link_to 'Destroy', exercicio, method: :delete, data: { confirm: 'Excluir o registro?' } %></td>

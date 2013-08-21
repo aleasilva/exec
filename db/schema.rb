@@ -11,31 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130207133019) do
+ActiveRecord::Schema.define(version: 20130921104300) do
 
   create_table "alunos", force: true do |t|
-    t.string   "nome",       limit: 60, default: "Frango", null: false
+    t.string   "idAcademia", limit: 30, default: ""
+    t.string   "nome",       limit: 60, default: "Aluno", null: false
     t.date     "nascimento"
-    t.string   "sexo",       limit: 1,  default: "F",      null: false
+    t.string   "sexo",       limit: 1,  default: "F",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "exercicios", force: true do |t|
-    t.string   "nome",           limit: 60,                null: false
-    t.text     "instrucao"
-    t.text     "restricao"
-    t.text     "indicacao"
-    t.boolean  "ativo",                     default: true
-    t.integer  "partescorpo_id"
+    t.string   "nome",       limit: 60,                null: false
+    t.string   "instrucao"
+    t.string   "indicacao"
+    t.string   "restricao"
+    t.string   "observacao"
+    t.string   "tipo",       limit: 1
+    t.boolean  "ativo",                 default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "exercicios", ["partescorpo_id"], name: "index_exercicios_on_partescorpo_id"
-
   create_table "membros", force: true do |t|
-    t.string   "nome",       limit: 60, null: false
+    t.string   "nome",       limit: 60,  null: false
+    t.string   "observacao", limit: 120
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "treinamentos", force: true do |t|
+    t.integer  "exercicio_id"
+    t.integer  "membro_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

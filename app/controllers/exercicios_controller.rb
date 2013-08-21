@@ -17,7 +17,7 @@ class ExerciciosController < ApplicationController
   # GET /exercicios/1.json
   def show
     @exercicio = Exercicio.find(params[:id])
-    
+      
     respond_to do |format|
       format.html # show.html.erb
     end
@@ -39,7 +39,6 @@ class ExerciciosController < ApplicationController
   # GET /exercicios/1/edit
   def edit
     @exercicio = Exercicio.find(params[:id])
-    @membro = Membro.all
   end
 
   # POST /exercicios

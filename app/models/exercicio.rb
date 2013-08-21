@@ -1,8 +1,8 @@
 class Exercicio < ActiveRecord::Base
-  has_many :membros
-  accepts_nested_attributes_for :membros
+  has_many :treinamentos
+  has_many :membros, through: :treinamentos
 
-  #Validações
-  #validates_presence_of :nome
+  #Acessibilidade dos itens
+  accepts_nested_attributes_for :membros
 
 end
