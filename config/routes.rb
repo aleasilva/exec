@@ -1,10 +1,12 @@
 Exec::Application.routes.draw do
 
-  resources  :exercicios
-  resources  :membros
+  resources :musculos
+
+  resources :atividades
+
 
   #root :to => "home#index"
-  root :to => "exercicios#index"
+  root :to => "atividades#index"
   
   
   

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nome: MyString
+  instrucao: MyString
+  indicacao: MyString
+  restricao: MyString
+  observacao: MyString
+  tipo: MyString
+  ativo: MyString
+
+two:
+  nome: MyString
+  instrucao: MyString
+  indicacao: MyString
+  restricao: MyString
+  observacao: MyString
+  tipo: MyString
+  ativo: MyString
