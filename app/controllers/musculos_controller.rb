@@ -74,8 +74,8 @@ class MusculosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def musculo_params
       #params.require(:musculo).permit(:nome, :observacao,:selecionado , atividades_attributes: [:id,:atividades_ids])      
-      params.require(:musculo).permit(:nome, :observacao,:selecionado )      
+      #params.require(:musculo).permit(:nome, :observacao,:selecionado )      
       #params.require(:musculo).permit(:name, :description , colors_attributes: [:id,:colors_ids])      
-      #params.require(:musculo).permit!
+      params.require(:musculo).permit!
     end
 end

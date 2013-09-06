@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130921104305) do
+ActiveRecord::Schema.define(version: 20130921104306) do
 
   create_table "alunos", force: true do |t|
     t.string  "idAcademia", limit: 30, default: ""
@@ -47,5 +47,16 @@ ActiveRecord::Schema.define(version: 20130921104305) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "treinos", force: true do |t|
+    t.date     "criacao"
+    t.date     "validade"
+    t.text     "observacao"
+    t.integer  "aluno_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "treinos", ["aluno_id"], name: "index_treinos_on_aluno_id"
 
 end

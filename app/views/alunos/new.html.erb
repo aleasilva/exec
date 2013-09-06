@@ -2,8 +2,9 @@
 
 <%= render 'form' %>
 
-<% Atividade.all.each do |atividade| %>
-   <%= label_tag :atividade_ids, atividade.nome %>
+<% Musculo.all.each do |iMusculo| %>
+   <%= debug iMusculo.atividades.inspect %>
+   <%= label_tag :musculo_ids, iMusculo.nome %>
    <%= label_tag "," %>
 <% end %>
 

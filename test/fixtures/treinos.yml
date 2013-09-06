@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  criacao: 2013-09-06
+  validade: 2013-09-06
+  observacao: MyText
+  aluno_id: 
+
+two:
+  criacao: 2013-09-06
+  validade: 2013-09-06
+  observacao: MyText
+  aluno_id: 
