@@ -1,7 +1,15 @@
 Exec::Application.routes.draw do
 
-  resources :musculos
+  resources :alunos do
+    resources :atividades
+  end
 
+  resources :musculos do
+    resources :atividades
+  end
+  
+  resources :musculos
+  
   resources :atividades
 
 

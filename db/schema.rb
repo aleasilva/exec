@@ -11,15 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130921104304) do
+ActiveRecord::Schema.define(version: 20130921104305) do
 
   create_table "alunos", force: true do |t|
-    t.string   "idAcademia", limit: 30, default: ""
-    t.string   "nome",       limit: 60, default: "Aluno", null: false
-    t.date     "nascimento"
-    t.string   "sexo",       limit: 1,  default: "F",     null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string  "idAcademia", limit: 30, default: ""
+    t.string  "nome",       limit: 60, default: "Aluno", null: false
+    t.date    "nascimento"
+    t.boolean "sexo",       limit: 1,  default: false,   null: false
+    t.text    "observacao"
   end
 
   create_table "atividades", force: true do |t|
