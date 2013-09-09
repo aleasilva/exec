@@ -25,6 +25,18 @@
   <%= @aluno.observacao %>
 </p>
 
-
 <%= link_to 'Edit', edit_aluno_path(@aluno) %> |
 <%= link_to 'Back', alunos_path %>
+<hr>
+
+<strong>Meus treinos:</strong><br>
+<strong>Data criação</strong>
+<strong>-</strong>
+<strong>Data validade</strong>
+<%= render @aluno.treinos%>
+<hr>
+
+<strong>Adicione um novo treino:</strong>
+<%= link_to 'Novo treino', new_treino_path %>
+
+

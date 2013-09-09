@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130921104306) do
+ActiveRecord::Schema.define(version: 20130921104309) do
 
   create_table "alunos", force: true do |t|
     t.string  "idAcademia", limit: 30, default: ""
@@ -44,6 +44,13 @@ ActiveRecord::Schema.define(version: 20130921104306) do
     t.string   "nome",        limit: 120,                null: false
     t.string   "observacao",  limit: 120
     t.boolean  "selecionado",             default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "treinamentos", force: true do |t|
+    t.integer  "aluno_id"
+    t.integer  "treino_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

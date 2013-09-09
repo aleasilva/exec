@@ -1,0 +1,17 @@
+<%= form_for([@aluno, @aluno.treinos.build]) do |iTreino| %>
+	<% Musculo.all.each do |iMusculo| %>
+		<strong>Grupo Muscular:</strong>
+		<%= iMusculo.nome %>
+		<br>
+	    
+		<% iMusculo.atividades.all.each do |iAtividade|%>
+			<%= check_box_tag "aluno[treino_ids][]", iAtividade.id, @aluno.treinos.include?(iAtividade) %>
+	    	<%= label_tag :treino_ids, iAtividade.nome %>
+	  	<% end %>
+	    
+		<br>    
+	<% end %>
+	<p>
+    	<%= iTreino.submit %>
+  	</p>
+<% end %>

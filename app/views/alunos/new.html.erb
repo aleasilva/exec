@@ -2,12 +2,4 @@
 
 <%= render 'form' %>
 
-<% Musculo.all.each do |iMusculo| %>
-   <%= debug iMusculo.atividades.inspect %>
-   <%= label_tag :musculo_ids, iMusculo.nome %>
-   <%= label_tag "," %>
-<% end %>
-
-<br>
-
 <%= link_to 'Back', alunos_path %>

@@ -9,6 +9,7 @@ Exec::Application.routes.draw do
   end
   
   resources :atividades
+  resources :treinos  
 
 
   #root :to => "home#index"

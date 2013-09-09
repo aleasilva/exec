@@ -24,6 +24,11 @@ class AlunosController < ApplicationController
   # POST /alunos
   # POST /alunos.json
   def create
+    Rails.logger.info("*ALUNOS ALUNOS***********************")
+    Rails.logger.info( params[:aluno][:treino_ids].inspect)
+    Rails.logger.info("***************************************")   
+    
+    
     @aluno = Aluno.new(aluno_params)
 
     respond_to do |format|
@@ -65,11 +70,11 @@ class AlunosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_aluno
       @aluno = Aluno.find(params[:id])
-      @treinos = Atividade.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def aluno_params
-      params.require(:aluno).permit(:idAcademia, :nome, :nascimento, :sexo, :observacao)
+      #params.require(:aluno).permit(:idAcademia, :nome, :nascimento, :sexo, :observacao)
+      params.require(:aluno).permit!
     end
 end
