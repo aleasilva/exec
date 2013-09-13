@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Listar atividades:</strong>
-  <strong>Nome:</strong>
+  <strong>Lista de atividades:</strong>
   <br>
 	<% @treino.atividades.each do |iAtividade| %>
     	<%= iAtividade.nome %>
@@ -12,9 +11,6 @@
 		<% end %> 
     	<br>
 	<% end %> 
-</p>
-
-<p>
 </p>
 
 <%= link_to 'Edit', edit_musculo_path(@musculo) %> |

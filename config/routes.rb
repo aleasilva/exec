@@ -13,7 +13,7 @@ Exec::Application.routes.draw do
 
 
   #root :to => "home#index"
-  root :to => "atividades#index"
+  root :to => "alunos#index"
   
   
   
