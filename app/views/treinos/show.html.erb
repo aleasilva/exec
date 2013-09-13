@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Listar atividades:</strong>
+  <strong>Nome:</strong>
+  <br>
+	<% @treino.atividades.each do |iAtividade| %>
+    	<%= iAtividade.nome %>
+    	<br>    	
+    	<% iAtividade.musculos.each do |iMusculo| %>
+    		<%= iMusculo.nome %>
+		<% end %> 
+    	<br>
+	<% end %> 
+</p>
+
+<p>
+</p>
+
+<%= link_to 'Edit', edit_musculo_path(@musculo) %> |
+<%= link_to 'Back', musculos_path %>

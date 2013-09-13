@@ -1,15 +1,19 @@
 class TreinosController < ApplicationController
-  before_action :set_treino, only: [:show]
+  before_action :set_treino, only: [:show, :edit]
   
-  def create
-    Rails.logger.info("*TREINOS-TREINOS-TREINOS-TREINOS-TREINOS-TREINOS")
-    #Rails.logger.info( params[:aluno][:treino_ids].inspect)
-    Rails.logger.info("***************************************")   
-  end
-  
-  def show
+    def create
+      Rails.logger.info("*TREINOS-TREINOS-TREINOS-TREINOS-TREINOS-TREINOS")
+      #Rails.logger.info( params[:aluno][:treino_ids].inspect)
+      Rails.logger.info("***************************************")   
+    end
+
+    def edit
+      
+    end
     
-  end
+    def show
+      
+    end
   
     private
     # Use callbacks to share common setup or constraints between actions.
