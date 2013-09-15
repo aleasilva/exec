@@ -1,6 +1,21 @@
 <p id="notice"><%= notice %></p>
-
+<h1>Mostrando Treino</h1>
 <p>
+  	<strong>Criacao:</strong>
+	<%= @treino.criacao %>
+</p>
+<p>
+  	<strong>Validade:</strong>
+	<%= @treino.validade %>
+</p>
+<p>
+  	<strong>Observacao:</strong>
+	<%= @treino.observacao %>
+</p>
+
+<hr>
+
+<p>  
   <strong>Lista de atividades:</strong>
   <br>
 	<% @treino.atividades.each do |iAtividade| %>
@@ -13,5 +28,5 @@
 	<% end %> 
 </p>
 
-<%= link_to 'Edit', edit_musculo_path(@musculo) %> |
-<%= link_to 'Back', musculos_path %>
+<%= link_to 'Edit', edit_treino_path(@treino) %> |
+<%= link_to 'Back', alunos_path %>

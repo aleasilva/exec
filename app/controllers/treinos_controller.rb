@@ -11,6 +11,10 @@ class TreinosController < ApplicationController
       
     end
     
+    def new
+      
+    end
+    
     def show
       
     end
