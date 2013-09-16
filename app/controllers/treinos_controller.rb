@@ -1,5 +1,5 @@
 class TreinosController < ApplicationController
-  before_action :set_treino, only: [:show, :edit]
+  before_action :set_treino, only: [:show, :edit, :update]
   
     def create
       Rails.logger.info("*TREINOS-TREINOS-TREINOS-TREINOS-TREINOS-TREINOS")
@@ -18,6 +18,24 @@ class TreinosController < ApplicationController
     def show
       
     end
+    
+    # PATCH/PUT /musculos/1
+    # PATCH/PUT /musculos/1.json
+    def update
+      respond_to do |format|
+        if @treino.update(treino_params)
+          format.html { redirect_to @treino, notice: 'Treino atualizado!' }
+        else
+          format.html { render action: 'edit' }
+        end
+      end
+    end
+    
+  
+    def procurar(atividade)
+      eof = @treino.atividades.include?(atividade) 
+    end
+    helper_method :procurar
   
     private
     # Use callbacks to share common setup or constraints between actions.
