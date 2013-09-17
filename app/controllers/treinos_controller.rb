@@ -1,23 +1,31 @@
 class TreinosController < ApplicationController
   before_action :set_treino, only: [:show, :edit, :update]
-  
-    def create
-      Rails.logger.info("*TREINOS-TREINOS-TREINOS-TREINOS-TREINOS-TREINOS")
-      #Rails.logger.info( params[:aluno][:treino_ids].inspect)
-      Rails.logger.info("***************************************")   
-    end
 
     def edit
-      
     end
     
     def new
-      
+      @treino = Treino.new
+      @aluno = Aluno.find(params[:aluno])
+      @treino.alunos << @aluno      
     end
     
     def show
-      
     end
+    
+    def create
+      @treino = Treino.new(treino_params)
+      @aluno = Aluno.find(params[:alunoId])
+      @treino.alunos << @aluno            
+  
+      respond_to do |format|
+        if @treino.save
+          format.html { redirect_to @treino, notice: 'Treino criado.' }
+        else
+          format.html { render action: 'new' }
+        end
+      end
+    end    
     
     # PATCH/PUT /musculos/1
     # PATCH/PUT /musculos/1.json
@@ -30,7 +38,6 @@ class TreinosController < ApplicationController
         end
       end
     end
-    
   
     def procurar(atividade)
       eof = @treino.atividades.include?(atividade) 

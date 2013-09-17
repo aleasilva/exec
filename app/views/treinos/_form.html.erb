@@ -1,17 +1,57 @@
-<%= form_for([@aluno, @aluno.treinos.build]) do |iTreino| %>
-	<% Musculo.all.each do |iMusculo| %>
-		<strong>Grupo Muscular:</strong>
-		<%= iMusculo.nome %>
+<%= form_for(@treino) do |f| %>
+  <% if @treino.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@treino.errors.count, "error") %> prohibited this treino from being saved:</h2>
+
+      <ul>
+      <% @treino.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<p>
+	<div class="field">
+		<%= f.label "Criação:" %>
+		<%= f.date_select :criacao %>
+	</div>
+</p>
+<p>
+	<div class="field">
+		<%= f.label "Validade:" %>
+		<%= f.date_select :validade %>
+	</div>
+</p>
+<p>
+	<div class="field">
+		<%= f.label "Observação:" %>
 		<br>
-	    
-		<% iMusculo.atividades.all.each do |iAtividade|%>
-			<%= check_box_tag "aluno[treino_ids][]", iAtividade.id, @aluno.treinos.include?(iAtividade) %>
-	    	<%= label_tag :treino_ids, iAtividade.nome %>
-	  	<% end %>
-	    
-		<br>    
-	<% end %>
-	<p>
-    	<%= iTreino.submit %>
-  	</p>
+		<%= f.text_area :observacao %>
+	</div>
+</p>
+<hr>
+<strong>Lista de atividades:</strong>
+<div>
+	<% Musculo.all.each do |iMusculo| %>
+		<%= iMusculo.nome %>:
+		<br>
+
+		<%iMusculo.atividades.each do |iAtividade| %>
+			<%= check_box_tag 'treino[atividade_ids][]', iAtividade.id, seekAtividade(iAtividade) %>
+			<%= iAtividade.nome %>
+			<br>
+		<% end %>
+		<br>
+		
+	<% end %>	
+</div>
+<hr>
+
+<div class="actions">
+    <%= f.submit %>
+</div>
+<hr>
+<%= hidden_field_tag 'alunoId', @treino.alunos[0].id %>
+
 <% end %>
