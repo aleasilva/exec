@@ -6,8 +6,8 @@ class TreinosController < ApplicationController
     
     def new
       @treino = Treino.new
-      @aluno = Aluno.find(params[:aluno])
-      @treino.alunos << @aluno      
+      #@aluno = Aluno.find(params[:aluno])
+      @treino.aluno_id = params[:aluno]      
     end
     
     def show
@@ -15,8 +15,7 @@ class TreinosController < ApplicationController
     
     def create
       @treino = Treino.new(treino_params)
-      @aluno = Aluno.find(params[:alunoId])
-      @treino.alunos << @aluno            
+      @treino.aluno_id = params[:alunoId]
   
       respond_to do |format|
         if @treino.save
