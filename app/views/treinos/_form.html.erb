@@ -38,7 +38,8 @@
 		<br>
 
 		<%iMusculo.atividades.each do |iAtividade| %>
-			<%= seekAtividade(iAtividade) ? Atividade.nome : "" %>
+			<%= check_box_tag 'treino[atividade_ids][]', iAtividade.id, seekAtividade(iAtividade) %>
+			<%= iAtividade.nome %>
 			<br>
 		<% end %>
 		<br>
