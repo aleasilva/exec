@@ -18,14 +18,17 @@
 <p>  
   <strong>Lista de atividades:</strong>
   <br>
-	<% @treino.atividades.each do |iAtividade| %>
-    	<%= iAtividade.nome %>
-    	<br>    	
-    	<% iAtividade.musculos.each do |iMusculo| %>
-    		<%= iMusculo.nome %>
-		<% end %> 
-    	<br>
-	<% end %> 
+  	<% Musculo.all.each do |iMusculo| %>
+		<%= iMusculo.nome %>:
+		<br>
+
+		<%iMusculo.atividades.each do |iAtividade| %>
+			<%= seekAtividade(iAtividade) ? iAtividade.nome : "" %>
+			<br>
+		<% end %>
+		<br>
+		
+	<% end %>
 </p>
 
 <%= link_to 'Edit', edit_treino_path(@treino) %> |
