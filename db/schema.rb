@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130921104310) do
+ActiveRecord::Schema.define(version: 20130921144311) do
+
+  create_table "alunoaulas", force: true do |t|
+    t.integer  "aluno_id"
+    t.integer  "diasemana_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "alunos", force: true do |t|
     t.string  "idAcademia", limit: 30, default: ""
@@ -40,6 +47,15 @@ ActiveRecord::Schema.define(version: 20130921104310) do
     t.datetime "updated_at"
   end
 
+  create_table "diasemanas", force: true do |t|
+    t.string   "nome"
+    t.integer  "alunos_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "diasemanas", ["alunos_id"], name: "index_diasemanas_on_alunos_id"
+
   create_table "exercicios", force: true do |t|
     t.integer  "musculo_id"
     t.integer  "atividade_id"
@@ -51,13 +67,6 @@ ActiveRecord::Schema.define(version: 20130921104310) do
     t.string   "nome",        limit: 120,                null: false
     t.string   "observacao",  limit: 120
     t.boolean  "selecionado",             default: true
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "treinamentos", force: true do |t|
-    t.integer  "aluno_id"
-    t.integer  "treino_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,5 +1,8 @@
 class Aluno < ActiveRecord::Base
-   #has_many :treinamentos, dependent: :destroy
-   #has_many :treinos, through: :treinamentos
-    has_many :treinos, dependent: :destroy
+   #Relacionamento aluno dia das aulas.
+   has_many :alunoaulas, dependent: :destroy
+   has_many :diasemanas, through: :alunoaulas
+   
+   #Relacionamento treinos
+   has_many :treinos, dependent: :destroy
 end
