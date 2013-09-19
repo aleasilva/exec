@@ -1,37 +1,54 @@
 <%= form_for(@aluno) do |f| %>
-  <% if @aluno.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@aluno.errors.count, "error") %> prohibited this aluno from being saved:</h2>
-
-      <ul>
-      <% @aluno.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :idAcademia %><br>
-    <%= f.text_area :idAcademia %>
-  </div>
-  <div class="field">
-    <%= f.label :nome %><br>
-    <%= f.text_area :nome %>
-  </div>
-  <div class="field">
-    <%= f.label :nascimento %><br>
-    <%= f.date_select :nascimento %>
-  </div>
-  <div class="field">
-    <%= f.label :sexo %><br>
-    <%= f.check_box :sexo %>
-  </div>
-  <div class="field">
-    <%= f.label :observacao %><br>
-    <%= f.text_field :observacao %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<% if @aluno.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@aluno.errors.count, "error") %> prohibited this aluno from being saved:</h2>
+	
+		<ul>
+			<% @aluno.errors.full_messages.each do |msg| %>
+			<li>
+				<%= msg %>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	
+	<div class="field">
+		<%= f.label :idAcademia %>
+		<br>
+		<%= f.text_area :idAcademia %>
+	</div>
+	<div class="field">
+		<%= f.label :nome %>
+		<br>
+		<%= f.text_area :nome %>
+	</div>
+	<div class="field">
+		<%= f.label :nascimento %>
+		<br>
+		<%= f.date_select :nascimento %>
+	</div>
+	<div class="field">
+		<%= f.label :sexo %>
+		<br>
+		<%= f.check_box :sexo %>
+	</div>
+	<div class="field">
+		<%= f.label :observacao %>
+		<br>
+		<%= f.text_field :observacao %>
+	</div>
+	<hr>
+	<strong>Dia de aulas:</strong>
+	<div>
+		<% Diasemana.all.each do |iDia| %>
+			<%= check_box_tag 'aluno[diasemana_ids][]', iDia.id, @aluno.diasemanas.include?(iDia) %>
+			<%= iDia.nome %>
+			<br>
+		<% end %>
+	</div>
+	<hr>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
 <% end %>

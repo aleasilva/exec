@@ -2,6 +2,7 @@ Exec::Application.routes.draw do
 
   resources :alunos do
     resources :treinos
+    resources :diasemanas
   end
 
   resources :musculos do
