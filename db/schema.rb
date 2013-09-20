@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130921144311) do
+ActiveRecord::Schema.define(version: 20130921144312) do
 
   create_table "alunoaulas", force: true do |t|
     t.integer  "aluno_id"
@@ -67,6 +67,14 @@ ActiveRecord::Schema.define(version: 20130921144311) do
     t.string   "nome",        limit: 120,                null: false
     t.string   "observacao",  limit: 120
     t.boolean  "selecionado",             default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ordemmusculotreinos", force: true do |t|
+    t.integer  "atividade_id"
+    t.integer  "treino_id"
+    t.string   "ordem",        limit: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end

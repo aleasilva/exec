@@ -22,6 +22,13 @@ class TreinosController < ApplicationController
   def create
     @treino = Treino.new(treino_params)
     @treino.aluno_id = params[:alunoId]
+    
+    Rails.logger.info("*MUSCULO*ORDEMS**********************")
+    Rails.logger.info( params[:treino][:musculo_ordems].inspect)
+    Rails.logger.info("*MUSCULO*IDS**********************")
+    Rails.logger.info( params[:treino][:musculo_ids].inspect)
+    Rails.logger.info("***************************************") 
+    
 
     respond_to do |format|
       if @treino.save

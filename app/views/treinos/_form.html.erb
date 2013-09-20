@@ -36,6 +36,10 @@
 	<% Musculo.all.each do |iMusculo| %>
 		<%= iMusculo.nome %>:
 		<br>
+		<%= f.label "Ordem de execução do grupo:" %>
+ 		<%= text_field_tag "treino[musculo_ordems][]", "10" %>
+		<%= hidden_field_tag "treino[musculo_ids][]", iMusculo.id %>
+		<br>
 
 		<%iMusculo.atividades.each do |iAtividade| %>
 			<%= check_box_tag 'treino[atividade_ids][]', iAtividade.id, seekAtividade(iAtividade) %>
