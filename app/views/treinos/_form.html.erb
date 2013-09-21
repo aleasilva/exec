@@ -31,13 +31,13 @@
 	</div>
 </p>
 <hr>
-<strong>Lista de atividades:</strong>
+<strong>Lista de atividades 2:</strong>
 <div>
 	<% Musculo.all.each do |iMusculo| %>
 		<%= iMusculo.nome %>:
 		<br>
 		<%= f.label "Ordem de execução do grupo:" %>
- 		<%= text_field_tag "treino[musculo_ordems][]", "10" %>
+ 		
 		<%= hidden_field_tag "treino[musculo_ids][]", iMusculo.id %>
 		<br>
 
