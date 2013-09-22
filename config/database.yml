@@ -22,21 +22,21 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: myapp_development
+  database: exec
   pool: 5
-  username: myapp
-  password:
+  username: exec
+  password: exec
 test:
   adapter: postgresql
   encoding: unicode
-  database: myapp_test
+  database: exec
   pool: 5
-  username: myapp
-  password:
+  username: exec
+  password: exec
 production:
   adapter: postgresql
   encoding: unicode
-  database: myapp_production
+  database: exec
   pool: 5
-  username: myapp
-  password:
+  username: exec
+  password: exec
