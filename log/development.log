@@ -46497,3 +46497,474 @@ ActiveRecord::UnknownAttributeError (unknown attribute: musculo_ordems):
   Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
   Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
   Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-21 22:46:48 -0300
+
+Gem::LoadError (Specified 'sqlite3' for database adapter, but the gem is not loaded. Add `gem 'sqlite3'` to your Gemfile.):
+  activerecord (4.0.0) lib/active_record/connection_adapters/connection_specification.rb:58:in `rescue in resolve_hash_connection'
+  activerecord (4.0.0) lib/active_record/connection_adapters/connection_specification.rb:55:in `resolve_hash_connection'
+  activerecord (4.0.0) lib/active_record/connection_adapters/connection_specification.rb:46:in `resolve_string_connection'
+  activerecord (4.0.0) lib/active_record/connection_adapters/connection_specification.rb:30:in `spec'
+  activerecord (4.0.0) lib/active_record/connection_handling.rb:39:in `establish_connection'
+  activerecord (4.0.0) lib/active_record/railtie.rb:175:in `block (2 levels) in <class:Railtie>'
+  activesupport (4.0.0) lib/active_support/lazy_load_hooks.rb:38:in `instance_eval'
+  activesupport (4.0.0) lib/active_support/lazy_load_hooks.rb:38:in `execute_hook'
+  activesupport (4.0.0) lib/active_support/lazy_load_hooks.rb:45:in `block in run_load_hooks'
+  activesupport (4.0.0) lib/active_support/lazy_load_hooks.rb:44:in `each'
+  activesupport (4.0.0) lib/active_support/lazy_load_hooks.rb:44:in `run_load_hooks'
+  activerecord (4.0.0) lib/active_record/base.rb:322:in `<module:ActiveRecord>'
+  activerecord (4.0.0) lib/active_record/base.rb:22:in `<top (required)>'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:228:in `require'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:228:in `block in require'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:213:in `load_dependency'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:228:in `require'
+  activerecord (4.0.0) lib/active_record/schema_migration.rb:3:in `<top (required)>'
+  activerecord (4.0.0) lib/active_record/migration.rb:783:in `schema_migrations_table_name'
+  activerecord (4.0.0) lib/active_record/migration.rb:791:in `current_version'
+  activerecord (4.0.0) lib/active_record/migration.rb:800:in `needs_migration?'
+  activerecord (4.0.0) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.0) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__4536522375594252618__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/alexandrealvesdasilva/.rvm/rubies/ruby-2.0.0-head/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/alexandrealvesdasilva/.rvm/rubies/ruby-2.0.0-head/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/alexandrealvesdasilva/.rvm/rubies/ruby-2.0.0-head/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-21 22:47:22 -0300
+
+Gem::LoadError (Specified 'sqlite3' for database adapter, but the gem is not loaded. Add `gem 'sqlite3'` to your Gemfile.):
+  activerecord (4.0.0) lib/active_record/connection_adapters/connection_specification.rb:58:in `rescue in resolve_hash_connection'
+  activerecord (4.0.0) lib/active_record/connection_adapters/connection_specification.rb:55:in `resolve_hash_connection'
+  activerecord (4.0.0) lib/active_record/connection_adapters/connection_specification.rb:46:in `resolve_string_connection'
+  activerecord (4.0.0) lib/active_record/connection_adapters/connection_specification.rb:30:in `spec'
+  activerecord (4.0.0) lib/active_record/connection_handling.rb:39:in `establish_connection'
+  activerecord (4.0.0) lib/active_record/railtie.rb:175:in `block (2 levels) in <class:Railtie>'
+  activesupport (4.0.0) lib/active_support/lazy_load_hooks.rb:38:in `instance_eval'
+  activesupport (4.0.0) lib/active_support/lazy_load_hooks.rb:38:in `execute_hook'
+  activesupport (4.0.0) lib/active_support/lazy_load_hooks.rb:45:in `block in run_load_hooks'
+  activesupport (4.0.0) lib/active_support/lazy_load_hooks.rb:44:in `each'
+  activesupport (4.0.0) lib/active_support/lazy_load_hooks.rb:44:in `run_load_hooks'
+  activerecord (4.0.0) lib/active_record/base.rb:322:in `<module:ActiveRecord>'
+  activerecord (4.0.0) lib/active_record/base.rb:22:in `<top (required)>'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:228:in `require'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:228:in `block in require'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:213:in `load_dependency'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:228:in `require'
+  activerecord (4.0.0) lib/active_record/schema_migration.rb:3:in `<top (required)>'
+  activerecord (4.0.0) lib/active_record/migration.rb:783:in `schema_migrations_table_name'
+  activerecord (4.0.0) lib/active_record/migration.rb:791:in `current_version'
+  activerecord (4.0.0) lib/active_record/migration.rb:800:in `needs_migration?'
+  activerecord (4.0.0) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.0) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__4536522375594252618__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/alexandrealvesdasilva/.rvm/rubies/ruby-2.0.0-head/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/alexandrealvesdasilva/.rvm/rubies/ruby-2.0.0-head/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/alexandrealvesdasilva/.rvm/rubies/ruby-2.0.0-head/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-21 22:50:07 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AlunosController#index as HTML
+  [1m[35mAluno Load (0.1ms)[0m  SELECT "alunos".* FROM "alunos"
+  Rendered alunos/index.html.erb within layouts/application (16.4ms)
+Completed 200 OK in 104ms (Views: 83.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/style01.css?body=1" for 127.0.0.1 at 2013-09-21 22:50:07 -0300
+
+
+Started GET "/javascripts/defaults.js" for 127.0.0.1 at 2013-09-21 22:50:07 -0300
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/defaults.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/alexandrealvesdasilva/.rvm/rubies/ruby-2.0.0-head/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/alexandrealvesdasilva/.rvm/rubies/ruby-2.0.0-head/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/alexandrealvesdasilva/.rvm/rubies/ruby-2.0.0-head/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.2ms)
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.6ms)
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (38.8ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:07 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:07 -0300
+
+
+Started GET "/assets/alunoaula.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:07 -0300
+
+
+Started GET "/assets/atividades.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:07 -0300
+
+
+Started GET "/assets/alunos.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:07 -0300
+
+
+Started GET "/assets/diasemanas.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:07 -0300
+
+
+Started GET "/assets/exercicios.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:07 -0300
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:07 -0300
+
+
+Started GET "/assets/musculos.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:07 -0300
+
+
+Started GET "/assets/partescorpos.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:07 -0300
+
+
+Started GET "/assets/treinos.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:07 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:07 -0300
+
+
+Started GET "/alunos/2" for 127.0.0.1 at 2013-09-21 22:50:10 -0300
+Processing by AlunosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAluno Load (0.3ms)[0m  [1mSELECT "alunos".* FROM "alunos" WHERE "alunos"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[35mDiasemana Load (1.5ms)[0m  SELECT "diasemanas".* FROM "diasemanas" INNER JOIN "alunoaulas" ON "diasemanas"."id" = "alunoaulas"."diasemana_id" WHERE "alunoaulas"."aluno_id" = ?  [["aluno_id", 2]]
+  [1m[36mTreino Load (0.1ms)[0m  [1mSELECT "treinos".* FROM "treinos" WHERE "treinos"."aluno_id" = ?[0m  [["aluno_id", 2]]
+  Rendered treinos/_treino.html.erb (2.9ms)
+  Rendered alunos/show.html.erb within layouts/application (79.6ms)
+Completed 200 OK in 92ms (Views: 87.1ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/assets/alunos.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:11 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:11 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:11 -0300
+
+
+Started GET "/assets/style01.css?body=1" for 127.0.0.1 at 2013-09-21 22:50:11 -0300
+
+
+Started GET "/javascripts/defaults.js" for 127.0.0.1 at 2013-09-21 22:50:11 -0300
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/defaults.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/alexandrealvesdasilva/.rvm/rubies/ruby-2.0.0-head/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/alexandrealvesdasilva/.rvm/rubies/ruby-2.0.0-head/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/alexandrealvesdasilva/.rvm/rubies/ruby-2.0.0-head/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.5ms)
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (34.8ms)
+
+
+Started GET "/assets/alunoaula.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:11 -0300
+
+
+Started GET "/assets/atividades.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:11 -0300
+
+
+Started GET "/assets/exercicios.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:11 -0300
+
+
+Started GET "/assets/diasemanas.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:11 -0300
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:11 -0300
+
+
+Started GET "/assets/musculos.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:11 -0300
+
+
+Started GET "/assets/partescorpos.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:11 -0300
+
+
+Started GET "/assets/treinos.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:11 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:11 -0300
+
+
+Started GET "/treinos/1" for 127.0.0.1 at 2013-09-21 22:50:13 -0300
+Processing by TreinosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTreino Load (0.3ms)[0m  SELECT "treinos".* FROM "treinos" WHERE "treinos"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mMusculo Load (0.2ms)[0m  [1mSELECT "musculos".* FROM "musculos"[0m
+  [1m[35mAtividade Load (0.2ms)[0m  SELECT "atividades".* FROM "atividades" INNER JOIN "exercicios" ON "atividades"."id" = "exercicios"."atividade_id" WHERE "exercicios"."musculo_id" = ?  [["musculo_id", 4]]
+  [1m[36mAtividade Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "atividades" INNER JOIN "atividadetreinos" ON "atividades"."id" = "atividadetreinos"."atividade_id" WHERE "atividadetreinos"."treino_id" = ? AND "atividades"."id" = 1 LIMIT 1[0m  [["treino_id", 1]]
+  [1m[35mAtividade Exists (0.1ms)[0m  SELECT 1 AS one FROM "atividades" INNER JOIN "atividadetreinos" ON "atividades"."id" = "atividadetreinos"."atividade_id" WHERE "atividadetreinos"."treino_id" = ? AND "atividades"."id" = 2 LIMIT 1  [["treino_id", 1]]
+  [1m[36mAtividade Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "atividades" INNER JOIN "atividadetreinos" ON "atividades"."id" = "atividadetreinos"."atividade_id" WHERE "atividadetreinos"."treino_id" = ? AND "atividades"."id" = 3 LIMIT 1[0m  [["treino_id", 1]]
+  [1m[35mAtividade Load (0.1ms)[0m  SELECT "atividades".* FROM "atividades" INNER JOIN "exercicios" ON "atividades"."id" = "exercicios"."atividade_id" WHERE "exercicios"."musculo_id" = ?  [["musculo_id", 5]]
+  [1m[36mAtividade Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "atividades" INNER JOIN "atividadetreinos" ON "atividades"."id" = "atividadetreinos"."atividade_id" WHERE "atividadetreinos"."treino_id" = ? AND "atividades"."id" = 4 LIMIT 1[0m  [["treino_id", 1]]
+  [1m[35mAtividade Exists (0.1ms)[0m  SELECT 1 AS one FROM "atividades" INNER JOIN "atividadetreinos" ON "atividades"."id" = "atividadetreinos"."atividade_id" WHERE "atividadetreinos"."treino_id" = ? AND "atividades"."id" = 5 LIMIT 1  [["treino_id", 1]]
+  [1m[36mAtividade Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "atividades" INNER JOIN "atividadetreinos" ON "atividades"."id" = "atividadetreinos"."atividade_id" WHERE "atividadetreinos"."treino_id" = ? AND "atividades"."id" = 6 LIMIT 1[0m  [["treino_id", 1]]
+  [1m[35mAtividade Load (0.1ms)[0m  SELECT "atividades".* FROM "atividades" INNER JOIN "exercicios" ON "atividades"."id" = "exercicios"."atividade_id" WHERE "exercicios"."musculo_id" = ?  [["musculo_id", 6]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT 1 AS one FROM "atividades" INNER JOIN "atividadetreinos" ON "atividades"."id" = "atividadetreinos"."atividade_id" WHERE "atividadetreinos"."treino_id" = ? AND "atividades"."id" = 1 LIMIT 1[0m  [["treino_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT 1 AS one FROM "atividades" INNER JOIN "atividadetreinos" ON "atividades"."id" = "atividadetreinos"."atividade_id" WHERE "atividadetreinos"."treino_id" = ? AND "atividades"."id" = 2 LIMIT 1  [["treino_id", 1]]
+  Rendered treinos/show.html.erb within layouts/application (89.5ms)
+Completed 200 OK in 102ms (Views: 96.9ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:13 -0300
+
+
+Started GET "/assets/alunoaula.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:13 -0300
+
+
+Started GET "/assets/style01.css?body=1" for 127.0.0.1 at 2013-09-21 22:50:13 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:13 -0300
+
+
+Started GET "/javascripts/defaults.js" for 127.0.0.1 at 2013-09-21 22:50:13 -0300
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/defaults.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/alexandrealvesdasilva/.rvm/rubies/ruby-2.0.0-head/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/alexandrealvesdasilva/.rvm/rubies/ruby-2.0.0-head/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/alexandrealvesdasilva/.rvm/rubies/ruby-2.0.0-head/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.4ms)
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.8ms)
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (34.2ms)
+
+
+Started GET "/assets/alunos.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:13 -0300
+
+
+Started GET "/assets/atividades.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:13 -0300
+
+
+Started GET "/assets/diasemanas.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:13 -0300
+
+
+Started GET "/assets/exercicios.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:13 -0300
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:13 -0300
+
+
+Started GET "/assets/musculos.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:13 -0300
+
+
+Started GET "/assets/partescorpos.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:13 -0300
+
+
+Started GET "/assets/treinos.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:13 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:13 -0300
+
+
+Started GET "/treinos/1/edit" for 127.0.0.1 at 2013-09-21 22:50:16 -0300
+Processing by TreinosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTreino Load (0.1ms)[0m  [1mSELECT "treinos".* FROM "treinos" WHERE "treinos"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mMusculo Load (0.2ms)[0m  SELECT "musculos".* FROM "musculos"
+  [1m[36mAtividade Load (0.1ms)[0m  [1mSELECT "atividades".* FROM "atividades" INNER JOIN "exercicios" ON "atividades"."id" = "exercicios"."atividade_id" WHERE "exercicios"."musculo_id" = ?[0m  [["musculo_id", 4]]
+  [1m[35mAtividade Exists (0.1ms)[0m  SELECT 1 AS one FROM "atividades" INNER JOIN "atividadetreinos" ON "atividades"."id" = "atividadetreinos"."atividade_id" WHERE "atividadetreinos"."treino_id" = ? AND "atividades"."id" = 1 LIMIT 1  [["treino_id", 1]]
+  [1m[36mAtividade Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "atividades" INNER JOIN "atividadetreinos" ON "atividades"."id" = "atividadetreinos"."atividade_id" WHERE "atividadetreinos"."treino_id" = ? AND "atividades"."id" = 2 LIMIT 1[0m  [["treino_id", 1]]
+  [1m[35mAtividade Exists (0.1ms)[0m  SELECT 1 AS one FROM "atividades" INNER JOIN "atividadetreinos" ON "atividades"."id" = "atividadetreinos"."atividade_id" WHERE "atividadetreinos"."treino_id" = ? AND "atividades"."id" = 3 LIMIT 1  [["treino_id", 1]]
+  [1m[36mAtividade Load (0.1ms)[0m  [1mSELECT "atividades".* FROM "atividades" INNER JOIN "exercicios" ON "atividades"."id" = "exercicios"."atividade_id" WHERE "exercicios"."musculo_id" = ?[0m  [["musculo_id", 5]]
+  [1m[35mAtividade Exists (0.1ms)[0m  SELECT 1 AS one FROM "atividades" INNER JOIN "atividadetreinos" ON "atividades"."id" = "atividadetreinos"."atividade_id" WHERE "atividadetreinos"."treino_id" = ? AND "atividades"."id" = 4 LIMIT 1  [["treino_id", 1]]
+  [1m[36mAtividade Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "atividades" INNER JOIN "atividadetreinos" ON "atividades"."id" = "atividadetreinos"."atividade_id" WHERE "atividadetreinos"."treino_id" = ? AND "atividades"."id" = 5 LIMIT 1[0m  [["treino_id", 1]]
+  [1m[35mAtividade Exists (0.1ms)[0m  SELECT 1 AS one FROM "atividades" INNER JOIN "atividadetreinos" ON "atividades"."id" = "atividadetreinos"."atividade_id" WHERE "atividadetreinos"."treino_id" = ? AND "atividades"."id" = 6 LIMIT 1  [["treino_id", 1]]
+  [1m[36mAtividade Load (0.1ms)[0m  [1mSELECT "atividades".* FROM "atividades" INNER JOIN "exercicios" ON "atividades"."id" = "exercicios"."atividade_id" WHERE "exercicios"."musculo_id" = ?[0m  [["musculo_id", 6]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT 1 AS one FROM "atividades" INNER JOIN "atividadetreinos" ON "atividades"."id" = "atividadetreinos"."atividade_id" WHERE "atividadetreinos"."treino_id" = ? AND "atividades"."id" = 1 LIMIT 1  [["treino_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT 1 AS one FROM "atividades" INNER JOIN "atividadetreinos" ON "atividades"."id" = "atividadetreinos"."atividade_id" WHERE "atividadetreinos"."treino_id" = ? AND "atividades"."id" = 2 LIMIT 1[0m  [["treino_id", 1]]
+  Rendered treinos/edit.html.erb within layouts/application (59.5ms)
+Completed 200 OK in 71ms (Views: 68.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:16 -0300
+
+
+Started GET "/assets/style01.css?body=1" for 127.0.0.1 at 2013-09-21 22:50:16 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:16 -0300
+
+
+Started GET "/assets/alunoaula.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:16 -0300
+
+
+Started GET "/javascripts/defaults.js" for 127.0.0.1 at 2013-09-21 22:50:16 -0300
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/defaults.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/alexandrealvesdasilva/.rvm/rubies/ruby-2.0.0-head/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/alexandrealvesdasilva/.rvm/rubies/ruby-2.0.0-head/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/alexandrealvesdasilva/.rvm/rubies/ruby-2.0.0-head/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.3ms)
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.8ms)
+  Rendered /Users/alexandrealvesdasilva/.rvm/gems/ruby-2.0.0-head/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (34.1ms)
+
+
+Started GET "/assets/alunos.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:16 -0300
+
+
+Started GET "/assets/atividades.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:16 -0300
+
+
+Started GET "/assets/diasemanas.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:16 -0300
+
+
+Started GET "/assets/exercicios.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:16 -0300
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:16 -0300
+
+
+Started GET "/assets/musculos.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:16 -0300
+
+
+Started GET "/assets/partescorpos.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:16 -0300
+
+
+Started GET "/assets/treinos.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:16 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-21 22:50:16 -0300

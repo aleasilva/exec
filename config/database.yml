@@ -18,25 +18,26 @@
 #  pool: 5
 #  timeout: 5000
 
-
 development:
   adapter: postgresql
   encoding: unicode
-  database: exec
+  database: exec_d
   pool: 5
   username: exec
   password: exec
+
 test:
   adapter: postgresql
   encoding: unicode
-  database: exec
+  database: exec_t
   pool: 5
   username: exec
   password: exec
+
 production:
   adapter: postgresql
   encoding: unicode
-  database: exec
+  database: exec_production
   pool: 5
   username: exec
   password: exec
