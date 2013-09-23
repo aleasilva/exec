@@ -3,6 +3,13 @@
 <%= form_for(@treino) do |f| %>
 <p>
 	<div class="field">
+		<%= f.label "id" %>
+		<%= f.text_area :id %>
+	</div>
+</p>
+
+<p>
+	<div class="field">
 		<%= f.label "Criação:" %>
 		<%= f.date_select :criacao %>
 	</div>
@@ -23,6 +30,22 @@
 <hr>
 <strong>Lista de atividades:</strong>
 <div>
+
+	Ordem inicio
+	<br>
+ 	<%= f.fields_for :ordemmusculotreinos do |b| %>	
+    	<p>
+        	<%= b.label "Ordem:" %>
+        	<%= b.text_field :ordem %>
+        	<%= b.text_field getMusculo(:musculo_id).nome %>
+			<%= hidden_field_tag "treino[musculo_ids][]", :musculo_id %>   
+			     	
+        	<br>
+    	</p>
+    	
+	<% end %>
+
+	<br>
 	<% Musculo.all.each do |iMusculo| %>
 		<%= iMusculo.nome %>:
 		<br>
