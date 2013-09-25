@@ -37,14 +37,15 @@
     	<p>
         	
         	<%= o.fields_for :musculo do |m| %>
-	        	<%= m.text_field :nome %>       	
+	        	<%= m.label :nome, m.object.nome%>       	
 	        	<%= o.label "Ordem:" %>
 	        	<%= o.text_field :ordem %>
 				<%= hidden_field_tag "treino[musculo_ids][]", :id %>  
 	        	<%= m.fields_for :atividades do |a| %>
 					<br>
 					<%= check_box_tag 'treino[atividade_ids][]', :id, seekAtividade(a) %>
-					<%= a.text_field :nome %>
+            		<%= a.label :nome, a.object.nome %>
+					
 	        	<%end %>			 
         	<%end%>
         	<br>
