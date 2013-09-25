@@ -33,13 +33,20 @@
 
 	Ordem inicio
 	<br>
- 	<%= f.fields_for :ordemmusculotreinos do |b| %>	
+ 	<%= f.fields_for :ordemmusculotreinos do |o| %>	
     	<p>
-        	<%= b.label "Ordem:" %>
-        	<%= b.text_field :ordem %>
-        	<%= b.text_field getMusculo(:musculo_id).nome %>
-			<%= hidden_field_tag "treino[musculo_ids][]", :musculo_id %>   
-			     	
+        	
+        	<%= o.fields_for :musculo do |m| %>
+	        	<%= m.text_field :nome %>       	
+	        	<%= o.label "Ordem:" %>
+	        	<%= o.text_field :ordem %>
+				<%= hidden_field_tag "treino[musculo_ids][]", :id %>  
+	        	<%= m.fields_for :atividades do |a| %>
+					<br>
+					<%= check_box_tag 'treino[atividade_ids][]', :id, seekAtividade(a) %>
+					<%= a.text_field :nome %>
+	        	<%end %>			 
+        	<%end%>
         	<br>
     	</p>
     	
