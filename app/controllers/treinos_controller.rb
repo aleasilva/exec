@@ -6,6 +6,14 @@ class TreinosController < ApplicationController
   def new
     @treino = Treino.new
     @treino.aluno_id = params[:aluno]
+
+    Musculo.all.each do |m|
+      @treino.ordemmusculotreinos.build(:musculo_id => m.id, :ordem => "A")
+    end
+    
+    #3.times{ 
+    # ordemmusculo = @treino.ordemmusculotreinos.build(:ordem => "Z")
+    #}    
   end
 
   def show
@@ -24,7 +32,6 @@ class TreinosController < ApplicationController
     @treino.aluno_id = params[:alunoId]
     
     Rails.logger.info("*MUSCULO*ORDEMS**********************")
-    #Rails.logger.info( params[:treino][:musculo_ordems].inspect)
     Rails.logger.info("*MUSCULO*IDS**********************")
     Rails.logger.info( params[:treino][:musculo_ids].inspect)
     Rails.logger.info("***************************************") 

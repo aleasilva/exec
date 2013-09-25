@@ -31,26 +31,27 @@
 	</div>
 </p>
 <hr>
-<strong>Lista de atividades 2:</strong>
+<strong>Lista de atividades:</strong>
 <div>
-	<% Musculo.all.each do |iMusculo| %>
-		<%= iMusculo.nome %>:
-		<br>
-		<%= f.label "Ordem de execução do grupo:" %>
- 		
-		<%= hidden_field_tag "treino[musculo_ids][]", iMusculo.id %>
-		<br>
-
-		<%iMusculo.atividades.each do |iAtividade| %>
-			<%= check_box_tag 'treino[atividade_ids][]', iAtividade.id, seekAtividade(iAtividade) %>
-			<%= iAtividade.nome %>
-			<br>
-		<% end %>
-		<br>
-		
-	<% end %>	
+ 	<%= f.fields_for :ordemmusculotreinos do |o| %>	
+    	<p>
+        	<%= o.fields_for :musculo do |m| %>
+	        	<%= m.label :nome, m.object.nome%>       	
+	        	<p><%= o.label "Ordem:" %>
+	        		<%= o.text_field :ordem %>
+	        	</p>
+	        	<%= m.fields_for :atividades do |a| %>
+					<%= check_box_tag 'treino[atividade_ids][]', a.object.id, seekAtividade(a.object) %>
+            		<%= a.label :nome, a.object.nome %>
+            		<br>
+   	        	<%end %>			 
+        	<%end%>
+        	<br>
+    	</p>
+	<% end %>
 </div>
 <hr>
+
 
 <div class="actions">
     <%= f.submit %>

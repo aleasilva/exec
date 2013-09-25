@@ -30,44 +30,22 @@
 <hr>
 <strong>Lista de atividades:</strong>
 <div>
-
-	Ordem inicio
-	<br>
  	<%= f.fields_for :ordemmusculotreinos do |o| %>	
     	<p>
-        	
         	<%= o.fields_for :musculo do |m| %>
 	        	<%= m.label :nome, m.object.nome%>       	
-	        	<%= o.label "Ordem:" %>
-	        	<%= o.text_field :ordem %>
-				<%= hidden_field_tag "treino[musculo_ids][]", :id %>  
+	        	<p>
+	        		<%= o.label "Ordem:" %>
+	        		<%= o.text_field :ordem %>
+	        	</p>
 	        	<%= m.fields_for :atividades do |a| %>
-					<br>
-					<%= check_box_tag 'treino[atividade_ids][]', :id, seekAtividade(a) %>
+					<%= check_box_tag 'treino[atividade_ids][]', a.object.id, seekAtividade(a.object) %>
             		<%= a.label :nome, a.object.nome %>
-					
-	        	<%end %>			 
+            		<br>
+   	        	<%end %>			 
         	<%end%>
         	<br>
     	</p>
-    	
-	<% end %>
-
-	<br>
-	<% Musculo.all.each do |iMusculo| %>
-		<%= iMusculo.nome %>:
-		<br>
-		<%= f.label "Ordem de execução do grupo:" %>
-		<%= hidden_field_tag "treino[musculo_ids][]", iMusculo.id %>
-		<br>
-	
-		<%iMusculo.atividades.each do |iAtividade| %>
-			<%= check_box_tag 'treino[atividade_ids][]', iAtividade.id, seekAtividade(iAtividade) %>
-			<%= iAtividade.nome %>
-		<br>
-		<% end %>
-		<br>
-
 	<% end %>
 </div>
 <hr>
