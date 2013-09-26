@@ -6,9 +6,9 @@ class TreinosController < ApplicationController
   def new
     @treino = Treino.new
     @treino.aluno_id = params[:aluno]
-
+    
     Musculo.all.each do |m|
-      @treino.ordemmusculotreinos.build(:musculo_id => m.id, :ordem => "A")
+      @treino.ordemmusculotreinos.build(:musculo_id => m.id )
     end
     
     #3.times{ 
