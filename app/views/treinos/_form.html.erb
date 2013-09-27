@@ -36,15 +36,7 @@
  	<%= f.fields_for :ordemmusculotreinos, @treino.ordemmusculotreinos do |o| %>	
     	<p>
 	       	<%= o.fields_for :musculo do |m| %>
-	        	<%= m.label :nome, m.object.nome%>       	
-				<%= o.text_field :ordem %>
-				<%= o.hidden_field :musculo_id %>
-				<br>
-				<%= m.fields_for :atividades do |a| %>
-					<%= check_box_tag 'treino[atividade_ids][]', a.object.id, seekAtividade(a.object) %>
-	            	<%= a.label :nome, a.object.nome %><br>
-	            <br>
-	   	        <%end %>	
+				<%= render "musculoordem_fields", :f => m , :o => o %>       	
 			<% end %>
     	</p>
 	<% end %>
