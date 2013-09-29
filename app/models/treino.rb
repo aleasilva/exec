@@ -13,6 +13,9 @@ class Treino < ActiveRecord::Base
   has_many :ordemmusculotreinos, dependent: :destroy
   has_many :musculos, through: :ordemmusculotreinos
   
-  accepts_nested_attributes_for :ordemmusculotreinos
+  #Relacionamento com a adpaticao
+  has_many :adaptacaos
+  
+  accepts_nested_attributes_for :ordemmusculotreinos, :adaptacaos
   
 end

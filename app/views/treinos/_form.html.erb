@@ -31,7 +31,7 @@
 	</div>
 </p>
 <hr>
-<strong>Lista de atividades:</strong>
+<strong>Treino Muscular:</strong>
 <div>
  	<%= f.fields_for :ordemmusculotreinos, @treino.ordemmusculotreinos do |o| %>	
     	<p>
@@ -42,7 +42,11 @@
 	<% end %>
 </div>
 <hr>
-
+<strong>Adaptação:</strong>
+	<%= f.fields_for :adaptacaos, @treino.adaptacaos do |a| %>
+		<%= render "adaptacao_fields", :f => a %>       	
+	<% end %>
+<hr>
 
 <div class="actions">
     <%= f.submit %>

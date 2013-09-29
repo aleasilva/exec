@@ -10,6 +10,7 @@ class TreinosController < ApplicationController
     Musculo.all.each do |m|
       @treino.ordemmusculotreinos.build(:musculo_id => m.id )
     end
+    @treino.adaptacaos.build
     
     #3.times{ 
     # ordemmusculo = @treino.ordemmusculotreinos.build(:ordem => "Z")
