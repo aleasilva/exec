@@ -46,6 +46,7 @@
 	<%= f.fields_for :adaptacaos, @treino.adaptacaos do |a| %>
 		<%= render "adaptacao_fields", :f => a %>       	
 	<% end %>
+	<p><%= link_to_add_fields "Nova adaptação", f, :adaptacaos %></p>
 <hr>
 
 <div class="actions">
