@@ -14,12 +14,21 @@
 //= require jquery_ujs
 //= require_tree .
 function remove_fields(link) {
-  //$(link).previous("input[type=hidden]").value = "1";
-  alert('Alexandre');
+  $(link).previous("input[type=hidden]").value = "1";
   $(link).up(".fields").hide();
+}
+function add_fields2(link,association) {
+  alert('chamou' );
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g")
+  
+  alert('link to add fields 3' + regexp );
+  $(link).up().insert({before: content.replace(regexp,new_id)});  
+  alert('link to add fields 4');
 }
 
 function add_fields(link, association, content) {
+  alert('link to add fields 2');
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g")
   $(link).up().insert({
