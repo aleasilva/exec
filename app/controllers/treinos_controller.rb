@@ -7,10 +7,13 @@ class TreinosController < ApplicationController
     @treino = Treino.new
     @treino.aluno_id = params[:aluno]
     
+    
     Musculo.all.each do |m|
       @treino.ordemmusculotreinos.build(:musculo_id => m.id )
     end
+    
     @treino.adaptacaos.build
+    @atividade = Atividade.where(tipo: 'A')
     
     #3.times{ 
     # ordemmusculo = @treino.ordemmusculotreinos.build(:ordem => "Z")

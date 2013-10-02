@@ -50,8 +50,22 @@
 	<p>
 		<%= link_to_add_fields "Nova adaptação", f, :adaptacaos %>
 	</p>
-<hr>
 </p>
+<hr>
+<strong>Aeróbico:</strong>
+	<br>
+	<%= f.fields_for :atividadetreinos, @atividade do |ativ| %>
+		<%= ativ.label :nome, "ss" %>
+		<br>
+	<%end%>    
+	
+    <%@atividade.all.each do |at| %>
+	  <%= check_box_tag 'treino[atividade_ids][]', at.id, true %>
+      <%= f.label :nome, at.nome %>
+	  <br>
+    <%end%>
+    <hr>
+<hr>
 <div class="actions">
     <%= f.submit %>
 </div>
