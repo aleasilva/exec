@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  adaptacao_id: 1
+  diasemana_id: 1
+
+two:
+  adaptacao_id: 1
+  diasemana_id: 1

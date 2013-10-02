@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  atividadetreino_id: 1
+  diasemana_id: 1
+
+two:
+  atividadetreino_id: 1
+  diasemana_id: 1
