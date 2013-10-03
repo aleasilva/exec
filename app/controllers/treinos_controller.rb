@@ -6,18 +6,16 @@ class TreinosController < ApplicationController
   def new
     @treino = Treino.new
     @treino.aluno_id = params[:aluno]
-    
-    
+    @treino.adaptacaos.build
+        
     Musculo.all.each do |m|
       @treino.ordemmusculotreinos.build(:musculo_id => m.id )
     end
+
+    Atividade.where(tipo: 'A').each do |aa|
+      @treino.atividadetreinos.build(:atividade_id => aa.id)      
+    end
     
-    @treino.adaptacaos.build
-    @atividade = Atividade.where(tipo: 'A')
-    
-    #3.times{ 
-    # ordemmusculo = @treino.ordemmusculotreinos.build(:ordem => "Z")
-    #}    
   end
 
   def show
@@ -36,7 +34,6 @@ class TreinosController < ApplicationController
     @treino.aluno_id = params[:alunoId]
     
     Rails.logger.info("*MUSCULO*ORDEMS**********************")
-    Rails.logger.info("*MUSCULO*IDS**********************")
     Rails.logger.info( params[:treino][:musculo_ids].inspect)
     Rails.logger.info("***************************************") 
     
@@ -54,8 +51,6 @@ class TreinosController < ApplicationController
   # PATCH/PUT /musculos/1.json
   def update
     Rails.logger.info("*MUSCULO*ORDEMS**********************")
-
-    Rails.logger.info("*MUSCULO*IDS**********************")
     Rails.logger.info( params[:treino][:musculo_ids].inspect)
     Rails.logger.info("***************************************") 
     

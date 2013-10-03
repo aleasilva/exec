@@ -1,15 +1,17 @@
 <%= form_for(@treino) do |f| %>
-  <% if @treino.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@treino.errors.count, "error") %> prohibited this treino from being saved:</h2>
+<% if @treino.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@treino.errors.count, "error") %> prohibited this treino from being saved:</h2>
 
-      <ul>
-      <% @treino.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<ul>
+		<% @treino.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
 
 <p>
 	<div class="field">
@@ -33,12 +35,12 @@
 <hr>
 <strong>Treino Muscular:</strong>
 <div>
- 	<%= f.fields_for :ordemmusculotreinos, @treino.ordemmusculotreinos do |o| %>	
-    	<p>
-	       	<%= o.fields_for :musculo do |m| %>
-				<%= render "musculoordem_fields", :f => m , :o => o %>       	
-			<% end %>
-    	</p>
+	<%= f.fields_for :ordemmusculotreinos, @treino.ordemmusculotreinos do |o| %>
+	<p>
+		<%= o.fields_for :musculo do |m| %>
+		<%= render "musculoordem_fields", :f => m , :o => o %>
+		<% end %>
+	</p>
 	<% end %>
 </div>
 <hr>
@@ -47,27 +49,21 @@
 	<%= f.fields_for :adaptacaos, @treino.adaptacaos do |a| %>
 		<%= render "adaptacao_fields", :f => a %>
 	<% end %>
-	<p>
-		<%= link_to_add_fields "Nova adaptação", f, :adaptacaos %>
-	</p>
+<p>
+	<%= link_to_add_fields "Nova adaptação", f, :adaptacaos %>
 </p>
 <hr>
-<strong>Aeróbico:</strong>
+	<strong>Aeróbico:</strong>
 	<br>
-	<%= f.fields_for :atividadetreinos, @atividade do |ativ| %>
-		<%= ativ.label :nome, "ss" %>
+	<%= f.fields_for :atividadetreinos, @treino.atividadetreinos do |aa| %>
+		<%= aa.label :nome, aa.object.atividade.nome %>
+		<%= aa.hidden_field :atividade_id %>
+		<%= aa.hidden_field :treino_id %>
 		<br>
-	<%end%>    
-	
-    <%@atividade.all.each do |at| %>
-	  <%= check_box_tag 'treino[atividade_ids][]', at.id, true %>
-      <%= f.label :nome, at.nome %>
-	  <br>
-    <%end%>
-    <hr>
+	<% end %>
 <hr>
 <div class="actions">
-    <%= f.submit %>
+	<%= f.submit %>
 </div>
 <hr>
 <%= hidden_field_tag 'alunoId', @treino.aluno_id %>
