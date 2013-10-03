@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131002180414) do
+ActiveRecord::Schema.define(version: 20131003200918) do
 
   create_table "adaptacaodia", force: true do |t|
     t.integer  "adaptacao_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20131002180414) do
   end
 
   create_table "adaptacaos", force: true do |t|
+    t.integer  "treino_id"
     t.integer  "semana"
     t.integer  "serie"
     t.integer  "repeticao"
@@ -29,7 +30,6 @@ ActiveRecord::Schema.define(version: 20131002180414) do
     t.string   "observacao"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "treino_id"
   end
 
   create_table "alunoaulas", force: true do |t|
@@ -40,11 +40,15 @@ ActiveRecord::Schema.define(version: 20131002180414) do
   end
 
   create_table "alunos", force: true do |t|
-    t.string  "idAcademia", limit: 30, default: ""
-    t.string  "nome",       limit: 60, default: "Aluno", null: false
-    t.date    "nascimento"
-    t.boolean "sexo",       limit: 1,  default: false,   null: false
+    t.string  "idAcademia",   limit: 30, default: ""
+    t.string  "nome",         limit: 60, default: "Aluno", null: false
+    t.string  "medicamentos", limit: 60, default: ""
+    t.string  "doenca",       limit: 60, default: ""
+    t.string  "alergia",      limit: 60, default: ""
+    t.string  "dores",        limit: 60, default: ""
     t.text    "observacao"
+    t.date    "nascimento"
+    t.boolean "sexo",         limit: 1,  default: false,   null: false
   end
 
   create_table "atividades", force: true do |t|
@@ -69,18 +73,21 @@ ActiveRecord::Schema.define(version: 20131002180414) do
   create_table "atividadetreinos", force: true do |t|
     t.integer  "atividade_id"
     t.integer  "treino_id"
+    t.string   "tempo"
+    t.integer  "velocidade"
+    t.integer  "inclinacao"
+    t.integer  "carga"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "diasemanas", force: true do |t|
     t.string   "nome"
-    t.integer  "alunos_id"
+    t.string   "nomeabreviado", limit: 3
+    t.integer  "simbnumberal"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "diasemanas", ["alunos_id"], name: "index_diasemanas_on_alunos_id"
 
   create_table "exercicios", force: true do |t|
     t.integer  "musculo_id"
@@ -109,11 +116,9 @@ ActiveRecord::Schema.define(version: 20131002180414) do
     t.date     "criacao"
     t.date     "validade"
     t.text     "observacao"
-    t.integer  "aluno_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "aluno_id"
   end
-
-  add_index "treinos", ["aluno_id"], name: "index_treinos_on_aluno_id"
 
 end

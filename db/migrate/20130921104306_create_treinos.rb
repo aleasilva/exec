@@ -4,6 +4,7 @@ class CreateTreinos < ActiveRecord::Migration
       t.date :criacao
       t.date :validade
       t.text :observacao
+      t.integer :aluno_id
 
       t.timestamps
     end

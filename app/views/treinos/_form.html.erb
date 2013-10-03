@@ -56,7 +56,11 @@
 	<strong>Aeróbico:</strong>
 	<br>
 	<%= f.fields_for :atividadetreinos, @treino.atividadetreinos do |aa| %>
-		<%= aa.label :nome, aa.object.atividade.nome %>
+		<%= aa.label :nome, aa.object.atividade.nome %>->
+		Tempo: <%= aa.text_field :tempo, :size => 3%>
+		Velocidade:<%= aa.text_field :velocidade, :size => 3 %>
+		Inclinação:<%= aa.text_field :inclinacao, :size => 3 %>
+		Carga:<%= aa.text_field :carga, :size => 3 %>
 		<%= aa.hidden_field :atividade_id %>
 		<%= aa.hidden_field :treino_id %>
 		<br>
