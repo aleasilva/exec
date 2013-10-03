@@ -1,24 +1,34 @@
 class TreinosController < ApplicationController
   before_action :set_treino, only: [:show, :edit, :update, :destroy]
+  
   def edit
+  
   end
 
   def new
     @treino = Treino.new
     @treino.aluno_id = params[:aluno]
     @treino.adaptacaos.build
+    
+    aluno = Aluno.find(params[:aluno])         
         
     Musculo.all.each do |m|
       @treino.ordemmusculotreinos.build(:musculo_id => m.id )
     end
 
     Atividade.where(tipo: 'A').each do |aa|
-      @treino.atividadetreinos.build(:atividade_id => aa.id)      
+      atTreino = @treino.atividadetreinos.build(:atividade_id => aa.id)
+      
+      aluno.diasemanas.each do |diaSem|
+        atTreino.atividadetreinodias.build(:diasemana_id => diaSem.id)
+      end
+      
     end
     
   end
 
   def show
+    
   end
 
   def destroy
