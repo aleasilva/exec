@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131003200918) do
+ActiveRecord::Schema.define(version: 20131003202013) do
 
   create_table "adaptacaodia", force: true do |t|
     t.integer  "adaptacao_id"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20131003200918) do
     t.integer  "carga"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "bpm"
   end
 
   create_table "diasemanas", force: true do |t|
