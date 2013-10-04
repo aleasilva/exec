@@ -1,4 +1,4 @@
-class Atividadetreino < ActiveRecord::Base
+class Atividadetreinos < ActiveRecord::Base
   belongs_to :atividade
   belongs_to :treino
 

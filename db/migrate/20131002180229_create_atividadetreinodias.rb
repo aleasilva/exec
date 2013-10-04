@@ -1,6 +1,6 @@
-class CreateAtividadetreinodia < ActiveRecord::Migration
+class CreateAtividadetreinodias < ActiveRecord::Migration
   def change
-    create_table :atividadetreinodia do |t|
+    create_table :atividadetreinodias do |t|
       t.integer :atividadetreino_id
       t.integer :diasemana_id
 
