@@ -9,7 +9,8 @@ Carga:<%= f.text_field :bpm, :size => 3 %>
 <%= f.hidden_field :treino_id %>
 
 <%= f.fields_for :atividadetreinodias do |td| %>
-	<%= debug td.object.inspect%>
+	<%= td.label :nome, td.object.diasemana.nome %>->
+	
 <%end %>
 
 <br>

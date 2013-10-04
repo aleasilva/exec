@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  treino_id: 1
+  adaptacao_id: 1
+
+two:
+  treino_id: 1
+  adaptacao_id: 1

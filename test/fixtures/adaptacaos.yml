@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  semana: 1
+  serie: 1
+  repeticao: 1
+  carga: 1
+  intervalo: 1
+  observacao: MyString
+
+two:
+  semana: 1
+  serie: 1
+  repeticao: 1
+  carga: 1
+  intervalo: 1
+  observacao: MyString
