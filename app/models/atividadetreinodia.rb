@@ -1,4 +1,4 @@
-class Atividadetreinodias < ActiveRecord::Base
+class Atividadetreinodia < ActiveRecord::Base
    belongs_to :atividade
    belongs_to :diasemana
    
