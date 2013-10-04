@@ -9,8 +9,12 @@ Carga:<%= f.text_field :bpm, :size => 3 %>
 <%= f.hidden_field :treino_id %>
 
 <%= f.fields_for :atividadetreinodias do |td| %>
-	<%= td.label :nome, td.object.diasemana.nome %>->
+	<!--%= td.check_box :id %-->
+	<%= td.object.diasemana.nome %>
+	<%= check_box_tag 'atividadetreino[diasemana_ids][]', :diasemana_id, false %>
 	
+	<!--%= td.hidden_field :diasemana_id %-->
+	<!--%= td.hidden_field :atividadetreino_id %-->
 <%end %>
 
 <br>

@@ -88,6 +88,7 @@ class TreinosController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def treino_params
     #params.require(:aluno).permit(:idAcademia, :nome, :nascimento, :sexo, :observacao)
+    #params.require(:treino).permit(:selected)
     params.require(:treino).permit!
   end
 end
