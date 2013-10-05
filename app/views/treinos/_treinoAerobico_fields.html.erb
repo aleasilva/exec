@@ -4,17 +4,16 @@ Velocidade:<%= f.text_field :velocidade, :size => 3 %>
 Inclinação:<%= f.text_field :inclinacao, :size => 3 %>
 Carga:<%= f.text_field :carga, :size => 3 %>
 Carga:<%= f.text_field :bpm, :size => 3 %>
-
 <%= f.hidden_field :atividade_id %>
-<%= f.hidden_field :treino_id %>
 
-<%= f.fields_for :atividadetreinodias do |td| %>
+<!--%= f.hidden_field :treino_id %-->
+<!--%= f.fields_for :atividadetreinodias do |td| %-->
 	<!--%= td.check_box :id %-->
-	<%= td.object.diasemana.nome %>
-	<%= check_box_tag 'atividadetreino[diasemana_ids][]', :diasemana_id, false %>
+	<!--%= td.object.diasemana.nome %-->
+	<!--%= check_box_tag 'atividadetreino[diasemana_ids][]', :diasemana_id, false %-->
 	
 	<!--%= td.hidden_field :diasemana_id %-->
 	<!--%= td.hidden_field :atividadetreino_id %-->
-<%end %>
+<!--%end %-->
 
 <br>
