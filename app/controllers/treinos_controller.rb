@@ -20,7 +20,7 @@ class TreinosController < ApplicationController
       #@treino.atividadetreinos 
       atTreino = @treino.atividadetreinos.build(:atividade_id => aa.id)
       aluno.diasemanas.each do |diaSem|
-        atTreino.diasemanas.build(:id => diaSem.id) 
+        atTreino.diasemanas.build(:id => diaSem.id, :nome => diaSem.nome) 
         #atTreino.diasemanas.build(:diasemana_id => diaSem.id)        
         #atTreino.atividadetreinodias.build(:diasemana_id => diaSem.id)
       end      
