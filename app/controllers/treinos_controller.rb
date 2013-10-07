@@ -10,22 +10,24 @@ class TreinosController < ApplicationController
     @treino.aluno_id = params[:aluno]
     @treino.adaptacaos.build
     
-    aluno = Aluno.find(params[:aluno])         
+    @aluno = Aluno.find(params[:aluno])         
         
     Musculo.all.each do |m|
       @treino.ordemmusculotreinos.build(:musculo_id => m.id )
     end
 
     Atividade.where(tipo: 'A').each do |aa|
+      @treino.atividadetreinos.build(:atividade_id => aa.id)
+    end
+        
+  end
       #@treino.atividadetreinos 
-      atTreino = @treino.atividadetreinos.build(:atividade_id => aa.id)
-      aluno.diasemanas.each do |diaSem|
-        atTreino.diasemanas.build(:id => diaSem.id, :nome => diaSem.nome) 
+      #aluno.diasemanas.each do |diaSem|
+        #atTreino.diasemanas.build(:id => diaSem.id, :nome => diaSem.nome) 
         #atTreino.diasemanas.build(:diasemana_id => diaSem.id)        
         #atTreino.atividadetreinodias.build(:diasemana_id => diaSem.id)
-      end      
-    end    
-  end
+       # atTreino.diasemanas.build
+      #end      
 
   def show
     

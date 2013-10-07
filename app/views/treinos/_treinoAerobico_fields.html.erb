@@ -6,17 +6,26 @@ Carga:<%= f.text_field :carga, :size => 3 %>
 Carga:<%= f.text_field :bpm, :size => 3 %>
 <%= f.hidden_field :atividade_id %>
 
-<% f.object.diasemanas.each do |semana| %>
-	<%= check_box_tag 'atividadetreino[diasemana_ids][]', semana.id, false %>
-	<%= label_tag :diasemana_ids, semana.nome %>
+
+<% @aluno.diasemanas.each .each do |diasemana| %>
+	<%= f.fields_for :diasemanas do |b| %><br />
+  		<%= b.check_box :id %> <%= diasemana.nome %>
+	<% end %>
+	
+	<!--%= check_box_tag 'atividadetreino[diasemana_ids][]', diasemana.id, false %-->
+	<!--%= label_tag :diasemana_ids, diasemana.nome %-->
 <% end %>
+
+<!--%= label_tag :atividade_ids, atividade.nome %-->
+<!--%= check_box_tag "musculo[atividade_ids][]", atividade.id, @musculo.atividades.include?(atividade) %-->
+<!--% f.object.diasemanas.each do |semana| %-->
+<!--% end %-->
 
 <!--%= check_box_tag "musculo[atividade_ids][]", atividade.id, @musculo.atividades.include?(atividade) %-->
 <!--%= f.hidden_field :treino_id %-->
 <!--%= f.fields_for :atividadetreinodias do |td| %-->
 <!--%= td.check_box :id %-->
 
-<!--%= td.hidden_field :diasemana_id %-->
 <!--%= td.hidden_field :atividadetreino_id %-->
 <!--%end %-->
 

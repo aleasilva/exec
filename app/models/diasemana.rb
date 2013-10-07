@@ -4,7 +4,7 @@ class Diasemana < ActiveRecord::Base
    has_many :alunos, through: :alunoaulas
    
      #Controle das semanas para uso do treino aerobico
-   has_many :atividadetreinos, dependent: :destroy
-   has_many :atividadetreinodias, through: :atividadetreinos
+   has_many :atividadetreinodias, dependent: :destroy
+   has_many :atividadetreinos, through: :atividadetreinodias
    
 end
