@@ -6,6 +6,7 @@ class Atividadetreino < ActiveRecord::Base
   has_many :atividadetreinodias, dependent: :destroy
   has_many :diasemanas , through: :atividadetreinodias 
   
-  accepts_nested_attributes_for :diasemanas 
+  #accepts_nested_attributes_for :diasemanas 
+  #accepts_nested_attributes_for :atividadetreinodias
 
 end
