@@ -21,13 +21,6 @@ class TreinosController < ApplicationController
     end
         
   end
-      #@treino.atividadetreinos 
-      #aluno.diasemanas.each do |diaSem|
-        #atTreino.diasemanas.build(:id => diaSem.id, :nome => diaSem.nome) 
-        #atTreino.diasemanas.build(:diasemana_id => diaSem.id)        
-        #atTreino.atividadetreinodias.build(:diasemana_id => diaSem.id)
-       # atTreino.diasemanas.build
-      #end      
 
   def show
     

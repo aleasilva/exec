@@ -38,7 +38,7 @@
 	<%= f.fields_for :ordemmusculotreinos, @treino.ordemmusculotreinos do |o| %>
 	<p>
 		<%= o.fields_for :musculo do |m| %>
-		<%= render "musculoordem_fields", :f => m , :o => o %>
+			<%= render "musculoordem_fields", :f => m , :o => o %>
 		<% end %>
 	</p>
 	<% end %>
@@ -46,20 +46,22 @@
 <hr>
 
 <strong>Adaptação:</strong>
-<%= f.fields_for :adaptacaos, @treino.adaptacaos do |a| %>
-	<%= render "adaptacao_fields", :f => a %>
-<% end %>
-<%= link_to_add_fields "Nova adaptação", f, :adaptacaos %>
+	<div>
+		<%= f.fields_for :adaptacaos, @treino.adaptacaos do |a| %>
+			<%= render "adaptacao_fields", :f => a %>
+		<% end %>
+		<%= link_to_add_fields "Nova adaptação", f, :adaptacaos %>
+	</div>
 	
 <hr>
 	<div>
 		<p>
-	<strong>Aeróbico:</strong>
-	<br>
-	<%= f.fields_for :atividadetreinos, @treino.atividadetreinos do |aa| %>
-		<%= render "treinoAerobico_fields", :f => aa %>
-	<% end %>
-	</p>
+			<strong>Aeróbico:</strong>
+		<br>
+		<%= f.fields_for :atividadetreinos, @treino.atividadetreinos do |aa| %>
+			<%= render "treinoAerobico_fields", :f => aa %>
+		<% end %>
+		</p>
 	</div>
 <hr>
 <div class="actions">
