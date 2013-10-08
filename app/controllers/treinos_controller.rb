@@ -8,7 +8,7 @@ class TreinosController < ApplicationController
   def new
     @treino = Treino.new
     @treino.aluno_id = params[:aluno]
-    @treino.adaptacaos.build
+    #@treino.adaptacaos.build
     
     @aluno = Aluno.find(params[:aluno])         
         
