@@ -11,6 +11,7 @@
 	<%= f.label :intervalo, "Intervalo:" %>
 	<%= f.text_field :intervalo,:size => 2 %>
 	<%= f.label :observacao, "Observação:" %>
+	<%= f.collection_check_boxes :diasemana_ids, @aluno.diasemanas, :id, :nome %>
 	<%= f.text_field :observacao %>
-	<%= link_to_remove_fields "Remover", f %>
+	<%= link_to_remove_fields "Remover", f %>	
 </p>

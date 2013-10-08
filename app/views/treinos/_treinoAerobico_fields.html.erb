@@ -9,30 +9,4 @@ Carga:<%= f.text_field :bpm, :size => 3 %>
 <%= f.collection_check_boxes :diasemana_ids, @aluno.diasemanas, :id, :nome %>
 <br>
 
-	<!--%= f.fields_for "treino[atividadetreinos_attributes][]",@aluno.diasemanas do |ds| %-->
-	<!--% ds.object.each  do |dia|%-->
-		<!--%= dia.nome %-->
-	<!--%end%-->
-	<!--%= ds.hidden_field :atividadetreino_id %-->
-
-<!--% end %-->
-
-<!--%= diasemana.check_box :diasemana_id %><%= diasemana.object.nome %-->
-<!--%= diasemana.hidden_field :atividadetreino_id %-->
-<!--%= check_box_tag 'atividadetreinos_attributes[atividadetreino][][diasemana_ids]', diasemana.id, false %-->
-<!--%= text_field_tag 'recipe[quantities_attributes][][qty]', ingredient_qty_for_select(dq), size: 3, placeholder: "Q.tà" %-->
-
-<!--%= check_box_tag 'atividadetreino[diasemana_ids][]', diasemana.id, false %-->
-<!--%= label_tag :diasemana_ids, diasemana.nome %-->
-
-<!--%= label_tag :atividade_ids, atividade.nome %-->
-<!--%= check_box_tag "musculo[atividade_ids][]", atividade.id, @musculo.atividades.include?(atividade) %-->
-<!--% f.object.diasemanas.each do |semana| %-->
-<!--% end %-->
-
-<!--%= check_box_tag "musculo[atividade_ids][]", atividade.id, @musculo.atividades.include?(atividade) %-->
-<!--%= f.hidden_field :treino_id %-->
-<!--%= f.fields_for :atividadetreinodias do |td| %-->
-
-<!--%end %-->
 

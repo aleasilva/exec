@@ -45,20 +45,22 @@
 </div>
 <hr>
 
-<p class="fields">
-	<strong>Adaptação:</strong>
-	<%= f.fields_for :adaptacaos, @treino.adaptacaos do |a| %>
-		<%= render "adaptacao_fields", :f => a %>
-	<% end %>
-	<%= link_to_add_fields "Nova adaptação", f, :adaptacaos %>
-<p>
+<strong>Adaptação:</strong>
+<%= f.fields_for :adaptacaos, @treino.adaptacaos do |a| %>
+	<%= render "adaptacao_fields", :f => a %>
+<% end %>
+<%= link_to_add_fields "Nova adaptação", f, :adaptacaos %>
 	
 <hr>
+	<div>
+		<p>
 	<strong>Aeróbico:</strong>
 	<br>
 	<%= f.fields_for :atividadetreinos, @treino.atividadetreinos do |aa| %>
 		<%= render "treinoAerobico_fields", :f => aa %>
 	<% end %>
+	</p>
+	</div>
 <hr>
 <div class="actions">
 	<%= f.submit %>
