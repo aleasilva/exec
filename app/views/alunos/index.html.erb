@@ -1,6 +1,6 @@
-<h1>Listing alunos</h1>
-<%# show_filters: :when_filtered %>
-<%= grid(@alunos_grid) do |g|
+<%= grid(@alunos_grid, 
+	allow_showing_all_records:  false,
+	show_filters: :when_filtered) do |g|
 	
 	g.column name:  'Cód.Aluno', attribute: 'idAcademia' do |aluno|
 		aluno.idAcademia
@@ -11,15 +11,15 @@
 	end
 
 	g.column   do |aluno|
-		link_to('Ver', aluno)
+		link_to( image_tag("btnOperation/form_show.png", :alt => "Visualizar") , aluno)
 	end
 	
 	g.column   do |aluno|
-		link_to('Altera', edit_aluno_path(aluno))
+		link_to(image_tag("btnOperation/form_edit.png", :alt => "Alterar."), edit_aluno_path(aluno))
 	end
 	
 	g.column   do |aluno|
-		link_to 'Exclui', aluno, method: :delete, data: { confirm: 'Are you sure?' }
+		link_to image_tag("btnOperation/form_delete.png", :alt => "Excluir."), aluno, method: :delete, data: { confirm: 'Are you sure?' }
 	end
 end %>
 <%= link_to 'Novo Aluno', new_aluno_path %>
