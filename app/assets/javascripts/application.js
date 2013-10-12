@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+// require turbolinks
 //= require jquery.ui.all
 //= require jquery.ui.datepicker
 //= require wice_grid
-//= require turbolinks
