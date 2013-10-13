@@ -1,12 +1,13 @@
 $(function() {
 	$('#datepicker').datepicker();
 });
-function remove_fields(link) {
+
+function remove_fieldsNotUsed(link) {
 	$(link).previous("input[type=hidden]").value = "1";
 	$(link).up(".fields").hide();
 }
 
-function add_fields(link, association, content) {
+function add_fieldsNotUsed(link, association, content) {
 	var new_id = new Date().getTime();
 	var regexp = new RegExp("new_" + association, "g");
 	alert('add fields');
@@ -14,3 +15,15 @@ function add_fields(link, association, content) {
 		before : content.replace(regexp, new_id)
 	});
 }
+
+function remove_fields(link) {
+  $(link).prev("input[type=hidden]").val("1");
+  $(link).closest(".fields").hide();
+}
+
+function add_fields(link, association, content) {
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g");
+  $(link).parent().before(content.replace(regexp, new_id));
+}
+alert("alerta");
