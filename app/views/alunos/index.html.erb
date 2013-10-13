@@ -4,8 +4,7 @@
 	
  	 g.last_row do |number_of_columns|
 	    	content_tag(:tr,
-	      	content_tag(:td,
-	        content_tag(:button, "Novo aluno", class: "btn btn-info"),
+	        content_tag(:td, link_to('Novo Aluno', new_aluno_path),
 	        colspan: 9), class: 'last-row')
 	  end
   
@@ -29,4 +28,3 @@
 		link_to image_tag("btnOperation/form_delete.png", :alt => "Excluir."), aluno, method: :delete, data: { confirm: 'Are you sure?' }
 	end
 end %>
-<%= link_to 'Novo Aluno', new_aluno_path %>
