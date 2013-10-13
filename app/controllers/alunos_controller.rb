@@ -5,7 +5,7 @@ class AlunosController < ApplicationController
   # GET /alunos.json
   def index
     #@alunos = Aluno.all
-    @alunos_grid = initialize_grid(Aluno.all)
+    @alunos_grid = initialize_grid(Aluno.all,:per_page => 1)
   end
 
   # GET /alunos/1
