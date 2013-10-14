@@ -1,48 +1,37 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Aluno -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Idacademia:</strong>
-  <%= @aluno.idAcademia %>
-</p>
-<p>
-  <strong>Nome:</strong>
-  <%= @aluno.nome %>
-</p>
-<p>
-  <strong>Nascimento:</strong>
-  <%= @aluno.nascimento %>
-</p>
-<p>
-  <strong>Sexo:</strong>
-  <%= @aluno.sexo %>
-</p>
-<p>
-  <strong>Observacao:</strong>
-  <%= @aluno.observacao %>
-</p>
-<hr>
-<p>
-  <strong>Dias de aula:</strong>
-	<% @aluno.diasemanas.each do |iDia| %>
-    	<%= iDia.nome %>,
-	<% end %> 
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:idAcademia) %>:</strong></dt>
+  <dd><%= @aluno.idAcademia %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:nome) %>:</strong></dt>
+  <dd><%= @aluno.nome %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:medicamentos) %>:</strong></dt>
+  <dd><%= @aluno.medicamentos %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:doenca) %>:</strong></dt>
+  <dd><%= @aluno.doenca %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:alergia) %>:</strong></dt>
+  <dd><%= @aluno.alergia %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:dores) %>:</strong></dt>
+  <dd><%= @aluno.dores %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:observacao) %>:</strong></dt>
+  <dd><%= @aluno.observacao %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:nascimento) %>:</strong></dt>
+  <dd><%= @aluno.nascimento %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:sexo) %>:</strong></dt>
+  <dd><%= @aluno.sexo %></dd>
+</dl>
 
-</p>
-
-<hr>
-
-
-
-<%= link_to 'Edit', edit_aluno_path(@aluno) %> |
-<%= link_to 'Back', alunos_path %>
-<hr>
-
-<strong>Meus treinos:</strong><br>
-<strong>Data criação</strong>
-<strong>-</strong>
-<strong>Data validade</strong>
-<%= render @aluno.treinos%>
-<hr>
-
-<strong>Adicione um novo treino:</strong>
-<%= link_to "Novo treino", new_treino_path(:params => params, :aluno => @aluno) %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              alunos_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_aluno_path(@aluno), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              aluno_path(@aluno),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
