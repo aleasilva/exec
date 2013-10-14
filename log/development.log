@@ -53356,3 +53356,421 @@ Started GET "/assets/treinos.js?body=1" for 127.0.0.1 at 2013-10-05 10:59:49 -03
 
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-05 10:59:49 -0300
+
+
+Started GET "/alunos" for 127.0.0.1 at 2013-10-14 12:44:24 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (10.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AlunosController#index as HTML
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "alunos"
+  [1m[36mAluno Load (0.0ms)[0m  [1mSELECT "alunos".* FROM "alunos" LIMIT 1 OFFSET 0[0m
+  Rendered alunos/index.html.erb within layouts/application (120.0ms)
+Completed 200 OK in 590ms (Views: 560.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/wice_grid.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/lib.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/jquery.ui.datepicker.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/wice_grid_processor.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/wice_grid_init.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/wice_grid_saved_queries_init.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/wice_grid.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/btnOperation/form_show.png" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/btnOperation/form_edit.png" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/btnOperation/form_delete.png" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/style01.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/fontawesome-webfont.eot" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/icons/grid/page_white_find.png" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/icons/grid/table_refresh.png" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/assets/icons/grid/table.png" for 127.0.0.1 at 2013-10-14 12:44:25 -0300
+
+
+Started GET "/alunos" for 127.0.0.1 at 2013-10-14 12:44:38 -0300
+Processing by AlunosController#index as */*
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "alunos"
+  [1m[36mAluno Load (0.0ms)[0m  [1mSELECT "alunos".* FROM "alunos" LIMIT 1 OFFSET 0[0m
+  Rendered alunos/index.html.erb within layouts/application (270.0ms)
+Completed 200 OK in 540ms (Views: 540.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:38 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:38 -0300
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:38 -0300
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:38 -0300
+
+
+Started GET "/assets/style01.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:38 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:38 -0300
+
+
+Started GET "/assets/wice_grid.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:38 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:39 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:39 -0300
+
+
+Started GET "/javascripts/bootstrap.js.coffee__.js" for 127.0.0.1 at 2013-10-14 12:44:39 -0300
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/bootstrap.js.coffee__.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  c:/Apps/Ruby200/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  c:/Apps/Ruby200/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  c:/Apps/Ruby200/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered c:/Apps/Ruby200/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (30.0ms)
+  Rendered c:/Apps/Ruby200/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (10.0ms)
+  Rendered c:/Apps/Ruby200/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered c:/Apps/Ruby200/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (151.0ms)
+
+
+Started GET "/assets/lib.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:39 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:39 -0300
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:39 -0300
+
+
+Started GET "/assets/jquery.ui.datepicker.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:39 -0300
+
+
+Started GET "/assets/wice_grid_processor.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:39 -0300
+
+
+Started GET "/assets/wice_grid_saved_queries_init.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:39 -0300
+
+
+Started GET "/assets/wice_grid_init.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:39 -0300
+
+
+Started GET "/assets/wice_grid.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:39 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:39 -0300
+
+
+Started GET "/assets/btnOperation/form_show.png" for 127.0.0.1 at 2013-10-14 12:44:39 -0300
+
+
+Started GET "/assets/btnOperation/form_edit.png" for 127.0.0.1 at 2013-10-14 12:44:39 -0300
+
+
+Started GET "/assets/btnOperation/form_delete.png" for 127.0.0.1 at 2013-10-14 12:44:39 -0300
+
+
+Started GET "/assets/fontawesome-webfont.eot" for 127.0.0.1 at 2013-10-14 12:44:39 -0300
+
+
+Started GET "/assets/icons/grid/table_refresh.png" for 127.0.0.1 at 2013-10-14 12:44:39 -0300
+
+
+Started GET "/assets/icons/grid/table.png" for 127.0.0.1 at 2013-10-14 12:44:39 -0300
+
+
+Started GET "/assets/icons/grid/page_white_find.png" for 127.0.0.1 at 2013-10-14 12:44:39 -0300
+
+
+Started GET "/alunos?grid%5Bpage%5D=2" for 127.0.0.1 at 2013-10-14 12:44:47 -0300
+Processing by AlunosController#index as HTML
+  Parameters: {"grid"=>{"page"=>"2"}}
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "alunos"
+  [1m[36mAluno Load (0.0ms)[0m  [1mSELECT "alunos".* FROM "alunos" LIMIT 1 OFFSET 1[0m
+  Rendered alunos/index.html.erb within layouts/application (70.0ms)
+Completed 200 OK in 220ms (Views: 220.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/wice_grid.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/style01.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/javascripts/bootstrap.js.coffee__.js" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/bootstrap.js.coffee__.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  c:/Apps/Ruby200/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  c:/Apps/Ruby200/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  c:/Apps/Ruby200/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered c:/Apps/Ruby200/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+  Rendered c:/Apps/Ruby200/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (10.0ms)
+  Rendered c:/Apps/Ruby200/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.0ms)
+  Rendered c:/Apps/Ruby200/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (100.0ms)
+
+
+Started GET "/assets/lib.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/jquery.ui.datepicker.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/wice_grid_processor.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/wice_grid_saved_queries_init.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/wice_grid.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/wice_grid_init.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/btnOperation/form_edit.png" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/btnOperation/form_delete.png" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/btnOperation/form_show.png" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/fontawesome-webfont.eot" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/icons/grid/table_refresh.png" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/icons/grid/page_white_find.png" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/assets/icons/grid/table.png" for 127.0.0.1 at 2013-10-14 12:44:48 -0300
+
+
+Started GET "/alunos/new" for 127.0.0.1 at 2013-10-14 12:44:50 -0300
+Processing by AlunosController#new as HTML
+  [1m[35mDiasemana Load (0.0ms)[0m  SELECT "diasemanas".* FROM "diasemanas"
+  Rendered alunos/_form.html.erb (90.0ms)
+  Rendered alunos/new.html.erb within layouts/application (100.0ms)
+Completed 200 OK in 260ms (Views: 260.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:50 -0300
+
+
+Started GET "/assets/style01.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:50 -0300
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:50 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:50 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:50 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:50 -0300
+
+
+Started GET "/assets/wice_grid.css?body=1" for 127.0.0.1 at 2013-10-14 12:44:50 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:50 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:50 -0300
+
+
+Started GET "/javascripts/bootstrap.js.coffee__.js" for 127.0.0.1 at 2013-10-14 12:44:50 -0300
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/bootstrap.js.coffee__.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  c:/Apps/Ruby200/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  c:/Apps/Ruby200/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  c:/Apps/Ruby200/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered c:/Apps/Ruby200/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+  Rendered c:/Apps/Ruby200/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.0ms)
+  Rendered c:/Apps/Ruby200/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.0ms)
+  Rendered c:/Apps/Ruby200/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (110.0ms)
+
+
+Started GET "/assets/lib.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:50 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:50 -0300
+
+
+Started GET "/assets/wice_grid_init.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:50 -0300
+
+
+Started GET "/assets/wice_grid_saved_queries_init.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:50 -0300
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:50 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:50 -0300
+
+
+Started GET "/assets/jquery.ui.datepicker.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:50 -0300
+
+
+Started GET "/assets/wice_grid_processor.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:50 -0300
+
+
+Started GET "/assets/wice_grid.js?body=1" for 127.0.0.1 at 2013-10-14 12:44:50 -0300
+
+
+Started GET "/assets/fontawesome-webfont.eot" for 127.0.0.1 at 2013-10-14 12:44:50 -0300
