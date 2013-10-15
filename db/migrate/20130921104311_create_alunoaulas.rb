@@ -3,7 +3,6 @@ class CreateAlunoaulas < ActiveRecord::Migration
     create_table :alunoaulas do |t|
       t.integer :aluno_id
       t.integer :diasemana_id
-
       t.timestamps
     end
   end

@@ -5,7 +5,7 @@ class AlunosController < ApplicationController
   # GET /alunos.json
   def index
     @alunos = Aluno.all
-    @alunos_grid = initialize_grid(Aluno.all)
+    @alunos_grid = initialize_grid(@alunos)
   end
 
   # GET /alunos/1
@@ -30,7 +30,6 @@ class AlunosController < ApplicationController
     Rails.logger.info( params[:aluno][:treino_1].inspect)
     Rails.logger.info("***************************************")   
     
-    
     @aluno = Aluno.new(aluno_params)
 
     respond_to do |format|
@@ -49,7 +48,7 @@ class AlunosController < ApplicationController
   def update
     respond_to do |format|
       if @aluno.update(aluno_params)
-        format.html { redirect_to @aluno, notice: 'Aluno was successfully updated.' }
+        format.html { redirect_to @aluno, notice: 'Aluno foi atualizado.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

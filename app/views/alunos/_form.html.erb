@@ -29,7 +29,7 @@
       <%= f.text_area :observacao, :class => 'textarea' %>
     </div>
     <%= f.label :nascimento, :class => 'control-label' %>
-    <div class="controls">
+    <div class="controls" id="datepicker">
       <%= f.text_field :nascimento, :class => 'text_field' %>
     </div>
     <%= f.label :sexo, :class => 'control-label' %>
@@ -47,7 +47,6 @@
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                alunos_path, :class => 'btn' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), alunos_path, :class => 'btn' %>
   </div>
 <% end %>
