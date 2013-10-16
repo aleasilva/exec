@@ -12,11 +12,11 @@
     <div class="controls">
       <%= f.text_area :medicamentos, :class => 'textarea' %>
     </div>
-    <%= f.label :doenca, :class => 'control-label' %>
+    <%= f.label "Doenças", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :doenca, :class => 'textarea' %>
     </div>
-    <%= f.label :alergia, :class => 'control-label' %>
+    <%= f.label "Alergias", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :alergia, :class => 'textarea' %>
     </div>
@@ -24,7 +24,7 @@
     <div class="controls">
       <%= f.text_area :dores, :class => 'textarea' %>
     </div>
-    <%= f.label :observacao, :class => 'control-label' %>
+    <%= f.label "Observação", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :observacao, :class => 'textarea' %>
     </div>
@@ -34,7 +34,7 @@
     </div>
     <%= f.label :sexo, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :sexo, :class => 'text_field' %>
+      <%= f.select :sexo, ([["Feminino", "f"], ["Masculino", "t"]]), :class => 'text_field' %>
     </div>
 	<%= f.label "Dia(s) de aula", :class => 'control-label' %>
 	<div class="controls">
