@@ -1,5 +1,5 @@
 $(function() {
-	$( "#datepicker > :input" ).datepicker();
+	$("#datepicker").datepicker();
 });
 
 function remove_fieldsNotUsed(link) {
