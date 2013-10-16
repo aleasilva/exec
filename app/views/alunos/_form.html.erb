@@ -30,7 +30,7 @@
     </div>
     <%= f.label :nascimento, :class => 'control-label' %>
     <div class="controls" >
-      <%= f.text_field :nascimento, :id => 'datepicker'%>
+      <%= f.text_field :nascimento,:value => l(@aluno.nascimento) ,:id => 'datepicker'%>
     </div>
     <%= f.label :sexo, :class => 'control-label' %>
     <div class="controls">
