@@ -11,6 +11,7 @@ class AlunosController < ApplicationController
   # GET /alunos/1
   # GET /alunos/1.json
   def show
+     @treinos_grid = initialize_grid(@aluno.treinos)
   end
 
   # GET /alunos/new

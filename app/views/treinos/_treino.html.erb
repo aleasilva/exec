@@ -1,10 +1,31 @@
-<p>
-  <%= treino.criacao %>
-  <%= "-" %>
-  <%= treino.validade %>  
+<%= grid(@treinos_grid, 
+	allow_showing_all_records:  false,
+	show_filters: :when_filtered) do |g|
+	
+ 	 g.last_row do |number_of_columns|
+	    	content_tag(:tr,
+	        content_tag(:td, link_to('Novo Treino', new_treino_path(:params => params, :aluno => @aluno),:class => 'btn btn-primary'  ),colspan: 9), class: 'last-row')
+	  end
+	  
+	  
   
-  <td><%= link_to 'Show', treino %></td>
-  <td><%= link_to 'Edit', edit_treino_path(treino) %></td>
-  <td><%= link_to 'Destroy', treino, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  
-</p>
+	g.column name:  'Criação', attribute: 'criacao' do |treino|
+		treino.criacao
+	end
+	
+	g.column name:  'Validade', attribute: 'validade'  do |treino|
+		treino.validade
+	end
+
+	g.column   do |treino|
+		link_to( image_tag("btnOperation/form_show.png", :alt => "Visualizar") , treino)
+	end
+	
+	g.column   do |treino|
+		link_to(image_tag("btnOperation/form_edit.png", :alt => "Alterar."), edit_treino_path(treino))
+	end
+	
+	g.column   do |treino|
+		link_to image_tag("btnOperation/form_delete.png", :alt => "Excluir."), treino, method: :delete, data: { confirm: 'Are you sure?' }
+	end
+end %>
