@@ -28,7 +28,7 @@ pt-BR:
       new: "Novo"
       edit: "Editar"
     titles:
-      edit: "Editar %{model}"
+      edit: "Editando %{model}"
       save: "Salvar %{model}"
       new: "Novo %{model}"
       delete: "Excluir %{model}"
