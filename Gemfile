@@ -25,6 +25,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem "wice_grid", '3.2.1'
 gem "twitter-bootstrap-rails"
+gem 'jquery-ui-themes'
 
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

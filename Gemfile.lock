@@ -39,6 +39,9 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     hike (1.2.3)
+    httparty (0.11.0)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
     i18n (0.6.4)
     jbuilder (1.5.0)
       activesupport (>= 3.0.0)
@@ -48,6 +51,8 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (4.0.5)
       railties (>= 3.1.0)
+    jquery-ui-themes (0.0.11)
+      httparty
     json (1.8.0)
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
@@ -58,6 +63,7 @@ GEM
     mime-types (1.23)
     minitest (4.7.5)
     multi_json (1.7.7)
+    multi_xml (0.5.5)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -132,6 +138,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   jquery-ui-rails
+  jquery-ui-themes
   rails (= 4.0.0)
   rails_12factor
   sass-rails (~> 4.0.0)

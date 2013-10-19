@@ -10,7 +10,8 @@
  *
  *= require_self
  *= require_tree .
- * require jquery.ui.all
- *= require jquery.ui.tabs
- *= require jquery.ui.accordion
+ *= require jquery.ui.all
+ * require jquery.ui.tabs
+ * require jquery.ui.accordion
+ *= require jquery-ui/start
  */
