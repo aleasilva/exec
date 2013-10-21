@@ -1,8 +1,9 @@
 $(function() {
 	$("#tabs").tabs();
 });
+
 $(function() {
-	$("#datepicker").datepicker({
+	$("input[id|='datepicker']").datepicker({
 		showAnim : "fadeIn"
 	});
 });
@@ -10,6 +11,7 @@ $(function() {
 $(function() {
 	$("#accordion").accordion();
 });
+
 function remove_fieldsNotUsed(link) {
 	$(link).previous("input[type=hidden]").value = "1";
 	$(link).up(".fields").hide();

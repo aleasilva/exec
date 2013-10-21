@@ -1,64 +1,23 @@
-<%= form_for(@treino) do |f| %>
-	<% if @treino.errors.any? %>
-		<div id="error_explanation">
-			<h2><%= pluralize(@treino.errors.count, "error") %> prohibited this treino from being saved:</h2>
-		
-			<ul>
-				<% @treino.errors.full_messages.each do |msg| %>
-				<li>
-					<%= msg %>
-				</li>
-				<% end %>
-			</ul>
-		</div>
-	<% end %>
-	<div class="field">
-	<p>
-		<%= f.label "Criação:" %>
-		<%= f.date_select :criacao %>
-	</p>
-	<p>
-		<%= f.label "Validade:" %>
-		<%= f.date_select :validade %>
-	</p>
-	<p>
-		<%= f.label "Observação:" %>
-		<br>
-		<%= f.text_area :observacao %>
-	</p>
-	</div>	
-	<hr>
-	<div id ="sessao_treino_muscular">
-		<strong>Treino Muscular:</strong>
-		<%= f.fields_for :ordemmusculotreinos, @treino.ordemmusculotreinos do |o| %>
-			<p>
-			<%= o.fields_for :musculo do |m| %>
-				<%= render "musculoordem_fields", :f => m , :o => o %>
-			<% end %>
-			</p>
-		<% end %>
+<%= form_for @treino, :html => { :class => 'form-horizontal' } do |f| %>
+<div class="control-group">
+	<%= f.label :criacao, :class => 'control-label' %>
+	<div class="controls">
+		<%= f.text_field :criacao, :class => 'text_field',:id => 'datepicker-01' %>
 	</div>
-	<hr>
-	<div id="sessao_adaptacao">
-		<strong>Adaptação:</strong>
-		<%= f.fields_for :adaptacaos, @treino.adaptacaos do |a| %>
-			<%= render "adaptacao_fields", :f => a %>
-		<% end %>
-		<%= link_to_add_fields "Nova adaptação", f, :adaptacaos %>
+	<%= f.label :validade, :class => 'control-label' %>
+	<div class="controls">
+		<%= f.text_field :validade, :class => 'text_field',:id => 'datepicker-02' %>
 	</div>
-	<hr>
-	<div id="sessao_aerobico">
-		<strong>Aeróbico:</strong>
-		<br>
-		<%= f.fields_for :atividadetreinos, @treino.atividadetreinos do |aa| %>
-			<%= render "treinoAerobico_fields", :f => aa %>
-		<% end %>
+	<%= f.label :observacao, :class => 'control-label' %>
+	<div class="controls">
+		<%= f.text_field :observacao, :class => 'text_field' %>
 	</div>
-	<hr>
+</div>
 
-	<div class="actions">
-		<%= f.submit %>
-	</div>
-
-	<%= hidden_field_tag 'alunoId', @treino.aluno_id %>
+<%= hidden_field_tag 'alunoId', @treino.aluno_id %>
+<div class="form-actions">
+	<%= f.submit nil, :class => 'btn btn-primary' %>
+	<%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+	treinos_path, :class => 'btn' %>
+</div>
 <% end %>

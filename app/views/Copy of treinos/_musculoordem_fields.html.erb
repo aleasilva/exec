@@ -1,0 +1,7 @@
+<%= f.label :nome, f.object.nome%>
+<%= o.text_field :ordem , :size => 1 %>
+<%= o.hidden_field :musculo_id %>
+<br>
+<%= f.fields_for :atividades do |a| %>
+	<%=render "atividadetreino_fields", :f => a%>
+<%end %>	

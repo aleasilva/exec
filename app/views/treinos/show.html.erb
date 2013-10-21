@@ -1,35 +1,27 @@
-<p id="notice"><%= notice %></p>
-<h1>Mostrando Treino</h1>
-<p>
-  	<strong>Criacao:</strong>
-	<%= @treino.criacao %>
-</p>
-<p>
-  	<strong>Validade:</strong>
-	<%= @treino.validade %>
-</p>
-<p>
-  	<strong>Observacao:</strong>
-	<%= @treino.observacao %>
-</p>
+<%- model_class = Treino -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<hr>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:criacao) %>:</strong></dt>
+  <dd><%= @treino.criacao %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:validade) %>:</strong></dt>
+  <dd><%= @treino.validade %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:observacao) %>:</strong></dt>
+  <dd><%= @treino.observacao %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:aluno_id) %>:</strong></dt>
+  <dd><%= @treino.aluno_id %></dd>
+</dl>
 
-<p>  
-  <strong>Lista de atividades:</strong>
-  <br>
-  	<% Musculo.all.each do |iMusculo| %>
-		<%= iMusculo.nome %>:
-		<br>
-
-		<%iMusculo.atividades.each do |iAtividade| %>
-			<%= seekAtividade(iAtividade) ? iAtividade.nome : "" %>
-			<br>
-		<% end %>
-		<br>
-		
-	<% end %>
-</p>
-
-<%= link_to 'Edit', edit_treino_path(@treino) %> |
-<%= link_to 'Back', alunos_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              treinos_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_treino_path(@treino), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              treino_path(@treino),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
