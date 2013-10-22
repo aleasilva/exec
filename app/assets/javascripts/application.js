@@ -12,11 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
-//= require turbolinks
-// require jquery.ui.all
+//= require jquery.turbolinks
 //= require jquery.ui.tabs
 //= require jquery.ui.accordion
 //= require jquery.ui.datepicker
 //= require jquery.ui.datepicker-pt-BR
+// require jquery.ui.all
+//= require_tree .
+//= require turbolinks
 //= require wice_grid
