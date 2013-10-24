@@ -1,7 +1,19 @@
-<%= f.label :nome, f.object.nome%>
-<%= o.text_field :ordem , :size => 1 %>
-<%= o.hidden_field :musculo_id %>
-<br>
-<%= f.fields_for :atividades do |a| %>
-	<%=render "atividadetreino_fields", :f => a%>
-<%end %>	
+<thead>
+	<tr>
+		<%= o.fields_for :musculo do |m| %>
+		<th><%= f.label :nome, f.object.nome%></th>
+		<th>Ordem:</th>
+		<th><%= o.text_field :ordem , :size => 1 %></th>
+		<%= o.hidden_field :musculo_id %>
+		<%end %>
+	</tr>
+</thead>
+<tbody>
+	<tr >
+		<th colspan="3" class="form-inline" >
+			<%= f.fields_for :atividades do |a| %>
+				<%= render "atividadetreino_fields", :f => a%>
+			<%end %>
+		</th>
+	</tr>
+</tbody>
