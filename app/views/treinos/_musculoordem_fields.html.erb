@@ -2,8 +2,7 @@
 	<tr>
 		<%= o.fields_for :musculo do |m| %>
 		<th><%= f.label :nome, f.object.nome%></th>
-		<th>Ordem:</th>
-		<th><%= o.text_field :ordem , :size => 1 %></th>
+		<th>Ordem:<%= o.text_field :ordem ,:class=>"input-size10px" %></th>
 		<%= o.hidden_field :musculo_id %>
 		<%end %>
 	</tr>

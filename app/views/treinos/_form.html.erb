@@ -1,23 +1,21 @@
 <%= form_for @treino, :html => { :class => 'form-horizontal' } do |f| %>
 <div class="control-group">
-	<%= f.label :criacao, :class => 'control-label' %>
+	<%= f.label "Criação:", :class => 'control-label' %>
 	<div class="controls">
 		<%= f.text_field :criacao, :class => 'text_field',:id => 'datepicker-01' %>
 	</div>
-	<%= f.label :validade, :class => 'control-label' %>
+	
+	<%= f.label "Validade:", :class => 'control-label' %>
 	<div class="controls">
 		<%= f.text_field :validade, :class => 'text_field',:id => 'datepicker-02' %>
 	</div>
-	<%= f.label :observacao, :class => 'control-label' %>
+	
+	<%= f.label "Observação:", :class => 'control-label' %>
 	<div class="controls">
-		<%= f.text_field :observacao, :class => 'text_field' %>
+		<%= f.text_field :observacao, :class => 'textarea' %>
 	</div>
-
-
 	
-	
-		Treino Muscular
-
+	<h4><span class="label label-success">Treino Muscular</span></h4>
 	<%= f.fields_for :ordemmusculotreinos, @treino.ordemmusculotreinos do |o| %>
 			<%= o.fields_for :musculo do |m| %>
 				<table class="table table-bordered">
@@ -26,28 +24,27 @@
 			<% end %>
 	<% end %>
 	
-	
-		Adaptação
-
+	<h4><span class="label label-success">Adaptação</span></h4>
 	<%= f.fields_for :adaptacaos, @treino.adaptacaos do |a| %>
 			<%= render "adaptacao_fields", :f => a %>
 	<% end %>
+	
 	<%= link_to_add_fields "Nova adaptação", f, :adaptacaos %>
 	
-		Treino Aeróbico
-	
-	
+
+	<h4><span class="label label-success">Treino Aeróbico</span></h4>
 	<% @qtdAtividade = @treino.atividadetreinos.size%>
+	
 	<%= f.fields_for :atividadetreinos, @treino.atividadetreinos do |aa| %>
 		<%= render "treinoAerobico_fields", :f => aa %>	
-	<% end %>	
-	</div>
+	<% end %>
 
-
-<%= hidden_field_tag 'alunoId', @treino.aluno_id %>
-<div class="form-actions">
-	<%= f.submit nil, :class => 'btn btn-primary' %>
-	<%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-	treinos_path, :class => 'btn' %>
+	<div class="form-actions">
+		<%= f.submit nil, :class => 'btn btn-primary' %>
+		<%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+		treinos_path, :class => 'btn' %>
+	</div>	
+		
 </div>
+<%= hidden_field_tag 'alunoId', @treino.aluno_id %>
 <% end %>
