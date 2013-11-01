@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20131003202013) do
 
-  create_table "adaptacaodias", force: true do |t|
+  create_table "adaptacaodia", force: true do |t|
     t.integer  "adaptacao_id"
     t.integer  "diasemana_id"
     t.datetime "created_at"
@@ -40,15 +40,16 @@ ActiveRecord::Schema.define(version: 20131003202013) do
   end
 
   create_table "alunos", force: true do |t|
-    t.string  "idAcademia",   limit: 30, default: ""
-    t.string  "nome",         limit: 60, default: "Aluno", null: false
-    t.string  "medicamentos", limit: 60, default: ""
-    t.string  "doenca",       limit: 60, default: ""
-    t.string  "alergia",      limit: 60, default: ""
-    t.string  "dores",        limit: 60, default: ""
-    t.text    "observacao"
-    t.date    "nascimento"
-    t.boolean "sexo",         limit: 1,  default: false,   null: false
+    t.string "idAcademia",  limit: 24,  default: ""
+    t.string "nome",        limit: 48,  default: "Aluno",       null: false
+    t.string "medicamento", limit: 48,  default: "Não toma."
+    t.string "doenca",      limit: 48,  default: "Não possui."
+    t.string "alergia",     limit: 48,  default: "Não tem."
+    t.string "dor",         limit: 48,  default: "Não sente."
+    t.string "email",       limit: 100, default: ""
+    t.text   "observacao"
+    t.date   "nascimento",              default: '2013-11-01'
+    t.string "sexo",        limit: 1,   default: "f",           null: false
   end
 
   create_table "atividades", force: true do |t|

@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+diaSemanaList = [
+  [ "Domingo", "dom",1 ],
+  [ "Segunda", "seg",2 ],
+  [ "Terça"  , "ter",3 ],
+  [ "Quarta" , "qua",4 ],
+  [ "Quinta" , "qui",5 ],
+  [ "Sexta"  , "sex",6 ],
+  [ "Sábado" , "sáb",7 ]
+]
+Diasemana.delete_all
+diaSemanaList.each do |nome, nomered, numDia|
+  Diasemana.create( nome: nome, nomeabreviado: nomered, simbnumberal: numDia)
+end
