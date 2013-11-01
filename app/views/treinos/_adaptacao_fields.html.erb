@@ -1,16 +1,10 @@
-<p>
-	<%= f.label :semana, "Semana:" %>
-	<%= f.text_field :semana, :size => 2 %>
-	<%= f.label :serie, "Série:" %>
-	<%= f.text_field :serie,:size => 2 %>
-	<%= f.label :repeticao, "Repetição:" %>
-	<%= f.text_field :repeticao,:size => 2 %>
-	<%= f.label :carga, "Carga:" %>
-	<%= f.text_field :carga,:size => 2 %>
-	<%= f.label :intervalo, "Intervalo:" %>
-	<%= f.text_field :intervalo,:size => 2 %>
-	<%= f.label :observacao, "Observação:" %>
-	<%= f.text_field :observacao, :size => 5 %>
-	<%= f.collection_check_boxes :diasemana_ids, @aluno.diasemanas, :id, :nome %>
-	<%= link_to_remove_fields "Remover", f %>	
-</p>
+<tr class="fields">
+	<td><%= f.text_field :semana,:class=>"input-mini" %></td>
+	<td><%= f.text_field :serie,:class=>"input-mini"%></td>
+	<td><%= f.text_field :repeticao,:class=>"input-mini"%></td>
+	<td><%= f.text_field :carga,:class=>"input-mini" %></td>
+	<td><%= f.text_field :intervalo,:class=>"input-mini" %></td>
+	<td><%= f.text_field :observacao,:class=>"input-mini"%></td>
+	<td class="form-inline"><%= f.collection_check_boxes :diasemana_ids, @aluno.diasemanas, :id, :nome %></td>
+	<td><%= link_to_remove_fields "Remover", f %></td>	
+</tr>

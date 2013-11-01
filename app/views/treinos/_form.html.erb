@@ -25,13 +25,27 @@
 	<% end %>
 	
 	<h4><span class="label label-success">Adaptação</span></h4>
-	<%= f.fields_for :adaptacaos, @treino.adaptacaos do |a| %>
+	<table class="table table-bordered" id="tblData">
+		<thead>
+			<tr>
+				<td>Semana</td>
+				<td>Série</td>
+				<td>Repetição</td>
+				<td>Carga</td>
+				<td>Intervalo</td>
+				<td>Observação</td>
+				<td>Dia(s)de Aula(s)</td>
+				<td>Remover</td>
+			</tr>
+		</thead>
+	<tbody>			
+		<%= f.fields_for :adaptacaos, @treino.adaptacaos do |a| %>
 			<%= render "adaptacao_fields", :f => a %>
-	<% end %>
-	
+		<% end %>
+	</tbody>
+	</table>
 	<%= link_to_add_fields "Nova adaptação", f, :adaptacaos %>
 	
-
 	<h4><span class="label label-success">Treino Aeróbico</span></h4>
 	<% @qtdAtividade = @treino.atividadetreinos.size%>
 	
