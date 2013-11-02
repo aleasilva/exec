@@ -1,6 +1,6 @@
-class CreateAdaptacaodias < ActiveRecord::Migration
+class CreateAdaptacaodia < ActiveRecord::Migration
   def change
-    create_table :adaptacaodias do |t|
+    create_table :adaptacaodia do |t|
       t.integer :adaptacao_id
       t.integer :diasemana_id
 

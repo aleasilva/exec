@@ -1,39 +1,35 @@
-<h1>Listing atividades</h1>
+<%- model_class = Atividade -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Instrucao</th>
-      <th>Indicacao</th>
-      <th>Restricao</th>
-      <th>Observacao</th>
-      <th>Tipo</th>
-      <th>Ativo</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<%= grid(@atividades_grid, 
+	allow_showing_all_records:  false,
+	show_filters: :when_filtered) do |g|
+	
+ 	 g.last_row do |number_of_columns|
+	    	content_tag(:tr,
+	        content_tag(:td, link_to('Nova Atividade', new_atividade_path,:class => 'btn btn-primary'  ),colspan: 5), class: 'last-row')
+	  end
+  
+	
+	g.column name:  'Nome', attribute: 'nome'  do |atividade|
+		atividade.nome
+	end
+	
+	g.column name:  'Nome', attribute: 'tipo'  do |atividade|
+		atividade.tipo
+	end
 
-  <tbody>
-    <% @atividades.each do |atividade| %>
-      <tr>
-        <td><%= atividade.nome %></td>
-        <td><%= atividade.instrucao %></td>
-        <td><%= atividade.indicacao %></td>
-        <td><%= atividade.restricao %></td>
-        <td><%= atividade.observacao %></td>
-        <td><%= atividade.tipo %></td>
-        <td><%= atividade.ativo %></td>
-        <td><%= link_to 'Show', atividade %></td>
-        <td><%= link_to 'Edit', edit_atividade_path(atividade) %></td>
-        <td><%= link_to 'Destroy', atividade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Atividade', new_atividade_path %>
+	g.column   do |atividade|
+		link_to( image_tag("btnOperation/form_show.png", :alt => "Visualizar") , atividade)
+	end
+	
+	g.column   do |atividade|
+		link_to(image_tag("btnOperation/form_edit.png", :alt => "Alterar."), edit_atividade_path(atividade))
+	end
+	
+	g.column   do |atividade|
+		link_to image_tag("btnOperation/form_delete.png", :alt => "Excluir."), atividade, method: :delete, data: { confirm: 'Are you sure?' }
+	end
+end %>

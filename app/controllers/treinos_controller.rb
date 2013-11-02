@@ -1,8 +1,8 @@
 class TreinosController < ApplicationController
-  before_action :set_treino, only: [:show, :edit, :update, :destroy]
+  before_action :set_treino, only: [:show, :edit, :update, :destroy] 
   
   def edit
-  
+      
   end
 
   def new
@@ -78,6 +78,15 @@ class TreinosController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_treino
     @treino = Treino.find(params[:id])
+    @aluno = Aluno.find(@treino.aluno_id)
+      
+    #@treino.atividadetreinos.merge(Atividade.aerobico) 
+    #@treino.atividadetreinos.filter(tipo="A")
+    
+    #Rails.logger.info("SET TREINO")
+    #Rails.logger.info( Treino.atividadetreinos.merge(Atividade.aerobico).inspect)
+    
+    
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

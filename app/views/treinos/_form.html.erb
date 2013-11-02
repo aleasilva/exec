@@ -50,7 +50,9 @@
 	<% @qtdAtividade = @treino.atividadetreinos.size%>
 	
 	<%= f.fields_for :atividadetreinos, @treino.atividadetreinos do |aa| %>
-		<%= render "treinoAerobico_fields", :f => aa %>	
+	<%= debug aa.object.atividade.tipo%>
+			<%= render "treinoAerobico_fields", :f => aa %>
+
 	<% end %>
 
 	<div class="form-actions">

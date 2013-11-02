@@ -5,6 +5,7 @@ class AtividadesController < ApplicationController
   # GET /atividades.json
   def index
     @atividades = Atividade.all
+    @atividades_grid = initialize_grid(@atividades)
   end
 
   # GET /atividades/1

@@ -5,4 +5,6 @@ class Atividade < ActiveRecord::Base
   has_many :atividadetreinos
   has_many :treinos, through: :atividadetreinos
 
+  scope :aerobico, -> { where(tipo: 'A') }
+  
 end

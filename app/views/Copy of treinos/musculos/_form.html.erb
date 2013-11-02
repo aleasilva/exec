@@ -1,0 +1,37 @@
+<%= form_for(@musculo) do |f| %>
+  <% if @musculo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@musculo.errors.count, "error") %> prohibited this musculo from being saved:</h2>
+
+      <ul>
+      <% @musculo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :observacao %><br>
+    <%= f.text_field :observacao %>
+  </div>
+  <div class="field">
+    <%= f.label :selecionado %><br>
+    <%= f.text_field :selecionado %>
+  </div>
+  
+  <div>
+  <% Atividade.all.each do |atividade| %>
+	<%= check_box_tag "musculo[atividade_ids][]", atividade.id, @musculo.atividades.include?(atividade) %>
+    <%= label_tag :atividade_ids, atividade.nome %>
+  <% end %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

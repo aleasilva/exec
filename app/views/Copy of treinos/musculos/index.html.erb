@@ -1,0 +1,31 @@
+<h1>Listing musculos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Observacao</th>
+      <th>Selecionado</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @musculos.each do |musculo| %>
+      <tr>
+        <td><%= musculo.nome %></td>
+        <td><%= musculo.observacao %></td>
+        <td><%= musculo.selecionado %></td>
+        <td><%= link_to 'Show', musculo %></td>
+        <td><%= link_to 'Edit', edit_musculo_path(musculo) %></td>
+        <td><%= link_to 'Destroy', musculo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Musculo', new_musculo_path %>
