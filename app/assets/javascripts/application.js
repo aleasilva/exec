@@ -19,5 +19,6 @@
 //= require jquery.ui.datepicker-pt-BR
 // require jquery.ui.all
 //= require_tree .
-//= require turbolinks
 //= require wice_grid
+// require turbolinks
+// requere turbolinks ocasiona erro ao adicionar linha na tabela dinamica.
