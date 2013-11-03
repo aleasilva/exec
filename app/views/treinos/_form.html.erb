@@ -4,63 +4,64 @@
 	<div class="controls">
 		<%= f.text_field :criacao, :class => 'text_field',:id => 'datepicker-01' %>
 	</div>
-	
+</div>
+<div class="control-group">
 	<%= f.label "Validade:", :class => 'control-label' %>
 	<div class="controls">
 		<%= f.text_field :validade, :class => 'text_field',:id => 'datepicker-02' %>
 	</div>
-	
+</div>
+<div class="control-group">
 	<%= f.label "Observação:", :class => 'control-label' %>
 	<div class="controls">
-		<%= f.text_field :observacao, :class => 'textarea' %>
+		<%= f.text_area :observacao, :class => 'text_area', :rows => "3"%>
 	</div>
-	
-	<h4><span class="label label-success">Treino Muscular</span></h4>
-	<%= f.fields_for :ordemmusculotreinos, @treino.ordemmusculotreinos do |o| %>
-			<%= o.fields_for :musculo do |m| %>
-				<table class="table table-bordered">
-						<%= render "musculoordem_fields", :f => m , :o => o %>
-				</table>	
-			<% end %>
+</div>
+
+<h4><span class="label label-success">Treino Muscular</span></h4>
+<%= f.fields_for :ordemmusculotreinos, @treino.ordemmusculotreinos do |o| %>
+	<%= o.fields_for :musculo do |m| %>
+		<table class="table table-bordered">
+			<%= render "musculoordem_fields", :f => m , :o => o %>
+		</table>
 	<% end %>
-	
-	<h4><span class="label label-success">Adaptação</span></h4>
-	<table class="table table-bordered" id="tblData">
-		<thead>
-			<tr>
-				<td>Semana</td>
-				<td>Série</td>
-				<td>Repetição</td>
-				<td>Carga</td>
-				<td>Intervalo</td>
-				<td>Observação</td>
-				<td>Dia(s)de Aula(s)</td>
-				<td>Remover</td>
-			</tr>
-		</thead>
-	<tbody>			
+<% end %>
+
+<h4><span class="label label-success">Adaptação</span></h4>
+<table class="table table-bordered" id="tblData">
+	<thead>
+		<tr>
+			<td>Semana</td>
+			<td>Série</td>
+			<td>Repetição</td>
+			<td>Carga</td>
+			<td>Intervalo</td>
+			<td>Observação</td>
+			<td>Dia(s) Aula(s)</td>
+			<td>Remover</td>
+		</tr>
+	</thead>
+	<tbody>
 		<%= f.fields_for :adaptacaos, @treino.adaptacaos do |a| %>
-			<%= render "adaptacao_fields", :f => a %>
+		<%= render "adaptacao_fields", :f => a %>
 		<% end %>
 	</tbody>
-	</table>
-	<%= link_to_add_fields "Nova adaptação", f, :adaptacaos %>
-	
-	<h4><span class="label label-success">Treino Aeróbico</span></h4>
-	<% @qtdAtividade = @treino.atividadetreinos.size%>
-	
-	<%= f.fields_for :atividadetreinos, @treino.atividadetreinos do |aa| %>
-	<%= debug aa.object.atividade.tipo%>
-			<%= render "treinoAerobico_fields", :f => aa %>
+</table>
+<%= link_to_add_fields "Nova adaptação", f, :adaptacaos %>
 
-	<% end %>
+<h4><span class="label label-success">Treino Aeróbico</span></h4>
+<% @qtdAtividade = @treino.atividadetreinos.size%>
 
-	<div class="form-actions">
-		<%= f.submit nil, :class => 'btn btn-primary' %>
-		<%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-		treinos_path, :class => 'btn' %>
-	</div>	
-		
+<%= f.fields_for :atividadetreinos, @treino.atividadetreinos do |aa| %>
+	<%= render "treinoAerobico_fields", :f => aa %>
+<% end %>
+
+<div class="form-actions">
+	<%= f.submit nil, :class => 'btn btn-primary' %>
+	<%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+	treinos_path, :class => 'btn' %>
+</div>
+
 </div>
 <%= hidden_field_tag 'alunoId', @treino.aluno_id %>
 <% end %>

@@ -32,16 +32,20 @@
   <div class="control-group">
     <%= f.label :tipo, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :tipo, :class => 'text_field' %>
+      <%= f.select(:tipo, [['Aeróbico', 'A'], ['Muscular', 'M']]) %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :ativo, :class => 'control-label' %>
+    <%= f.label :selecionado, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :ativo, :class => 'text_field' %>
+    	<div class="form-inline">
+		    <%= f.radio_button :ativo, true %>
+			<%= f.label :ativo, "Sim", :value => "true"  %>
+		    <%= f.radio_button :ativo, false %>
+		    <%= f.label :ativo, "Não", :value => "false" %>
+	    </div>
     </div>
-  </div>
-
+  </div>  
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
