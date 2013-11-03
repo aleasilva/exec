@@ -34,6 +34,10 @@ function remove_fields(link) {
 function add_fields_to_table(link, association, content) {
 	var new_id = new Date().getTime();
 	var regexp = new RegExp("new_" + association, "g");
+	
 	//$(link).parent().before(content.replace(regexp, new_id));
-	$("#tblData tbody").after().append(content.replace(regexp, new_id));
+	$("#tblData").prepend("<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>");
+	$("#tblData > tbody:last").append("<tr><td>last</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>");
+
+	//$("#tblData tbody").after.append(content.replace(regexp, new_id));
 }

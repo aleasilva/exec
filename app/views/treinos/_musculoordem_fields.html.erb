@@ -1,18 +1,12 @@
-<thead>
-	<tr>
-		<%= o.fields_for :musculo do |m| %>
-		<th><%= f.label :nome, f.object.nome%></th>
-		<th>Ordem:<%= o.text_field :ordem ,:class=>"input-size10px" %></th>
+<tr class="warning">
+	<%= o.fields_for :musculo do |m| %>
+		<th class="warning"> <%= f.label :nome, f.object.nome%></th>	
+		<th class="warning"> Ordem:<%= o.text_field :ordem ,:class=>"input-size10px" %></th>
 		<%= o.hidden_field :musculo_id %>
-		<%end %>
-	</tr>
-</thead>
-<tbody>
-	<tr >
-		<th colspan="3" class="form-inline" >
-			<%= f.fields_for :atividades do |a| %>
-				<%= render "atividadetreino_fields", :f => a%>
-			<%end %>
-		</th>
-	</tr>
-</tbody>
+	<%end %>
+</tr>
+<tr>
+	<th class="form-inline" colspan="2" > <%= f.fields_for :atividades do |a| %>
+		<%= render "atividadetreino_fields", :f => a%>
+	<%end %> </th>
+</tr>

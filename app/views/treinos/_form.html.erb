@@ -1,31 +1,33 @@
 <%= form_for @treino, :html => { :class => 'form-horizontal' } do |f| %>
 <div class="control-group">
-	<%= f.label "Criação:", :class => 'control-label' %>
+	<%= f.label "Criação", :class => 'control-label' %>
 	<div class="controls">
 		<%= f.text_field :criacao, :class => 'text_field',:id => 'datepicker-01' %>
 	</div>
 </div>
 <div class="control-group">
-	<%= f.label "Validade:", :class => 'control-label' %>
+	<%= f.label "Validade", :class => 'control-label' %>
 	<div class="controls">
 		<%= f.text_field :validade, :class => 'text_field',:id => 'datepicker-02' %>
 	</div>
 </div>
 <div class="control-group">
-	<%= f.label "Observação:", :class => 'control-label' %>
+	<%= f.label "Observação", :class => 'control-label' %>
 	<div class="controls">
 		<%= f.text_area :observacao, :class => 'text_area', :rows => "3"%>
 	</div>
 </div>
 
 <h4><span class="label label-success">Treino Muscular</span></h4>
-<%= f.fields_for :ordemmusculotreinos, @treino.ordemmusculotreinos do |o| %>
-	<%= o.fields_for :musculo do |m| %>
-		<table class="table table-bordered">
-			<%= render "musculoordem_fields", :f => m , :o => o %>
-		</table>
-	<% end %>
-<% end %>
+<table class="table table-bordered">
+	<tbody>
+		<%= f.fields_for :ordemmusculotreinos, @treino.ordemmusculotreinos do |o| %>
+			<%= o.fields_for :musculo do |m| %>
+				<%= render "musculoordem_fields", :f => m , :o => o %>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>
 
 <h4><span class="label label-success">Adaptação</span></h4>
 <table class="table table-bordered" id="tblData">
@@ -43,7 +45,7 @@
 	</thead>
 	<tbody>
 		<%= f.fields_for :adaptacaos, @treino.adaptacaos do |a| %>
-		<%= render "adaptacao_fields", :f => a %>
+			<%= render "adaptacao_fields", :f => a %>
 		<% end %>
 	</tbody>
 </table>
