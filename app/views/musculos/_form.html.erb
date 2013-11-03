@@ -1,37 +1,42 @@
-<%= form_for(@musculo) do |f| %>
-  <% if @musculo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@musculo.errors.count, "error") %> prohibited this musculo from being saved:</h2>
-
-      <ul>
-      <% @musculo.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @musculo, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :nome, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :nome, :class => 'text_field' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label "Observação", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :observacao, :class => 'text_area' , :rows => "3" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :selecionado, :class => 'control-label' %>
+    <div class="controls">
+    	<div class="form-inline">
+			<%= f.label :selecionado, "Sim", :value => "true"  %>
+		    <%= f.radio_button :selecionado, true %>
+		    <%= f.label :selecionado, "Não", :value => "false" %>
+		    <%= f.radio_button :selecionado, false %>
+	    </div>
+    </div>
+  </div>
+  <div class="control-group">
+	  <%= f.label "Atividades ", :class => 'control-label' %>
+	  <div class="controls">
+		  <div class="form-inline">
+			  <% Atividade.where(:tipo =>'M').each do |atividade| %>
+				<%= check_box_tag "musculo[atividade_ids][]", atividade.id, @musculo.atividades.include?(atividade) %>
+			    <%= label_tag :atividade_ids, atividade.nome %>
+			  <% end %>
+		  </div>
+	  </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :nome %><br>
-    <%= f.text_field :nome %>
-  </div>
-  <div class="field">
-    <%= f.label :observacao %><br>
-    <%= f.text_field :observacao %>
-  </div>
-  <div class="field">
-    <%= f.label :selecionado %><br>
-    <%= f.text_field :selecionado %>
-  </div>
-  
-  <div>
-  <% Atividade.all.each do |atividade| %>
-	<%= check_box_tag "musculo[atividade_ids][]", atividade.id, @musculo.atividades.include?(atividade) %>
-    <%= label_tag :atividade_ids, atividade.nome %>
-  <% end %>
-  </div>
-  
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                musculos_path, :class => 'btn' %>
   </div>
 <% end %>

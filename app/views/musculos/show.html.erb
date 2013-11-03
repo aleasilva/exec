@@ -1,25 +1,25 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Musculo -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Nome:</strong>
-  <%= @musculo.nome %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:nome) %>:</strong></dt>
+  <dd><%= @musculo.nome %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:observacao) %>:</strong></dt>
+  <dd><%= @musculo.observacao %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:selecionado) %>:</strong></dt>
+  <dd><%= @musculo.selecionado %></dd>
+</dl>
 
-<p>
-  <strong>Observacao:</strong>
-  <%= @musculo.observacao %>
-</p>
-
-<p>
-  <strong>Selecionado:</strong>
-  <%= @musculo.selecionado %>
-</p>
-
-<p>
-<% @musculo.atividades.each do |iAtividade| %>
-    <%= iAtividade.nome %>
-<% end %> 
-</p>
-
-<%= link_to 'Edit', edit_musculo_path(@musculo) %> |
-<%= link_to 'Back', musculos_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              musculos_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_musculo_path(@musculo), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              musculo_path(@musculo),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
