@@ -18,49 +18,70 @@
 	</div>
 </div>
 
-<h4><span class="label label-success">Treino Muscular</span></h4>
-<table class="table table-bordered">
-	<tbody>
-		<%= f.fields_for :ordemmusculotreinos, @treino.ordemmusculotreinos do |o| %>
-			<%= o.fields_for :musculo do |m| %>
-				<%= render "musculoordem_fields", :f => m , :o => o %>
-			<% end %>
-		<% end %>
-	</tbody>
-</table>
-
-<h4><span class="label label-success">Adaptação</span></h4>
-<table class="table table-bordered" id="tblData">
-	<thead>
-		<tr>
-			<td>Semana</td>
-			<td>Série</td>
-			<td>Repetição</td>
-			<td>Carga</td>
-			<td>Intervalo</td>
-			<td>Observação</td>
-			<td>Dia(s) Aula(s)</td>
-			<td>Remover</td>
-		</tr>
-	</thead>
-	<tbody>
-		<%= f.fields_for :adaptacaos, @treino.adaptacaos do |a| %>
-			<%= render "adaptacao_fields", :f => a %>
-		<% end %>
-		<tr>
-			<td colspan="7">
-				<%= link_to_add_fields "Nova adaptação", f, :adaptacaos %>
-			<td>
-		</tr>
-	</tbody>
-</table>
-
-<h4><span class="label label-success">Treino Aeróbico</span></h4>
-<% @qtdAtividade = @treino.atividadetreinos.size%>
-
-<%= f.fields_for :atividadetreinos, @treino.atividadetreinos do |aa| %>
-	<%= render "treinoAerobico_fields", :f => aa %>
-<% end %>
+<div id="tabs">
+	<ul>
+		<li>
+			<a href="#tabs-1">Muscular</a>
+		</li>
+		<li>
+			<a href="#tabs-2">Aeróbico</a>
+		</li>
+		<li>
+			<a href="#tabs-3">Adaptação</a>
+		</li>
+	</ul>
+	<div id="tabs-1">
+		<p>
+			<table class="table table-bordered">
+				<tbody>
+					<%= f.fields_for :ordemmusculotreinos, @treino.ordemmusculotreinos do |o| %>
+						<%= o.fields_for :musculo do |m| %>
+							<%= render "musculoordem_fields", :f => m , :o => o %>
+						<% end %>
+					<% end %>
+				</tbody>
+			</table>
+		</p>
+	</div>
+	<div id="tabs-2">
+		<p>
+			<% @qtdAtividade = @treino.atividadetreinos.size%>
+			
+			<%= f.fields_for :atividadetreinos, @treino.atividadetreinos do |aa| %>
+				<%= render "treinoAerobico_fields", :f => aa %>
+			<% end %>			
+		</p>
+	</div>
+	<div id="tabs-3">
+		<p>
+			<table class="table table-bordered" id="tblData">
+				<thead>
+					<tr>
+						<td>Semana</td>
+						<td>Série</td>
+						<td>Repetição</td>
+						<td>Carga</td>
+						<td>Intervalo</td>
+						<td>Observação</td>
+						<td>Dia(s) Aula(s)</td>
+						<td>Remover</td>
+					</tr>
+				</thead>
+				<tbody>
+					<%= f.fields_for :adaptacaos, @treino.adaptacaos do |a| %>
+						<%= render "adaptacao_fields", :f => a %>
+					<% end %>
+					<tr>
+						<td colspan="7">
+							<%= link_to_add_fields "Nova adaptação", f, :adaptacaos %>
+						<td>
+					</tr>
+				</tbody>
+			</table>
+		</p>
+	</div>
+			
+</div>
 
 <div class="form-actions">
 	<%= f.submit nil, :class => 'btn btn-primary' %>
