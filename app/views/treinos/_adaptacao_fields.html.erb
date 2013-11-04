@@ -1,4 +1,4 @@
-<tr>
+<tr class="fields">
 	<td><%= f.text_field :semana,:class=>"input-mini" %></td>
 	<td><%= f.text_field :serie,:class=>"input-mini"%></td>
 	<td><%= f.text_field :repeticao,:class=>"input-mini"%></td>
@@ -6,5 +6,5 @@
 	<td><%= f.text_field :intervalo,:class=>"input-mini" %></td>
 	<td><%= f.text_field :observacao,:class=>"input-mini"%></td>
 	<td class="form-inline"><%= f.collection_check_boxes :diasemana_ids, @aluno.diasemanas, :id, :nomeabreviado%></td>
-	<td><%= link_to_remove_fields "Remover", f %></td>
+	<td><%= link_to_remove_fields "Excluir", f %></td>
 </tr>

@@ -1,7 +1,12 @@
 module ApplicationHelper
 
   def link_to_remove_fields(name, f)
-    f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
+    #f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
+    #f.hidden_field(:_destroy) + link_to(name,"#","alert('aaaa')")
+    
+    #f.hidden_field(:_destroy) +  link_to(name,'#', :onclick => 'remove_fields(this)')
+    f.hidden_field(:_destroy) +  link_to(image_tag("btnOperation/form_delete.png", :alt => "Remover") ,'#', :onclick => 'remove_fields(this)')
+    
   end
   
   def link_to_add_fields(name, f, association)
@@ -11,7 +16,7 @@ module ApplicationHelper
         render(association.to_s.singularize + "_fields", :f => builder)
       end
       #
-      link_to name, '#', onclick: "add_fields_to_table(this,'#{association}','#{escape_javascript(fields)}')";
+      link_to name, '#', onclick: "add_fields_to_table(this,'#{association}','#{escape_javascript(fields)}')", :class => "btn btn-primary" ;
   end
    
 end

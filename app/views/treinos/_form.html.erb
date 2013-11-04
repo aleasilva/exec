@@ -47,9 +47,13 @@
 		<%= f.fields_for :adaptacaos, @treino.adaptacaos do |a| %>
 			<%= render "adaptacao_fields", :f => a %>
 		<% end %>
+		<tr>
+			<td colspan="7">
+				<%= link_to_add_fields "Nova adaptação", f, :adaptacaos %>
+			<td>
+		</tr>
 	</tbody>
 </table>
-<%= link_to_add_fields "Nova adaptação", f, :adaptacaos %>
 
 <h4><span class="label label-success">Treino Aeróbico</span></h4>
 <% @qtdAtividade = @treino.atividadetreinos.size%>
