@@ -7,11 +7,10 @@
 	allow_showing_all_records:  false,
 	show_filters: :when_filtered) do |g|
 	
- 	 g.last_row do |number_of_columns|
-	    	content_tag(:tr,
-	        content_tag(:td, link_to('Nova Atividade', new_atividade_path,:class => 'btn btn-primary'  ),colspan: 5), class: 'last-row')
-	  end
-  
+	g.last_row do |number_of_columns|
+		content_tag(:tr,
+		content_tag(:td, link_to('Nova Atividade', new_atividade_path,:class => 'btn btn-primary'  ),colspan: 5), class: 'last-row')
+	end
 	
 	g.column name:  'Nome', attribute: 'nome'  do |atividade|
 		atividade.nome

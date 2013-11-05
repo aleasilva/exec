@@ -6,10 +6,10 @@
 	allow_showing_all_records:  false,
 	show_filters: :when_filtered) do |g|
 	
- 	 g.last_row do |number_of_columns|
-	    	content_tag(:tr,
-	        content_tag(:td, link_to('Novo Aluno', new_aluno_path,:class => 'btn btn-primary btn-xs'  ),colspan: 9), class: 'last-row')
-	  end
+	g.last_row do |number_of_columns|
+		content_tag(:tr,
+		content_tag(:td, link_to('Novo Aluno', new_aluno_path,:class => 'btn btn-primary'  ),colspan: 9), class: 'last-row')
+	end	  
   
 	g.column name:  'Cód.Aluno', attribute: 'idAcademia' do |aluno|
 		aluno.idAcademia

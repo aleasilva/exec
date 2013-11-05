@@ -1,17 +1,24 @@
 $(function() {
+	//Tabelas
 	$("#tabs").tabs();
-});
 
-$(function() {
+	//Sanfona
+	$("#accordion").accordion();
+	
+	//Alerta no clique
+	$( "#target" ).keypress(function() {
+		alert('sei á.');
+	});
+	
+	//Funcao para a data	
 	$("input[id|='datepicker']").datepicker({
 		showAnim : "fadeIn"
 	});
+			
 });
 
-$(function() {
-	$("#accordion").accordion();
-});
 
+//Funcao de script
 function remove_fieldsNotUsed(link) {
 	$(link).previous("input[type=hidden]").value = "1";
 	$(link).up(".fields").hide();
