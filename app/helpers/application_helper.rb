@@ -16,7 +16,7 @@ module ApplicationHelper
         render(association.to_s.singularize + "_fields", :f => builder)
       end
       #
-      link_to name, '#', onclick: "add_fields_to_table(this,'#{association}','#{escape_javascript(fields)}')", :class => "btn btn-primary" ;
+      link_to name, '#', onclick: "add_fields_to_table(this,'#{association}','#{escape_javascript(fields)}')", :class => "btn btn-info" ;
   end
    
 end
