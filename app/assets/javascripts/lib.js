@@ -14,7 +14,10 @@ $(function() {
 	$("input[id|='datepicker']").datepicker({
 		showAnim : "fadeIn"
 	});
-			
+	
+	//Mascara para os inputs		
+	$('input[type="text"]').setMask();
+				
 });
 
 
