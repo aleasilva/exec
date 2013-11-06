@@ -16,7 +16,11 @@ $(function() {
 	});
 	
 	//Mascara para os inputs -Não mudar a ordem		
-	$.mask.masks.idAcademia = {mask: '999999999999999999999999999999', type: 'reverse'};
+	$.mask.masks.idAcademia  =  {mask: '999999999999999999999999999999', type: 'reverse'};
+	$.mask.masks.intDecimal  =  {mask: '99'     , type: 'reverse'};
+	$.mask.masks.intCentena  =  {mask: '999'    , type: 'reverse'};
+	$.mask.masks.intUnitario =  {mask: '9999'   , type: 'reverse'};
+	$.mask.masks.strTempoExe =  {mask: '999/999', type: 'reverse'};
 	
 	$('input[type="text"]').setMask();
 	

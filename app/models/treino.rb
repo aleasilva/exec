@@ -18,6 +18,6 @@ class Treino < ActiveRecord::Base
   accepts_nested_attributes_for :adaptacaos, :allow_destroy => true
   accepts_nested_attributes_for :atividadetreinos, :allow_destroy => true
   
-  validates :semana, :numericality => true
+  #validates :semana, :numericality => true
   
 end
