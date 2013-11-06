@@ -15,9 +15,11 @@ $(function() {
 		showAnim : "fadeIn"
 	});
 	
-	//Mascara para os inputs		
+	//Mascara para os inputs -Não mudar a ordem		
+	$.mask.masks.idAcademia = {mask: '999999999999999999999999999999', type: 'reverse'};
+	
 	$('input[type="text"]').setMask();
-				
+	
 });
 
 

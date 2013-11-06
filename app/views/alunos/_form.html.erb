@@ -3,7 +3,7 @@
 <div class="control-group">
 	<%= f.label "Id Acadêmia", :class => 'control-label' %>
 	<div class="controls">
-		<%= f.text_field :idAcademia, :id=>'only_number', :alt=>"integer" %>
+		<%= f.text_field :idAcademia, :id=>'only_number', :alt=>"idAcademia" %>
 	</div>
 </div>
 <div class="control-group">
@@ -69,4 +69,3 @@
 	<%= link_to t('.cancel', :default => t("helpers.links.cancel")), alunos_path, :class => 'btn btn-warning' %>
 </div>
 <% end %>
-
