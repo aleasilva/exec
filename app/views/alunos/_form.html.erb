@@ -1,5 +1,7 @@
 <%= form_for @aluno, :html => { :class => 'form-horizontal' } do |f| %>
-
+<input type="text" 
+onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;"
+/>
 <div class="control-group">
 	<%= f.label "Id Acadêmia", :class => 'control-label' %>
 	<div class="controls">

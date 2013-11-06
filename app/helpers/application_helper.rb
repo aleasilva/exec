@@ -18,5 +18,9 @@ module ApplicationHelper
       #
       link_to name, '#', onclick: "add_fields_to_table(this,'#{association}','#{escape_javascript(fields)}')", :class => "btn btn-info" ;
   end
+  
+  def onlyTextNumber()
+    "if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;"
+  end
    
 end
