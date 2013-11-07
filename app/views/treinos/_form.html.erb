@@ -45,9 +45,9 @@
 	</div>
 	<div id="tabs-2">
 		<p>
-			<% @qtdAtividade = @treino.atividadetreinos.size%>
+			<% @qtdAtividade = @treinoAtividadesAerobico.size%>
 			
-			<%= f.fields_for :atividadetreinos, @treino.atividadetreinos do |aa| %>
+			<%= f.fields_for :atividadetreinos, @treinoAtividadesAerobico do |aa| %>
 				<%= render "treinoAerobico_fields", :f => aa %>
 			<% end %>			
 		</p>

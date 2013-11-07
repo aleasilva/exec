@@ -2,13 +2,12 @@ class TreinosController < ApplicationController
   before_action :set_treino, only: [:show, :edit, :update, :destroy] 
   
   def edit
-      
+      @treinoAtividadesAerobico =  Atividadetreino.joins('JOIN atividades on atividadetreinos.atividade_id = atividades.id').where('atividades.tipo' => 'A')
   end
 
   def new
     @treino = Treino.new
     @treino.aluno_id = params[:aluno]
-    #@treino.adaptacaos.build
     
     @aluno = Aluno.find(params[:aluno])         
         
@@ -19,6 +18,8 @@ class TreinosController < ApplicationController
     Atividade.where(tipo: 'A').each do |aa|
       @treino.atividadetreinos.build(:atividade_id => aa.id)
     end
+     
+    @treinoAtividadesAerobico = @treino.atividadetreinos      
         
   end
 
@@ -55,9 +56,17 @@ class TreinosController < ApplicationController
   # PATCH/PUT /musculos/1
   # PATCH/PUT /musculos/1.json
   def update
-    Rails.logger.info("*MUSCULO*ORDEMS**********************")
-    Rails.logger.info( params[:treino][:musculo_ids].inspect)
-    Rails.logger.info("***************************************") 
+     # params[:treino][:ordemmusculotreinos_attributes].each do |relacionamento|
+     #  r =  relacionamento[1][:musculo_attributes][:atividades_attributes]
+     #
+    #Tratamento  para evitar o erro na atualizacao do treinos.
+    #Estva excluindo as atividades do treino Muscular.
+    if params[:treino][:atividade_ids].present?
+      @result =  Atividadetreino.joins('JOIN atividades on atividadetreinos.atividade_id = atividades.id').where('atividades.tipo' => 'M')
+      @result.each do |res|
+        params[:treino][:atividade_ids].push(res.id)
+      end
+    end
     
     respond_to do |format|
       if @treino.update(treino_params)
