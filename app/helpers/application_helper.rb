@@ -20,7 +20,8 @@ module ApplicationHelper
   end
   
   def onlyTextNumber()
-    "if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;"
+    #"if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;"
+    "return isNumberKey(event)"
   end
    
 end

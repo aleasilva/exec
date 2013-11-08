@@ -58,3 +58,11 @@ function add_fields_to_table(link, association, content) {
 	//$(link).parent().before(content.replace(regexp, new_id));
 	//$("#tblData tbody").after.append(content.replace(regexp, new_id));
 }
+
+function isNumberKey(evt){
+	var charCode = (evt.which) ? evt.which : event.keyCode
+	if (charCode > 31 && (charCode < 48 || charCode > 57)){
+		return false;
+	}
+    return true;
+}
