@@ -7,6 +7,10 @@
 	allow_showing_all_records:  false,
 	show_filters: :when_filtered) do |g|
 	
+	g.blank_slate  do
+    	content_tag :div, "Não existem registros para serem mostrados.", class: 'well'
+  	end
+	
 	g.last_row do |number_of_columns|
 		content_tag(:tr,
 		content_tag(:td, link_to('Nova Atividade', new_atividade_path,:class => 'btn btn-primary'  ),colspan: 5), class: 'last-row')
@@ -16,9 +20,8 @@
 		atividade.nome
 	end
 	
-	g.column name:  'Tipo', attribute: 'tipo'  do |atividade|
-		atividade.tipo
-	end
+	g.column name:  'Tipo', attribute: 'tipo',
+		custom_filter: {'Aeróbico' => 'A', 'Muscular' => 'M'}
 
 	g.column   do |atividade|
 		link_to( image_tag("btnOperation/form_show.png", :alt => "Visualizar") , atividade)

@@ -1,7 +1,7 @@
 if defined?(Wice::Defaults)
 
   # Default number of rows to show per page.
-  Wice::Defaults::PER_PAGE = 20
+  Wice::Defaults::PER_PAGE = 10
 
   # Default order direction
   Wice::Defaults::ORDER_DIRECTION = 'asc'
@@ -95,15 +95,15 @@ if defined?(Wice::Defaults)
 
   # Format of the datetime displayed.
   # If you change the format, make sure to check if +DATETIME_PARSER+ can still parse this string.
-  Wice::Defaults::DATETIME_FORMAT = "%Y-%m-%d %H:%M"
+  Wice::Defaults::DATETIME_FORMAT = "%d-%m-%Y %H:%M"
 
   # Format of the date displayed.
   # If you change the format, make sure to check if +DATE_PARSER+ can still parse this string.
-  Wice::Defaults::DATE_FORMAT     =  "%Y-%m-%d"
+  Wice::Defaults::DATE_FORMAT     =  "%d-%m-%Y"
 
   # Format of the date displayed in jQuery's Datepicker
   # If you change the format, make sure to check if +DATE_PARSER+ can still parse this string.
-  Wice::Defaults::DATE_FORMAT_JQUERY     =  "yy-mm-dd"
+  Wice::Defaults::DATE_FORMAT_JQUERY     =  "dd-mm-yy"
 
 
   # With Calendar helpers enabled the parameter sent is the string displayed. This lambda will be given a date string in the
