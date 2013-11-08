@@ -59,6 +59,15 @@ function add_fields_to_table(link, association, content) {
 	//$("#tblData tbody").after.append(content.replace(regexp, new_id));
 }
 
+function isNumberKeyLength(evt, min, max){
+	
+	if(isNumberKey(evt)){
+
+	}
+	
+	return false;
+}
+
 function isNumberKey(evt){
 	var charCode = (evt.which) ? evt.which : event.keyCode
 	if (charCode > 31 && (charCode < 48 || charCode > 57)){

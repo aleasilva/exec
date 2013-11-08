@@ -1,9 +1,9 @@
 <tr class="fields">
-	<td><%= f.text_field :semana    ,:class=>"input-mini", :alt=>"intDecimal", :onkeypress=> onlyTextNumber%></td>
-	<td><%= f.text_field :serie     ,:class=>"input-mini", :alt=>"intDecimal", :onkeypress=> onlyTextNumber%></td>
-	<td><%= f.text_field :repeticao ,:class=>"input-mini", :alt=>"intDecimal", :onkeypress=> onlyTextNumber%></td>
-	<td><%= f.text_field :carga     ,:class=>"input-mini", :alt=>"intDecimal", :onkeypress=> onlyTextNumber%></td>
-	<td><%= f.text_field :intervalo ,:class=>"input-mini", :alt=>"intDecimal", :onkeypress=> onlyTextNumber%></td>
+	<td><%= f.text_field :semana    ,:class=>"input-mini", :onkeypress=> onlyTextNumber, :style=>"direction:rtl;"%></td>
+	<td><%= f.text_field :serie     ,:class=>"input-mini", :onkeypress=> onlyTextNumber, :style=>"direction:rtl;"%></td>
+	<td><%= f.text_field :repeticao ,:class=>"input-mini", :onkeypress=> onlyTextNumber, :style=>"direction:rtl;"%></td>
+	<td><%= f.text_field :carga     ,:class=>"input-mini", :onkeypress=> onlyTextNumber, :style=>"direction:rtl;"%></td>
+	<td><%= f.text_field :intervalo ,:class=>"input-mini", :onkeypress=> onlyTextNumber, :style=>"direction:rtl;"%></td>
 	<td><%= f.text_field :observacao,:class=>"input"%></td>
 	<td class="form-inline">
 		<%= f.collection_check_boxes :diasemana_ids, @aluno.diasemanas, :id, :nomeabreviado%>
