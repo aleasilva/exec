@@ -18,7 +18,6 @@ class TreinosController < ApplicationController
     Atividade.where(tipo: 'A').each do |aa|
       @treino.atividadetreinos.build(:atividade_id => aa.id)
     end
-     
     @treinoAtividadesAerobico = @treino.atividadetreinos      
         
   end
@@ -59,13 +58,14 @@ class TreinosController < ApplicationController
      # params[:treino][:ordemmusculotreinos_attributes].each do |relacionamento|
      #  r =  relacionamento[1][:musculo_attributes][:atividades_attributes]
      #
+    if not params[:treino][:atividade_ids].present?
+      params[:treino][:atividade_ids] = []      
+    end
     #Tratamento  para evitar o erro na atualizacao do treinos.
     #Estva excluindo as atividades do treino Muscular.
-    if params[:treino][:atividade_ids].present?
-      @result =  Atividadetreino.joins('JOIN atividades on atividadetreinos.atividade_id = atividades.id').where('atividades.tipo' => 'M')
-      @result.each do |res|
-        params[:treino][:atividade_ids].push(res.id)
-      end
+    @result =  Atividadetreino.joins('JOIN atividades on atividadetreinos.atividade_id = atividades.id').where('atividades.tipo' => 'A')
+    @result.each do |res|
+       params[:treino][:atividade_ids].push(res.atividade_id)
     end
     
     respond_to do |format|
@@ -88,20 +88,14 @@ class TreinosController < ApplicationController
   def set_treino
     @treino = Treino.find(params[:id])
     @aluno = Aluno.find(@treino.aluno_id)
-      
-    #@treino.atividadetreinos.merge(Atividade.aerobico) 
-    #@treino.atividadetreinos.filter(tipo="A")
     
     #Rails.logger.info("SET TREINO")
     #Rails.logger.info( Treino.atividadetreinos.merge(Atividade.aerobico).inspect)
-    
-    
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def treino_params
     #params.require(:aluno).permit(:idAcademia, :nome, :nascimento, :sexo, :observacao)
-    #params.require(:treino).permit(:selected)
     params.require(:treino).permit!
   end
 end
