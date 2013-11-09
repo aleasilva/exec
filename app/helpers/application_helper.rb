@@ -23,5 +23,10 @@ module ApplicationHelper
     #"if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;"
     "return isNumberKey(event)"
   end
+  
+  def limitSizeNumber(min, max)
+    "return isNumberKeyLength(event,'#{min}','#{max}')"
+  end
+  
    
 end

@@ -60,16 +60,20 @@ function add_fields_to_table(link, association, content) {
 }
 
 function isNumberKeyLength(evt, min, max){
-	
 	if(isNumberKey(evt)){
-
+ 		var source=evt.currentTarget;
+ 		var size = source.value.length + 1;
+ 		if (size >= min && size <= max){
+ 			return true;
+ 		}	
 	}
-	
 	return false;
 }
 
 function isNumberKey(evt){
-	var charCode = (evt.which) ? evt.which : event.keyCode
+	var source=evt.currentTarget;
+	
+	var charCode = (evt.which) ? evt.which : event.keyCode;
 	if (charCode > 31 && (charCode < 48 || charCode > 57)){
 		return false;
 	}
