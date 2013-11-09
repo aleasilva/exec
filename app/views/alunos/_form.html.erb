@@ -1,6 +1,6 @@
 <%= form_for @aluno, :html => { :class => 'form-horizontal' } do |f| %>
 <div class="control-group">
-	<%= f.label "Id Acadêmia", :class => 'control-label' %>
+	<p class="control-label">Cód. Acadêmia</p>
 	<div class="controls">
 		<%= f.text_field :idAcademia, :id=>'only_number', :alt=>"idAcademia", :onkeypress=> onlyTextNumber %>
 	</div>
