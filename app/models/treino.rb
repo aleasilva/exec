@@ -15,7 +15,8 @@ class Treino < ActiveRecord::Base
   has_many :adaptacaos, dependent: :destroy
   
   accepts_nested_attributes_for :ordemmusculotreinos 
-  accepts_nested_attributes_for :adaptacaos, :allow_destroy => true
+  accepts_nested_attributes_for :adaptacaos, :allow_destroy => true ,
+                                :reject_if => proc { |attributes| attributes['semana'].blank? }
   accepts_nested_attributes_for :atividadetreinos, :allow_destroy => true
   
   
