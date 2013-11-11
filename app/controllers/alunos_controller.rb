@@ -28,7 +28,6 @@ class AlunosController < ApplicationController
   def create
     Rails.logger.info("*TREINOS***********************")
     Rails.logger.info( params[:aluno][:treino_1].inspect)
-    Rails.logger.info( params[:aluno][:treino_1].inspect)
     Rails.logger.info("***************************************")   
     
     @aluno = Aluno.new(aluno_params)
@@ -54,6 +53,7 @@ class AlunosController < ApplicationController
       else
         format.html { render action: 'edit' }
         format.json { render json: @aluno.errors, status: :unprocessable_entity }
+        flash[:alert] = @aluno.errors.messages[:email][0]        
       end
     end
   end

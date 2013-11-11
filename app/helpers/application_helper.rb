@@ -27,6 +27,9 @@ module ApplicationHelper
   def limitSizeNumber(min, max)
     "return isNumberKeyLength(event,'#{min}','#{max}')"
   end
-  
+
+  def mark_required(object, attribute)
+    " * " if object.class.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator
+  end
    
 end
