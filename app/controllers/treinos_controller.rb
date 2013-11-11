@@ -2,7 +2,8 @@ class TreinosController < ApplicationController
   before_action :set_treino, only: [:show, :edit, :update, :destroy] 
   
   def edit
-      @treinoAtividadesAerobico =  Atividadetreino.joins('JOIN atividades on atividadetreinos.atividade_id = atividades.id').where('atividades.tipo' => 'A')
+     @treinoAtividadesAerobico =  Atividadetreino.joins("JOIN atividades on atividadetreinos.atividade_id = atividades.id").
+                                                  where("atividades.tipo = ? And atividadetreinos.treino_id = ?", 'A', params[:id]  )
   end
 
   def new
