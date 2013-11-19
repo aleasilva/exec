@@ -48,12 +48,14 @@ class AlunosController < ApplicationController
   def update
     respond_to do |format|
       if @aluno.update(aluno_params)
-        format.html { redirect_to @aluno, notice: 'Aluno foi atualizado.' }
+        format.html { redirect_to @aluno, notice: 'O aluno foi atualizado.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
         format.json { render json: @aluno.errors, status: :unprocessable_entity }
-        flash[:alert] = @aluno.errors.messages[:email][0]        
+        @aluno.errors.messages.each do |message|
+          flash[:alert] = message[1]
+        end
       end
     end
   end
