@@ -42,6 +42,7 @@ class AlunosController < ApplicationController
       end
     end
   end
+  
 
   # PATCH/PUT /alunos/1
   # PATCH/PUT /alunos/1.json
