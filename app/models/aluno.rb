@@ -9,6 +9,7 @@ class Aluno < ActiveRecord::Base
    #Validadores
    validates  :nome         , :length => { :maximum => 80  },:presence => true, :uniqueness => false
    validates  :idAcademia   , :length => { :maximum => 30  },:presence => true
+   #validates_presence_of :idAcademia, :message => "Put some address please"
    validates  :medicamento  , :length => { :maximum => 120 }
    validates  :doenca       , :length => { :maximum => 120 }
    validates  :alergia      , :length => { :maximum => 120 }
