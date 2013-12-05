@@ -14,5 +14,5 @@ class Aluno < ActiveRecord::Base
    validates  :alergia      , :length => { :maximum => 120 }
    validates  :dor          , :length => { :maximum => 120 }
    validates  :email        , :length => { :maximum => 100 }, :presence => false,:uniqueness => true 
-   validates_format_of :email, :with => /\A[a-zA-Z]+\z/, :message => "E-mail inválido!"    
+   validates_format_of :email, :with => /\A[a-zA-Z]+\z/, :message => "está com formato inválido"    
 end

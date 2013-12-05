@@ -54,8 +54,15 @@ class AlunosController < ApplicationController
       else
         format.html { render action: 'edit' }
         format.json { render json: @aluno.errors, status: :unprocessable_entity }
+
+        #Tratamento das mensagens de erro na atualizacao!        
+        msgErro = ""
         @aluno.errors.messages.each do |message|
-          flash[:alert] = message[1]
+          msgErro += "Campo: " + message[0].to_s + " " +  message[1].to_s + "!<br>" 
+        end
+        
+        if msgErro != ""
+          flash[:alert] = msgErro.tr_s('["','').tr_s('"]','')
         end
       end
     end
