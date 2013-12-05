@@ -25,10 +25,9 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-turbolinks'
 gem 'jquery-ui-themes'
-gem 'wice_grid', '3.2.1'
-gem 'twitter-bootstrap-rails'
-#gem 'devise' #validação de usuário
-#gem 'cancan' #controle de acesso
+gem "wice_grid", '3.2.1'
+gem "twitter-bootstrap-rails"
+
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -45,8 +44,8 @@ gem 'rails_12factor', group: :production
 
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'meta_request'
+  #gem 'binding_of_caller'
+  #gem 'meta_request'
 end
 
 # Use ActiveModel has_secure_password
