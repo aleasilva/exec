@@ -17,8 +17,8 @@
 //= require jquery.ui.accordion
 //= require jquery.ui.datepicker
 //= require jquery.ui.datepicker-pt-BR
-// require jquery.ui.all
+//= require twitter/bootstrap
 //= require_tree .
 //= require wice_grid
-// require turbolinks
+// require jquery.ui.all
 // requere turbolinks ocasiona erro ao adicionar linha na tabela dinamica.

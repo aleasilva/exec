@@ -8,11 +8,3 @@ pt-BR:
       destroy:
         notice: '%{resource_name} foi excluido.'
         alert: '%{resource_name} não pode ser excluido.'
-                  
-#  activerecord:
-#    errors:
-#      models:
-#        partescorpo:
-#          attributes:
-#            nome:
-#              blank: 'não pode ficar em branco.'
