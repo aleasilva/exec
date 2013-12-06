@@ -1,4 +1,5 @@
 class AlunosController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index]
   before_action :set_aluno, only: [:show, :edit, :update, :destroy]
 
   # GET /alunos

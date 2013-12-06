@@ -27,8 +27,10 @@ gem 'jquery-turbolinks'
 gem 'jquery-ui-themes'
 gem 'wice_grid', '3.2.1'
 gem 'twitter-bootstrap-rails'
-#gem 'devise' #validação de usuário
-#gem 'cancan' #controle de acesso
+#validação de usuário
+gem 'devise','3.2.2'
+#controle de acesso
+#gem 'cancan' 
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

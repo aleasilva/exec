@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131003202013) do
+ActiveRecord::Schema.define(version: 20131206175449) do
 
   create_table "adaptacaodia", force: true do |t|
     t.integer  "adaptacao_id"
@@ -40,15 +40,15 @@ ActiveRecord::Schema.define(version: 20131003202013) do
   end
 
   create_table "alunos", force: true do |t|
-    t.string "idAcademia",  limit: 24,  default: ""
-    t.string "nome",        limit: 48,  default: "Aluno",       null: false
-    t.string "medicamento", limit: 48,  default: "Não toma."
-    t.string "doenca",      limit: 48,  default: "Não possui."
-    t.string "alergia",     limit: 48,  default: "Não tem."
-    t.string "dor",         limit: 48,  default: "Não sente."
+    t.string "idAcademia",  limit: 30,  default: ""
+    t.string "nome",        limit: 80,  default: "Aluno",       null: false
+    t.string "medicamento", limit: 120, default: "Não toma."
+    t.string "doenca",      limit: 120, default: "Não possui."
+    t.string "alergia",     limit: 120, default: "Não tem."
+    t.string "dor",         limit: 120, default: "Não sente."
     t.string "email",       limit: 100, default: ""
     t.text   "observacao"
-    t.date   "nascimento",              default: '2013-11-01'
+    t.date   "nascimento",              default: '2013-11-07'
     t.string "sexo",        limit: 1,   default: "f",           null: false
   end
 
@@ -122,5 +122,23 @@ ActiveRecord::Schema.define(version: 20131003202013) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "users", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
