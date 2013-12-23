@@ -30,7 +30,7 @@ gem 'twitter-bootstrap-rails'
 #validação de usuário
 gem 'devise','3.2.2'
 #controle de acesso
-#gem 'cancan' 
+gem 'cancan' 
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

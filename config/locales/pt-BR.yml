@@ -220,3 +220,9 @@ pt-BR:
         title: Título
         body: Conteúdo
         body_html: Conteúdo em HTML
+  unauthorized:
+    manage:
+      all: "Sem autorização para %{action} %{subject}."
+      user: "Sem permissão para alterar outras contas de usuários."
+    update:
+      project: "Sem permissão para alterar este projeto."        
