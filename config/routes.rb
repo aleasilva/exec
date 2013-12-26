@@ -1,6 +1,7 @@
 Exec::Application.routes.draw do
 
   devise_for :users
+  
   resources :alunos do
     resources :treinos
     resources :diasemanas
