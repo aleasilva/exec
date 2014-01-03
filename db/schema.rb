@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131206175449) do
+ActiveRecord::Schema.define(version: 20140102181631) do
 
   create_table "adaptacaodia", force: true do |t|
     t.integer  "adaptacao_id"
@@ -98,6 +98,20 @@ ActiveRecord::Schema.define(version: 20131206175449) do
     t.datetime "updated_at"
   end
 
+  create_table "group_rules", force: true do |t|
+    t.integer  "group_id"
+    t.integer  "rule_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups", force: true do |t|
+    t.string   "nome"
+    t.text     "descricao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "musculos", force: true do |t|
     t.string   "nome",        limit: 120,                null: false
     t.string   "observacao",  limit: 120
@@ -114,11 +128,34 @@ ActiveRecord::Schema.define(version: 20131206175449) do
     t.datetime "updated_at"
   end
 
+  create_table "rules", force: true do |t|
+    t.string   "nome"
+    t.string   "entidade"
+    t.string   "regra"
+    t.text     "descricao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "treinos", force: true do |t|
     t.date     "criacao"
     t.date     "validade"
     t.text     "observacao"
     t.integer  "aluno_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_groups", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_rules", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "rule_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

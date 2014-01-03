@@ -25,7 +25,7 @@ a {
   }
   &:hover {
     color: #fff;
-    background-color: #357;
+    background-color: #000;
   }
 }
 
@@ -35,17 +35,14 @@ div {
   }
 }
 
-/**********************************/
-/*Mensagens                      */
-/**********************************/
 #notice {
   color: green;
 }
 
 .field_with_errors {
-  padding: 0px;
+  padding: 2px;
   background-color: red;
-  display: block;
+  display: table;
 }
 
 #error_explanation {

@@ -1,5 +1,9 @@
 Exec::Application.routes.draw do
 
+  resources :groups
+
+  resources :rules
+
   devise_for :users
   
   resources :alunos do
