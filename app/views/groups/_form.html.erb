@@ -19,6 +19,14 @@
     <%= f.label :descricao %><br>
     <%= f.text_area :descricao %>
   </div>
+  
+  <div class="field">
+	<% Rule.all.each do |regra| %>
+		<%= check_box_tag "group[rule_ids][]", regra.id, @group.rules.include?(regra) %>
+		<%= label_tag :regra_ids, regra.nome %>
+	<% end %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

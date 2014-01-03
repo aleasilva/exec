@@ -17,7 +17,6 @@ Exec::Application.routes.draw do
   
   resources :atividades
   resources :treinos 
-  resources :diasemanas
 
   #root :to => "home#index"
   root :to => "alunos#index"
