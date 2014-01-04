@@ -12,6 +12,11 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
+  <% Rule.all.each do |regra|%>
+  	<%= check_box_tag "group[rule_ids][]", regra.id, @user.rules.include?(regra) %>
+	<%= label_tag :regra_ids, regra.nome %>
+  <%end%> 
+
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 

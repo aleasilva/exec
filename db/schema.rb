@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140102181631) do
+ActiveRecord::Schema.define(version: 20140104112013) do
 
   create_table "adaptacaodia", force: true do |t|
     t.integer  "adaptacao_id"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20140102181631) do
     t.string "dor",         limit: 120, default: "Não sente."
     t.string "email",       limit: 100, default: ""
     t.text   "observacao"
-    t.date   "nascimento",              default: '2014-01-03'
+    t.date   "nascimento",              default: '2014-01-04'
     t.string "sexo",        limit: 1,   default: "f",           null: false
   end
 
@@ -135,6 +135,11 @@ ActiveRecord::Schema.define(version: 20140102181631) do
     t.datetime "updated_at"
   end
 
+  create_table "rules_users", force: true do |t|
+    t.integer "rule_id"
+    t.integer "user_id"
+  end
+
   create_table "treinos", force: true do |t|
     t.date     "criacao"
     t.date     "validade"
@@ -165,11 +170,6 @@ ActiveRecord::Schema.define(version: 20140102181631) do
   create_table "users_groups", force: true do |t|
     t.integer "user_id"
     t.integer "group_id"
-  end
-
-  create_table "users_rules", force: true do |t|
-    t.integer "rule_id"
-    t.integer "user_id"
   end
 
 end
