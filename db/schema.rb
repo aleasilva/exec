@@ -110,6 +110,11 @@ ActiveRecord::Schema.define(version: 20140104112013) do
     t.integer "rule_id"
   end
 
+  create_table "groups_users", force: true do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+  end
+
   create_table "musculos", force: true do |t|
     t.string   "nome",        limit: 120,                null: false
     t.string   "observacao",  limit: 120
@@ -166,10 +171,5 @@ ActiveRecord::Schema.define(version: 20140104112013) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-
-  create_table "users_groups", force: true do |t|
-    t.integer "user_id"
-    t.integer "group_id"
-  end
 
 end

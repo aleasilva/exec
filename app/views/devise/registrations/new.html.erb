@@ -11,9 +11,14 @@
 
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
+  
+  <%Group.all.each do |grupo|%>
+	<%= check_box_tag "user[group_ids[]", grupo.id, @user.groups.include?(grupo)%>
+	<%= label_tag :grupo_ids, grupo.nome%>
+  <%end%>
 
   <% Rule.all.each do |regra|%>
-  	<%= check_box_tag "group[rule_ids][]", regra.id, @user.rules.include?(regra) %>
+  	<%= check_box_tag "user[rule_ids][]", regra.id, @user.rules.include?(regra) %>
 	<%= label_tag :regra_ids, regra.nome %>
   <%end%> 
 
