@@ -1,10 +1,9 @@
 Exec::Application.routes.draw do
 
   resources :groups
-
   resources :rules
-
-  devise_for :users
+  resources :atividades
+  resources :treinos 
   
   resources :alunos do
     resources :treinos
@@ -14,14 +13,11 @@ Exec::Application.routes.draw do
   resources :musculos do
     resources :atividades
   end
-  
-  resources :atividades
-  resources :treinos 
 
   #root :to => "home#index"
   root :to => "alunos#index"
   
-  
+  devise_for :users, :controllers => {:registrations => "registrations"}
   
   #get "home/index"
 
