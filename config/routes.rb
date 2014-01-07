@@ -21,6 +21,7 @@ Exec::Application.routes.draw do
              :controllers => {:registrations => "registrations" }
   
   get 'userslist' => 'users#index'
+  get 'change_user' => 'users#change'
   
   #devise_scope :user do
   #  get "list", :to => "devise/registrations#index"

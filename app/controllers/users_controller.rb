@@ -6,4 +6,8 @@ class UsersController < ApplicationController
     @users_grid = initialize_grid(@users)
   end
     
+  def change
+    Rails.logger.info("CHANGE**********Registration Controller ****")    
+  end    
+    
 end

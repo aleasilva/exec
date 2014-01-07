@@ -1,11 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
-  after_filter :index
-  
-  def index
-    Rails.logger.info("INDEX**********Registration Controller ****")
-    @users = User.all
-  end
-  
+  #prepend_before_filter :require_no_authentication, :only => [ :new, :create, :cancel ]
+  #prepend_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy]
   
   def new
     Rails.logger.info("NEW**********Registration Controller ****")
@@ -18,10 +13,10 @@ class RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  def update
-     Rails.logger.info("UPDATE******Registration Controller ****")
-     super
-  end
+  #def update
+  #   Rails.logger.info("UPDATE******Registration Controller ****")
+  #   super
+  #end
   
   # Signs in a user on sign up. You can overwrite this method in your own
   # RegistrationsController.
