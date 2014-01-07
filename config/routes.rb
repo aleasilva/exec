@@ -17,7 +17,16 @@ Exec::Application.routes.draw do
   #root :to => "home#index"
   root :to => "alunos#index"
   
-  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_for :users, 
+             :controllers => {:registrations => "registrations" }
+  
+  
+  get 'userslist' => 'users#index'
+  
+  #devise_scope :user do
+  #  get "list", :to => "devise/registrations#index"
+  #end  
+  
   
   #get "home/index"
 
