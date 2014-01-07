@@ -3,16 +3,14 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 
-
 <%= grid(@musculos_grid, 
 	allow_showing_all_records:  false,
 	show_filters: :when_filtered) do |g|
 	
- 	 g.last_row do |number_of_columns|
-	    	content_tag(:tr,
-	        content_tag(:td, link_to('Novo musculo', new_musculo_path,:class => 'btn btn-primary'  ),colspan: 5), class: 'last-row')
-	  end
-  
+	g.last_row do |number_of_columns|
+		content_tag(:tr,
+		content_tag(:td, link_to('Novo musculo', new_musculo_path,:class => 'btn btn-primary'  ),colspan: 5), class: 'last-row')
+	end
 	
 	g.column name:  'Nome', attribute: 'nome'  do |musculo|
 		musculo.nome

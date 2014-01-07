@@ -20,7 +20,6 @@ Exec::Application.routes.draw do
   devise_for :users, 
              :controllers => {:registrations => "registrations" }
   
-  
   get 'userslist' => 'users#index'
   
   #devise_scope :user do
