@@ -7,9 +7,9 @@
 	allow_showing_all_records:  false,
 	show_filters: :when_filtered) do |g|
 	
-	g.blank_slate  do
-    	content_tag :div, "Não existem registros para serem mostrados.", class: 'well'
-  	end
+	#g.blank_slate  do
+    #	content_tag :div, "Não existem registros para serem mostrados.", class: 'well'
+  	#end
 	
 	g.last_row do |number_of_columns|
 		content_tag(:tr,
@@ -30,8 +30,6 @@
 	g.column   do |atividade|
 		link_to(image_tag("btnOperation/form_edit.png", :alt => "Alterar."), edit_atividade_path(atividade))
 	end
-	
-	
 	
 	g.column   do |atividade|
 		link_to image_tag("btnOperation/form_delete.png",
