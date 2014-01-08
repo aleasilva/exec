@@ -13,6 +13,10 @@
 		content_tag(:td, link_to('Novo usuário', new_user_registration_path,:class => 'btn btn-primary'  ),colspan: 5), class: 'last-row')
 	end
 	
+	g.column name: 'Nome:', attribute: 'name'  do |user|
+		user.name
+	end	
+	
 	g.column name: 'Email', attribute: 'email'  do |user|
 		user.email
 	end
