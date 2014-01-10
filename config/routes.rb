@@ -4,7 +4,7 @@ Exec::Application.routes.draw do
   resources :rules
   resources :atividades
   resources :treinos 
-  resources :users
+  #resources :admusers
   
   resources :alunos do
     resources :treinos
@@ -17,16 +17,19 @@ Exec::Application.routes.draw do
 
   #root :to => "home#index"
   root :to => "alunos#index"
-  
+ 
   devise_for :users, 
              :controllers => {:registrations => "registrations" }
   
-  get 'userslist' => 'users#index'
-  get 'changeuser' => 'users#change'
+  get 'userslist', to: 'admusers#index', as: 'changeuser'
+  get '/changeuser.:id', to:  'admusers#change',  as: 'user'
   
-  #devise_scope :user do
-  #  get "list", :to => "devise/registrations#index"
-  #end  
+  #get '/patients/:id', to: 'patients#show', as: 'patient'  
+
+  
+  devise_scope :user do
+    get "list", :to => "devise/registrations#index"
+  end  
   
   
   #get "home/index"

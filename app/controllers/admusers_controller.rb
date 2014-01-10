@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class AdmusersController < ApplicationController
   
   def index
     Rails.logger.info("INDEX**********Registration Controller ****")
@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
     
   def change
-    @user = User.find(params[:format])
+    @user = User.find(params[:id])
     Rails.logger.info("CHANGE**********Registration Controller ****")    
   end
   
@@ -16,7 +16,6 @@ class UsersController < ApplicationController
   # We need to use a copy of the resource because we don't want to change
   # the current user in place.
   def update
-
     @user = User.find(params[:id])
     if @user.update(user_params)
       # Sign in the user by passing validation in case his password changed
