@@ -1,0 +1,9 @@
+<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+  
+  <div><%= f.label :name %><br />
+  <%= f.text_field :name %></div>
+  
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
+  
+<% end %>

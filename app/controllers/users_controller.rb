@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
     
   def change
+    @user = User.find(params[:format])
     Rails.logger.info("CHANGE**********Registration Controller ****")    
   end    
     

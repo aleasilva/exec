@@ -4,6 +4,7 @@ Exec::Application.routes.draw do
   resources :rules
   resources :atividades
   resources :treinos 
+  resources :users
   
   resources :alunos do
     resources :treinos

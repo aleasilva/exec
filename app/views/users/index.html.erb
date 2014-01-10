@@ -28,6 +28,12 @@
 	g.column   do |user|
 		link_to(image_tag("btnOperation/form_edit.png", :alt => "Alterar."), changeuser_path(user))
 	end
+	
+	
+	g.column   do |user|
+		link_to(image_tag("btnOperation/form_edit.png", :alt => "Alterar."), edit_user_registration_path(user))
+	end	
+	  
 
 	g.column   do |user|
 		link_to(image_tag("btnOperation/form_delete.png", :alt => "Alterar."), cancel_user_registration_path(user))
