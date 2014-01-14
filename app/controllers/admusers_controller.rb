@@ -11,6 +11,10 @@ class AdmusersController < ApplicationController
     Rails.logger.info("CHANGE**********Registration Controller ****")    
   end
   
+  def edit
+    @user = User.find(params[:id])
+  end
+  
   
   # PUT /resource
   # We need to use a copy of the resource because we don't want to change

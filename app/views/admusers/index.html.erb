@@ -25,8 +25,9 @@
 	#	link_to( image_tag("btnOperation/form_show.png", :alt => "Visualizar"), user)
 	#end
 	
+	
 	g.column   do |user|
-		link_to(image_tag("btnOperation/form_edit.png", :alt => "Alterar."), changeuser_path(user))
+		link_to(image_tag("btnOperation/form_edit.png", :alt => "Alterar."), user_path(user))
 	end
 	
 	

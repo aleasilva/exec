@@ -21,14 +21,14 @@ Exec::Application.routes.draw do
   devise_for :users, 
              :controllers => {:registrations => "registrations" }
   
-  get 'userslist', to: 'admusers#index', as: 'changeuser'
-  get '/changeuser.:id', to:  'admusers#change',  as: 'user'
-  
+
   #get '/patients/:id', to: 'patients#show', as: 'patient'  
 
   
   devise_scope :user do
-    get "list", :to => "devise/registrations#index"
+    get   'users', to: 'admusers#index', as: 'users'
+    patch 'user/:id', to: 'admusers#update', as: 'user'
+    get   'user/:id', to: 'admusers#change'
   end  
   
   
