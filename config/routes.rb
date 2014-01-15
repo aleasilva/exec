@@ -27,6 +27,8 @@ Exec::Application.routes.draw do
   
   devise_scope :user do
     get   'users', to: 'admusers#index', as: 'users'
+    get   'users/new', to: 'admusers#new'
+    post  'users', to: 'admusers#create'
     patch 'user/:id', to: 'admusers#update', as: 'user'
     get   'user/:id', to: 'admusers#change'
   end  

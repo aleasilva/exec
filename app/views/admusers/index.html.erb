@@ -10,7 +10,7 @@
 	
 	g.last_row do |number_of_columns|
 		content_tag(:tr,
-		content_tag(:td, link_to('Novo usuário', new_user_registration_path,:class => 'btn btn-primary'  ),colspan: 5), class: 'last-row')
+		content_tag(:td, link_to('Novo usuário', users_new_path,:class => 'btn btn-primary'  ),colspan: 5), class: 'last-row')
 	end
 	
 	g.column name: 'Nome:', attribute: 'name'  do |user|
