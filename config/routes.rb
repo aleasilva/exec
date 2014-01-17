@@ -18,19 +18,16 @@ Exec::Application.routes.draw do
   #root :to => "home#index"
   root :to => "alunos#index"
  
-  devise_for :users, 
-             :controllers => {:registrations => "registrations" }
+  #necessario para direcionar as ações padroes do devise.
+  devise_for :users,:controllers => {:registrations => "registrations" }
   
-
-  #get '/patients/:id', to: 'patients#show', as: 'patient'  
-
-  
+  #Alterando as propriedades para registro de 1 usuario pelo adm.  
   devise_scope :user do
-    get   'users', to: 'admusers#index', as: 'users'
-    get   'users/new', to: 'admusers#new'
-    post  'users', to: 'admusers#create'
-    patch 'user/:id', to: 'admusers#update', as: 'user'
-    get   'user/:id', to: 'admusers#change'
+    get   'users'     , to: 'admusers#index', as: 'users'
+    post  'users_save', to: 'admusers#create'
+    get   'users/new' , to: 'admusers#new'
+    patch 'user/:id'  , to: 'admusers#update', as: 'user'
+    get   'user/:id'  , to: 'admusers#change'
   end  
   
   

@@ -1,5 +1,5 @@
 class AdmusersController < DeviseController
-  prepend_before_filter :require_no_authentication, :only => [ :new, :create, :cancel ,:update]
+  #prepend_before_filter :require_no_authentication, :only => [ :new, :create, :cancel ,:update]
   #prepend_before_filter :authenticate_scope!, :only => [:destroy]
 
   def index
@@ -23,23 +23,33 @@ class AdmusersController < DeviseController
 
   # POST /resource
   def create
+    Rails.logger.info("CREATE**********Registration Controller 28 ****")
     build_resource(sign_up_params)
 
-    if resource.save
-      yield resource if block_given?
-      if resource.active_for_authentication?
-        set_flash_message :notice, :signed_up if is_flashing_format?
-        sign_up(resource_name, resource)
-        respond_with resource, :location => after_sign_up_path_for(resource)
-      else
-        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
-        expire_data_after_sign_in!
-        respond_with resource, :location => after_inactive_sign_up_path_for(resource)
-      end
+   if resource.save
+ #    yield resource if block_given?
+#        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
+#        expire_data_after_sign_in!
+
+#     if resource.active_for_authentication?
+#       set_flash_message :notice, :signed_up if is_flashing_format?
+#       #Não autenticar apos a insercao
+#       #sign_up(resource_name, resource)
+#       respond_with resource, :location => after_sign_up_path_for(resource)
+#        flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ? :update_needs_confirmation : :updated
+#        set_flash_message :notice, flash_key
+
+#      else
+#        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
+#        expire_data_after_sign_in!
+#        respond_with resource, :location => after_inactive_sign_up_path_for(resource)
+#      end
     else
-      clean_up_passwords resource
-      respond_with resource
+#      set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
+#      clean_up_passwords resource
+#      respond_with resource
     end
+    redirect_to users_path
   end
 
   # GET /resource/edit
@@ -52,7 +62,7 @@ class AdmusersController < DeviseController
     if @user.update(user_params)
       # Sign in the user by passing validation in case his password changed
       #sign_in @user, :bypass => true
-      redirect_to root_path
+      redirect_to users_path
     else
       render "edit"
     end    
