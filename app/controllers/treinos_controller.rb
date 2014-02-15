@@ -81,7 +81,9 @@ class TreinosController < ApplicationController
   def print
     Rails.logger.info("*EEEEEE PASSEI NO PRINT **********************")
     Rails.logger.info("***************************************") 
-    
+    @aluno = Aluno.find(1)
+    @alunos = Aluno.all
+    @alunos_grid = initialize_grid(@alunos)   
   end
 
   def procurar(atividade)
