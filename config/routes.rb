@@ -3,8 +3,9 @@ Exec::Application.routes.draw do
   resources :groups
   resources :rules
   resources :atividades
+  
   resources :treinos 
-  #resources :admusers
+    get 'printreino', to: 'treinos#print'
   
   resources :alunos do
     resources :treinos
@@ -16,7 +17,7 @@ Exec::Application.routes.draw do
   end
 
   #root :to => "home#index"
-  root :to => "alunos#index"
+  root :to => "treinos#print"
  
   #necessario para direcionar as ações padroes do devise.
   devise_for :users,:controllers => {:registrations => "registrations" }
@@ -30,7 +31,7 @@ Exec::Application.routes.draw do
     get   'user/:id'  , to: 'admusers#change'
   end  
   
-  
+  #resources :admusers  
   #get "home/index"
 
   # The priority is based upon order of creation:

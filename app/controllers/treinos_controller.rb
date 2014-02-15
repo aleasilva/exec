@@ -77,6 +77,12 @@ class TreinosController < ApplicationController
       end
     end
   end
+  
+  def print
+    Rails.logger.info("*EEEEEE PASSEI NO PRINT **********************")
+    Rails.logger.info("***************************************") 
+    
+  end
 
   def procurar(atividade)
     eof = @treino.atividades.include?(atividade)
