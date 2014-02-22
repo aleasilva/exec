@@ -77,13 +77,19 @@ class TreinosController < ApplicationController
       end
     end
   end
-  
+
   def print
     Rails.logger.info("*EEEEEE PASSEI NO PRINT **********************")
     Rails.logger.info("***************************************") 
-    @aluno = Aluno.find(1)
+  end
+
+  
+  def printIndex
+    Rails.logger.info("*EEEEEE PASSEI NO PRINT INDEX **********************")
+    Rails.logger.info("***************************************") 
     @alunos = Aluno.all
     @alunos_grid = initialize_grid(@alunos)   
+    @aluno = @alunos[0]
   end
 
   def procurar(atividade)

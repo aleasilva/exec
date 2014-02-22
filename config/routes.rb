@@ -5,7 +5,8 @@ Exec::Application.routes.draw do
   resources :atividades
   
   resources :treinos 
-    get 'printreino', to: 'treinos#print'
+    get 'printIndex', to: 'treinos#printIndex'
+    get 'printTreino', to: 'treinos#print'
   
   resources :alunos do
     resources :treinos
@@ -17,7 +18,8 @@ Exec::Application.routes.draw do
   end
 
   #root :to => "home#index"
-  root :to => "treinos#print"
+  root :to => "treinos#printIndex"
+ 
  
   #necessario para direcionar as ações padroes do devise.
   devise_for :users,:controllers => {:registrations => "registrations" }
