@@ -1,34 +1,30 @@
 <%- model_class = Aluno -%>
-<%= form_for @aluno, :html => { :class => 'form-horizontal' } do |f| %>
-
-<div class="control-group">
-	<p class="control-label">Cód.Aluno</p>
-	<div class="controls">
-		<%= f.text_field :idAcademia, :id=>'only_number', :alt=>"idAcademia", :onkeypress=> onlyTextNumber %>
-        <%= link_to t('.cancel', :default => 'Imprimir treino'), printTreino_path, :class => 'btn btn-warning' %>
+<%= form_tag(printTreino_path, :method => "get") do %>
+	<div class="control-group">
+		<p class="control-label">Cód.Aluno</p>
+		<div class="controls">
+			<input id="only_number" name="idAcademia" type="text" onkeypress="onlyTextNumber" alt="idAcademia"/>
+		  	<%= submit_tag 'Imprimir treino',:class => 'btn btn-warning' %>
+		</div>
 	</div>
-</div>
-
-
-<%= grid(@alunos_grid, 
-	allow_showing_all_records:  false,
-	show_filters: :when_filtered) do |g|
+	<%= grid(@alunos_grid, 
+		allow_showing_all_records:  false,
+		show_filters: :when_filtered) do |g|
+		
+		g.column name:  'Cód.Aluno', attribute: 'idAcademia' do |aluno|
+			aluno.idAcademia
+		end
+		
+		g.column name:  'Nome', attribute: 'nome'  do |aluno|
+			aluno.nome
+		end
 	
-	g.column name:  'Cód.Aluno', attribute: 'idAcademia' do |aluno|
-		aluno.idAcademia
-	end
-	
-	g.column name:  'Nome', attribute: 'nome'  do |aluno|
-		aluno.nome
-	end
-
-	g.column   do |aluno|
-		link_to( image_tag("btnOperation/form_show.png", :alt => "Visualizar") , aluno)
-	end
-	
-	g.column   do |aluno|
-		link_to(image_tag("btnOperation/form_edit.png", :alt => "Alterar."), edit_aluno_path(aluno))
-	end
-end %>
-
-<% end %>
+		g.column   do |aluno|
+			link_to( image_tag("btnOperation/form_show.png", :alt => "Visualizar") , aluno)
+		end
+		
+		g.column   do |aluno|
+			link_to(image_tag("btnOperation/form_edit.png", :alt => "Alterar."), edit_aluno_path(aluno))
+		end
+	end %>
+<% end -%>

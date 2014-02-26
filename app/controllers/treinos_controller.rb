@@ -81,6 +81,7 @@ class TreinosController < ApplicationController
   def print
     Rails.logger.info("*EEEEEE PASSEI NO PRINT **********************")
     Rails.logger.info("***************************************") 
+    0/0
   end
 
   
