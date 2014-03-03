@@ -1,13 +1,42 @@
 <%= form_tag do %>
 	<%= label_tag @aluno.nome %>
-	<%= label_tag @treino.criacao %>
+	Data validade:<%= label_tag @treino.criacao %>
+	Dias de treino: <br>
+	<%@aluno.diasemanas.each do |dt|%>
+		<%=dt.nomeabreviado%>
+	<%end%>
+	<hr>
+	Muscular<br>
 	<% @treino.ordemmusculotreinos.each do |t|%>
-		Treino: <%=t.ordem%>
-		Musculo: <%=t.musculo.nome%>
+		<%=t.musculo.nome%> <%=t.ordem%>
 		<br>
-		Atividades:
+		<p>
 		<% t.musculo.atividades.each do |a|%>
-			<p><%=a.nome%></p>
+			<%=a.nome%>
+			<br>
 		<%end%>
+		</p>
 	<%end%>  	
+	<hr>
+	Trabalho Aerobico
+	<%@treino.atividadetreinos.each do |at|%>
+		<%if at.atividade.tipo == "A"%>
+			<%=at.atividade.nome%>
+			Tempo:<%=at.tempo%>
+			<%at.atividadetreinodias.each do |atd|%>
+				<%=atd.diasemana.nomeabreviado%>
+			<%end%>
+		<%end%>
+		<br>
+	<%end%>
+	<hr>
+	Adaptações<br>
+	<%@treino.adaptacaos.each do |tap|%>
+		Semana: <%=tap.semana%>
+		Série: <%=tap.serie%>
+		Dias:
+		<%tap.adaptacaodias.each do|ds|%>
+			<%=ds.diasemana.nomeabreviado%>
+		<%end%>
+	<%end%>	
 <% end %>

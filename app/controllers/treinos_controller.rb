@@ -84,7 +84,7 @@ class TreinosController < ApplicationController
       treinos = Treino.where("aluno_id = ? and ? between criacao and validade", @aluno.id ,Date.today)
       if treinos.exists?
         @treino = treinos.first
-        Rails.logger.info("SIM EXISTE TREINO******************************")    
+        Rails.logger.info("SIM EXISTE TREINO******************************")   
       else
         Rails.logger.info("NAO EXISTE TREINO******************************")    
       end
@@ -113,7 +113,7 @@ class TreinosController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_treino
     @treino = Treino.find(params[:id])
-    aluno = Aluno.find(@treino.aluno_id)
+    @aluno = Aluno.find(@treino.aluno_id)
     
     #Rails.logger.info("SET TREINO")
     #Rails.logger.info( Treino.atividadetreinos.merge(Atividade.aerobico).inspect)
