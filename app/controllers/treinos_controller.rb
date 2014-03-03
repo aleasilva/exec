@@ -79,9 +79,20 @@ class TreinosController < ApplicationController
   end
 
   def print
-    Rails.logger.info("*EEEEEE PASSEI NO PRINT **********************")
-    Rails.logger.info("***************************************") 
-    0/0
+    @aluno = Aluno.where("idAcademia = ? ", params[:idAcademia]).first()
+    if @aluno != nil
+      treinos = Treino.where("aluno_id = ? and ? between criacao and validade", @aluno.id ,Date.today)
+      if treinos.exists?
+        @treino = treinos.first
+        Rails.logger.info("SIM EXISTE TREINO******************************")    
+      else
+        Rails.logger.info("NAO EXISTE TREINO******************************")    
+      end
+    else
+      Rails.logger.info("NAO NAO********************************")           
+    end
+      
+    #params[:idAcademia]
   end
 
   
@@ -90,7 +101,6 @@ class TreinosController < ApplicationController
     Rails.logger.info("***************************************") 
     @alunos = Aluno.all
     @alunos_grid = initialize_grid(@alunos)   
-    @aluno = @alunos[0]
   end
 
   def procurar(atividade)
@@ -103,7 +113,7 @@ class TreinosController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_treino
     @treino = Treino.find(params[:id])
-    @aluno = Aluno.find(@treino.aluno_id)
+    aluno = Aluno.find(@treino.aluno_id)
     
     #Rails.logger.info("SET TREINO")
     #Rails.logger.info( Treino.atividadetreinos.merge(Atividade.aerobico).inspect)

@@ -1,3 +1,13 @@
-<html>
-	Tela de impressão!!!
-</html>
+<%= form_tag do %>
+	<%= label_tag @aluno.nome %>
+	<%= label_tag @treino.criacao %>
+	<% @treino.ordemmusculotreinos.each do |t|%>
+		Treino: <%=t.ordem%>
+		Musculo: <%=t.musculo.nome%>
+		<br>
+		Atividades:
+		<% t.musculo.atividades.each do |a|%>
+			<p><%=a.nome%></p>
+		<%end%>
+	<%end%>  	
+<% end %>
