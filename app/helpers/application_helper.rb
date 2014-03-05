@@ -32,4 +32,8 @@ module ApplicationHelper
     " * " if object.class.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator
   end
 
+  def print_this_page(name)
+    link_to name, '#', onclick: "printDiv()", :class => "btn btn-info" ;
+  end
+    
 end

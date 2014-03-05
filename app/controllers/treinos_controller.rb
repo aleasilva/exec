@@ -79,7 +79,8 @@ class TreinosController < ApplicationController
   end
 
   def print
-    @aluno = Aluno.where("idAcademia = ? ", params[:idAcademia]).first()
+#    @aluno = Aluno.where("idAcademia = ? ", params[:idAcademia]).first()
+    @aluno = Aluno.find(2)
     if @aluno != nil
       treinos = Treino.where("aluno_id = ? and ? between criacao and validade", @aluno.id ,Date.today)
       if treinos.exists?
@@ -91,8 +92,6 @@ class TreinosController < ApplicationController
     else
       Rails.logger.info("NAO NAO********************************")           
     end
-      
-    #params[:idAcademia]
   end
 
   
