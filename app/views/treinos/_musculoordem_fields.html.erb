@@ -1,7 +1,7 @@
 <tr class="warning">
 	<%= o.fields_for :musculo do |m| %>
 		<th class="warning"> <%= f.label :nome, f.object.nome%></th>	
-		<th class="warning"> Ordem:<%= o.text_field :ordem ,:class=>"input-size10px" %></th>
+		<th class="warning"> Treino:<%= o.text_field :ordem ,:class=>"input-size10px" %></th>
 		<%= o.hidden_field :musculo_id %>
 	<%end %>
 </tr>

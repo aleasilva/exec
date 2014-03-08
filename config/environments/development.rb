@@ -27,5 +27,17 @@ Exec::Application.configure do
   # number of complex assets.
   config.assets.debug = true
   
-  config.action_mailer.default_url_options = { :host => 'localhost:3003' }
+  #Desabilitado 
+  #config.action_mailer.default_url_options = { :host => 'localhost:3003' }  
+  
+  #configuracao envio de e-mail
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'example.com',
+    user_name:            '<username>',
+    password:             '<password>',
+    authentication:       'plain',
+    enable_starttls_auto: true  }
 end

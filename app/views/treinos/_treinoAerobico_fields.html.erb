@@ -5,10 +5,10 @@
 				<td>Atividade</td>
 				<td>Tempo</td>
 				<td>Velocidade</td>
-				<td>Inclinação</td>
+				<!--td>Inclinação</td-->
 				<td>Carga</td>
 				<td>BMP</td>
-				<td>Dia(s) Aula(s)</td>
+				<!--td>Dia(s) Aula(s)</td-->
 				<!--%@aluno.diasemanas.each do |dia|%-->	
 			</tr>
 		</thead>
@@ -18,10 +18,10 @@
 			<td><%= f.label :nome, f.object.atividade.nome %></td>
 			<td><%= f.text_field :tempo, :class=>"input-mini"     , :alt=>"strTempoExe"%></td>
 			<td><%= f.text_field :velocidade, :class=>"input-mini", :alt=>"intCentena" %></td>
-			<td><%= f.text_field :inclinacao,:class=>"input-mini" , :alt=>"intCentena" %></td>
+			<!--td><%= f.text_field :inclinacao,:class=>"input-mini" , :alt=>"intCentena" %></td-->
 			<td><%= f.text_field :carga,:class=>"input-mini"      , :alt=>"intCentena" %></td>
 			<td><%= f.text_field :bpm,:class=>"input-mini"        , :alt=>"intCentena" %></td>
-			<td class="form-inline"><%= f.collection_check_boxes :diasemana_ids, @aluno.diasemanas, :id,:nomeabreviado %></td>
+			<!--td class="form-inline"><%= f.collection_check_boxes :diasemana_ids, @aluno.diasemanas, :id,:nomeabreviado %></td-->
 		</tr>
 <% if f.index == @qtdAtividade-1 %>
 		</tbody>

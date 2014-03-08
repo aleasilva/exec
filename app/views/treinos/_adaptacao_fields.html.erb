@@ -5,8 +5,8 @@
 	<td><%= f.text_field :carga     ,:class=>"input-mini", :onkeypress=> limitSizeNumber(0,2), :style=>"direction:rtl;"%></td>
 	<td><%= f.text_field :intervalo ,:class=>"input-mini", :onkeypress=> limitSizeNumber(0,2), :style=>"direction:rtl;"%></td>
 	<td><%= f.text_field :observacao,:class=>"input"%></td>
-	<td class="form-inline">
-		<%= f.collection_check_boxes :diasemana_ids, @aluno.diasemanas, :id, :nomeabreviado%>
-	</td>
+	<!--td class="form-inline"-->
+		<!--%= f.collection_check_boxes :diasemana_ids, @aluno.diasemanas, :id, :nomeabreviado%-->
+	<!--/td-->
 	<td><%= link_to_remove_fields "Excluir", f %></td>
 </tr>
