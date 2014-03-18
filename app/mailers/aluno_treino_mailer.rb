@@ -5,7 +5,7 @@ class AlunoTreinoMailer < ActionMailer::Base
       @aluno = aluno
       @treino = Treino.find(1)
       @url  = 'http://example.com/login'
-      mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+      mail(to: @user.email, subject: 'Welcome Alexandre to My Awesome Site')
   end
   
 end
