@@ -17,12 +17,12 @@
 <%end%>
 		<tr>
 			<td><%= f.label :nome, f.object.atividade.nome %></td>
+			<td><%= f.text_field :ordem_treino,:class=>"input-mini"   %></td>
 			<td><%= f.text_field :tempo, :class=>"input-mini"     , :alt=>"strTempoExe"%></td>
-			<td><%= f.text_field :inclinacao,:class=>"input-mini" , :alt=>"intCentena" %></td-->
 			<td><%= f.text_field :velocidade, :class=>"input-mini", :alt=>"intCentena" %></td>
-			<!--td><%= f.text_field :inclinacao,:class=>"input-mini" , :alt=>"intCentena" %></td-->
 			<td><%= f.text_field :carga,:class=>"input-mini"      , :alt=>"intCentena" %></td>
 			<td><%= f.text_field :bpm,:class=>"input-mini"        , :alt=>"intCentena" %></td>
+			<!--td><%= f.text_field :inclinacao,:class=>"input-mini" , :alt=>"intCentena" %></td-->
 			<!--td class="form-inline"><%= f.collection_check_boxes :diasemana_ids, @aluno.diasemanas, :id,:nomeabreviado %></td-->
 		</tr>
 <% if f.index == @qtdAtividade-1 %>
