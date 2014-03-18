@@ -64,18 +64,19 @@
 						<td>Intervalo</td>
 						<td>Observação</td>
 						<!--td>Repetição</td-->
-						<td>&ensp;</td>
+						<!--td>&ensp;</td-->
+						<td><%= link_to_add_fields "+", f, :adaptacaos %></td>
 					</tr>
 				</thead>
 				<tbody>
 					<%= f.fields_for :adaptacaos, @treino.adaptacaos do |a| %>
 						<%= render "adaptacao_fields", :f => a %>
 					<% end %>
-					<tr>
+					<!--tr>
 						<td colspan="6">
 							<%= link_to_add_fields "Nova adaptação", f, :adaptacaos %>
 						<td>
-					</tr>
+					</tr-->
 				</tbody>
 			</table>
 		</p>

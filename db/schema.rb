@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140104112013) do
+ActiveRecord::Schema.define(version: 20140318164217) do
 
   create_table "adaptacaodia", force: true do |t|
     t.integer  "adaptacao_id"
@@ -40,16 +40,17 @@ ActiveRecord::Schema.define(version: 20140104112013) do
   end
 
   create_table "alunos", force: true do |t|
-    t.string "idAcademia",  limit: 30,  default: ""
+    t.string "idAcademia",  limit: 30,  default: "'"
     t.string "nome",        limit: 80,  default: "Aluno",       null: false
     t.string "medicamento", limit: 120, default: "Não toma."
     t.string "doenca",      limit: 120, default: "Não possui."
     t.string "alergia",     limit: 120, default: "Não tem."
     t.string "dor",         limit: 120, default: "Não sente."
-    t.string "email",       limit: 100, default: ""
+    t.string "email",       limit: 100, default: "'"
     t.text   "observacao"
     t.date   "nascimento",              default: '2014-01-04'
     t.string "sexo",        limit: 1,   default: "f",           null: false
+    t.string "last_treino", limit: 1,   default: ""
   end
 
   create_table "atividades", force: true do |t|
@@ -167,6 +168,7 @@ ActiveRecord::Schema.define(version: 20140104112013) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

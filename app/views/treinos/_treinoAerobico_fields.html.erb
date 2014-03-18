@@ -3,6 +3,7 @@
 		<thead>
 			<tr>
 				<td>Atividade</td>
+				<td>Treino</td>
 				<td>Tempo</td>
 				<td>Velocidade</td>
 				<!--td>Inclinação</td-->
@@ -17,6 +18,7 @@
 		<tr>
 			<td><%= f.label :nome, f.object.atividade.nome %></td>
 			<td><%= f.text_field :tempo, :class=>"input-mini"     , :alt=>"strTempoExe"%></td>
+			<td><%= f.text_field :inclinacao,:class=>"input-mini" , :alt=>"intCentena" %></td-->
 			<td><%= f.text_field :velocidade, :class=>"input-mini", :alt=>"intCentena" %></td>
 			<!--td><%= f.text_field :inclinacao,:class=>"input-mini" , :alt=>"intCentena" %></td-->
 			<td><%= f.text_field :carga,:class=>"input-mini"      , :alt=>"intCentena" %></td>
