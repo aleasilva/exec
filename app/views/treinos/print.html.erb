@@ -20,6 +20,17 @@
 			<%end%>
 			</p>
 		<%end%>  	
+		<hr>
+		Trabalho Aerobico
+		<%@treino.atividadetreinos.each do |at|%>
+			<%if at.atividade.tipo == "A" and at.ordem_treino.include? @treinoOrdem %>
+				<%=at.atividade.nome%>
+				Tempo:<%=at.tempo%>
+			<%end%>
+			<br>
+		<%end%>
+		<hr>
+
 
 	<% end -%>
 	<br>

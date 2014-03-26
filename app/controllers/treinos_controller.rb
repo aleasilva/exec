@@ -97,7 +97,6 @@ class TreinosController < ApplicationController
   
   def printIndex
     Rails.logger.info("*EEEEEE PASSEI NO PRINT INDEX **********************")
-    Rails.logger.info("***************************************") 
     @alunos = Aluno.all
     @alunos_grid = initialize_grid(@alunos)   
   end
@@ -127,16 +126,21 @@ class TreinosController < ApplicationController
   #Localiza o proximo treino baseado no cadastro do aluno.
   def findTreinoPrint(aluno, treinos)
     treinoOrdenado = treinos.first.ordemmusculotreinos.sort_by{|reg| reg.ordem }
-    treinoID = ""
+    @treinoOrdem = ""
     
     if treinoOrdenado.any? {|reg| (reg.ordem > aluno.last_treino)}
       treino =  treinoOrdenado.find{|reg| (reg.ordem > aluno.last_treino)}
     else
       treino =  treinoOrdenado.first
     end
-    treinoID = treino.ordem
+    #Recuperando a proxima ordem de treino
+    @treinoOrdem = treino.ordem
+
+    #Selecionando pela ordem proxima ordem. 
+    treinosSelect= treinoOrdenado.select!{|reg| reg.ordem == @treinoOrdem}
     
-    treinosSelect= treinoOrdenado.select!{|reg| reg.ordem == treinoID}
+    #Filtro os treinos aerobicos que correspodente ao treino atual.
+    #treinosSelect.atividadetreinos.select!{|reg| reg.ordem_treino == @treinoOrdem}
     
     return treinosSelect
   end
