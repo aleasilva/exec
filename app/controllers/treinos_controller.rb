@@ -83,9 +83,9 @@ class TreinosController < ApplicationController
     @aluno = Aluno.find(2)
     if @aluno != nil
       treinos = Treino.where("aluno_id = ? and ? between criacao and validade", @aluno.id ,Date.today)
+      @treino = treinos.first
       if treinos.exists?
-        @treino = treinos.first
-        Rails.logger.info("SIM EXISTE TREINO******************************")   
+        @meuTreino = findTreinoPrint(@aluno, treinos)
       else
         Rails.logger.info("NAO EXISTE TREINO******************************")    
       end
@@ -122,5 +122,22 @@ class TreinosController < ApplicationController
   def treino_params
     #params.require(:aluno).permit(:idAcademia, :nome, :nascimento, :sexo, :observacao)
     params.require(:treino).permit!
+  end
+  
+  #Localiza o proximo treino baseado no cadastro do aluno.
+  def findTreinoPrint(aluno, treinos)
+    treinoOrdenado = treinos.first.ordemmusculotreinos.sort_by{|reg| reg.ordem }
+    treinoID = ""
+    
+    if treinoOrdenado.any? {|reg| (reg.ordem > aluno.last_treino)}
+      treino =  treinoOrdenado.find{|reg| (reg.ordem > aluno.last_treino)}
+    else
+      treino =  treinoOrdenado.first
+    end
+    treinoID = treino.ordem
+    
+    treinosSelect= treinoOrdenado.select!{|reg| reg.ordem == treinoID}
+    
+    return treinosSelect
   end
 end

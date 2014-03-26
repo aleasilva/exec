@@ -8,8 +8,10 @@
 		<%end%>
 		<hr>
 		Muscular<br>
-		<% @treino.ordemmusculotreinos.each do |t|%>
-			<%=t.musculo.nome%> <%=t.ordem%>
+		Treino: <%=@meuTreino.first.ordem%>
+		<br>
+		<% @meuTreino.each do |t|%>
+			<%=t.musculo.nome%> 
 			<br>
 			<p>
 			<% t.musculo.atividades.each do |a|%>
@@ -18,32 +20,11 @@
 			<%end%>
 			</p>
 		<%end%>  	
-		<hr>
-		Trabalho Aerobico
-		<%@treino.atividadetreinos.each do |at|%>
-			<%if at.atividade.tipo == "A"%>
-				<%=at.atividade.nome%>
-				Tempo:<%=at.tempo%>
-				<%at.atividadetreinodias.each do |atd|%>
-					<%=atd.diasemana.nomeabreviado%>
-				<%end%>
-			<%end%>
-			<br>
-		<%end%>
-		<hr>
-		Adaptações<br>
-		<%@treino.adaptacaos.each do |tap|%>
-			Semana: <%=tap.semana%>
-			Série: <%=tap.serie%>
-			Dias:
-			<%tap.adaptacaodias.each do|ds|%>
-				<%=ds.diasemana.nomeabreviado%>
-			<%end%>
-		<%end%>	
-		<br>
+
 	<% end -%>
 	<br>
 	<%= print_this_page "Imprimir treino"%>
 	<%= print_this_page "Enviar por e-mail"%>
+	<%= print_this_page "Registrar presença"%>
 	
 <% end %>
