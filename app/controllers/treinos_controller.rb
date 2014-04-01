@@ -86,6 +86,7 @@ class TreinosController < ApplicationController
       @treino = treinos.first
       if treinos.exists?
         @meuTreino = findTreinoPrint(@aluno, treinos)
+        
       else
         Rails.logger.info("NAO EXISTE TREINO******************************")    
       end
@@ -93,7 +94,6 @@ class TreinosController < ApplicationController
       Rails.logger.info("NAO NAO********************************")           
     end
   end
-
   
   def printIndex
     Rails.logger.info("*EEEEEE PASSEI NO PRINT INDEX **********************")
@@ -141,6 +141,17 @@ class TreinosController < ApplicationController
     
     #Filtro os treinos aerobicos que correspodente ao treino atual.
     #treinosSelect.atividadetreinos.select!{|reg| reg.ordem_treino == @treinoOrdem}
+    
+    #Recuperar a semana de treinamento atual
+    nSemanaIni = @treino.criacao.cweek
+    @treino.adaptacaos.each do |tap|
+      qtdSemana = tap.semana
+      nSemanaTreino = nSemanaIni + qtdSemana
+      nSemanaAtual = Date.today.cweek
+      0/0
+    end     
+    
+
     
     return treinosSelect
   end
