@@ -3,8 +3,6 @@
 		<%= label_tag @aluno.nome %>
 		Data validade:<%= label_tag @treino.validade %>
 		Semana de:<%= label_tag @treino.criacao.cweek %>
-		Semana ate:<%= label_tag @treino.validade.cweek %>
-		Semana ate:<%= label_tag Date.today.cweek %>
  
 		Dias de treino: <br>
 		<%@aluno.diasemanas.each do |dt|%>
@@ -34,10 +32,10 @@
 			<br>
 		<%end%>
 		<li>Adaptações</li>
-		<%@treino.adaptacaos.each do |tap|%>
-			Semana: <%=tap.semana%>
-			Série: <%=tap.serie%>
-		<%end%>			
+		<%if @adaptcaoAtual != nil %>
+			Semana: <%=@adaptcaoAtual.semana%>
+			Série: <%=@adaptcaoAtual.serie%>
+		<%end%>
 		<hr>
 		</ul>
 

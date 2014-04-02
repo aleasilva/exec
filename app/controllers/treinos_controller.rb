@@ -86,6 +86,7 @@ class TreinosController < ApplicationController
       @treino = treinos.first
       if treinos.exists?
         @meuTreino = findTreinoPrint(@aluno, treinos)
+        setAdaptacaoAtual()
         
       else
         Rails.logger.info("NAO EXISTE TREINO******************************")    
@@ -125,6 +126,7 @@ class TreinosController < ApplicationController
   
   #Localiza o proximo treino baseado no cadastro do aluno.
   def findTreinoPrint(aluno, treinos)
+    
     treinoOrdenado = treinos.first.ordemmusculotreinos.sort_by{|reg| reg.ordem }
     @treinoOrdem = ""
     
@@ -133,26 +135,40 @@ class TreinosController < ApplicationController
     else
       treino =  treinoOrdenado.first
     end
+    
     #Recuperando a proxima ordem de treino
     @treinoOrdem = treino.ordem
 
     #Selecionando pela ordem proxima ordem. 
     treinosSelect= treinoOrdenado.select!{|reg| reg.ordem == @treinoOrdem}
     
-    #Filtro os treinos aerobicos que correspodente ao treino atual.
-    #treinosSelect.atividadetreinos.select!{|reg| reg.ordem_treino == @treinoOrdem}
-    
-    #Recuperar a semana de treinamento atual
+    return treinosSelect
+  end
+
+  #
+  #Define qual será a adaptacao para o treino do usuário.
+  #  
+  def setAdaptacaoAtual()
+
     nSemanaIni = @treino.criacao.cweek
+    nSemanaAtual = Date.today.cweek
+    semAdaptacaoIni = 1
+    @adaptcaoAtual = nil
+    # 
     @treino.adaptacaos.each do |tap|
-      qtdSemana = tap.semana
-      nSemanaTreino = nSemanaIni + qtdSemana
-      nSemanaAtual = Date.today.cweek
-      0/0
+      semAdaptacaoFim = semAdaptacaoIni + tap.semana    
+      semAdaptacaoIni += nSemanaIni
+      semAdaptacaoFim += nSemanaIni
+      
+      if nSemanaAtual.between?(semAdaptacaoIni, semAdaptacaoFim)
+        @adaptcaoAtual = tap
+      end
+      semAdaptacaoIni = semAdaptacaoFim
     end     
     
-
+    if @adaptcaoAtual == nil
+       @adaptcaoAtual = @treino.adaptacaos.last
+    end
     
-    return treinosSelect
   end
 end
