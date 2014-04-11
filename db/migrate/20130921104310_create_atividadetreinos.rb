@@ -1,8 +1,8 @@
 class CreateAtividadetreinos < ActiveRecord::Migration
   def change
     create_table :atividadetreinos do |t|
-      t.integer :atividade_id
-      t.integer :treino_id
+      t.integer :atividade_id, index: true
+      t.integer :treino_id, index: true
       t.string  :tempo
       t.integer :velocidade
       t.integer :inclinacao

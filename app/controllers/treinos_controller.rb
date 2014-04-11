@@ -1,3 +1,5 @@
+require "date"
+
 class TreinosController < ApplicationController
   before_action :set_treino, only: [:show, :edit, :update, :destroy] 
   
@@ -136,6 +138,7 @@ class TreinosController < ApplicationController
       treino =  treinoOrdenado.first
     end
     
+    
     #Recuperando a proxima ordem de treino
     @treinoOrdem = treino.ordem
 
@@ -151,7 +154,11 @@ class TreinosController < ApplicationController
   def setAdaptacaoAtual()
 
     nSemanaIni = @treino.criacao.cweek
-    nSemanaAtual = Date.today.cweek
+    nSemanaAtual = @aluno.dataUltimoTreino.cweek
+    nSemanaAtual = @aluno.semanaAdaptacao
+    
+    setSemanaTreino()
+
     semAdaptacaoIni = 1
     @adaptcaoAtual = nil
     # 
@@ -171,4 +178,23 @@ class TreinosController < ApplicationController
     end
     
   end
+  
+  def setSemanaTreino()
+    nUltSemanaTreino = @aluno.dataUltimoTreino.cweek
+    nProSemanaTreino = (@aluno.dataUltimoTreino+7).cweek
+    nSemanaAtual = Date.today.cweek
+    nSemanaAdaptacao = nSemanaAdaptacao = @aluno.semanaAdaptacao
+
+    #Mudou de semana?
+    if  nUltSemanaTreino != nSemanaAtual
+        
+        #A semana esta em sequencia?
+        if (nUltSemanaTreino+1 == nSemanaAtual)
+          nSemanaAdaptacao = nSemanaAdaptacao + 1   
+        end
+    end
+    
+    return nSemanaAdaptacao
+  end 
+  
 end

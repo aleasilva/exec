@@ -5,6 +5,7 @@ class Aluno < ActiveRecord::Base
    
    #Relacionamento treinos
    has_many :treinos, dependent: :destroy
+   has_many :presencas, dependent: :destroy
    
    #Validadores
    validates  :nome         , :length => { :maximum => 80  },:presence => true, :uniqueness => false
