@@ -82,13 +82,12 @@ function isNumberKey(evt){
 }
 
 function printDiv() {
-	 divName = "printMe";
+	 var divName = "printMe";	 
      var printContents = document.getElementById(divName).innerHTML;
-     var originalContents = document.body.innerHTML;
-
-     document.body.innerHTML = printContents;
+     var frmImprimir = window.open('','Imprimir');
      
-     window.print();
+	 frmImprimir.document.body.innerHTML = printContents;
+     frmImprimir.print();   
+     frmImprimir.close();
 
-     document.body.innerHTML = originalContents;
 }

@@ -7,6 +7,7 @@ Exec::Application.routes.draw do
   resources :treinos 
     get 'printIndex', to: 'treinos#printIndex'
     get 'printTreino', to: 'treinos#print'
+    get 'confirmaTreino', to: 'treinos#confirmaTreino'
   
   resources :alunos do
     resources :treinos

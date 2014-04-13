@@ -79,6 +79,20 @@ class TreinosController < ApplicationController
       end
     end
   end
+  
+  #
+  #Faz gravaçao dos dados e volta para a tela para impressao
+  #
+  def confirmaTreino
+    redirect_to printTreino_path({:doPrint => 'true'}) 
+  end
+  
+  #Metodos de controle de impressao do treino.
+  def printIndex
+    Rails.logger.info("*EEEEEE PASSEI NO PRINT INDEX **********************")
+    @alunos = Aluno.all
+    @alunos_grid = initialize_grid(@alunos)   
+  end
 
   def print
 #    @aluno = Aluno.where("idAcademia = ? ", params[:idAcademia]).first()
@@ -98,11 +112,6 @@ class TreinosController < ApplicationController
     end
   end
   
-  def printIndex
-    Rails.logger.info("*EEEEEE PASSEI NO PRINT INDEX **********************")
-    @alunos = Aluno.all
-    @alunos_grid = initialize_grid(@alunos)   
-  end
 
   def procurar(atividade)
     eof = @treino.atividades.include?(atividade)
@@ -146,29 +155,24 @@ class TreinosController < ApplicationController
     treinosSelect= treinoOrdenado.select!{|reg| reg.ordem == @treinoOrdem}
     
     return treinosSelect
+    
   end
 
   #
   #Define qual será a adaptacao para o treino do usuário.
   #  
   def setAdaptacaoAtual()
-
-    nSemanaIni = @treino.criacao.cweek
-    nSemanaAtual = @aluno.dataUltimoTreino.cweek
-    nSemanaAtual = @aluno.semanaAdaptacao
-    
-    setSemanaTreino()
-
-    semAdaptacaoIni = 1
+    semAdaptacaoIni = 0
     @adaptcaoAtual = nil
+    nSemanaAtual = getSemanaAdaptacao()
+
     # 
     @treino.adaptacaos.each do |tap|
       semAdaptacaoFim = semAdaptacaoIni + tap.semana    
-      semAdaptacaoIni += nSemanaIni
-      semAdaptacaoFim += nSemanaIni
       
       if nSemanaAtual.between?(semAdaptacaoIni, semAdaptacaoFim)
         @adaptcaoAtual = tap
+        break
       end
       semAdaptacaoIni = semAdaptacaoFim
     end     
@@ -179,18 +183,21 @@ class TreinosController < ApplicationController
     
   end
   
-  def setSemanaTreino()
+  def getSemanaAdaptacao()
     nUltSemanaTreino = @aluno.dataUltimoTreino.cweek
     nProSemanaTreino = (@aluno.dataUltimoTreino+7).cweek
     nSemanaAtual = Date.today.cweek
-    nSemanaAdaptacao = nSemanaAdaptacao = @aluno.semanaAdaptacao
-
+    nSemanaAtual = Date.new(2014,4,23).cweek
+    nSemanaAdaptacao = @aluno.semanaAdaptacao
+    
     #Mudou de semana?
     if  nUltSemanaTreino != nSemanaAtual
-        
+      
         #A semana esta em sequencia?
-        if (nUltSemanaTreino+1 == nSemanaAtual)
+        if (nUltSemanaTreino+1) == nSemanaAtual
           nSemanaAdaptacao = nSemanaAdaptacao + 1   
+        else
+          #Reportar semana fora de sequencia.
         end
     end
     

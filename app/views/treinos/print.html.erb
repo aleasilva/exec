@@ -41,8 +41,12 @@
 
 	<% end -%>
 	<br>
-	<%= print_this_page "Imprimir treino"%>
-	<%= print_this_page "Enviar por e-mail"%>
-	<%= print_this_page "Registrar presença"%>
+	<%=link_to('Imprimir Treino', confirmaTreino_path,:class => 'btn btn-primary'  )%>	
+	<%=link_to('Receber por E-mail', confirmaTreino_path,:class => 'btn btn-primary'  )%>	
+	<%=link_to('Registrar presença', confirmaTreino_path,:class => 'btn btn-primary'  )%>	
 	
+	<% if params.include?("doPrint") %>
+		<%= javascript_tag "printDiv()" %>
+	<% end -%>
+
 <% end %>
