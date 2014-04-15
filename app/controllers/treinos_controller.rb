@@ -84,6 +84,22 @@ class TreinosController < ApplicationController
   #Faz gravaçao dos dados e volta para a tela para impressao
   #
   def confirmaTreino
+    aluno = Aluno.find(params[:alunoId])
+    if aluno != nil 
+      if aluno.dataUltimoTreino != Date.today
+        aluno.dataUltimoTreino =  Date.today
+        aluno.semanaAdaptacao = params[:semanaAdaptacao] 
+        aluno.last_treino = aluno.last_treino
+        if aluno.save
+            
+        end
+        
+      end
+             
+    else
+      0/0      
+    end
+
     redirect_to printTreino_path({:doPrint => 'true'}) 
   end
   

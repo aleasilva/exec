@@ -1,4 +1,4 @@
-<%= form_tag do %>
+<%= form_tag do |f|%>
 	<%= content_tag :div, id: "printMe" do -%>
 		<%= label_tag @aluno.nome %>
 		Data validade:<%= label_tag @treino.validade %>
@@ -41,9 +41,10 @@
 
 	<% end -%>
 	<br>
-	<%=link_to('Imprimir Treino', confirmaTreino_path,:class => 'btn btn-primary'  )%>	
-	<%=link_to('Receber por E-mail', confirmaTreino_path,:class => 'btn btn-primary'  )%>	
-	<%=link_to('Registrar presença', confirmaTreino_path,:class => 'btn btn-primary'  )%>	
+	<%=link_to('Imprimir Treino', confirmaTreino_path(:alunoId => @aluno.id, :semanaAdaptacao => 1, :last_treino => @treinoOrdem),:class => 'btn btn-primary')%>	
+	<%=link_to('Receber por E-mail', confirmaTreino_path(:alunoId => @aluno.id),:class => 'btn btn-primary')%>	
+	<%=link_to('Registrar presença', confirmaTreino_path(:alunoId => @aluno.id),:class => 'btn btn-primary')%>	
+
 	
 	<% if params.include?("doPrint") %>
 		<%= javascript_tag "printDiv()" %>
