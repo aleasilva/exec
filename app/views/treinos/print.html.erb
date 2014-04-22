@@ -24,6 +24,7 @@
 		<%end%> 
 		<li>Trabalho Aerobico</li>
 		<br>
+		
 		<%@treino.atividadetreinos.each do |at|%>
 			<%if at.atividade.tipo == "A" and at.ordem_treino.include? @treinoOrdem %>
 				<%=at.atividade.nome%>
@@ -41,7 +42,7 @@
 
 	<% end -%>
 	<br>
-	<%=link_to('Imprimir Treino', confirmaTreino_path(:alunoId => @aluno.id, :semanaAdaptacao => 1, :last_treino => @treinoOrdem),:class => 'btn btn-primary')%>	
+	<%=link_to('Imprimir Treino', confirmaTreino_path(:alunoId => @aluno.id, :semanaAdaptacao => @semanaTreino, :last_treino => @treinoOrdem),:class => 'btn btn-primary')%>	
 	<%=link_to('Receber por E-mail', confirmaTreino_path(:alunoId => @aluno.id),:class => 'btn btn-primary')%>	
 	<%=link_to('Registrar presença', confirmaTreino_path(:alunoId => @aluno.id),:class => 'btn btn-primary')%>	
 
