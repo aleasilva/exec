@@ -89,15 +89,14 @@ class TreinosController < ApplicationController
       if aluno.dataUltimoTreino != Date.today
         aluno.dataUltimoTreino =  Date.today
         aluno.semanaAdaptacao = params[:semanaAdaptacao] 
-        aluno.last_treino = aluno.last_treino
+        aluno.last_treino = params[:last_treino]
         if aluno.save
             
         end
-        
       end
-             
+     
     else
-      0/0      
+     
     end
 
     redirect_to printTreino_path({:doPrint => 'true'}) 
@@ -196,6 +195,8 @@ class TreinosController < ApplicationController
     if @adaptcaoAtual == nil
        @adaptcaoAtual = @treino.adaptacaos.last
     end
+    @semanaTreino = nSemanaAtual
+    
     
   end
   
@@ -203,7 +204,7 @@ class TreinosController < ApplicationController
     nUltSemanaTreino = @aluno.dataUltimoTreino.cweek
     nProSemanaTreino = (@aluno.dataUltimoTreino+7).cweek
     nSemanaAtual = Date.today.cweek
-    nSemanaAtual = Date.new(2014,4,23).cweek
+    #nSemanaAtual = Date.new(2014,4,23).cweek
     nSemanaAdaptacao = @aluno.semanaAdaptacao
     
     #Mudou de semana?
@@ -211,7 +212,7 @@ class TreinosController < ApplicationController
       
         #A semana esta em sequencia?
         if (nUltSemanaTreino+1) == nSemanaAtual
-          nSemanaAdaptacao = nSemanaAdaptacao + 1   
+          nSemanaAdaptacao = nSemanaAdaptacao + 1
         else
           #Reportar semana fora de sequencia.
         end
