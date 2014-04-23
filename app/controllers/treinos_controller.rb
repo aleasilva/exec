@@ -84,22 +84,7 @@ class TreinosController < ApplicationController
   #Faz gravaçao dos dados e volta para a tela para impressao
   #
   def confirmaTreino
-    aluno = Aluno.find(params[:alunoId])
-    if aluno != nil 
-      if aluno.dataUltimoTreino != Date.today
-        aluno.dataUltimoTreino =  Date.today
-        aluno.semanaAdaptacao = params[:semanaAdaptacao] 
-        aluno.last_treino = params[:last_treino]
-        if aluno.save
-            
-        end
-      end
-     
-    else
-     
-    end
-
-    redirect_to printTreino_path({:doPrint => 'true'}) 
+    redirect_to printTreino_path({:doPrint => 'true',:alunoId => params[:alunoId], :semanaAdaptacao => params[:semanaAdaptacao], :last_treino => params[:last_treino]}) 
   end
   
   #Metodos de controle de impressao do treino.
@@ -109,24 +94,35 @@ class TreinosController < ApplicationController
     @alunos_grid = initialize_grid(@alunos)   
   end
 
-  def print
-#    @aluno = Aluno.where("idAcademia = ? ", params[:idAcademia]).first()
-    @aluno = Aluno.find(2)
-    if @aluno != nil
-      treinos = Treino.where("aluno_id = ? and ? between criacao and validade", @aluno.id ,Date.today)
-      @treino = treinos.first
-      if treinos.exists?
-        @meuTreino = findTreinoPrint(@aluno, treinos)
-        setAdaptacaoAtual()
+ def print
+    #    @aluno = Aluno.where("idAcademia = ? ", params[:idAcademia]).first()
+      @aluno = Aluno.find(2)
+      if @aluno != nil
+        treinos = Treino.where("aluno_id = ? and ? between criacao and validade", @aluno.id ,Date.today)
+        @treino = treinos.first
+        if treinos.exists?
+          @meuTreino = findTreinoPrint(@aluno, treinos)
+          setAdaptacaoAtual()
+          
+          #Gravo a o treino após a impressão.
+          if params.include?("doPrint") and @aluno.dataUltimoTreino != Date.today
+            @aluno.dataUltimoTreino =  Date.today
+            @aluno.semanaAdaptacao = params[:semanaAdaptacao] 
+            @aluno.last_treino = params[:last_treino]
+            if @aluno.save
+              
+            end
+         end
         
+        
+        else
+          Rails.logger.info("NAO EXISTE TREINO******************************")
+        end
       else
-        Rails.logger.info("NAO EXISTE TREINO******************************")    
+        Rails.logger.info("NAO NAO********************************")
       end
-    else
-      Rails.logger.info("NAO NAO********************************")           
-    end
   end
-  
+
 
   def procurar(atividade)
     eof = @treino.atividades.include?(atividade)

@@ -89,5 +89,5 @@ function printDiv() {
 	 frmImprimir.document.body.innerHTML = printContents;
      frmImprimir.print();   
      frmImprimir.close();
-
+     self.location="/";
 }

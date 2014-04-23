@@ -43,44 +43,52 @@
 			<div class="navbar-inner">
 				<div class="container-fluid">
 					<a class="brand" href="#">ExeC</a>
+					<% if user_signed_in? %>
+					    Logado como: <%= current_user.email %>. Não é você?
+					    <%= link_to "Deslogar", destroy_user_session_path, :method => :delete %>
+					<% else %>
+					    <%= link_to "Logar", new_user_session_path %>
+					<% end %>					
 				</div>
 			</div>
 		</div>
 
 		<div class="container-fluid">
 			<div class="row-fluid">
-				<div class="span3">
-					<div class="well sidebar-nav">
-						<div id="accordion">
-							<h3>Cadastros</h3>
-							<div>
-								<li>
-									<%= link_to "Alunos", alunos_path  %>
-								</li>
-
-								<li>
-									<%= link_to "Atividades", atividades_path  %>
-								</li>
-								<li>
-									<%= link_to "Músculos", musculos_path  %>
-								</li>
+				<% if user_signed_in? %>
+					<div class="span3">
+						<div class="well sidebar-nav">
+							<div id="accordion">
+								<h3>Cadastros</h3>
+								<div>
+									<li>
+										<%= link_to "Alunos", alunos_path  %>
+									</li>
+	
+									<li>
+										<%= link_to "Atividades", atividades_path  %>
+									</li>
+									<li>
+										<%= link_to "Músculos", musculos_path  %>
+									</li>
+								</div>
+								<h3>Relatórios</h3>
+								<div>
+									Relatório
+								</div>
+								<h3>Sistema</h3>
+								<div>
+									<li>
+										<%= link_to "Lista de usuários",  users_path%>
+									</li>
+									<li>
+										<%= link_to "Trocar senha",  edit_user_registration_path%>
+									</li>
+								</div>							
 							</div>
-							<h3>Relatórios</h3>
-							<div>
-								Relatório
-							</div>
-							<h3>Sistema</h3>
-							<div>
-								<li>
-									<%= link_to "Lista de usuários",  users_path%>
-								</li>
-								<li>
-									<%= link_to "Trocar senha",  edit_user_registration_path%>
-								</li>
-							</div>							
-						</div>
-					</div><!--/.well -->
-				</div><!--/span-->
+						</div><!--/.well -->
+					</div><!--/span-->
+				<% end %>
 				<div class="span9">
 					<%= bootstrap_flash %>
 					<!--input type="text" id="datepicker" /-->
