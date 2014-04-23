@@ -40,11 +40,6 @@ class TreinosController < ApplicationController
   def create
     @treino = Treino.new(treino_params)
     @treino.aluno_id = params[:alunoId]
-    
-    Rails.logger.info("*MUSCULO*ORDEMS**********************")
-    Rails.logger.info( params[:treino][:musculo_ids].inspect)
-    Rails.logger.info("***************************************") 
-    
 
     respond_to do |format|
       if @treino.save
@@ -84,12 +79,20 @@ class TreinosController < ApplicationController
   #Faz gravaçao dos dados e volta para a tela para impressao
   #
   def confirmaTreino
-    redirect_to printTreino_path({:doPrint => 'true',:alunoId => params[:alunoId], :semanaAdaptacao => params[:semanaAdaptacao], :last_treino => params[:last_treino]}) 
+    
+    case params[:treinoAcao]
+      when "print"
+        redirect_to printTreino_path({:doPrint => 'true',:alunoId => params[:alunoId], :semanaAdaptacao => params[:semanaAdaptacao], :last_treino => params[:last_treino]})
+      when "mail"
+        AlunoTreinoMailer.treino_email().deliver        
+      else
+        #Registrar presenca
+    end
+     
   end
   
   #Metodos de controle de impressao do treino.
   def printIndex
-    Rails.logger.info("*EEEEEE PASSEI NO PRINT INDEX **********************")
     @alunos = Aluno.all
     @alunos_grid = initialize_grid(@alunos)   
   end
@@ -114,7 +117,6 @@ class TreinosController < ApplicationController
             end
          end
         
-        
         else
           Rails.logger.info("NAO EXISTE TREINO******************************")
         end
@@ -122,7 +124,6 @@ class TreinosController < ApplicationController
         Rails.logger.info("NAO NAO********************************")
       end
   end
-
 
   def procurar(atividade)
     eof = @treino.atividades.include?(atividade)
@@ -192,7 +193,6 @@ class TreinosController < ApplicationController
        @adaptcaoAtual = @treino.adaptacaos.last
     end
     @semanaTreino = nSemanaAtual
-    
     
   end
   

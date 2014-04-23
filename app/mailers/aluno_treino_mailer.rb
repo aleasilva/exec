@@ -1,5 +1,5 @@
 class AlunoTreinoMailer < ActionMailer::Base
-  default from: "from@example.com"
+   default from: "from@example.com"
   
     def treino_email(aluno)
       @aluno = aluno
