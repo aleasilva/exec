@@ -1,3 +1,5 @@
+require "date"
+
 class Aluno < ActiveRecord::Base
    #Relacionamento aluno dia das aulas.
    has_many :alunoaulas, dependent: :destroy
@@ -18,4 +20,26 @@ class Aluno < ActiveRecord::Base
    validates  :email        , :length => { :maximum => 100 } 
    #validates  :email        , :length => { :maximum => 100 }, :presence => false,:uniqueness => true 
    #validates_format_of :email, :with => /\A[a-zA-Z]+\z/, :message => "está com formato inválido"    
+   
+   
+  #Atualiza o status do treino do aluno
+  def atualizaStatusTreino(params)
+    self.dataUltimoTreino =  Date.today
+    self.semanaAdaptacao = params[:semanaAdaptacao] 
+    self.last_treino = params[:last_treino]
+    self.registraPresenca()    
+    
+    if self.save
+      return true        
+    else
+      return false
+    end
+    
+  end
+  
+  def registraPresenca()
+    self.presencas.create(data: Date.today)
+  end
+
+  
 end

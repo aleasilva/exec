@@ -79,15 +79,24 @@ class TreinosController < ApplicationController
   #Faz gravaçao dos dados e volta para a tela para impressao
   #
   def confirmaTreino
+    alunoId = params[:alunoId]
+    sAdapta = params[:semanaAdaptacao]
+    lTreino = params[:last_treino]
     
     case params[:treinoAcao]
       when "print"
-        redirect_to printTreino_path({:doPrint => 'true',:alunoId => params[:alunoId], :semanaAdaptacao => params[:semanaAdaptacao], :last_treino => params[:last_treino]})
+        redirect_to printTreino_path({:doPrint => 'true',:alunoId => alunoId, :semanaAdaptacao => sAdapta , :last_treino => lTreino})
       when "mail"
-        AlunoTreinoMailer.treino_email(params[:alunoId]).deliver   
-        redirect_to root_path     
+        AlunoTreinoMailer.treino_email(alunoId).deliver
+        redirect_to root_path   
       else
-        #Registrar presenca
+        aluno = Aluno.find(alunoId) 
+        if aluno != nil
+          aluno.registraPresenca()
+          redirect_to root_path
+        else
+          
+        end
     end
      
   end
@@ -109,20 +118,18 @@ class TreinosController < ApplicationController
           setAdaptacaoAtual()
           
           #Gravo a o treino após a impressão.
-          if params.include?("doPrint") and @aluno.dataUltimoTreino != Date.today
-            @aluno.dataUltimoTreino =  Date.today
-            @aluno.semanaAdaptacao = params[:semanaAdaptacao] 
-            @aluno.last_treino = params[:last_treino]
-            if @aluno.save
-              
+          if params.include?("doPrint") and 
+            if @aluno.dataUltimoTreino != Date.today
+              @aluno.atualizaStatusTreino(params)
             end
+            @aluno.registraPresenca()
          end
         
         else
           Rails.logger.info("NAO EXISTE TREINO******************************")
         end
       else
-        Rails.logger.info("NAO NAO********************************")
+        Rails.logger.info("NAO NAO EXITE O ALUNO*")
       end
   end
 
