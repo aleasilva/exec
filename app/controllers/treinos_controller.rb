@@ -84,7 +84,8 @@ class TreinosController < ApplicationController
       when "print"
         redirect_to printTreino_path({:doPrint => 'true',:alunoId => params[:alunoId], :semanaAdaptacao => params[:semanaAdaptacao], :last_treino => params[:last_treino]})
       when "mail"
-        AlunoTreinoMailer.treino_email(params[:alunoId]).deliver        
+        AlunoTreinoMailer.treino_email(params[:alunoId]).deliver   
+        redirect_to root_path     
       else
         #Registrar presenca
     end

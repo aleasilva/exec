@@ -5,7 +5,6 @@ class AlunoTreinoMailer < ActionMailer::Base
       @aluno = Aluno.find(alunoId)
       @url  = 'http://example.com/login'
       mail(to: @aluno.email, subject: 'Welcome Alexandre to My Awesome Site')
-      0/0
     end
     
 end
