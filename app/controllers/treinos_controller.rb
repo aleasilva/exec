@@ -107,17 +107,23 @@ class TreinosController < ApplicationController
     @alunos_grid = initialize_grid(@alunos)   
   end
 
- def print
-    #    @aluno = Aluno.where("idAcademia = ? ", params[:idAcademia]).first()
+  def print
+      #@aluno = Aluno.where("idAcademia = ? ", params[:idAcademia]).first()
       @aluno = Aluno.find(2)
       if @aluno != nil
         treinos = Treino.where("aluno_id = ? and ? between criacao and validade", @aluno.id ,Date.today)
         @treino = treinos.first
+        
         if treinos.exists?
-          @meuTreino = findTreinoPrint(@aluno, treinos)
+          #Loalizando o treino
+          retTreino = @treino.findTreinoPrint(@aluno, treinos)
+          @meuTreino = retTreino[0]
+          @treinoOrdem = retTreino[1]
+          
+          #Localizando a adaptacao
           setAdaptacaoAtual()
           
-          #Gravo a o treino após a impressão.
+          #Verifico a confirmacao da impressao. 
           if params.include?("doPrint") and 
             if @aluno.dataUltimoTreino != Date.today
               @aluno.atualizaStatusTreino(params)
@@ -133,58 +139,13 @@ class TreinosController < ApplicationController
       end
   end
 
-  def procurar(atividade)
-    eof = @treino.atividades.include?(atividade)
-  end
-  helper_method :procurar
-
-  private
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_treino
-    @treino = Treino.find(params[:id])
-    @aluno = Aluno.find(@treino.aluno_id)
-    
-    #Rails.logger.info("SET TREINO")
-    #Rails.logger.info( Treino.atividadetreinos.merge(Atividade.aerobico).inspect)
-  end
-
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def treino_params
-    #params.require(:aluno).permit(:idAcademia, :nome, :nascimento, :sexo, :observacao)
-    params.require(:treino).permit!
-  end
-  
-  #Localiza o proximo treino baseado no cadastro do aluno.
-  def findTreinoPrint(aluno, treinos)
-    
-    treinoOrdenado = treinos.first.ordemmusculotreinos.sort_by{|reg| reg.ordem }
-    @treinoOrdem = ""
-    
-    if treinoOrdenado.any? {|reg| (reg.ordem > aluno.last_treino)}
-      treino =  treinoOrdenado.find{|reg| (reg.ordem > aluno.last_treino)}
-    else
-      treino =  treinoOrdenado.first
-    end
-    
-    
-    #Recuperando a proxima ordem de treino
-    @treinoOrdem = treino.ordem
-
-    #Selecionando pela ordem proxima ordem. 
-    treinosSelect= treinoOrdenado.select!{|reg| reg.ordem == @treinoOrdem}
-    
-    return treinosSelect
-    
-  end
-
   #
   #Define qual será a adaptacao para o treino do usuário.
   #  
   def setAdaptacaoAtual()
     semAdaptacaoIni = 0
     @adaptcaoAtual = nil
-    nSemanaAtual = getSemanaAdaptacao()
+    nSemanaAtual = @aluno.getSemanaAdaptacao()
 
     # 
     @treino.adaptacaos.each do |tap|
@@ -203,26 +164,27 @@ class TreinosController < ApplicationController
     @semanaTreino = nSemanaAtual
     
   end
-  
-  def getSemanaAdaptacao()
-    nUltSemanaTreino = @aluno.dataUltimoTreino.cweek
-    nProSemanaTreino = (@aluno.dataUltimoTreino+7).cweek
-    nSemanaAtual = Date.today.cweek
-    #nSemanaAtual = Date.new(2014,4,23).cweek
-    nSemanaAdaptacao = @aluno.semanaAdaptacao
-    
-    #Mudou de semana?
-    if  nUltSemanaTreino != nSemanaAtual
-      
-        #A semana esta em sequencia?
-        if (nUltSemanaTreino+1) == nSemanaAtual
-          nSemanaAdaptacao = nSemanaAdaptacao + 1
-        else
-          #Reportar semana fora de sequencia.
-        end
-    end
-    
-    return nSemanaAdaptacao
-  end 
+
+
+  def procurar(atividade)
+    eof = @treino.atividades.include?(atividade)
+  end
+  helper_method :procurar
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_treino
+    @treino = Treino.find(params[:id])
+    @aluno = Aluno.find(@treino.aluno_id)
+    #Rails.logger.info("SET TREINO")
+    #Rails.logger.info( Treino.atividadetreinos.merge(Atividade.aerobico).inspect)
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def treino_params
+    #params.require(:aluno).permit(:idAcademia, :nome, :nascimento, :sexo, :observacao)
+    params.require(:treino).permit!
+  end
+
   
 end

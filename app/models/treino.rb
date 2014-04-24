@@ -19,5 +19,26 @@ class Treino < ActiveRecord::Base
                                 :reject_if => proc { |attributes| attributes['semana'].blank? }
   accepts_nested_attributes_for :atividadetreinos, :allow_destroy => true
   
+  ############################################################
+  #                                                          #
+  #Localiza o proximo treino baseado no cadastro do aluno.   #
+  #                                                          #
+  ############################################################
+  def findTreinoPrint(aluno, treinos)
+    
+    treinoOrdenado = treinos.first.ordemmusculotreinos.sort_by{|reg| reg.ordem }
+    
+    if treinoOrdenado.any? {|reg| (reg.ordem > aluno.last_treino)}
+      treino =  treinoOrdenado.find{|reg| (reg.ordem > aluno.last_treino)}
+    else
+      treino =  treinoOrdenado.first
+    end
+
+    #Selecionando pela ordem proxima ordem. 
+    treinosSelect = treinoOrdenado.select!{|reg| reg.ordem == treino.ordem}
+    
+    return [treinosSelect, treino.ordem]
+    
+  end
   
 end

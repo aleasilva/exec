@@ -41,5 +41,26 @@ class Aluno < ActiveRecord::Base
     self.presencas.create(data: Date.today)
   end
 
+
+  def getSemanaAdaptacao()
+    nUltSemanaTreino = self.dataUltimoTreino.cweek
+    nProSemanaTreino = (self.dataUltimoTreino+7).cweek
+    nSemanaAtual = Date.today.cweek
+    #nSemanaAtual = Date.new(2014,4,23).cweek
+    nSemanaAdaptacao = self.semanaAdaptacao
+    
+    #Mudou de semana?
+    if  nUltSemanaTreino != nSemanaAtual
+      
+        #A semana esta em sequencia?
+        if (nUltSemanaTreino+1) == nSemanaAtual
+          nSemanaAdaptacao = nSemanaAdaptacao + 1
+        else
+          #Reportar semana fora de sequencia.
+        end
+    end
+    
+    return nSemanaAdaptacao
+  end 
   
 end
