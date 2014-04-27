@@ -1,48 +1,70 @@
-<%= form_tag do |f|%>
+<%= form_tag do |f| %>
 	<%= content_tag :div, id: "printMe" do -%>		
-		
-		<%= label_tag @aluno.nome %>
-		Data validade:<%= label_tag @treino.validade %>
-		Semana de:<%= label_tag @treino.criacao.cweek %>
- 
-		Dias de treino: <br>
-		<%@aluno.diasemanas.each do |dt|%>
-			<%=dt.nomeabreviado%>
-		<%end%>
-		<ul>
-		<hr>
-		<li><b>Treino: <%=@treinoOrdemItem%></b> Muscular</li> 
-		<br>
-		<% @treinoOrdem.each do |t|%>
-			<%=t.musculo.nome%> 
+		<div class="well">
+			<table>
+				<tr>
+					<td><%= label_tag "Aluno(a):" %></td>
+					<td><%= label_tag @aluno.nome %></td>
+				</tr>
+				<tr>
+					<td><%= label_tag "Semana:" %></td>
+					<td><%= label_tag @treino.criacao.cweek %></td> 
+					<td><%= label_tag "Treino:" %></td>	
+					<td><%=@treinoOrdemItem%></td>
+				</tr>
+				<tr>
+					<td><%= label_tag "Inicio em:" %></td>
+					<td><%= label_tag @treino.criacao %></td>  					
+					<td><%= label_tag "Término em:" %></td>
+					<td><%= label_tag @treino.validade %></td>
+				</tr>
+				<tr>
+					<td><%= label_tag "Dia(s) de treino:" %></td>
+						<%diaTreino = ""%>
+						<%itemIndex = 0%>
+						<%@aluno.diasemanas.each do |dt|%>
+							<%itemIndex += 1%>
+							<%diaTreino +=  dt.nomeabreviado%>
+							<%if itemIndex < @aluno.diasemanas.size%>
+								<%diaTreino +=  ","%>
+							<%end%>
+						<%end%>					
+					<td><%= label_tag diaTreino %></td>
+					
+				</tr>
+			</table>			
+			<li>Muscular</li> 
 			<br>
-			<p>
-			<% t.musculo.atividades.each do |a|%>
-				<%=a.nome%>
+			<% @treinoOrdem.each do |t|%>
+				<%=t.musculo.nome%> 
+				<br>
+				<p>
+				<% t.musculo.atividades.each do |a|%>
+					<%=a.nome%>
+					<br>
+				<%end%>
+				</p>
+			<%end%> 
+			<li>Trabalho Aerobico</li>
+			<br>
+			
+			<%@treino.atividadetreinos.each do |at|%>
+				<%if at.atividade.tipo == "A" and at.ordem_treino.include? @treinoOrdemItem %>
+					<%=at.atividade.nome%>
+					Tempo:<%=at.tempo%>
+				<%end%>
 				<br>
 			<%end%>
-			</p>
-		<%end%> 
-		<li>Trabalho Aerobico</li>
-		<br>
-		
-		<%@treino.atividadetreinos.each do |at|%>
-			<%if at.atividade.tipo == "A" and at.ordem_treino.include? @treinoOrdemItem %>
-				<%=at.atividade.nome%>
-				Tempo:<%=at.tempo%>
+			<li>Adaptações</li>
+			<%if @adaptcaoAtual != nil %>
+				Semana: <%=@adaptcaoAtual.semana%>
+				Série: <%=@adaptcaoAtual.serie%>
 			<%end%>
-			<br>
-		<%end%>
-		<li>Adaptações</li>
-		<%if @adaptcaoAtual != nil %>
-			Semana: <%=@adaptcaoAtual.semana%>
-			Série: <%=@adaptcaoAtual.serie%>
-		<%end%>
-		<hr>
-		</ul>
-
-	<% end -%>
-	<br>
+			<hr>
+			</ul>
+	
+		<% end -%>
+	</div>
 	<%=link_to('Imprimir Treino', confirmaTreino_path(:treinoAcao => "print", :alunoId => @aluno.id, :semanaAdaptacao => @semanaTreino, :last_treino => @treinoOrdemItem),:class => 'btn btn-primary')%>	
 	<%=link_to('Receber por E-mail', confirmaTreino_path(:treinoAcao => "mail",:alunoId => @aluno.id),:class => 'btn btn-primary')%>	
 	<%=link_to('Registrar presença', confirmaTreino_path(:treinoAcao => "presenca",:alunoId => @aluno.id),:class => 'btn btn-primary')%>	
