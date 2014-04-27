@@ -63,4 +63,36 @@ class Aluno < ActiveRecord::Base
     return nSemanaAdaptacao
   end 
   
+  
+  #################################################################
+  #
+  #Define qual será a adaptacao para o treino do usuário.
+  #
+  #################################################################
+  def setAdaptacaoAtual(treino)
+    semAdaptacaoIni = 0
+    adaptcaoAtual = nil
+    nSemanaAtual = self.getSemanaAdaptacao()
+
+    # 
+    treino.adaptacaos.each do |tap|
+      semAdaptacaoFim = semAdaptacaoIni + tap.semana    
+      
+      if nSemanaAtual.between?(semAdaptacaoIni, semAdaptacaoFim)
+        adaptcaoAtual = tap
+        break
+      end
+      semAdaptacaoIni = semAdaptacaoFim
+    end     
+    
+    if adaptcaoAtual == nil
+       adaptcaoAtual = treino.adaptacaos.last
+    end
+    
+    return [adaptcaoAtual,nSemanaAtual]
+  end
+  
+  #private :getSemanaAdaptacao
+  
+  
 end

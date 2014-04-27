@@ -109,62 +109,42 @@ class TreinosController < ApplicationController
 
   def print
       #@aluno = Aluno.where("idAcademia = ? ", params[:idAcademia]).first()
+      
       @aluno = Aluno.find(2)
       if @aluno != nil
         treinos = Treino.where("aluno_id = ? and ? between criacao and validade", @aluno.id ,Date.today)
-        @treino = treinos.first
         
         if treinos.exists?
-          #Loalizando o treino
-          retTreino = @treino.findTreinoPrint(@aluno, treinos)
-          @meuTreino = retTreino[0]
-          @treinoOrdem = retTreino[1]
+          @treino = treinos.first
+          
+          #Localizando qual ordem de treino será executada "Treino A,B,C etc.."
+          retTreino = @treino.getTreinoExercicios(@aluno, treinos)
+          @treinoOrdem = retTreino[0] 
+          @treinoOrdemItem = retTreino[1]
           
           #Localizando a adaptacao
-          setAdaptacaoAtual()
+          retAdaptacao = @aluno.setAdaptacaoAtual(@treino)
+          @semanaTreino = retAdaptacao[1]
+          @adaptcaoAtual = retAdaptacao[0]
           
           #Verifico a confirmacao da impressao. 
           if params.include?("doPrint") and 
             if @aluno.dataUltimoTreino != Date.today
               @aluno.atualizaStatusTreino(params)
             end
+            
             @aluno.registraPresenca()
-         end
-        
+          end
+          
         else
           Rails.logger.info("NAO EXISTE TREINO******************************")
         end
+        
       else
         Rails.logger.info("NAO NAO EXITE O ALUNO*")
       end
-  end
-
-  #
-  #Define qual será a adaptacao para o treino do usuário.
-  #  
-  def setAdaptacaoAtual()
-    semAdaptacaoIni = 0
-    @adaptcaoAtual = nil
-    nSemanaAtual = @aluno.getSemanaAdaptacao()
-
-    # 
-    @treino.adaptacaos.each do |tap|
-      semAdaptacaoFim = semAdaptacaoIni + tap.semana    
       
-      if nSemanaAtual.between?(semAdaptacaoIni, semAdaptacaoFim)
-        @adaptcaoAtual = tap
-        break
-      end
-      semAdaptacaoIni = semAdaptacaoFim
-    end     
-    
-    if @adaptcaoAtual == nil
-       @adaptcaoAtual = @treino.adaptacaos.last
-    end
-    @semanaTreino = nSemanaAtual
-    
   end
-
 
   def procurar(atividade)
     eof = @treino.atividades.include?(atividade)

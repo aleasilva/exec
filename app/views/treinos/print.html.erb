@@ -1,5 +1,6 @@
 <%= form_tag do |f|%>
-	<%= content_tag :div, id: "printMe" do -%>
+	<%= content_tag :div, id: "printMe" do -%>		
+		
 		<%= label_tag @aluno.nome %>
 		Data validade:<%= label_tag @treino.validade %>
 		Semana de:<%= label_tag @treino.criacao.cweek %>
@@ -10,9 +11,9 @@
 		<%end%>
 		<ul>
 		<hr>
-		<li><b>Treino: <%=@meuTreino.first.ordem%></b> Muscular</li> 
+		<li><b>Treino: <%=@treinoOrdemItem%></b> Muscular</li> 
 		<br>
-		<% @meuTreino.each do |t|%>
+		<% @treinoOrdem.each do |t|%>
 			<%=t.musculo.nome%> 
 			<br>
 			<p>
@@ -26,7 +27,7 @@
 		<br>
 		
 		<%@treino.atividadetreinos.each do |at|%>
-			<%if at.atividade.tipo == "A" and at.ordem_treino.include? @treinoOrdem %>
+			<%if at.atividade.tipo == "A" and at.ordem_treino.include? @treinoOrdemItem %>
 				<%=at.atividade.nome%>
 				Tempo:<%=at.tempo%>
 			<%end%>
@@ -42,7 +43,7 @@
 
 	<% end -%>
 	<br>
-	<%=link_to('Imprimir Treino', confirmaTreino_path(:treinoAcao => "print", :alunoId => @aluno.id, :semanaAdaptacao => @semanaTreino, :last_treino => @treinoOrdem),:class => 'btn btn-primary')%>	
+	<%=link_to('Imprimir Treino', confirmaTreino_path(:treinoAcao => "print", :alunoId => @aluno.id, :semanaAdaptacao => @semanaTreino, :last_treino => @treinoOrdemItem),:class => 'btn btn-primary')%>	
 	<%=link_to('Receber por E-mail', confirmaTreino_path(:treinoAcao => "mail",:alunoId => @aluno.id),:class => 'btn btn-primary')%>	
 	<%=link_to('Registrar presença', confirmaTreino_path(:treinoAcao => "presenca",:alunoId => @aluno.id),:class => 'btn btn-primary')%>	
 

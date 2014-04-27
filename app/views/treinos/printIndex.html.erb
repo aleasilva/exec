@@ -1,10 +1,20 @@
 <%- model_class = Aluno -%>
-<%= form_tag(printTreino_path, :method => "get") do %>
+<%= form_tag(printTreino_path, :method => "get", :class=>"form-inline") do %>
 	
 	<% if not user_signed_in? %>
+		<div class="well well-large">
+			<div class="input-append">
+				<label class="control-label">Código do aluno:</label>
+				<input class="span5" id="only_number" name="idAcademia" type="text" onkeypress="onlyTextNumber" alt="idAcademia"/>
+				<!--%= submit_tag 'Localize meu treino',:class => 'btn' %--> 
+				<!--input class="btn" type="submit" value="Localize meu treino" name="commit"></input-->
+				<button class="btn" type="submit">Localize meu treino</button>
+				
+			</div>
+		</div>
+		
 		<div class="control-group">
 			<div class="controls">
-				Cod.Aluno: <input id="only_number" name="idAcademia" type="text" onkeypress="onlyTextNumber" alt="idAcademia"/><%= submit_tag 'Localize meu treino',:class => 'btn btn-warning' %>
 			</div>
 		</div>
 	<%else%>
