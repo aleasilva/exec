@@ -1,10 +1,11 @@
 <%= form_tag do |f| %>
 	<%= content_tag :div, id: "printMe" do -%>		
 		<div class="well">
-			<table>
+			<!--Cabecalho do treino-->
+			<table class="table table-bordered">
 				<tr>
 					<td><%= label_tag "Aluno(a):" %></td>
-					<td><%= label_tag @aluno.nome %></td>
+					<td colspan="3"><%= label_tag @aluno.nome %></td>
 				</tr>
 				<tr>
 					<td><%= label_tag "Semana:" %></td>
@@ -27,42 +28,85 @@
 							<%diaTreino +=  dt.nomeabreviado%>
 							<%if itemIndex < @aluno.diasemanas.size%>
 								<%diaTreino +=  ","%>
+							<%else%>
+								<%diaTreino +=  "."%>
 							<%end%>
 						<%end%>					
-					<td><%= label_tag diaTreino %></td>
-					
+					<td colspan="3"><%= label_tag diaTreino %></td>
 				</tr>
+			</table>
+			<!--Treino Musculas-->
+			<table class="table table-condensed">
+				<thead>
+					<tr>
+						<td>
+							<h5>Atividades Neuromuscular</h5>			
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<% @treinoOrdem.each do |t|%>
+						<tr>
+							<td>
+								<%=t.musculo.nome%>
+							<td>
+						<tr> 
+						<% t.musculo.atividades.each do |a|%>
+							<tr>
+								<td>
+									<%=a.nome%>
+								<td>
+							<tr>									
+						<%end%>
+					<%end%>					
+				</tbody>
 			</table>			
-			<li>Muscular</li> 
-			<br>
-			<% @treinoOrdem.each do |t|%>
-				<%=t.musculo.nome%> 
-				<br>
-				<p>
-				<% t.musculo.atividades.each do |a|%>
-					<%=a.nome%>
-					<br>
-				<%end%>
-				</p>
-			<%end%> 
-			<li>Trabalho Aerobico</li>
-			<br>
-			
-			<%@treino.atividadetreinos.each do |at|%>
-				<%if at.atividade.tipo == "A" and at.ordem_treino.include? @treinoOrdemItem %>
-					<%=at.atividade.nome%>
-					Tempo:<%=at.tempo%>
-				<%end%>
-				<br>
-			<%end%>
-			<li>Adaptações</li>
-			<%if @adaptcaoAtual != nil %>
-				Semana: <%=@adaptcaoAtual.semana%>
-				Série: <%=@adaptcaoAtual.serie%>
-			<%end%>
-			<hr>
-			</ul>
-	
+			<!--Adaptações-->
+			<table class="table table-condensed">
+				<thead>
+					<tr>
+						<td>
+							<h5>Adaptação</h5>			
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="1">Série</td>
+						<td colspan="1">Repetição</td>
+					</tr>
+					<tr>
+						<%if @adaptcaoAtual != nil %>
+							<td><%= label_tag @adaptcaoAtual.serie %></td>
+							<td><%= label_tag @adaptcaoAtual.repeticao %></td>
+						<%end%>
+					</tr>
+				</tbody>
+			</table>
+			<!--Treino Aerobico-->
+			<table class="table table-condensed">
+				<thead>
+					<tr>
+						<td>
+							<h5>Trabalho Aeróbico</h5>			
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Atividade</td>
+						<td>Tempo</td>
+					</tr>
+					<tr>
+						<%@treino.atividadetreinos.each do |at|%>
+							<%if at.atividade.tipo == "A" and at.ordem_treino.include? @treinoOrdemItem %>
+								<td><%= label_tag at.atividade.nome %></td>
+								<td><%= label_tag at.tempo%> </td>
+							<%end%>
+						<%end%>							
+					</tr>
+				</tbody>
+			</table>						
 		<% end -%>
 	</div>
 	<%=link_to('Imprimir Treino', confirmaTreino_path(:treinoAcao => "print", :alunoId => @aluno.id, :semanaAdaptacao => @semanaTreino, :last_treino => @treinoOrdemItem),:class => 'btn btn-primary')%>	

@@ -34,7 +34,6 @@ module ApplicationHelper
 
   def print_this_page(name)
     link_to name, '#', onclick: "printDiv()", :class => "btn btn-info";
-    
   end
     
 end

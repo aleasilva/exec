@@ -83,11 +83,20 @@ function isNumberKey(evt){
 
 function printDiv() {
 	 var divName = "printMe";	 
-     var printContents = document.getElementById(divName).innerHTML;
+     var printContents = "";
      var frmImprimir = window.open('','Imprimir');
+	 var varLink = '<link rel="stylesheet" type="text/css" href=http://' + window.location.host;
+     var cabec = "<html><head><title>Impressão</title>" ;
      
-	 frmImprimir.document.body.innerHTML = printContents;
-     frmImprimir.print();   
-     frmImprimir.close();
-     self.location="/";
+     cabec += varLink + '/assets/bootstrap_and_overrides.css media="all">'; 
+     cabec += varLink +'/assets/scaffolds.css media="all" >';
+     cabec += "</head><body>";
+
+	 frmImprimir.document.head.innerHTML = cabec;
+	 frmImprimir.document.body.innerHTML = document.getElementById(divName).innerHTML;
+	 
+	
+     //frmImprimir.print();   
+     //frmImprimir.close();
+     //self.location="/";
 }
