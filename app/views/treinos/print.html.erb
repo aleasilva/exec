@@ -36,7 +36,7 @@
 				</tr>
 			</table>
 			<!--Treino Musculas-->
-			<table class="table table-condensed">
+			<table class="table table-bordered table-condensed">
 				<thead>
 					<tr>
 						<td>
@@ -46,23 +46,23 @@
 				</thead>
 				<tbody>
 					<% @treinoOrdem.each do |t|%>
-						<tr>
+						<tr class="info">
 							<td>
-								<%=t.musculo.nome%>
-							<td>
+								<%=t.musculo.nome%>M
+							</td>
 						<tr> 
 						<% t.musculo.atividades.each do |a|%>
 							<tr>
 								<td>
 									<%=a.nome%>
-								<td>
+								</td>
 							<tr>									
 						<%end%>
 					<%end%>					
 				</tbody>
 			</table>			
 			<!--Adaptações-->
-			<table class="table table-condensed">
+			<table class="table table-bordered table-condensed">
 				<thead>
 					<tr>
 						<td>
@@ -71,7 +71,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
+					<tr class="info">
 						<td colspan="1">Série</td>
 						<td colspan="1">Repetição</td>
 					</tr>
@@ -84,7 +84,7 @@
 				</tbody>
 			</table>
 			<!--Treino Aerobico-->
-			<table class="table table-condensed">
+			<table class="table table-bordered ">
 				<thead>
 					<tr>
 						<td>
@@ -93,7 +93,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
+					<tr class="info">
 						<td>Atividade</td>
 						<td>Tempo</td>
 					</tr>

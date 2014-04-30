@@ -86,17 +86,23 @@ function printDiv() {
      var printContents = "";
      var frmImprimir = window.open('','Imprimir');
 	 var varLink = '<link rel="stylesheet" type="text/css" href=http://' + window.location.host;
+
+	 //Montar cabeçalho
      var cabec = "<html><head><title>Impressão</title>" ;
-     
      cabec += varLink + '/assets/bootstrap_and_overrides.css media="all">'; 
      cabec += varLink +'/assets/scaffolds.css media="all" >';
      cabec += "</head><body>";
 
-	 frmImprimir.document.head.innerHTML = cabec;
-	 frmImprimir.document.body.innerHTML = document.getElementById(divName).innerHTML;
+	 //Montar corpo
+	 var body = '<table style="height:100px;width:100px;">';
+	 body += '<tr><td>';
+	 body += document.getElementById(divName).innerHTML;
+	 body += '</tr></td>';
 	 
+	 frmImprimir.document.head.innerHTML = cabec;
+	 frmImprimir.document.body.innerHTML = body;
 	
-     //frmImprimir.print();   
-     //frmImprimir.close();
-     //self.location="/";
+     frmImprimir.print();   
+     frmImprimir.close();
+     self.location="/";
 }
