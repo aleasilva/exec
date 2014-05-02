@@ -1,121 +1,123 @@
 <%= form_tag do |f| %>
 	<%= content_tag :div, id: "printMe" do -%>		
-		<div class="well">
-			<!--Cabecalho do treino-->
-			<table class="table table-bordered">
-				<tr>
-					<td><%= label_tag "Aluno(a):" %></td>
-					<td colspan="3"><%= label_tag @aluno.nome %></td>
-				</tr>
-				<tr>
-					<td><%= label_tag "Semana:" %></td>
-					<td><%= label_tag @treino.criacao.cweek %></td> 
-					<td><%= label_tag "Treino:" %></td>	
-					<td><%=@treinoOrdemItem%></td>
-				</tr>
-				<tr>
-					<td><%= label_tag "Inicio em:" %></td>
-					<td><%= label_tag @treino.criacao %></td>  					
-					<td><%= label_tag "Término em:" %></td>
-					<td><%= label_tag @treino.validade %></td>
-				</tr>
-				<tr>
-					<td><%= label_tag "Dia(s) de treino:" %></td>
-						<%diaTreino = ""%>
-						<%itemIndex = 0%>
-						<%@aluno.diasemanas.each do |dt|%>
-							<%itemIndex += 1%>
-							<%diaTreino +=  dt.nomeabreviado%>
-							<%if itemIndex < @aluno.diasemanas.size%>
-								<%diaTreino +=  ","%>
-							<%else%>
-								<%diaTreino +=  "."%>
+		<%if @treino == nil%>
+		
+		<%else%>
+			<div class="well">
+				<!--Cabecalho do treino-->
+				<table class="table table-bordered">
+					<tr>
+						<td><%= label_tag "Aluno(a):" %></td>
+						<td colspan="3"><%= label_tag @aluno.nome %></td>
+					</tr>
+					<tr>
+						<td><%= label_tag "Semana:" %></td>
+						<td><%= label_tag @treino.criacao.cweek %></td> 
+						<td><%= label_tag "Treino:" %></td>	
+						<td><%=@treinoOrdemItem%></td>
+					</tr>
+					<tr>
+						<td><%= label_tag "Inicio em:" %></td>
+						<td><%= label_tag @treino.criacao %></td>  					
+						<td><%= label_tag "Término em:" %></td>
+						<td><%= label_tag @treino.validade %></td>
+					</tr>
+					<tr>
+						<td><%= label_tag "Dia(s) de treino:" %></td>
+							<%diaTreino = ""%>
+							<%itemIndex = 0%>
+							<%@aluno.diasemanas.each do |dt|%>
+								<%itemIndex += 1%>
+								<%diaTreino +=  dt.nomeabreviado%>
+								<%if itemIndex < @aluno.diasemanas.size%>
+									<%diaTreino +=  ","%>
+								<%else%>
+									<%diaTreino +=  "."%>
+								<%end%>
+							<%end%>					
+						<td colspan="3"><%= label_tag diaTreino %></td>
+					</tr>
+				</table>
+				<!--Treino Musculas-->
+				<table class="table table-bordered table-condensed">
+					<thead>
+						<tr>
+							<td>
+								<h5>Atividades Neuromuscular</h5>			
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						<% @treinoOrdem.each do |t|%>
+							<tr class="info">
+								<td>
+									<%=t.musculo.nome%>M
+								</td>
+							<tr> 
+							<% t.musculo.atividades.each do |a|%>
+								<tr>
+									<td>
+										<%=a.nome%>
+									</td>
+								<tr>									
 							<%end%>
 						<%end%>					
-					<td colspan="3"><%= label_tag diaTreino %></td>
-				</tr>
-			</table>
-			<!--Treino Musculas-->
-			<table class="table table-bordered table-condensed">
-				<thead>
-					<tr>
-						<td>
-							<h5>Atividades Neuromuscular</h5>			
-						</td>
-					</tr>
-				</thead>
-				<tbody>
-					<% @treinoOrdem.each do |t|%>
-						<tr class="info">
+					</tbody>
+				</table>			
+				<!--Adaptações-->
+				<table class="table table-bordered table-condensed">
+					<thead>
+						<tr>
 							<td>
-								<%=t.musculo.nome%>M
+								<h5>Adaptação</h5>			
 							</td>
-						<tr> 
-						<% t.musculo.atividades.each do |a|%>
-							<tr>
-								<td>
-									<%=a.nome%>
-								</td>
-							<tr>									
-						<%end%>
-					<%end%>					
-				</tbody>
-			</table>			
-			<!--Adaptações-->
-			<table class="table table-bordered table-condensed">
-				<thead>
-					<tr>
-						<td>
-							<h5>Adaptação</h5>			
-						</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="info">
-						<td colspan="1">Série</td>
-						<td colspan="1">Repetição</td>
-					</tr>
-					<tr>
-						<%if @adaptcaoAtual != nil %>
-							<td><%= label_tag @adaptcaoAtual.serie %></td>
-							<td><%= label_tag @adaptcaoAtual.repeticao %></td>
-						<%end%>
-					</tr>
-				</tbody>
-			</table>
-			<!--Treino Aerobico-->
-			<table class="table table-bordered ">
-				<thead>
-					<tr>
-						<td>
-							<h5>Trabalho Aeróbico</h5>			
-						</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="info">
-						<td>Atividade</td>
-						<td>Tempo</td>
-					</tr>
-					<tr>
-						<%@treino.atividadetreinos.each do |at|%>
-							<%if at.atividade.tipo == "A" and at.ordem_treino.include? @treinoOrdemItem %>
-								<td><%= label_tag at.atividade.nome %></td>
-								<td><%= label_tag at.tempo%> </td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="info">
+							<td colspan="1">Série</td>
+							<td colspan="1">Repetição</td>
+						</tr>
+						<tr>
+							<%if @adaptcaoAtual != nil %>
+								<td><%= label_tag @adaptcaoAtual.serie %></td>
+								<td><%= label_tag @adaptcaoAtual.repeticao %></td>
 							<%end%>
-						<%end%>							
-					</tr>
-				</tbody>
-			</table>						
-		<% end -%>
-	</div>
-	<%=link_to('Imprimir Treino', confirmaTreino_path(:treinoAcao => "print", :alunoId => @aluno.id, :semanaAdaptacao => @semanaTreino, :last_treino => @treinoOrdemItem),:class => 'btn btn-primary')%>	
-	<%=link_to('Receber por E-mail', confirmaTreino_path(:treinoAcao => "mail",:alunoId => @aluno.id),:class => 'btn btn-primary')%>	
-	<%=link_to('Registrar presença', confirmaTreino_path(:treinoAcao => "presenca",:alunoId => @aluno.id),:class => 'btn btn-primary')%>	
-
+						</tr>
+					</tbody>
+				</table>
+				<!--Treino Aerobico-->
+				<table class="table table-bordered ">
+					<thead>
+						<tr>
+							<td>
+								<h5>Trabalho Aeróbico</h5>			
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="info">
+							<td>Atividade</td>
+							<td>Tempo</td>
+						</tr>
+						<tr>
+							<%@treino.atividadetreinos.each do |at|%>
+								<%if at.atividade.tipo == "A" and at.ordem_treino.include? @treinoOrdemItem %>
+									<td><%= label_tag at.atividade.nome %></td>
+									<td><%= label_tag at.tempo%> </td>
+								<%end%>
+							<%end%>							
+						</tr>
+					</tbody>
+				</table>						
+			</div>
+			<%=link_to('Imprimir Treino', confirmaTreino_path(:treinoAcao => "print", :alunoId => @aluno.id, :semanaAdaptacao => @semanaTreino, :last_treino => @treinoOrdemItem),:class => 'btn btn-primary')%>	
+			<%=link_to('Receber por E-mail', confirmaTreino_path(:treinoAcao => "mail",:alunoId => @aluno.id),:class => 'btn btn-primary')%>	
+			<%=link_to('Registrar presença', confirmaTreino_path(:treinoAcao => "presenca",:alunoId => @aluno.id),:class => 'btn btn-primary')%>	
 	
-	<% if params.include?("doPrint") %>
-		<%= javascript_tag "printDiv()" %>
-	<% end -%>
-
+			<% if params.include?("doPrint") %>
+				<%= javascript_tag "printDiv()" %>
+			<% end -%>
+		<%end%>
+	<%end%>
 <% end %>

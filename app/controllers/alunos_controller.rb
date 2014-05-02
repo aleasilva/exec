@@ -29,9 +29,6 @@ class AlunosController < ApplicationController
   # POST /alunos
   # POST /alunos.json
   def create
-    Rails.logger.info("*TREINOS***********************")
-    Rails.logger.info( params[:aluno][:treino_1].inspect)
-    Rails.logger.info("***************************************")   
     
     @aluno = Aluno.new(aluno_params)
 

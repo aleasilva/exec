@@ -109,9 +109,8 @@ class TreinosController < ApplicationController
 
   def print
       #@aluno = Aluno.where("idAcademia = ? ", params[:idAcademia]).first()
-      
-      @aluno = Aluno.find(2)
-      if @aluno != nil
+      begin
+        @aluno = Aluno.find(2)
         treinos = Treino.where("aluno_id = ? and ? between criacao and validade", @aluno.id ,Date.today)
         
         if treinos.exists?
@@ -137,12 +136,17 @@ class TreinosController < ApplicationController
           end
           
         else
-          Rails.logger.info("NAO EXISTE TREINO******************************")
+          flash[:alert] = 'Náo foi localizado um treino para você, por favor, procure seu professor.'
+          redirect_to root_path          
         end
+
+      rescue ActiveRecord::RecordNotFound 
+         flash[:alert] = 'Não foi encontrado um aluno(a) com o código informado, por favor, tente novamente.'
+         redirect_to root_path          
+         
+      rescue Exception => e  
         
-      else
-        Rails.logger.info("NAO NAO EXITE O ALUNO*")
-      end
+      end  
       
   end
 
