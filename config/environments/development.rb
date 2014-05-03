@@ -39,7 +39,7 @@ Exec::Application.configure do
     domain: "localhost",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "",
+    user_name: "ale.asilva@gmail.com",
     password: ""
   }
 

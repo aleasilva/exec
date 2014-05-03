@@ -87,12 +87,15 @@ class TreinosController < ApplicationController
       when "print"
         redirect_to printTreino_path({:doPrint => 'true',:alunoId => alunoId, :semanaAdaptacao => sAdapta , :last_treino => lTreino})
       when "mail"
-        AlunoTreinoMailer.treino_email(alunoId).deliver
+        print(alunoId)
+        AlunoTreinoMailer.treino_email(alunoId,params).deliver
+        flash[:info] = 'Seu treino de hoje foi enviado ao seu e-mail. Obrigado!'
         redirect_to root_path   
       else
         aluno = Aluno.find(alunoId) 
         if aluno != nil
           aluno.registraPresenca()
+          flash[:info] = 'Sua presença foi registrada. Obrigado!'
           redirect_to root_path
         else
           
@@ -106,11 +109,13 @@ class TreinosController < ApplicationController
     @alunos = Aluno.all
     @alunos_grid = initialize_grid(@alunos)   
   end
-
-  def print
-      #@aluno = Aluno.where("idAcademia = ? ", params[:idAcademia]).first()
+  
+  def print(pIdAluno = "")
+     
       begin
-        @aluno = Aluno.find(2)
+        @aluno = Aluno.find(3)
+        #@aluno = Aluno.where("idAcademia = ? ", params[:idAcademia]).first()
+        
         treinos = Treino.where("aluno_id = ? and ? between criacao and validade", @aluno.id ,Date.today)
         
         if treinos.exists?
@@ -140,11 +145,11 @@ class TreinosController < ApplicationController
           redirect_to root_path          
         end
 
-      rescue ActiveRecord::RecordNotFound 
+      rescue ActiveRecord::RecordNotFound => e
          flash[:alert] = 'Não foi encontrado um aluno(a) com o código informado, por favor, tente novamente.'
-         redirect_to root_path          
+         redirect_to root_path  
          
-      rescue Exception => e  
+      #rescue Exception => e  
         
       end  
       
