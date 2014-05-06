@@ -131,6 +131,11 @@ class TreinosController < ApplicationController
           @semanaTreino = retAdaptacao[1]
           @adaptcaoAtual = retAdaptacao[0]
           
+          if @semanaTreino == -1
+            flash[:alert] = 'A sua semana de treino está fora de sequencia, por favor, procure o seu professor.'
+            redirect_to root_path 
+          end
+          
           #Verifico a confirmacao da impressao. 
           if params.include?("doPrint") and 
             if @aluno.dataUltimoTreino != Date.today

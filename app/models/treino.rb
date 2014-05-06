@@ -32,9 +32,16 @@ class Treino < ActiveRecord::Base
   def getTreinoExercicios(aluno, treino)
     
     treinoOrdenado = treino.first.ordemmusculotreinos.sort_by{|reg| reg.ordem }
+    ultimoTreino = ""
     
-    if treinoOrdenado.any? {|reg| (reg.ordem > aluno.last_treino)}
-      treino =  treinoOrdenado.find{|reg| (reg.ordem > aluno.last_treino)}
+    if (aluno.last_treino != nil)
+      ultimoTreino = aluno.last_treino
+      
+    end
+    
+    
+    if treinoOrdenado.any? {|reg| (reg.ordem > ultimoTreino)}
+      treino =  treinoOrdenado.find{|reg| (reg.ordem > ultimoTreino)}
     else
       treino =  treinoOrdenado.first
     end

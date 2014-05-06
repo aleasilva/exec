@@ -43,8 +43,13 @@ class Aluno < ActiveRecord::Base
 
 
   def getSemanaAdaptacao()
-    nUltSemanaTreino = self.dataUltimoTreino.cweek
-    nProSemanaTreino = (self.dataUltimoTreino+7).cweek
+    dataUltimoTreino = Date.today
+    if (self.dataUltimoTreino != nil)
+      dataUltimoTreino = self.dataUltimoTreino
+    end
+    
+    nUltSemanaTreino = dataUltimoTreino.cweek
+    nProSemanaTreino = (dataUltimoTreino+7).cweek
     nSemanaAtual = Date.today.cweek
     #nSemanaAtual = Date.new(2014,4,23).cweek
     nSemanaAdaptacao = self.semanaAdaptacao
@@ -56,6 +61,7 @@ class Aluno < ActiveRecord::Base
         if (nUltSemanaTreino+1) == nSemanaAtual
           nSemanaAdaptacao = nSemanaAdaptacao + 1
         else
+          nSemanaAdaptacao = -1
           #Reportar semana fora de sequencia.
         end
     end
