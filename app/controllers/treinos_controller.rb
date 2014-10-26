@@ -113,7 +113,7 @@ class TreinosController < ApplicationController
   def print(pIdAluno = "")
      
       begin
-        @aluno = Aluno.find(3)
+        @aluno = Aluno.find(params[:idAcademia])
         #@aluno = Aluno.where("idAcademia = ? ", params[:idAcademia]).first()
         
         treinos = Treino.where("aluno_id = ? and ? between criacao and validade", @aluno.id ,Date.today)

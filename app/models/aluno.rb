@@ -44,6 +44,7 @@ class Aluno < ActiveRecord::Base
 
   def getSemanaAdaptacao()
     dataUltimoTreino = Date.today
+    
     if (self.dataUltimoTreino != nil)
       dataUltimoTreino = self.dataUltimoTreino
     end
@@ -64,6 +65,8 @@ class Aluno < ActiveRecord::Base
           nSemanaAdaptacao = -1
           #Reportar semana fora de sequencia.
         end
+    else
+      nSemanaAdaptacao = 0
     end
     
     return nSemanaAdaptacao
