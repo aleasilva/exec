@@ -1,7 +1,5 @@
 <%- model_class = Treino -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
-</div>
+
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:criacao) %>:</strong></dt>
@@ -14,9 +12,9 @@
   <dd><%= @treino.aluno_id %></dd>
 </dl>
 
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),treinos_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),edit_treino_path(@treino), :class => 'btn' %>
+<div class="panel-footer">
+  <%= link_to t('.back', :default => t("helpers.links.back")),treinos_path, :class => 'btn btn-primary'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),edit_treino_path(@treino), :class => 'btn btn-primary' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               treino_path(@treino),
               :method => 'delete',

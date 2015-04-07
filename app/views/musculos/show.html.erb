@@ -1,7 +1,4 @@
 <%- model_class = Musculo -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
-</div>
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:nome) %>:</strong></dt>
@@ -9,14 +6,16 @@
   <dt><strong><%= model_class.human_attribute_name(:observacao) %>:</strong></dt>
   <dd><%= @musculo.observacao %></dd>
   <dt><strong><%= model_class.human_attribute_name(:selecionado) %>:</strong></dt>
-  <dd><%= @musculo.selecionado %></dd>
+  <dd><%= @musculo.selecionado ? 'Sim': 'Não' %></dd>
+
 </dl>
 
-<div class="form-actions">
+<div class="panel-footer">
+
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              musculos_path, :class => 'btn'  %>
+              musculos_path, :class => 'btn btn-primary'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_musculo_path(@musculo), :class => 'btn' %>
+              edit_musculo_path(@musculo), :class => 'btn btn-primary' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               musculo_path(@musculo),
               :method => 'delete',

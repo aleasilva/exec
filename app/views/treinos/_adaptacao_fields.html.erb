@@ -1,12 +1,14 @@
 <tr class="fields">
-	<td><%= f.text_field :semana    ,:class=>"input-mini", :onkeypress=> limitSizeNumber(0,2), :style=>"direction:rtl;"%></td>
-	<td><%= f.text_field :serie     ,:class=>"input-mini", :onkeypress=> limitSizeNumber(0,2), :style=>"direction:rtl;"%></td>
-	<td><%= f.text_field :repeticao ,:class=>"input-mini", :onkeypress=> limitSizeNumber(0,2), :style=>"direction:rtl;"%></td>
-	<td><%= f.text_field :carga     ,:class=>"input-mini", :onkeypress=> limitSizeNumber(0,2), :style=>"direction:rtl;"%></td>
-	<td><%= f.text_field :intervalo ,:class=>"input-mini", :onkeypress=> limitSizeNumber(0,2), :style=>"direction:rtl;"%></td>
-	<td><%= f.text_field :observacao,:class=>"input"%></td>
-	<!--td class="form-inline"-->
-		<!--%= f.collection_check_boxes :diasemana_ids, @aluno.diasemanas, :id, :nomeabreviado%-->
-	<!--/td-->
-	<td><%= link_to_remove_fields "Excluir", f %></td>
+	<div class="form-group">
+		<td><%= f.text_field :semana    ,:class=>"form-control", :onkeypress=> limitSizeNumber(0,2), :style=>"direction:rtl;"%></td>
+		<td><%= f.text_field :serie     ,:class=>"form-control", :onkeypress=> limitSizeNumber(0,2), :style=>"direction:rtl;"%></td>
+		<td><%= f.text_field :repeticao ,:class=>"form-control", :onkeypress=> limitSizeNumber(0,2), :style=>"direction:rtl;"%></td>
+		<td><%= f.text_field :carga     ,:class=>"form-control", :onkeypress=> limitSizeNumber(0,2), :style=>"direction:rtl;"%></td>
+		<td><%= f.text_field :intervalo ,:class=>"form-control", :onkeypress=> limitSizeNumber(0,2), :style=>"direction:rtl;"%></td>
+		<td><%= f.text_field :observacao,:class=>"form-control"%></td>
+		<!--td class="form-inline"-->
+			<!--%= f.collection_check_boxes :diasemana_ids, @aluno.diasemanas, :id, :nomeabreviado%-->
+		<!--/td-->
+		<td><%= link_to_remove_fields "Excluir", f %></td>
+	</div>
 </tr>

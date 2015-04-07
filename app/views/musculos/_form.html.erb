@@ -1,30 +1,33 @@
 <%= form_for @musculo, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :nome, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :nome, :class => 'text_field' %>
+
+  <div class="form-group">
+    <%= f.label :nome, :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-9">
+      <%= f.text_field :nome, :class => 'form-control' %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label "Observação", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :observacao, :class => 'text_area' , :rows => "3" %>
+
+  <div class="form-group">
+    <%= f.label "Observação", :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-9">
+      <%= f.text_area :observacao, :class => 'form-control' , :rows => "3" %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :selecionado, :class => 'control-label' %>
-    <div class="controls">
+
+  <div class="form-group">
+    <%= f.label :selecionado, :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-9">
     	<div class="form-inline">
 		    <%= f.radio_button :selecionado, true %>
-			<%= f.label :selecionado, "Sim", :value => "true"  %>
+			  <%= f.label :selecionado, "Sim", :value => "true"  %>
 		    <%= f.radio_button :selecionado, false %>
 		    <%= f.label :selecionado, "Não", :value => "false" %>
 	    </div>
     </div>
   </div>
-  <div class="control-group">
-	  <%= f.label "Atividades ", :class => 'control-label' %>
-	  <div class="controls">
+  <div class="form-group">
+	  <%= f.label "Atividades ", :class => 'col-sm-2 control-label' %>
+	  <div class="col-sm-9">
 		  <div class="form-inline">
 			  <% Atividade.where(:tipo =>'M').each do |atividade| %>
 				<%= check_box_tag "musculo[atividade_ids][]", atividade.id, @musculo.atividades.include?(atividade) %>
@@ -37,5 +40,5 @@
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),musculos_path, :class => 'btn btn-warning' %>
-  </div> 
+  </div>
 <% end %>
