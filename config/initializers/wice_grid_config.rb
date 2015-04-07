@@ -1,7 +1,7 @@
 if defined?(Wice::Defaults)
 
   # Default number of rows to show per page.
-  Wice::Defaults::PER_PAGE = 10
+  Wice::Defaults::PER_PAGE = 20
 
   # Default order direction
   Wice::Defaults::ORDER_DIRECTION = 'asc'
@@ -66,6 +66,28 @@ if defined?(Wice::Defaults)
   Wice::Defaults::NEGATION_IN_STRING_FILTERS = false
 
 
+  # Each WiceGrid filter column is defined in two classes, one used for rendering the filter, the other
+  # for generating query conditions. All these columns are in lib/wice/columns/*.rb .
+  # File lib/wice/columns/column_processor_index.rb lists all predefined processors.
+  # In most cases a processor is chosen automatically based on the DB column type,
+  # for example, integer columns
+  # can have two of processors, the default one with one input field, and a processor called "range",
+  # with 2 input fields. In this case it is possible to specify a processor in the column definition:
+  #
+  #     g.column filter_type: :range
+  #
+  # It is also possible to define you own processors:
+  #
+  #     Wice::Defaults::ADDITIONAL_COLUMN_PROCESSORS = {
+  #       some_key_identifying_new_column_type:  ['AViewColumnProcessorClass', 'ConditionsGeneratorClass'],
+  #       another_key_identifying_new_column_type:  ['AnotherViewColumnProcessorClass', 'AnotherConditionsGeneratorClass']
+  #     }
+  #
+  # Column processor keys/names should not coincide with the existing keys/names (see lib/wice/columns/column_processor_index.rb)
+  # the value is a 2-element array with 2 strings, the first should be a name of view processor class inherited from
+  # Wice::Columns::ViewColumn, the second should be a name of conditions generator class inherited from
+  # Wice::Columns::ConditionsGeneratorColumn .
+
 
   # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
   #                              Showing All Queries                          #
@@ -90,20 +112,21 @@ if defined?(Wice::Defaults)
 
   # The default style of the date and datetime helper
   # * <tt>:calendar</tt> - JS calendar
+  # * <tt>:html5</tt> - HTML5 date input field
   # * <tt>:standard</tt> - standard Rails date and datetime helpers
   Wice::Defaults::HELPER_STYLE = :calendar
 
   # Format of the datetime displayed.
   # If you change the format, make sure to check if +DATETIME_PARSER+ can still parse this string.
-  Wice::Defaults::DATETIME_FORMAT = "%d-%m-%Y %H:%M"
+  Wice::Defaults::DATETIME_FORMAT = "%Y-%m-%d %H:%M"
 
   # Format of the date displayed.
   # If you change the format, make sure to check if +DATE_PARSER+ can still parse this string.
-  Wice::Defaults::DATE_FORMAT     =  "%d-%m-%Y"
+  Wice::Defaults::DATE_FORMAT     =  "%Y-%m-%d"
 
   # Format of the date displayed in jQuery's Datepicker
   # If you change the format, make sure to check if +DATE_PARSER+ can still parse this string.
-  Wice::Defaults::DATE_FORMAT_JQUERY     =  "dd-mm-yy"
+  Wice::Defaults::DATE_FORMAT_JQUERY     =  "yy-mm-dd"
 
 
   # With Calendar helpers enabled the parameter sent is the string displayed. This lambda will be given a date string in the
@@ -119,6 +142,11 @@ if defined?(Wice::Defaults)
       Time.parse(datetime_string)
     end
   }
+
+  # The range of years to display in jQuery Datepicker.
+  # It can always be changed dynamically with the following javascript:
+  #  $( ".hasDatepicker" ).datepicker( "option", "yearRange", "2000:2042" );
+  Wice::Defaults::DATEPICKER_YEAR_RANGE = (from = Date.current.year - 10).to_s + ':' + (from + 15).to_s
 
 
   # With Calendar helpers enabled the parameter sent is the string displayed. This lambda will be given a date string in the
@@ -139,4 +167,6 @@ if defined?(Wice::Defaults)
   # popup calendar will be shown relative to the popup trigger element or to the mouse pointer
   Wice::Defaults::POPUP_PLACEMENT_STRATEGY = :trigger # :pointer
 
+  # The name of the page method (should correspond to Kaminari.config.page_method_name)
+  Wice::Defaults::PAGE_METHOD_NAME = :page
 end

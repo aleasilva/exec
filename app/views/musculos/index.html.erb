@@ -1,17 +1,14 @@
 <%- model_class = Musculo -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
 
-<%= grid(@musculos_grid, 
+<%= grid(@musculos_grid,
 	allow_showing_all_records:  false,
 	show_filters: :when_filtered) do |g|
-	
-	g.last_row do |number_of_columns|
-		content_tag(:tr,
-		content_tag(:td, link_to('Novo musculo', new_musculo_path,:class => 'btn btn-primary'  ),colspan: 5), class: 'last-row')
-	end
-	
+
+	#g.last_row do |number_of_columns|
+	#	content_tag(:tr,
+	#	content_tag(:td, link_to('Novo musculo', new_musculo_path,:class => 'btn btn-primary'  ),colspan: 5), class: 'last-row')
+	#end
+
 	g.column name:  'Nome', attribute: 'nome'  do |musculo|
 		musculo.nome
 	end
@@ -19,14 +16,15 @@
 	g.column   do |musculo|
 		link_to( image_tag("btnOperation/form_show.png", :alt => "Visualizar") , musculo)
 	end
-	
+
 	g.column   do |musculo|
 		link_to(image_tag("btnOperation/form_edit.png", :alt => "Alterar."), edit_musculo_path(musculo))
 	end
-	
+
 	g.column   do |musculo|
-		link_to image_tag("btnOperation/form_delete.png", :alt => "Excluir."), 
-						  musculo, method: :delete, 
+		link_to image_tag("btnOperation/form_delete.png", :alt => "Excluir."),
+						  musculo, method: :delete,
 						  data: { :confirm => t('.confirm', :default => t("helpers.links.confirmdelete", :default => 'Are you sure?')) }
 	end
 end %>
+<%=link_to('Novo musculo', new_musculo_path,:class => 'btn btn-primary'  )%>

@@ -1,85 +1,86 @@
 <%= form_for @aluno, :html => { :class => 'form-horizontal' } do |f| %>
 
-<div class="control-group">
-	<p class="control-label">Id. Acadêmia</p>
-	<div class="controls">
-		<%= f.text_field :idAcademia, :id=>'only_number', :alt=>"idAcademia", :onkeypress=> onlyTextNumber %>
+	<div class="form-group">
+		<label for="idAcademia" class="col-sm-2 control-label">Id. Acadêmia</label>
+		<div class="col-sm-4">
+			<%= f.text_field :idAcademia, :id=>"idAcademia", :alt=>"idAcademia", :onkeypress=> onlyTextNumber, :class=>"form-control"%>
+		</div>
+		<%= f.label "Treino", :class=>"col-sm-1 control-label" %>
+		<div class="col-sm-5">
+			<%= f.text_field :last_treino, :class => "form-control" %>
+		</div>
 	</div>
-</div>
-<div class="control-group">
-	<%= f.label :nome, :class => 'control-label' %>
-	<div class="controls">
-		<%= f.text_field :nome, :class => 'text_field' %>
-	</div>
-</div>
-<div class="control-group">
-	<%= f.label :nascimento, :class => 'control-label' %>
-	<div class="controls" >
-		<%= f.text_field :nascimento,:value => l(@aluno.nascimento == nil ? Date.today : @aluno.nascimento) ,:id => 'datepicker'%>
-	</div>
-</div>
-<div class="control-group">
-	<%= f.label :sexo, :class => 'control-label' %>
-	<div class="controls">
-		<%= f.select(:sexo, [['Feminino', 'f'], ['Masculino', 'm']]) %>
-	</div>
-</div>
-<div class="control-group">
-	<%= f.label :email, :class => 'control-label' %>
-	<div class="controls" >
-		<span class="add-on"><i class="icon-envelope"></i></span>		
-		<%= f.text_field :email, :class => 'text_field'%>
-	</div>
-</div>
-<div class="control-group">
-	<%= f.label :medicamentos, :class => 'control-label' %>
-	<div class="controls">
-		<%= f.text_area :medicamento, :class => 'text_area', :rows => "3" %>
-	</div>
-</div>
-<div class="control-group">
-	<%= f.label "Doenças", :class => 'control-label' %>
-	<div class="controls">
-		<%= f.text_area :doenca, :class => 'text_area', :rows => "3" %>
-	</div>
-</div>
-<div class="control-group">
-	<%= f.label "Alergias", :class => 'control-label' %>
-	<div class="controls">
-		<%= f.text_area :alergia, :class => 'text_area', :rows => "3" %>
-	</div>
-</div>
-<div class="control-group">
-	<%= f.label :dores, :class => 'control-label' %>
-	<div class="controls">
-		<%= f.text_area :dor, :class => 'text_area', :rows => "3" %>
-	</div>
-</div>
-<div class="control-group">
-	<%= f.label "Observação", :class => 'control-label' %>
-	<div class="controls">
-		<%= f.text_area :observacao, :class => 'text_area', :rows => "3" %>
-	</div>
-</div>
-<div class="control-group">
-	<%= f.label "Último treino", :class => 'control-label' %>
-	<div class="controls">
-		<%= f.text_field :last_treino, :class => 'text_area', :rows => "3" %>
-	</div>
-</div>
 
-<div class="control-group">
-	<%= f.label "Dia(s) aula(s)", :class => 'control-label' %>
-	<div class="controls">
-		<% Diasemana.all.each do |iDia| %>
-		<%= check_box_tag 'aluno[diasemana_ids][]', iDia.id, @aluno.diasemanas.include?(iDia)  %>
-		<%= iDia.nome %>
-		<% end %>
+	<div class="form-group">
+		<%= f.label :nome,:for=>"txtName", :class=>"col-sm-2 control-label"%>
+		<div class="col-sm-10">
+			<%= f.text_field :nome, :id=>"txtName2", :class=>"form-control" %>
+		</div>
 	</div>
-</div>
 
-<div class="form-actions">
-	<%= f.submit nil, :class => 'btn btn-primary' %>
-	<%= link_to t('.cancel', :default => t("helpers.links.cancel")), alunos_path, :class => 'btn btn-warning' %>
-</div>
+	<div class="form-group">
+		<%= f.label :email, :class=>"col-sm-2 control-label" %>
+		<div class="col-sm-10">
+			<%= f.text_field :email, :class => 'form-control'%>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :nascimento, :for=>"datepicker" , :class=>"col-sm-2 control-label" %>
+		<div class="col-sm-4">
+			<%= f.text_field :nascimento, :value => l(@aluno.nascimento == nil ? Date.today : @aluno.nascimento) ,:id =>"datepicker"%>
+		</div>
+		<%= f.label :sexo,:for=>"rdbSexo", :class=>"col-sm-2 control-label" %>
+		<div class="col-sm-4">
+			<%= f.select(:sexo, [['Feminino', 'f'], ['Masculino', 'm']],:class=>"form-control") %>
+		</div>
+	</div>
+
+
+	<div class="form-group">
+			<%= f.label :medicamentos, :class=>"col-sm-2 control-label" %>
+			<div class="col-sm-4">
+				<%= f.text_area :medicamento, :class => 'text_area', :rows => "3" %>
+			</div>
+			<%= f.label "Doenças", :class=>"col-sm-2 control-label" %>
+
+			<div class="col-sm-4">
+				<%= f.text_area :doenca, :class => 'text_area', :rows => "3" %>
+			</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label "Alergias", :class=>"col-sm-2 control-label"%>
+		<div class="col-sm-4">
+			<%= f.text_area :alergia, :class => 'text_area', :rows => "3" %>
+		</div>
+
+		<%= f.label :dores, :class=>"col-sm-2 control-label" %>
+		<div class="col-sm-4">
+			<%= f.text_area :dor, :class => 'text_area', :rows => "3" %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label "Observação" , :class=>"col-sm-2 control-label" %>
+		<div class="col-sm-10">
+			<%= f.text_area :observacao, :rows => "3" %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label "Dia(s) aula(s)", :class=>"col-sm-2 control-label" %>
+			<% Diasemana.all.each do |iDia| %>
+				<div class="checkbox-inline">
+					<%= check_box_tag('aluno[diasemana_ids][]', iDia.id, @aluno.diasemanas.include?(iDia)) %>
+					<%= iDia.nome  %>
+				</div>
+			<% end %>
+	</div>
+
+	<div class="panel-footer">
+			<%= f.submit nil, :class => 'btn btn-primary' %>
+			<%= link_to t('.cancel', :default => t("helpers.links.cancel")), alunos_path, :class => 'btn btn-warning' %>
+	</div>
+
 <% end %>

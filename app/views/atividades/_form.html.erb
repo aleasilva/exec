@@ -1,53 +1,59 @@
 <%= form_for @atividade, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :nome, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :nome, :class => 'text_field' %>
+
+
+  <div class="form-group">
+    <%= f.label :nome, :class=>"col-sm-2 control-label" %>
+    <div class="col-sm-9">
+      <%= f.text_field :nome, :class => 'form-control' %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label "Instrução", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :instrucao, :class => 'text_field' %>
+
+  <div class="form-group">
+    <%= f.label "Instrução", :class=>"col-sm-2 control-label" %>
+    <div class="col-sm-4">
+      <%= f.text_field :instrucao, :class => 'form-control' %>
+    </div>
+    <%= f.label "Indicação", :class=>"col-sm-2 control-label" %>
+    <div class="col-sm-3">
+      <%= f.text_field :indicacao, :class => 'form-control' %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label "Indicação", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :indicacao, :class => 'text_field' %>
+
+  <div class="form-group">
+    <%= f.label "Restrição", :class=>"col-sm-2 control-label" %>
+    <div class="col-sm-4">
+      <%= f.text_field :restricao, :class => 'form-control' %>
+    </div>
+    <%= f.label "Observação", :class=>"col-sm-2 control-label" %>
+    <div class="col-sm-3">
+      <%= f.text_field :observacao, :class => 'form-control' %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label "Restrição", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :restricao, :class => 'text_field' %>
+
+
+  <div class="form-group">
+    <%= f.label :tipo, :class=>"col-sm-2 control-label" %>
+    <div class="col-sm-4">
+      <%= f.select(:tipo, [['Aeróbico', 'A'], ['Muscular', 'M']],:class=>"form-control") %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label "Observação", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :observacao, :class => 'text_field' %>
+  <div class="form-group">
+    <%= f.label :selecionado, :class=>"col-sm-2 control-label" %>
+
+    <div class="col-sm-5">
+      <label class="radio-inline">
+		      <%= f.radio_button :ativo, true %>Sim
+      </label>
+      <label class="radio-inline">
+		    <%= f.radio_button :ativo, false %>Não
+      </label>
     </div>
+
   </div>
-  <div class="control-group">
-    <%= f.label :tipo, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select(:tipo, [['Aeróbico', 'A'], ['Muscular', 'M']]) %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :selecionado, :class => 'control-label' %>
-    <div class="controls">
-    	<div class="form-inline">
-		    <%= f.radio_button :ativo, true %>
-			<%= f.label :ativo, "Sim", :value => "true"  %>
-		    <%= f.radio_button :ativo, false %>
-		    <%= f.label :ativo, "Não", :value => "false" %>
-	    </div>
-    </div>
-  </div>  
-  <div class="form-actions">
+
+  <div class="panel-footer">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")), atividades_path, :class => 'btn btn-warning' %>
   </div>
+
 <% end %>
