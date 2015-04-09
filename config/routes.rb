@@ -1,14 +1,16 @@
 Exec::Application.routes.draw do
 
+  get 'layouts/teste'
+
   resources :groups
   resources :rules
   resources :atividades
-  
-  resources :treinos 
+
+  resources :treinos
     get 'printIndex', to: 'treinos#printIndex'
     get 'printTreino', to: 'treinos#print'
     get 'confirmaTreino', to: 'treinos#confirmaTreino'
-  
+
   resources :alunos do
     resources :treinos
     resources :diasemanas
@@ -20,21 +22,20 @@ Exec::Application.routes.draw do
 
   #root :to => "home#index"
   root :to => "treinos#printIndex"
- 
- 
+
   #necessario para direcionar as ações padroes do devise.
   devise_for :users,:controllers => {:registrations => "registrations" }
-  
-  #Alterando as propriedades para registro de 1 usuario pelo adm.  
+
+  #Alterando as propriedades para registro de 1 usuario pelo adm.
   devise_scope :user do
     get   'users'     , to: 'admusers#index', as: 'users'
     post  'users_save', to: 'admusers#create'
     get   'users/new' , to: 'admusers#new'
     patch 'user/:id'  , to: 'admusers#update', as: 'user'
     get   'user/:id'  , to: 'admusers#change'
-  end  
-  
-  #resources :admusers  
+  end
+
+  #resources :admusers
   #get "home/index"
 
   # The priority is based upon order of creation:

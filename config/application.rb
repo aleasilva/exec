@@ -6,8 +6,6 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
-
-
 module Exec
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -20,7 +18,8 @@ module Exec
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    config.i18n.default_locale = "pt-BR"
+    config.i18n.default_locale = :"pt-BR"
+    I18n.enforce_available_locales = false
     config.assets.initialize_on_precompile = false
   end
 end

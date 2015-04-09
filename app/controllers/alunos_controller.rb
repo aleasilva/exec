@@ -1,6 +1,6 @@
 class AlunosController < ApplicationController
   #load_and_authorize_resource
-  
+
   before_filter :authenticate_user!, :except => [:index]
   before_action :set_aluno, only: [:show, :edit, :update, :destroy]
 
@@ -20,6 +20,7 @@ class AlunosController < ApplicationController
   # GET /alunos/new
   def new
     @aluno = Aluno.new
+    @aluno.nascimento ==  Date.today
   end
 
   # GET /alunos/1/edit
@@ -29,7 +30,7 @@ class AlunosController < ApplicationController
   # POST /alunos
   # POST /alunos.json
   def create
-    
+
     @aluno = Aluno.new(aluno_params)
 
     respond_to do |format|
@@ -42,7 +43,7 @@ class AlunosController < ApplicationController
       end
     end
   end
-  
+
 
   # PATCH/PUT /alunos/1
   # PATCH/PUT /alunos/1.json
@@ -55,12 +56,12 @@ class AlunosController < ApplicationController
         format.html { render action: 'edit' }
         format.json { render json: @aluno.errors, status: :unprocessable_entity }
 
-        #Tratamento das mensagens de erro na atualizacao!        
+        #Tratamento das mensagens de erro na atualizacao!
         msgErro = ""
         @aluno.errors.messages.each do |message|
-          msgErro += "Campo: " + message[0].to_s + " " +  message[1].to_s + "!<br>" 
+          msgErro += "Campo: " + message[0].to_s + " " +  message[1].to_s + "!<br>"
         end
-        
+
         if msgErro != ""
           flash[:alert] = msgErro.tr_s('["','').tr_s('"]','')
         end

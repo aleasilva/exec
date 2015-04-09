@@ -2,11 +2,11 @@
 <div class="form-group">
 	<%= f.label "Criação", :class => 'col-sm-2 control-label' %>
 	<div class="col-sm-4">
-		<%= f.text_field :criacao, :class => 'form-control',:id => 'datepicker-01' %>
+		<%= f.text_field :criacao, :value=> l(@treino.criacao), :class => 'form-control',:id => 'datepicker-01' %>
 	</div>
 	<%= f.label "Validade", :class => 'col-sm-2 control-label' %>
 	<div class="col-sm-4">
-		<%= f.text_field :validade, :class => 'form-control',:id => 'datepicker-02' %>
+		<%= f.text_field :validade,:value => l(@treino.validade) ,:class => 'form-control',:id => 'datepicker-02' %>
 	</div>
 </div>
 

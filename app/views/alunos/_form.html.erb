@@ -28,7 +28,7 @@
 	<div class="form-group">
 		<%= f.label :nascimento, :for=>"datepicker" , :class=>"col-sm-2 control-label" %>
 		<div class="col-sm-4">
-			<%= f.text_field :nascimento, :value => l(@aluno.nascimento == nil ? Date.today : @aluno.nascimento) ,:id =>"datepicker"%>
+			<%= f.text_field :nascimento ,:value => l(@aluno.nascimento) ,:id =>"datepicker-01", :class=>"datepicker"%>
 		</div>
 		<%= f.label :sexo,:for=>"rdbSexo", :class=>"col-sm-2 control-label" %>
 		<div class="col-sm-4">
@@ -82,5 +82,4 @@
 			<%= f.submit nil, :class => 'btn btn-primary' %>
 			<%= link_to t('.cancel', :default => t("helpers.links.cancel")), alunos_path, :class => 'btn btn-warning' %>
 	</div>
-
 <% end %>
