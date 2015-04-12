@@ -27,13 +27,13 @@ class MusculosController < ApplicationController
   def create
     Rails.logger.info("*CAMISAS* CAMISAS***********************")
     Rails.logger.info( params[:musculo][:atividade_ids].inspect)
-    Rails.logger.info("***************************************")    
-    
+    Rails.logger.info("***************************************")
+
     @musculo = Musculo.new(musculo_params)
 
     respond_to do |format|
       if @musculo.save
-        format.html { redirect_to @musculo, notice: 'Musculo was successfully created.' }
+        format.html { redirect_to @musculo, notice: 'Registro criado.' }
         format.json { render action: 'show', status: :created, location: @musculo }
       else
         format.html { render action: 'new' }
@@ -47,7 +47,7 @@ class MusculosController < ApplicationController
   def update
     respond_to do |format|
       if @musculo.update(musculo_params)
-        format.html { redirect_to @musculo, notice: 'Musculo was successfully updated.' }
+        format.html { redirect_to @musculo, notice: 'Registro criado.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -74,9 +74,9 @@ class MusculosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def musculo_params
-      #params.require(:musculo).permit(:nome, :observacao,:selecionado , atividades_attributes: [:id,:atividades_ids])      
-      #params.require(:musculo).permit(:nome, :observacao,:selecionado )      
-      #params.require(:musculo).permit(:name, :description , colors_attributes: [:id,:colors_ids])      
+      #params.require(:musculo).permit(:nome, :observacao,:selecionado , atividades_attributes: [:id,:atividades_ids])
+      #params.require(:musculo).permit(:nome, :observacao,:selecionado )
+      #params.require(:musculo).permit(:name, :description , colors_attributes: [:id,:colors_ids])
       params.require(:musculo).permit!
     end
 end

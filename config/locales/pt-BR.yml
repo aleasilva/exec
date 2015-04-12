@@ -9,7 +9,7 @@ pt-BR:
     - Sex
     - Sáb
     abbr_month_names:
-    - 
+    -
     - Jan
     - Fev
     - Mar
@@ -35,7 +35,7 @@ pt-BR:
       long: ! '%d de %B de %Y'
       short: ! '%d de %B'
     month_names:
-    - 
+    -
     - Janeiro
     - Fevereiro
     - Março
@@ -211,10 +211,11 @@ pt-BR:
       article: Artigo
     attributes:
       user:
+        name: Nome
         email: E-mail
         password: Senha
-        password_confirmation: Confirmar Senha
-        current_password: Senha Atual
+        password_confirmation: Repita a senha
+        current_password: Senha atual
         remember_me: Lembre-se de mim
       article:
         title: Título
@@ -225,4 +226,4 @@ pt-BR:
       all: "Sem autorização para %{action} %{subject}."
       user: "Sem permissão para alterar outras contas de usuários."
     update:
-      project: "Sem permissão para alterar este projeto."        
+      project: "Sem permissão para alterar este projeto."
