@@ -41,6 +41,7 @@ pt-BR:
     sessions:
       signed_in: 'Login efetuado com sucesso.'
       signed_out: 'Logout efetuado com sucesso.'
+      usuario_logado: 'Logar'
     unlocks:
       send_instructions: Dentro de minutos, você receberá um email com instruções de desbloqueio da sua conta.
       send_paranoid_instructions: Se sua conta existir em nosso banco de dados, você receberá em breve um email com instruções para desbloquear ela.

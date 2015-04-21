@@ -98,15 +98,15 @@ function isNumberKey(evt){
 
 function printDiv() {
 	 var divName = "printMe";
-     var printContents = "";
-     var frmImprimir = window.open('','Imprimir');
+   var printContents = "";
+   var frmImprimir = window.open('','Imprimir');
 	 var varLink = '<link rel="stylesheet" type="text/css" href=http://' + window.location.host;
 
 	 //Montar cabeçalho
-     var cabec = "<html><head><title>Impressão</title>" ;
-     cabec += varLink + '/assets/bootstrap_and_overrides.css media="all">';
-     cabec += varLink +'/assets/scaffolds.css media="all" >';
-     cabec += "</head><body>";
+   var cabec = "<html><head><title>Impressão</title>" ;
+   cabec += varLink + '/assets/bootstrap_and_overrides.css media="all">';
+   cabec += varLink +'/assets/scaffolds.css media="all" >';
+   cabec += "</head><body>";
 
 	 //Montar corpo
 	 var body = '<table style="height:100px;width:100px;">';
@@ -117,7 +117,7 @@ function printDiv() {
 	 frmImprimir.document.head.innerHTML = cabec;
 	 frmImprimir.document.body.innerHTML = body;
 
-     frmImprimir.print();
-     frmImprimir.close();
-     self.location="/";
+   frmImprimir.print();
+   frmImprimir.close();
+   self.location="/";
 }

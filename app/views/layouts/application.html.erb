@@ -38,7 +38,7 @@
 		<!--%= javascript_include_tag :defaults, "application", :cache => true %-->
 		<!--%= javascript_include_tag "application", "data-turbolinks-track" => true %-->
 		<%= javascript_include_tag "application" %>
-		
+
 
 	</head
 
@@ -58,52 +58,63 @@
 					</nav>
 				</div>
 			</div>
+			<!--Message-->
+			<div class="row" name = "messageArea">
+				<div class="col-md-12">
+					<%= bootstrap_flash %>
+				</div>
+			</div>
 			<!--Area de trabalho-->
 			<div class="row" name = "workArea"></div>
 				<!--Menu-->
-				<div class="col-md-3">
-						<div class="span3">
-							<div class="well sidebar-nav">
-								<div id="accordion">
-									<h3>Cadastros</h3>
-									<div>
-										<li>
-											<%= link_to "Alunos", alunos_path  %>
-										</li>
+				<% if user_signed_in? %>
+					<div class="col-md-3">
+							<div class="span3">
+								<div class="well sidebar-nav">
+									<div id="accordion">
+										<h3>Cadastros</h3>
+										<div>
+											<li>
+												<%= link_to "Alunos", alunos_path  %>
+											</li>
 
-										<li>
-											<%= link_to "Atividades", atividades_path  %>
-										</li>
-										<li>
-											<%= link_to "Músculos", musculos_path  %>
-										</li>
+											<li>
+												<%= link_to "Atividades", atividades_path  %>
+											</li>
+											<li>
+												<%= link_to "Músculos", musculos_path  %>
+											</li>
+										</div>
+										<h3>Relatórios</h3>
+										<div>
+											Relatório
+										</div>
+										<h3>Sistema</h3>
+										<div>
+											<li>
+												<%= link_to "Lista de usuários",  users_path%>
+											</li>
+											<li>
+												<%= link_to "Trocar senha",  edit_user_registration_path%>
+											</li>
+										</div>
 									</div>
-									<h3>Relatórios</h3>
-									<div>
-										Relatório
-									</div>
-									<h3>Sistema</h3>
-									<div>
-										<li>
-											<%= link_to "Lista de usuários",  users_path%>
-										</li>
-										<li>
-											<%= link_to "Trocar senha",  edit_user_registration_path%>
-										</li>
-									</div>
-								</div>
-							</div><!--/.well -->
-						</div><!--/span-->
-				</div>
+								</div><!--/.well -->
+							</div><!--/span-->
+					</div>
+				<% end %>
 
 				<!--Campos-->
-				<div class="col-md-9">
+				<%if user_signed_in? %>
+					<div class="col-md-9">
+				<%else%>
+					<div class="col-md-12">
+				<% end %>
 					<div class="panel panel-primary">
 
 						<div class="panel-heading">
 					    <h3 class="panel-title"> <%=params[:controller].humanize %> </h3>
 						</div>
-
 
 					  <div class="panel-body">
 								<%= yield %>
@@ -118,7 +129,7 @@
 					  <div class="container-fluid">
 					    <div class="navbar-header">
 					      <a class="navbar-brand" href="#">
-					        <img alt="Brand" src="...">
+									<img alt="Brand" src="...">
 					      </a>
 					    </div>
 					  </div>

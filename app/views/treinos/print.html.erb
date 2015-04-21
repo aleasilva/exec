@@ -1,8 +1,19 @@
 <%= form_tag do |f| %>
 	<%= render "/aluno_treino_mailer/treinoBody"%>
-	<%=link_to('Imprimir Treino', confirmaTreino_path(:treinoAcao => "print", :alunoId => @aluno.id, :semanaAdaptacao => @semanaTreino, :last_treino => @treinoOrdemItem),:class => 'btn btn-primary')%>	
-	<%=link_to('Receber por E-mail', confirmaTreino_path(:treinoAcao => "mail",:alunoId => @aluno.id),:class => 'btn btn-primary')%>	
-	<%=link_to('Registrar presença', confirmaTreino_path(:treinoAcao => "presenca",:alunoId => @aluno.id),:class => 'btn btn-primary')%>	
+
+	<%=link_to('Imprimir Treino', confirmaTreino_path(:treinoAcao => "print",
+																									  :alunoId => @aluno.id,
+																									  :semanaAdaptacao => @semanaTreino,
+																									  :last_treino => @treinoOrdemItem),
+																									  :class => 'btn btn-primary')%>
+
+	<%=link_to('Receber por E-mail', confirmaTreino_path(	:treinoAcao => "mail",
+																  											:alunoId => @aluno.id),
+																  											:class => 'btn btn-primary')%>
+
+	<%=link_to('Registrar presença', confirmaTreino_path(:treinoAcao => "presenca",
+																 											 :alunoId => @aluno.id),
+																 											 :class => 'btn btn-primary')%>
 
 	<% if params.include?("doPrint") %>
 		<%= javascript_tag "printDiv()" %>

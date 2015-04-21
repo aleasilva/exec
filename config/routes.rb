@@ -1,7 +1,4 @@
 Exec::Application.routes.draw do
-
-  get 'layouts/teste'
-
   resources :groups
   resources :rules
   resources :atividades

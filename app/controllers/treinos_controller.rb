@@ -86,7 +86,10 @@ class TreinosController < ApplicationController
 
     case params[:treinoAcao]
       when "print"
-        redirect_to printTreino_path({:doPrint => 'true',:alunoId => alunoId, :semanaAdaptacao => sAdapta , :last_treino => lTreino})
+        redirect_to printTreino_path({ :doPrint => 'true',
+                                       :alunoId => alunoId,
+                                       :semanaAdaptacao => sAdapta,
+                                       :last_treino => lTreino})
       when "mail"
         print(alunoId)
         AlunoTreinoMailer.treino_email(alunoId,params).deliver
@@ -94,6 +97,7 @@ class TreinosController < ApplicationController
         redirect_to root_path
       else
         aluno = Aluno.find(alunoId)
+
         if aluno != nil
           aluno.registraPresenca()
           flash[:info] = 'Sua presença foi registrada. Obrigado!'
@@ -114,7 +118,12 @@ class TreinosController < ApplicationController
   def print(pIdAluno = "")
 
       begin
-        @aluno = Aluno.find(params[:idAcademia])
+        if params[:idAcademia] == nil
+          @aluno = Aluno.find(params[:alunoId])
+        else
+          @aluno = Aluno.find(params[:idAcademia])
+        end
+
         #@aluno = Aluno.where("idAcademia = ? ", params[:idAcademia]).first()
 
         treinos = Treino.where("aluno_id = ? and ? between criacao and validade", @aluno.id ,Date.today)
@@ -152,7 +161,7 @@ class TreinosController < ApplicationController
         end
 
       rescue ActiveRecord::RecordNotFound => e
-         flash[:alert] = 'Não foi encontrado um aluno(a) com o código informado, por favor, tente novamente.'
+         flash[:alert] = 'Não foi encontrado um aluno(a) com o código informado, por favor, tente novamente. <br/>'.concat(e.to_s).html_safe
          redirect_to root_path
 
       #rescue Exception => e
@@ -166,8 +175,8 @@ class TreinosController < ApplicationController
   end
   helper_method :procurar
 
-  private
   # Use callbacks to share common setup or constraints between actions.
+  private
   def set_treino
     @treino = Treino.find(params[:id])
     @aluno = Aluno.find(@treino.aluno_id)
@@ -180,6 +189,5 @@ class TreinosController < ApplicationController
     #params.require(:aluno).permit(:idAcademia, :nome, :nascimento, :sexo, :observacao)
     params.require(:treino).permit!
   end
-
 
 end
