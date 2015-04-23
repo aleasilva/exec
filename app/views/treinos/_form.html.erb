@@ -35,7 +35,7 @@
 				<tbody>
 					<%= f.fields_for :ordemmusculotreinos, @treino.ordemmusculotreinos do |o| %>
 						<%= o.fields_for :musculo do |m| %>
-							<%= render "musculoordem_fields", :f => m , :o => o %>
+							<%= render "neuro_tab", :f => m , :o => o %>
 						<% end %>
 					<% end %>
 				</tbody>

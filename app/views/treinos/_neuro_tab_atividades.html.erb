@@ -1,0 +1,6 @@
+<label class="btn btn-primary">
+  <%= check_box_tag 'treino[atividade_ids][]',f.object.id,
+                    seekAtividade(f.object),
+                    :autocomplete => "off"%>
+  <%=f.object.nome %>
+</label>
