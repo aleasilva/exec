@@ -47,7 +47,7 @@
 			<% @qtdAtividade = @treinoAtividadesAerobico.size%>
 
 			<%= f.fields_for :atividadetreinos, @treinoAtividadesAerobico do |aa| %>
-				<%= render "treinoAerobico_fields", :f => aa %>
+				<%= render "aerobico_tab", :f => aa %>
 			<% end %>
 		</p>
 	</div>
@@ -68,7 +68,7 @@
 				</thead>
 				<tbody>
 					<%= f.fields_for :adaptacaos, @treino.adaptacaos do |a| %>
-						<%= render "adaptacao_fields", :f => a %>
+						<%= render "adaptacao_tab", :f => a %>
 					<% end %>
 					<!--tr>
 						<td colspan="6">

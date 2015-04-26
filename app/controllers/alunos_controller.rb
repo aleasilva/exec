@@ -89,6 +89,7 @@ class AlunosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def aluno_params
       #params.require(:aluno).permit(:idAcademia, :nome, :nascimento, :sexo, :observacao)
+      Rails.logger.info("ALUNOS ALUNOS ALUNOS")
       params.require(:aluno).permit!
     end
 end

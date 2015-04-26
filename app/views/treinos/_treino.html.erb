@@ -1,16 +1,19 @@
-<%= grid(@treinos_grid, 
+<%= grid(@treinos_grid,
 	allow_showing_all_records:  false,
 	show_filters: :when_filtered) do |g|
-	
+
  	 g.last_row do |number_of_columns|
 	    	content_tag(:tr,
-	        content_tag(:td, link_to('Novo Treino', new_treino_path(:params => params, :aluno => @aluno),:class => 'btn btn-primary'  ),colspan: 9), class: 'last-row')
+	        content_tag(:td, 	link_to('Novo Treino', 
+														new_treino_path(:params => params, :aluno => @aluno),
+														:class => 'btn btn-primary'  ),colspan: 9),
+														class: 'last-row')
 	  end
-  
+
 	g.column name:  'Criação', attribute: 'criacao',:helper_style => :calendar do |treino|
 		l(treino.criacao)
 	end
-	
+
 	g.column name:  'Validade', attribute: 'validade'  do |treino|
 		l(treino.validade)
 	end
@@ -18,14 +21,14 @@
 	g.column   do |treino|
 		link_to( image_tag("btnOperation/form_show.png", :alt => "Visualizar") , treino)
 	end
-	
+
 	g.column   do |treino|
 		link_to(image_tag("btnOperation/form_edit.png", :alt => "Alterar."), edit_treino_path(treino))
 	end
-	
+
 	g.column   do |treino|
-		link_to image_tag("btnOperation/form_delete.png", :alt => "Excluir."), 
-		treino, method: :delete, 
+		link_to image_tag("btnOperation/form_delete.png", :alt => "Excluir."),
+		treino, method: :delete,
 		data: { :confirm => t('.confirm', :default => t("helpers.links.confirmdelete", :default => 'Are you sure?')) }
 	end
 end %>

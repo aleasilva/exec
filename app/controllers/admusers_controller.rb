@@ -7,26 +7,42 @@ class AdmusersController < DeviseController
     @users = User.all
     @users_grid = initialize_grid(@users)
   end
-    
+
   def change
     @user = User.find(params[:id])
-    Rails.logger.info("CHANGE**********Registration Controller ****")    
+    Rails.logger.info("CHANGE**********Registration Controller ****")
   end
 
 
   # GET /resource/sign_up
   def new
-    Rails.logger.info("NEW**********Registration Controller ****")    
-    build_resource({})
-    respond_with self.resource
+    @user = User.new
+    # @aluno.nascimento ==  Date.today
+
+    Rails.logger.info("NEW**********Registration Controller ****")
+    # build_resource({})
+    # respond_with self.resource
   end
 
   # POST /resource
   def create
     Rails.logger.info("CREATE**********Registration Controller 28 ****")
-    build_resource(sign_up_params)
 
-   if resource.save
+    novoUsuario = User.new(admuser_params)
+    #
+    # respond_to do |format|
+    #   if @aluno.save
+    #     format.html { redirect_to @aluno, notice: 'Aluno was successfully created.' }
+    #     format.json { render action: 'show', status: :created, location: @aluno }
+    #   else
+    #     format.html { render action: 'new' }
+    #     format.json { render json: @aluno.errors, status: :unprocessable_entity }
+    #   end
+    # end
+
+    # build_resource(sign_up_params)
+
+   if novoUsuario.save
  #    yield resource if block_given?
 #        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
 #        expire_data_after_sign_in!
@@ -65,7 +81,7 @@ class AdmusersController < DeviseController
       redirect_to users_path
     else
       render "edit"
-    end    
+    end
   end
 
   # PUT /resource
@@ -98,16 +114,6 @@ class AdmusersController < DeviseController
     respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
   end
 
-  # GET /resource/cancel
-  # Forces the session data which is usually expired after sign
-  # in to be expired now. This is useful if the user wants to
-  # cancel oauth signing in/up in the middle of the process,
-  # removing all OAuth session data.
-  def cancel
-    expire_data_after_sign_in!
-    redirect_to new_registration_path(resource_name)
-  end
-
   protected
 
   def update_needs_confirmation?(resource, previous)
@@ -128,47 +134,15 @@ class AdmusersController < DeviseController
     self.resource = resource_class.new_with_session(hash || {}, session)
   end
 
-  # Signs in a user on sign up. You can overwrite this method in your own
-  # RegistrationsController.
-  def sign_up(resource_name, resource)
-    sign_in(resource_name, resource)
-  end
-
-  # The path used after sign up. You need to overwrite this method
-  # in your own RegistrationsController.
-  def after_sign_up_path_for(resource)
-    after_sign_in_path_for(resource)
-  end
-
-  # The path used after sign up for inactive accounts. You need to overwrite
-  # this method in your own RegistrationsController.
-  def after_inactive_sign_up_path_for(resource)
-    respond_to?(:root_path) ? root_path : "/"
-  end
-
-  # The default url to be used after updating a resource. You need to overwrite
-  # this method in your own RegistrationsController.
-  def after_update_path_for(resource)
-    signed_in_root_path(resource)
-  end
-
-  # Authenticates the current scope and gets the current resource from the session.
-  def authenticate_scope!
-    send(:"authenticate_#{resource_name}!", :force => true)
-    self.resource = send(:"current_#{resource_name}")
-  end
-
-  def sign_up_params
-    devise_parameter_sanitizer.sanitize(:sign_up)
-  end
-
   def account_update_params
     devise_parameter_sanitizer.sanitize(:account_update)
   end
-  
+
    # Never trust parameters from the scary internet, only allow the white list through.
-  def user_params
-    params.require(:user).permit(:name, :email)
+  def admuser_params
+    Rails.logger.info("PARAMS PARAMS PARAMS PARAMS")
+    #params.require(:user).permit(:name, :email)
+    params.require(:user).permit!
   end
-  
+
 end

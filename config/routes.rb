@@ -21,7 +21,7 @@ Exec::Application.routes.draw do
   root :to => "treinos#printIndex"
 
   #necessario para direcionar as ações padroes do devise.
-  devise_for :users,:controllers => {:registrations => "registrations" }
+  devise_for :users, :controllers => {:registrations => "registrations" }
 
   #Alterando as propriedades para registro de 1 usuario pelo adm.
   devise_scope :user do
