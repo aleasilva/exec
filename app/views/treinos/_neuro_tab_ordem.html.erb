@@ -1,6 +1,33 @@
-<div class="panel-body">
+Treino:
+<div class="btn-group" data-toggle="buttons" >
+  <% @listaOrdemTreinos.each do |ot| %>
+
+    <%if ot[1]%>
+      <label class="btn btn-primary active">
+    <%else%>
+      <label class="btn btn-primary">
+    <%end%>
+    
+    <%= check_box_tag "alternate_numbers[#{ot[0]}]"%>
+    <%=ot[0]%>
+
+    </label>
+  <% end %>
+</div>
+
+<!-- <div class="panel-body">
   Treino
-  <label class="btn btn-info">
+
+
+  <% @listaOrdemTreinos.each do |ot| %>
+    <label class="btn btn-info">
+      <%= check_box_tag "alternate_numbers[#{ot}]"%>
+      <%=ot%>
+    </label>
+  <% end %>
+ -->
+
+  <!-- <label class="btn btn-info">
     <input type="checkbox" autocomplete="off">A
   </label>
   <label class="btn btn-info">
@@ -8,5 +35,5 @@
   </label>
   <label class="btn btn-info">
     <input type="checkbox" autocomplete="off">C
-  </label>
-</div>
+  </label> -->
+<!-- </div> -->

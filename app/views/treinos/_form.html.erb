@@ -8,6 +8,7 @@
 	<div class="col-sm-4">
 		<%= f.text_field :validade,:value => l(@treino.validade) ,:class => 'form-control',:id => 'datepicker-02' %>
 	</div>
+
 </div>
 
 <div class="form-group">
@@ -16,6 +17,17 @@
 		<%= f.text_area :observacao, :class => 'form-control', :rows => "3"%>
 	</div>
 </div>
+
+<!-- <div class="form-group">
+	<%= f.label "Opção" %>
+	<div class="col-sm-10">
+		<%= f.select :observacao, [['São Paulo', 'SP'], ['Pará', 'PA'], ['Rio de Janeiro', 'RJ']],
+		{ :prompt => "Please select"},
+    { :multiple => true, :size => 5 } %>
+	</div>
+</div> -->
+
+
 
 <div id="tabs">
 	<ul>
@@ -45,7 +57,6 @@
 	<div id="tabs-2">
 		<p>
 			<% @qtdAtividade = @treinoAtividadesAerobico.size%>
-
 			<%= f.fields_for :atividadetreinos, @treinoAtividadesAerobico do |aa| %>
 				<%= render "aerobico_tab", :f => aa %>
 			<% end %>

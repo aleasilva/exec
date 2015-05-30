@@ -2,13 +2,13 @@
 	<table class="table table-bordered">
 		<thead>
 			<tr>
-				<td>Atividade</td>
-				<td>Treino</td>
-				<td>Tempo</td>
-				<td>Velocidade</td>
+				<td style="color:blue;width:20%;">Atividade</td>
+				<td style="color:blue;width:20%;">Treino</td>
+				<td style="color:blue;width:10%;">Tempo</td>
+				<td style="color:blue;width:13%;">Velocidade</td>
 				<!--td>Inclinação</td-->
-				<td>Carga</td>
-				<td>BMP</td>
+				<td style="color:blue;width:13%;">Carga</td>
+				<td style="color:blue;width:13%;">BMP</td>
 				<!--td>Dia(s) Aula(s)</td-->
 				<!--%@aluno.diasemanas.each do |dia|%-->
 			</tr>
@@ -18,8 +18,15 @@
 		<tr>
 			<div class="form-group">
 			<td><%= f.label :nome, f.object.atividade.nome %></td>
+				<%= debug f.object.atividade.id %>
+			<td>
+				<%treinoOrdem = @ordAerTreino.fetch(f.object.atividade.id)%>
+				<% treinoOrdem.each do |id,item,valor| %>
+					<%= check_box_tag "ordAerTreino[#{f.object.atividade.id}][#{id}][]", item, valor %>
+				<% end %>
+			</td>
 			<td><%= f.text_field :ordem_treino,:class=>"form-control"%></td>
-			<td><%= f.text_field :tempo, :class=>"form-control"     , :alt=>"strTempoExe"%></td>
+			<td><%= f.text_field :tempo, :class=>"form-control", :alt=>"strTempoExe"%></td>
 			<td><%= f.text_field :velocidade, :class=>"form-control", :alt=>"intCentena" %></td>
 			<td><%= f.text_field :carga,:class=>"form-control"      , :alt=>"intCentena" %></td>
 			<td><%= f.text_field :bpm,:class=>"form-control"        , :alt=>"intCentena" %></td>

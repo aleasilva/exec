@@ -6,6 +6,17 @@ class TreinosController < ApplicationController
   def edit
      @treinoAtividadesAerobico =  Atividadetreino.joins("JOIN atividades on atividadetreinos.atividade_id = atividades.id").
                                                   where("atividades.tipo = ? And atividadetreinos.treino_id = ?", 'A', params[:id]  )
+
+     #Insere a ordem para os treinos Aerobicos
+     @treinoAtividadesAerobico.each do |atAerobico|
+       injectTreinoOrdens(atAerobico, :aerobico)
+     end
+
+     #Insere a ordem para os treinos musculares
+     @treino.ordemmusculotreinos.each do |atNeuro|
+       injectTreinoOrdens(atNeuro, :neuro)
+     end
+
   end
 
   def new
@@ -54,21 +65,44 @@ class TreinosController < ApplicationController
   # PATCH/PUT /musculos/1
   # PATCH/PUT /musculos/1.json
   def update
-     # params[:treino][:ordemmusculotreinos_attributes].each do |relacionamento|
-     #  r =  relacionamento[1][:musculo_attributes][:atividades_attributes]
-     #
+    #
+    # params[:treino][:ordemmusculotreinos_attributes].each do |relacionamento|
+    #  r =  relacionamento[1][:musculo_attributes][:atividades_attributes]
+    #
+
     if not params[:treino][:atividade_ids].present?
       params[:treino][:atividade_ids] = []
     end
-    #Tratamento  para evitar o erro na atualizacao do treinos.
-    #Estva excluindo as atividades do treino Muscular.
+
+    #Recuperar os valores do array de array.
+    #Tratamento  para evitar o erro na atualizacao do treinos.Estava excluindo as atividades do treino Muscular.
     @result =  Atividadetreino.joins('JOIN atividades on atividadetreinos.atividade_id = atividades.id').where('atividades.tipo' => 'A')
     @result.each do |res|
        params[:treino][:atividade_ids].push(res.atividade_id)
+       #Rails.logger.info("SET TREINO")
+    end
+
+    #Acerto na gravacao da ordem do treino
+    params[:treino][:atividadetreinos_attributes].each do |odTreino|
+
+      #Recuperando o array com os codigos das ordens selecionados.
+      ordSelecionados = params[:ordAerTreino][odTreino[1][:atividade_id]]
+
+      sOrdensTreino = ""
+      if ordSelecionados != nil
+        ordSelecionados.each do |ord|
+          sOrdensTreino << ord[1][0] << "|"
+        end
+      end
+
+      #Setar o valor da variavel
+      odTreino.fetch(1)[:ordem_treino] = sOrdensTreino
+
     end
 
     respond_to do |format|
-      if @treino.update(treino_params)
+      if  @treino.update(treino_params)
+      #if true
         format.html { redirect_to @treino, notice: 'Treino atualizado!' }
       else
         format.html { render action: 'edit' }
@@ -180,8 +214,40 @@ class TreinosController < ApplicationController
   def set_treino
     @treino = Treino.find(params[:id])
     @aluno = Aluno.find(@treino.aluno_id)
+    @listaOrdemTreinos = [["A","1"],["B","0"],["C","1"],["D","0"]]
+    @ordAerTreino = {}
+    @ordNeuTreino = {}
     #Rails.logger.info("SET TREINO")
-    #Rails.logger.info( Treino.atividadetreinos.merge(Atividade.aerobico).inspect)
+  end
+
+  private
+  def injectTreinoOrdens(item, tipo)
+    #Tabela de ordens
+    # @treino.ordemmusculotreinos[3].ordem
+
+    #Verifica se o item ja esta marcado
+    ordens = [[1,"A", false],[2,"B",false],[3,"C",false],[4,"D",false]]
+
+    iFound = -1
+    if (tipo == :aerobico )
+      if (item.ordem_treino != nil)
+        item.ordem_treino.split("|").each do |ordSel|
+          iFound = ordens.index{|x,y| y == ordSel}
+
+          ##Encontrei o item no array
+          if iFound != nil and iFound > -1
+            ordens[iFound][2] = true
+          end
+
+        end
+
+      end
+      @ordAerTreino.store(item.atividade_id,ordens)
+
+    elsif (tipo == :neuro)
+      @ordNeuTreino.store(item.musculo_id,ordens)
+    end
+
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

@@ -51,6 +51,7 @@ end
 gem 'rails_12factor', group: :production
 
 group :development do
+  gem 'byebug'
   gem 'better_errors'
   gem 'binding_of_caller'
   #gem 'meta_request'
