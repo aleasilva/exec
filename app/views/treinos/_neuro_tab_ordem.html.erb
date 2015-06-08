@@ -1,39 +1,5 @@
 Treino:
-<div class="btn-group" data-toggle="buttons" >
-  <% @listaOrdemTreinos.each do |ot| %>
-
-    <%if ot[1]%>
-      <label class="btn btn-primary active">
-    <%else%>
-      <label class="btn btn-primary">
-    <%end%>
-    
-    <%= check_box_tag "alternate_numbers[#{ot[0]}]"%>
-    <%=ot[0]%>
-
-    </label>
-  <% end %>
-</div>
-
-<!-- <div class="panel-body">
-  Treino
-
-
-  <% @listaOrdemTreinos.each do |ot| %>
-    <label class="btn btn-info">
-      <%= check_box_tag "alternate_numbers[#{ot}]"%>
-      <%=ot%>
-    </label>
-  <% end %>
- -->
-
-  <!-- <label class="btn btn-info">
-    <input type="checkbox" autocomplete="off">A
-  </label>
-  <label class="btn btn-info">
-    <input type="checkbox" autocomplete="off">B
-  </label>
-  <label class="btn btn-info">
-    <input type="checkbox" autocomplete="off">C
-  </label> -->
-<!-- </div> -->
+<%treinoOrdem = @ordNeuTreino.fetch(treinoItem.id)%>
+  <%treinoOrdem.each do |id,item,valor| %>
+    <%= check_box_tag "ordNeuTreino[#{treinoItem.id}][#{id}][]", item, valor %>
+<% end %>

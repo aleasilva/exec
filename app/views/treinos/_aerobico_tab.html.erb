@@ -18,14 +18,13 @@
 		<tr>
 			<div class="form-group">
 			<td><%= f.label :nome, f.object.atividade.nome %></td>
-				<%= debug f.object.atividade.id %>
 			<td>
 				<%treinoOrdem = @ordAerTreino.fetch(f.object.atividade.id)%>
 				<% treinoOrdem.each do |id,item,valor| %>
 					<%= check_box_tag "ordAerTreino[#{f.object.atividade.id}][#{id}][]", item, valor %>
 				<% end %>
 			</td>
-			<td><%= f.text_field :ordem_treino,:class=>"form-control"%></td>
+			<!-- <td><%= f.text_field :ordem_treino,:class=>"form-control"%></td> -->
 			<td><%= f.text_field :tempo, :class=>"form-control", :alt=>"strTempoExe"%></td>
 			<td><%= f.text_field :velocidade, :class=>"form-control", :alt=>"intCentena" %></td>
 			<td><%= f.text_field :carga,:class=>"form-control"      , :alt=>"intCentena" %></td>

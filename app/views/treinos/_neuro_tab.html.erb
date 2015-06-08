@@ -1,44 +1,39 @@
 <tr>
 	<div class="panel-group" id="accordion" role="tablist"	aria-multiselectable="true">
-	<%= o.fields_for :musculo do |m| %>
-		<div class="panel panel-default">
-			<div class="panel-heading" role="tab" id="heading_<%=f.object.id%>">
-				<h4 class="panel-title">
-					<a class="collapsed" data-toggle="collapse"
-						data-parent="#accordion" href="#collapse_<%=f.object.id%>"
-						aria-expanded="true" aria-controls="collapse_<%=f.object.id%>">
-						<%=f.object.nome%></a>
-				</h4>
-			</div>
-			<div id="collapse_<%=f.object.id%>" class="panel-collapse collapse"
-				role="tabpanel" aria-labelledby="heading_<%=f.object.id%>">
+		<%= o.fields_for :musculo do |m| %>
+			<div class="panel panel-default">
 
-					<%= render "neuro_tab_ordem"%>
+				<div class="panel-heading" role="tab" id="heading_<%=f.object.id%>">
+					<h4 class="panel-title">
+						<a class="collapsed" data-toggle="collapse"
+							data-parent="#accordion" href="#collapse_<%=f.object.id%>"
+							aria-expanded="true" aria-controls="collapse_<%=f.object.id%>">
+							<%=f.object.nome%></a>
+					</h4>
+				</div>
 
-					<div class="panel-body">
-					<!-- <div class="btn-group" data-toggle="buttons"> -->
-						<%= f.fields_for :atividades do |a| %>
-								<%= render "neuro_tab_atividades", :f => a%>
-						<%end %>
+				<div 	id="collapse_<%=f.object.id%>" class="panel-collapse collapse"
+							role="tabpanel" aria-labelledby="heading_<%=f.object.id%>">
+
+
+							<!-- <th class="warning"> <%= f.label :nome, f.object.nome%></th> -->
+							<!-- <th class="warning"> Treino >:<%= o.text_field :ordem ,:class=>"input-size10px" %></th> -->
+
+							<!-- <%= o.hidden_field :musculo_id %> -->
+
+
+						<%= render "neuro_tab_ordem", :treinoItem => f.object %>
+
+						<div class="panel-body">
+							<div class="btn-group" data-toggle="buttons">
+								<%= f.fields_for :atividades do |atv| %>
+									<%= render "neuro_tab_atividades", :neuroAtividade => atv.object %>
+								<%end %>
+							</div>
 						</div>
-					<!-- </div> -->
+				</div>
 			</div>
-		</div>
-	<%end %>
+			<%end %>
 	</div>
 
 </tr>
-
-<!-- <tr>
-	<%= o.fields_for :musculo do |m| %>
-		<th class="warning"> <%= f.label :nome, f.object.nome%></th>
-		<th class="warning"> Treino >:
-			<%= o.text_field :ordem ,:class=>"input-size10px" %></th>
-			<%= o.hidden_field :musculo_id %>
-	<%end %>
-</tr>
-<tr>
-	<th class="form-inline" colspan="2" > <%= f.fields_for :atividades do |a| %>
-		<%= render "neuro_tab_atividades", :f => a%>
-	<%end %> </th>
-</tr> -->

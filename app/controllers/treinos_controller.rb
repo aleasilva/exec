@@ -65,10 +65,6 @@ class TreinosController < ApplicationController
   # PATCH/PUT /musculos/1
   # PATCH/PUT /musculos/1.json
   def update
-    #
-    # params[:treino][:ordemmusculotreinos_attributes].each do |relacionamento|
-    #  r =  relacionamento[1][:musculo_attributes][:atividades_attributes]
-    #
 
     if not params[:treino][:atividade_ids].present?
       params[:treino][:atividade_ids] = []
@@ -79,25 +75,45 @@ class TreinosController < ApplicationController
     @result =  Atividadetreino.joins('JOIN atividades on atividadetreinos.atividade_id = atividades.id').where('atividades.tipo' => 'A')
     @result.each do |res|
        params[:treino][:atividade_ids].push(res.atividade_id)
-       #Rails.logger.info("SET TREINO")
     end
 
-    #Acerto na gravacao da ordem do treino
-    params[:treino][:atividadetreinos_attributes].each do |odTreino|
+    #********************************************
+    #Gravando as ordens para os Treinos Aerobicos
+    #********************************************
+    params[:treino][:atividadetreinos_attributes].each do |odAerobico|
 
       #Recuperando o array com os codigos das ordens selecionados.
-      ordSelecionados = params[:ordAerTreino][odTreino[1][:atividade_id]]
+      ordAerTreinos = params[:ordAerTreino][odAerobico[1][:atividade_id]]
 
       sOrdensTreino = ""
-      if ordSelecionados != nil
-        ordSelecionados.each do |ord|
+      if ordAerTreinos != nil
+        ordAerTreinos.each do |ord|
           sOrdensTreino << ord[1][0] << "|"
         end
       end
 
       #Setar o valor da variavel
-      odTreino.fetch(1)[:ordem_treino] = sOrdensTreino
+      odAerobico.fetch(1)[:ordem_treino] = sOrdensTreino
 
+    end
+
+    #**************************************************
+    #Gravando as ordens para o treinos Neuro musculares
+    #**************************************************
+    params[:treino][:ordemmusculotreinos_attributes].each do |odNeuro|
+      itemTreino = odNeuro.fetch(1)[:musculo_attributes][:id]
+      ordNeuTreinos = params[:ordNeuTreino][itemTreino]
+
+      sOrdensTreino = ""
+      if ordNeuTreinos != nil
+        ordNeuTreinos.each do |ord|
+          sOrdensTreino << ord[1][0] << "|"
+        end
+      end
+      Rails.logger.info("Treino-> " + sOrdensTreino)
+
+      #Set do novo valor
+      odNeuro.fetch(1)[:ordem] = sOrdensTreino
     end
 
     respond_to do |format|
@@ -214,36 +230,37 @@ class TreinosController < ApplicationController
   def set_treino
     @treino = Treino.find(params[:id])
     @aluno = Aluno.find(@treino.aluno_id)
-    @listaOrdemTreinos = [["A","1"],["B","0"],["C","1"],["D","0"]]
+
     @ordAerTreino = {}
     @ordNeuTreino = {}
+    
     #Rails.logger.info("SET TREINO")
   end
 
   private
   def injectTreinoOrdens(item, tipo)
-    #Tabela de ordens
-    # @treino.ordemmusculotreinos[3].ordem
-
-    #Verifica se o item ja esta marcado
     ordens = [[1,"A", false],[2,"B",false],[3,"C",false],[4,"D",false]]
 
-    iFound = -1
-    if (tipo == :aerobico )
-      if (item.ordem_treino != nil)
-        item.ordem_treino.split("|").each do |ordSel|
-          iFound = ordens.index{|x,y| y == ordSel}
+    if (tipo == :aerobico)
+      savedOrder =  item.ordem_treino
+    elsif (tipo == :neuro)
+      savedOrder = item.ordem
+    end
 
-          ##Encontrei o item no array
-          if iFound != nil and iFound > -1
-            ordens[iFound][2] = true
-          end
+    if (savedOrder != nil)
+      savedOrder.split("|").each do |ordSel|
+        iFound = ordens.index{|x,y| y == ordSel}
 
+        ##Encontrei o item no array
+        if iFound != nil and iFound > -1
+          ordens[iFound][2] = true
         end
 
       end
-      @ordAerTreino.store(item.atividade_id,ordens)
+    end
 
+    if (tipo == :aerobico)
+      @ordAerTreino.store(item.atividade_id,ordens)
     elsif (tipo == :neuro)
       @ordNeuTreino.store(item.musculo_id,ordens)
     end
