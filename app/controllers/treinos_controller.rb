@@ -107,7 +107,13 @@ class TreinosController < ApplicationController
       if(tipo == :aerobico and params[:ordAerTreino].present?)
         lstTreinos = params[:ordAerTreino][ordemTreino[:atividade_id] ]
       elsif (tipo == :neuro and params[:ordNeuTreino].present?)
-        lstTreinos = params[:ordNeuTreino][ordemTreino[:id]]
+        id = ordemTreino[:musculo_attributes][:id]
+        lstTreinos = params[:ordNeuTreino][id]
+        # lstTreinos = params[:ordNeuTreino][ordemTreino[:id]]
+        Rails.logger.info("Ordens para gravacao:" )
+
+        # byebug
+
       end
 
       sOrdem = ""
