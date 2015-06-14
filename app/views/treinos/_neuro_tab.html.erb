@@ -15,14 +15,15 @@
 				<div 	id="collapse_<%=f.object.id%>" class="panel-collapse collapse"
 							role="tabpanel" aria-labelledby="heading_<%=f.object.id%>">
 
+						<!-- <th class="warning"> <%= f.label :nome, f.object.nome%></th> -->
+						<!-- <th class="warning"> Treino >:<%= o.text_field :ordem ,:class=>"input-size10px" %></th> -->
 
-							<!-- <th class="warning"> <%= f.label :nome, f.object.nome%></th> -->
-							<!-- <th class="warning"> Treino >:<%= o.text_field :ordem ,:class=>"input-size10px" %></th> -->
+						<%= o.hidden_field :musculo_id %>
 
-							<%= o.hidden_field :musculo_id %>
-
-
-						<%= render "neuro_tab_ordem", :treinoItem => f.object %>
+						<!-- <%= render "neuro_tab_ordem", :treinoItem => f.object %> -->
+						<div class="switch">
+							<%= render "neuro_tab_ordem", :treinoItem => f.object %>
+						</div>
 
 						<div class="panel-body">
 							<div class="btn-group" data-toggle="buttons">

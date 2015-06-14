@@ -1,5 +1,18 @@
-Treino:
 <%treinoOrdem = @ordNeuTreino.fetch(treinoItem.id)%>
+
+<div class="row">
+
+
   <%treinoOrdem.each do |id,item,valor| %>
-    <%= check_box_tag "ordNeuTreino[#{treinoItem.id}][#{id}][]", item, valor %>
-<% end %>
+    <%tId = "cmn-toggle-" + treinoItem.id.to_s + id.to_s%>
+    <%tMsg =  "Treino " + item%>
+
+    <div class="col-md-3">
+      <%= check_box_tag "ordNeuTreino[#{treinoItem.id}][#{id}][]", item, valor,
+                        { "class" => "cmn-toggle cmn-toggle-yes-no", "id" => tId} %>
+
+      <%=label_tag nil,nil,{"for" => tId ,"data-on" => tMsg,"data-off" => tMsg}%>
+
+    </div>
+  <% end %>
+</div>

@@ -109,11 +109,7 @@ class TreinosController < ApplicationController
       elsif (tipo == :neuro and params[:ordNeuTreino].present?)
         id = ordemTreino[:musculo_attributes][:id]
         lstTreinos = params[:ordNeuTreino][id]
-        # lstTreinos = params[:ordNeuTreino][ordemTreino[:id]]
-        Rails.logger.info("Ordens para gravacao:" )
-
-        # byebug
-
+        # Rails.logger.info("Ordens para gravacao:" )
       end
 
       sOrdem = ""
