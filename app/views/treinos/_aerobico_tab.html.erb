@@ -21,7 +21,7 @@
 			<td>
 				<%treinoOrdem = @ordAerTreino.fetch(f.object.atividade.id)%>
 				<% treinoOrdem.each do |id,item,valor| %>
-					<%= check_box_tag "ordAerTreino[#{f.object.atividade.id}][#{id}][]", item, valor %>
+					<%= check_box_tag "ordAerTreino[#{f.object.atividade.id}][#{id}][]", item, valor %> <%=item%>
 				<% end %>
 			</td>
 			<!-- <td><%= f.text_field :ordem_treino,:class=>"form-control"%></td> -->

@@ -1,6 +1,12 @@
-<label class="btn btn-primary">
-  <%= check_box_tag 'treino[atividade_ids][]',neuroAtividade.id,
-                    seekAtividade(neuroAtividade),
-                    :autocomplete => "off"%>
-  <%=neuroAtividade.nome %>
-</label>
+<!-- <label class="btn btn-primary"> -->
+<%tId = "cmn-toggle-"<< neuroAtividade.id%>
+<%tMsg = neuroAtividade.nome %>
+<div class="col-md-3">
+
+<%= check_box_tag "treino[atividade_ids][]",neuroAtividade.id,
+                  seekAtividade(neuroAtividade),
+                  {"autocomplete" => "off", "class" => "cmn-toggle cmn-toggle-yes-no", "id" => tId}%>
+
+<%=label_tag nil,nil,{"for" => tId ,"data-on" => tMsg,"data-off" => tMsg}%>
+</div>
+<!-- </label> -->

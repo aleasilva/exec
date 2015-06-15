@@ -25,12 +25,18 @@
 							<%= render "neuro_tab_ordem", :treinoItem => f.object %>
 						</div>
 
-						<div class="panel-body">
-							<div class="btn-group" data-toggle="buttons">
-								<%= f.fields_for :atividades do |atv| %>
-									<%= render "neuro_tab_atividades", :neuroAtividade => atv.object %>
-								<%end %>
-							</div>
+						<div class="switch">
+								<%=insCabExercicio()%>
+								<div class="row">
+
+									<%linha = 0%>
+									<%= f.fields_for :atividades do |atv| %>
+										<%ctlQuebraLinha(linha)%>
+										<%= render "neuro_tab_atividades", :neuroAtividade => atv.object %>
+									<%end %>
+
+								</div>
+
 						</div>
 				</div>
 			</div>
