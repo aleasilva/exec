@@ -1,8 +1,8 @@
 <tr>
 	<div class="panel-group" id="accordion" role="tablist"	aria-multiselectable="true">
 		<%= o.fields_for :musculo do |m| %>
-			<div class="panel panel-default">
 
+			<div class="panel panel-info">
 				<div class="panel-heading" role="tab" id="heading_<%=f.object.id%>">
 					<h4 class="panel-title">
 						<a class="collapsed" data-toggle="collapse"
@@ -26,12 +26,13 @@
 						</div>
 
 						<div class="switch">
-								<%=insCabExercicio()%>
+								<%=insBarMessage("Exercicios")%>
+
 								<div class="row">
 
-									<%linha = 0%>
+									<%setLinha %>
 									<%= f.fields_for :atividades do |atv| %>
-										<%ctlQuebraLinha(linha)%>
+										<%ctlQuebraLinha()%>
 										<%= render "neuro_tab_atividades", :neuroAtividade => atv.object %>
 									<%end %>
 

@@ -36,4 +36,14 @@ module ApplicationHelper
     link_to name, '#', onclick: "printDiv()", :class => "btn btn-info";
   end
 
+  #Cria uma barra para identficacao dos Exercicios
+  def insBarMessage(message)
+    content_tag(:div,
+      content_tag(:div,message,class: ["progress-bar progress-bar-info"],role: "progressbar",
+                             "aria-valuenow" => ["60"], "aria-valuemin" => "0",
+                            "aria-valuemax"=>"100",style: "width: 100%;"),
+    class: ["progress"])
+
+  end
+
 end
