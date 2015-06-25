@@ -3,7 +3,7 @@ class AtividadesController < ApplicationController
 
   # GET /atividades
   def index
-    @atividades_grid = initialize_grid(Atividade)
+    @atividades_grid = initialize_grid(Atividade ,per_page: 10)
   end
 
   # GET /atividades/1
