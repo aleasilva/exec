@@ -1,6 +1,7 @@
 <!-- <label class="btn btn-primary"> -->
-<%tId = "cmn-toggle-"<< neuroAtividade.id%>
+<%tId = "cmn-toggle-"<< Random.new().rand.to_s %>
 <%tMsg = neuroAtividade.nome %>
+
 <div class="col-md-3">
 
 <%= check_box_tag "treino[atividade_ids][]",neuroAtividade.id,

@@ -3,8 +3,8 @@
 		<%if @treino == nil%>
 
 		<%else%>
-		  <%tdStyle="padding: 8px;line-height: 20px;text-align: left;vertical-align: top;border-top: 1px solid #dddddd;border-left: 1px solid #dddddd;" %>
-		  <%tableStyle="padding:2px 3px;max-width: 100%;background-color: transparent;border-collapse: separate;border-spacing: 0;width: 100%;margin-bottom: 20px;border: 1px solid #dddddd;*border-collapse: collapse;border-left: 0;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;"%>
+		    <%tdStyle="padding: 8px;line-height: 20px;text-align: left;vertical-align: top;border-top: 1px solid #dddddd;border-left: 1px solid #dddddd;" %>
+		    <%tableStyle="padding:2px 3px;max-width: 100%;background-color: transparent;border-collapse: separate;border-spacing: 0;width: 100%;margin-bottom: 20px;border: 1px solid #dddddd;*border-collapse: collapse;border-left: 0;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;"%>
 
 			<div class="well" style="min-height: 20px;padding: 19px;margin-bottom: 20px;background-color: #f5f5f5;border: 1px solid #e3e3e3;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);">
 				<!--Cabecalho do treino-->
@@ -17,7 +17,7 @@
 						<td style="<%=tdStyle%>"><%= label_tag "Semana:" %></td>
 						<td style="<%=tdStyle%>"><%= label_tag @treino.criacao.cweek %></td>
 						<td style="<%=tdStyle%>"><%= label_tag "Treino:" %></td>
-						<td style="<%=tdStyle%>"><%=@treinoOrdem%></td>
+						<td style="<%=tdStyle%>"><%=@treinoOrdemItem%></td>
 					</tr>
 					<tr>
 						<td style="<%=tdStyle%>"><%= label_tag "Inicio em:" %></td>
@@ -29,7 +29,6 @@
 						<td style="<%=tdStyle%>"><%= label_tag "Dia(s) de treino:" %></td>
 							<%diaTreino = ""%>
 							<%itemIndex = 0%>
-
 							<%@aluno.diasemanas.each do |dt|%>
 								<%itemIndex += 1%>
 								<%diaTreino +=  dt.nomeabreviado%>
@@ -40,41 +39,42 @@
 								<%end%>
 							<%end%>
 						<td colspan="3" style="<%=tdStyle%>"><%= label_tag diaTreino %></td>
-						
 					</tr>
 				</table>
-
-				<!--Treino Muscular-->
+				<!--Treino Musculas-->
 				<table class="table table-bordered table-condensed" style="<%=tableStyle%>">
 					<thead>
-						<tr><td style="<%=tdStyle%>">
+						<tr>
+							<td style="<%=tdStyle%>">
 								<h5>Atividades Neuromuscular</h5>
-						</td></tr>
+							</td>
+						</tr>
 					</thead>
-
-					<!-- Imprimindo os exercicios para treino -->
 					<tbody>
-						<% @treino.ordemmusculotreinos.each do |t|%>
-							<%if t.ordem.include? @treinoOrdem%>
-								<tr class="info"><td style="<%=tdStyle%>">
-										<%=t.musculo.nome%>
-								</td><tr>
-								<% t.musculo.atividades.each do |a|%>
-									<tr><td style="<%=tdStyle%>">
+						<% @treinoOrdem.each do |t|%>
+							<!--tr class="info">
+								<td style="<%=tdStyle%>">
+									<%=t.musculo.nome%>M
+								</td>
+							<tr-->
+							<% t.musculo.atividades.each do |a|%>
+								<tr>
+									<td style="<%=tdStyle%>">
 										<%=a.nome%>
-									</td><tr>
-								<%end%>
+									</td>
+								<tr>
 							<%end%>
-						<%end%>
+						<%end%> -
 					</tbody>
 				</table>
-
 				<!--Adaptações-->
 				<table class="table table-bordered table-condensed" style="<%=tableStyle%>"  >
 					<thead>
-						<tr><td colspan="1" <%=tdStyle%>">
+						<tr>
+							<td colspan="1" <%=tdStyle%>">
 								<h5>Adaptação</h5>
-						</td></tr>
+							</td>
+						</tr>
 					</thead>
 					<tbody>
 						<tr class="info">
@@ -89,13 +89,14 @@
 						</tr>
 					</tbody>
 				</table>
-
 				<!--Treino Aerobico-->
 				<table class="table table-bordered" style="<%=tableStyle%>"   >
 					<thead>
-						<tr><td colspan="2"  style="<%=tdStyle%>">
+						<tr>
+							<td colspan="2"  style="<%=tdStyle%>">
 								<h5>Trabalho Aeróbico</h5>
-						</td></tr>
+							</td>
+						</tr>
 					</thead>
 					<tbody>
 						<tr class="info">
@@ -104,7 +105,7 @@
 						</tr>
 						<%@treino.atividadetreinos.each do |at|%>
 							<tr>
-								<%if at.atividade.tipo == "A" and at.ordem_treino.include? @treinoOrdem %>
+								<%if at.atividade.tipo == "A" and at.ordem_treino.include? @treinoOrdemItem %>
 									<td style="<%=tdStyle%>"><%= label_tag at.atividade.nome %></td>
 									<td style="<%=tdStyle%>"><%= label_tag at.tempo%> </td>
 								<%end%>

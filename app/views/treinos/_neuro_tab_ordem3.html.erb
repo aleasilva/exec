@@ -1,5 +1,0 @@
-Treino:
-<%treinoOrdem = @ordNeuTreino.fetch(treinoItem.id)%>
-  <%treinoOrdem.each do |id,item,valor| %>
-    <%= check_box_tag "ordNeuTreino[#{treinoItem.id}][#{id}][]", item, valor %>
-<% end %>

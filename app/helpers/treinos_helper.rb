@@ -18,6 +18,4 @@ module TreinosHelper
   def setLinha
     @linha = 0
   end
-
-
 end

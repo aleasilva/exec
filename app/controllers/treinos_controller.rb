@@ -4,7 +4,7 @@ class TreinosController < ApplicationController
   before_action :set_treino, only: [:show, :edit, :update, :destroy]
 
   def edit
-     @treinoAtividadesAerobico =  Atividadetreino.joins("JOIN atividades on atividadetreinos.atividade_id = atividades.id").
+     @atividadesAerobico =  Atividadetreino.joins("JOIN atividades on atividadetreinos.atividade_id = atividades.id").
                                                   where("atividades.tipo = ? And atividadetreinos.treino_id = ?", 'A', params[:id]  )
 
     callInjectOrdens()
@@ -25,7 +25,7 @@ class TreinosController < ApplicationController
     Atividade.where(tipo: 'A').each do |aa|
       @treino.atividadetreinos.build(:atividade_id => aa.id)
     end
-    @treinoAtividadesAerobico = @treino.atividadetreinos
+    @atividadesAerobico = @treino.atividadetreinos
 
     callInjectOrdens()
 
@@ -90,47 +90,7 @@ class TreinosController < ApplicationController
     end
   end
 
-  private
-  def setOrdensTreinos(tipo)
-
-    #Recupero os relacionamentos que contem os campos para gravacao da ordem.
-    if(tipo == :aerobico)
-      lstOrdensTreino = params[:treino][:atividadetreinos_attributes]
-    elsif (tipo == :neuro)
-      lstOrdensTreino = params[:treino][:ordemmusculotreinos_attributes]
-    end
-
-    lstOrdensTreino.each do |ordensTreino|
-      ordemTreino = ordensTreino.fetch(1)
-
-      #Recupero os itens que o usuario marcou
-      if(tipo == :aerobico and params[:ordAerTreino].present?)
-        lstTreinos = params[:ordAerTreino][ordemTreino[:atividade_id] ]
-      elsif (tipo == :neuro and params[:ordNeuTreino].present?)
-        id = ordemTreino[:musculo_attributes][:id]
-        lstTreinos = params[:ordNeuTreino][id]
-        # Rails.logger.info("Ordens para gravacao:" )
-      end
-
-      sOrdem = ""
-      if lstTreinos != nil
-        lstTreinos.each do |ord|
-          sOrdem << ord[1][0] << "|"
-        end
-      end
-
-      #Adiciono os itens para gravacao
-      if (tipo == :aerobico)
-        ordemTreino[:ordem_treino] = sOrdem
-      elsif (tipo == :neuro)
-        ordemTreino[:ordem] = sOrdem
-      end
-
-    end
-
-  end
-
-  #
+  ####
   #Faz gravaçao dos dados e volta para a tela para impressao
   #
   def confirmaTreino
@@ -172,10 +132,10 @@ class TreinosController < ApplicationController
   def print(pIdAluno = "")
 
       begin
-        if params[:idAcademia] == nil
-          @aluno = Aluno.find(params[:alunoId])
-        else
+        if params[:idAcademia].present?
           @aluno = Aluno.find(params[:idAcademia])
+        else
+          @aluno = Aluno.find(params[:alunoId])
         end
 
         #@aluno = Aluno.where("idAcademia = ? ", params[:idAcademia]).first()
@@ -188,17 +148,17 @@ class TreinosController < ApplicationController
           #Localizando qual ordem de treino será executada "Treino A,B,C etc.."
           retTreino = @treino.getTreinoExercicios(@aluno, treinos)
           @treinoOrdem = retTreino[0]
-          @treinoOrdemItem = retTreino[1]
+          #@treinoOrdemItem = retTreino[1]
 
           #Localizando a adaptacao
           retAdaptacao = @aluno.setAdaptacaoAtual(@treino)
           @semanaTreino = retAdaptacao[1]
           @adaptcaoAtual = retAdaptacao[0]
 
-          if @semanaTreino == -1
-            flash[:alert] = 'A sua semana de treino está fora de sequencia, por favor, procure o seu professor.'
-            redirect_to root_path
-          end
+          #if @semanaTreino == -1
+          #  flash[:alert] = 'A sua semana de treino está fora de sequencia, por favor, procure o seu professor.'
+          #  redirect_to root_path
+          #end
 
           #Verifico a confirmacao da impressao.
           if params.include?("doPrint") and
@@ -210,7 +170,7 @@ class TreinosController < ApplicationController
           end
 
         else
-          flash[:alert] = 'Náo foi localizado um treino para você, por favor, procure seu professor.'
+          flash[:alert] = 'Não foi localizado um treino para você, por favor, procure seu professor.'
           redirect_to root_path
         end
 
@@ -238,14 +198,51 @@ class TreinosController < ApplicationController
     #Rails.logger.info("SET TREINO")
   end
 
+  def setOrdensTreinos(tipo)
 
-  private
+    #Recupero os relacionamentos que contem os campos para gravacao da ordem.
+    if(tipo == :aerobico)
+      lstOrdensTreino = params[:treino][:atividadetreinos_attributes]
+    elsif (tipo == :neuro)
+      lstOrdensTreino = params[:treino][:ordemmusculotreinos_attributes]
+    end
+
+    lstOrdensTreino.each do |ordensTreino|
+      ordemTreino = ordensTreino.fetch(1)
+
+      #Recupero os itens que o usuario marcou
+      if(tipo == :aerobico and params[:ordAerTreino].present?)
+        lstTreinos = params[:ordAerTreino][ordemTreino[:atividade_id] ]
+      elsif (tipo == :neuro and params[:ordNeuTreino].present?)
+        id = ordemTreino[:musculo_attributes][:id]
+        lstTreinos = params[:ordNeuTreino][id]
+        # Rails.logger.info("Ordens para gravacao:" )
+      end
+
+      sOrdem = ""
+      if lstTreinos != nil
+        lstTreinos.each do |ord|
+          sOrdem << ord[1][0] << "|"
+        end
+      end
+
+      #Adiciono os itens para gravacao
+      if (tipo == :aerobico)
+        ordemTreino[:ordem_treino] = sOrdem
+      elsif (tipo == :neuro)
+        ordemTreino[:ordem] = sOrdem
+      end
+
+    end
+
+  end
+
   def callInjectOrdens()
     @ordAerTreino = {}
     @ordNeuTreino = {}
 
     #Insere a ordem para os treinos Aerobicos
-    @treinoAtividadesAerobico.each do |atAerobico|
+    @atividadesAerobico.each do |atAerobico|
       injectTreinoOrdens(atAerobico, :aerobico)
     end
 
@@ -256,7 +253,6 @@ class TreinosController < ApplicationController
 
   end
 
-  private
   def injectTreinoOrdens(item, tipo)
     ordens = [[1,"A", false],[2,"B",false],[3,"C",false],[4,"D",false]]
 
@@ -285,8 +281,6 @@ class TreinosController < ApplicationController
     end
 
   end
-
-
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def treino_params

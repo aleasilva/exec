@@ -5,7 +5,7 @@ class MusculosController < ApplicationController
   # GET /musculos.json
   def index
     @musculos = Musculo.all
-    @musculos_grid = initialize_grid(@musculos)
+    @musculos_grid = initialize_grid(@musculos,per_page: 10)
   end
 
   # GET /musculos/1

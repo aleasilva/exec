@@ -5,7 +5,7 @@ class AdmusersController < DeviseController
   def index
     Rails.logger.info("INDEX**********Registration Controller ****")
     @users = User.all
-    @users_grid = initialize_grid(@users)
+    @users_grid = initialize_grid(@users,per_page: 10)
   end
 
   def change

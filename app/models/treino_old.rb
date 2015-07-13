@@ -31,30 +31,24 @@ class Treino < ActiveRecord::Base
   ############################################################
   def getTreinoExercicios(aluno, treino)
 
-    #Adiciona os itens unicos ao array para ordenacao
-    treinoOrdenado = []
-    treino.first.ordemmusculotreinos.each do |reg|
-      treinoOrdenado << reg.ordem.split("|")
-    end
-    treinoOrdenado.flatten!.uniq!.sort!
-
-    #treinoOrdenado = treino.first.ordemmusculotreinos.sort_by{|reg| reg.ordem }
+    treinoOrdenado = treino.first.ordemmusculotreinos.sort_by{|reg| reg.ordem }
     ultimoTreino = ""
+
     if (aluno.last_treino != nil)
       ultimoTreino = aluno.last_treino
     end
 
-    #if treinoOrdenado.any? {|reg| (reg.ordem > ultimoTreino)}
-    #Usar o ary.bsearch {|x| x >=   4 }
-    treino = treinoOrdenado.bsearch{ |itemOrdem| itemOrdem > ultimoTreino }
-    if treino == nil
+
+    if treinoOrdenado.any? {|reg| (reg.ordem > ultimoTreino)}
+      treino =  treinoOrdenado.find{|reg| (reg.ordem > ultimoTreino)}
+    else
       treino =  treinoOrdenado.first
     end
 
     #Selecionando pela ordem proxima ordem.
-    #ordemSelect = treinoOrdenado.select!{|reg| reg.ordem == treino}
-    
-    return treino
+    ordemSelect = treinoOrdenado.select!{|reg| reg.ordem == treino.ordem}
+
+    return [ordemSelect, treino.ordem]
 
   end
 

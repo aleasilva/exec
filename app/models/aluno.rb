@@ -4,11 +4,11 @@ class Aluno < ActiveRecord::Base
    #Relacionamento aluno dia das aulas.
    has_many :alunoaulas, dependent: :destroy
    has_many :diasemanas, through: :alunoaulas
-   
+
    #Relacionamento treinos
    has_many :treinos, dependent: :destroy
    has_many :presencas, dependent: :destroy
-   
+
    #Validadores
    validates  :nome         , :length => { :maximum => 80  },:presence => true, :uniqueness => false
    validates  :idAcademia   , :length => { :maximum => 30  },:presence => true
@@ -17,26 +17,26 @@ class Aluno < ActiveRecord::Base
    validates  :doenca       , :length => { :maximum => 120 }
    validates  :alergia      , :length => { :maximum => 120 }
    validates  :dor          , :length => { :maximum => 120 }
-   validates  :email        , :length => { :maximum => 100 } 
-   #validates  :email        , :length => { :maximum => 100 }, :presence => false,:uniqueness => true 
-   #validates_format_of :email, :with => /\A[a-zA-Z]+\z/, :message => "está com formato inválido"    
-   
-   
+   validates  :email        , :length => { :maximum => 100 }
+   #validates  :email        , :length => { :maximum => 100 }, :presence => false,:uniqueness => true
+   #validates_format_of :email, :with => /\A[a-zA-Z]+\z/, :message => "está com formato inválido"
+
+
   #Atualiza o status do treino do aluno
   def atualizaStatusTreino(params)
     self.dataUltimoTreino =  Date.today
-    self.semanaAdaptacao = params[:semanaAdaptacao] 
+    self.semanaAdaptacao = params[:semanaAdaptacao]
     self.last_treino = params[:last_treino]
-    self.registraPresenca()    
-    
+    self.registraPresenca()
+
     if self.save
-      return true        
+      return true
     else
       return false
     end
-    
+
   end
-  
+
   def registraPresenca()
     self.presencas.create(data: Date.today)
   end
@@ -44,20 +44,19 @@ class Aluno < ActiveRecord::Base
 
   def getSemanaAdaptacao()
     dataUltimoTreino = Date.today
-    
     if (self.dataUltimoTreino != nil)
       dataUltimoTreino = self.dataUltimoTreino
     end
-    
+
     nUltSemanaTreino = dataUltimoTreino.cweek
     nProSemanaTreino = (dataUltimoTreino+7).cweek
     nSemanaAtual = Date.today.cweek
     #nSemanaAtual = Date.new(2014,4,23).cweek
     nSemanaAdaptacao = self.semanaAdaptacao
-    
+
     #Mudou de semana?
     if  nUltSemanaTreino != nSemanaAtual
-      
+
         #A semana esta em sequencia?
         if (nUltSemanaTreino+1) == nSemanaAtual
           nSemanaAdaptacao = nSemanaAdaptacao + 1
@@ -68,11 +67,11 @@ class Aluno < ActiveRecord::Base
     else
       nSemanaAdaptacao = 0
     end
-    
+
     return nSemanaAdaptacao
-  end 
-  
-  
+  end
+
+
   #################################################################
   #
   #Define qual será a adaptacao para o treino do usuário.
@@ -83,25 +82,25 @@ class Aluno < ActiveRecord::Base
     adaptcaoAtual = nil
     nSemanaAtual = self.getSemanaAdaptacao()
 
-    # 
+    #
     treino.adaptacaos.each do |tap|
-      semAdaptacaoFim = semAdaptacaoIni + tap.semana    
-      
+      semAdaptacaoFim = semAdaptacaoIni + tap.semana
+
       if nSemanaAtual.between?(semAdaptacaoIni, semAdaptacaoFim)
         adaptcaoAtual = tap
         break
       end
       semAdaptacaoIni = semAdaptacaoFim
-    end     
-    
+    end
+
     if adaptcaoAtual == nil
        adaptcaoAtual = treino.adaptacaos.last
     end
-    
+
     return [adaptcaoAtual,nSemanaAtual]
   end
-  
+
   #private :getSemanaAdaptacao
-  
-  
+
+
 end
