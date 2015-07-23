@@ -11,71 +11,73 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140318175619) do
+ActiveRecord::Schema.define(version: 20150722004255) do
 
-  create_table "adaptacaodia", force: true do |t|
+  create_table "adaptacaodia", force: :cascade do |t|
     t.integer  "adaptacao_id"
     t.integer  "diasemana_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "adaptacaos", force: true do |t|
+  create_table "adaptacaos", force: :cascade do |t|
     t.integer  "treino_id"
     t.integer  "semana"
     t.integer  "serie"
     t.integer  "repeticao"
     t.integer  "carga"
     t.integer  "intervalo"
-    t.string   "observacao"
+    t.string   "observacao", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "alunoaulas", force: true do |t|
+  create_table "alunoaulas", force: :cascade do |t|
     t.integer  "aluno_id"
     t.integer  "diasemana_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "alunos", force: true do |t|
-    t.string "idAcademia",  limit: 30,  default: "'"
-    t.string "nome",        limit: 80,  default: "Aluno",       null: false
-    t.string "medicamento", limit: 120, default: "Não toma."
-    t.string "doenca",      limit: 120, default: "Não possui."
-    t.string "alergia",     limit: 120, default: "Não tem."
-    t.string "dor",         limit: 120, default: "Não sente."
-    t.string "email",       limit: 100, default: "'"
-    t.text   "observacao"
-    t.date   "nascimento",              default: '2014-01-04'
-    t.string "sexo",        limit: 1,   default: "f",           null: false
-    t.string "last_treino", limit: 1,   default: ""
+  create_table "alunos", force: :cascade do |t|
+    t.string  "idAcademia",       limit: 30,  default: "'"
+    t.string  "nome",             limit: 80,  default: "Aluno",       null: false
+    t.string  "medicamento",      limit: 120, default: "Não toma."
+    t.string  "doenca",           limit: 120, default: "Não possui."
+    t.string  "alergia",          limit: 120, default: "Não tem."
+    t.string  "dor",              limit: 120, default: "Não sente."
+    t.string  "email",            limit: 100, default: "'"
+    t.text    "observacao"
+    t.date    "nascimento",                   default: '2014-01-04'
+    t.string  "sexo",             limit: 1,   default: "f",           null: false
+    t.string  "last_treino",      limit: 1,   default: ""
+    t.date    "dataUltimoTreino"
+    t.integer "semanaAdaptacao"
   end
 
-  create_table "atividades", force: true do |t|
+  create_table "atividades", force: :cascade do |t|
     t.string   "nome",       limit: 120,                null: false
-    t.string   "instrucao"
-    t.string   "indicacao"
-    t.string   "restricao"
-    t.string   "observacao"
+    t.string   "instrucao",  limit: 255
+    t.string   "indicacao",  limit: 255
+    t.string   "restricao",  limit: 255
+    t.string   "observacao", limit: 255
     t.string   "tipo",       limit: 1
     t.boolean  "ativo",                  default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "atividadetreinodia", force: true do |t|
+  create_table "atividadetreinodia", force: :cascade do |t|
     t.integer  "atividadetreino_id"
     t.integer  "diasemana_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "atividadetreinos", force: true do |t|
+  create_table "atividadetreinos", force: :cascade do |t|
     t.integer  "atividade_id"
     t.integer  "treino_id"
-    t.string   "tempo"
+    t.string   "tempo",        limit: 255
     t.integer  "velocidade"
     t.integer  "inclinacao"
     t.integer  "carga"
@@ -85,39 +87,45 @@ ActiveRecord::Schema.define(version: 20140318175619) do
     t.string   "ordem_treino", limit: 20
   end
 
-  create_table "diasemanas", force: true do |t|
-    t.string   "nome"
+  create_table "diasemanas", force: :cascade do |t|
+    t.string   "nome",          limit: 255
     t.string   "nomeabreviado", limit: 3
     t.integer  "simbnumberal"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "exercicios", force: true do |t|
+  create_table "exercicios", force: :cascade do |t|
     t.integer  "musculo_id"
     t.integer  "atividade_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "groups", force: true do |t|
+  create_table "formapagamentos", force: :cascade do |t|
     t.string   "nome"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "nome",       limit: 255
     t.text     "descricao"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "groups_rules", force: true do |t|
+  create_table "groups_rules", force: :cascade do |t|
     t.integer "group_id"
     t.integer "rule_id"
   end
 
-  create_table "groups_users", force: true do |t|
+  create_table "groups_users", force: :cascade do |t|
     t.integer "user_id"
     t.integer "group_id"
   end
 
-  create_table "musculos", force: true do |t|
+  create_table "musculos", force: :cascade do |t|
     t.string   "nome",        limit: 120,                null: false
     t.string   "observacao",  limit: 120
     t.boolean  "selecionado",             default: true
@@ -125,7 +133,7 @@ ActiveRecord::Schema.define(version: 20140318175619) do
     t.datetime "updated_at"
   end
 
-  create_table "ordemmusculotreinos", force: true do |t|
+  create_table "ordemmusculotreinos", force: :cascade do |t|
     t.integer  "musculo_id"
     t.integer  "treino_id"
     t.string   "ordem",      limit: 2
@@ -133,21 +141,44 @@ ActiveRecord::Schema.define(version: 20140318175619) do
     t.datetime "updated_at"
   end
 
-  create_table "rules", force: true do |t|
-    t.string   "nome"
-    t.string   "entidade"
-    t.string   "regra"
+  create_table "presencas", force: :cascade do |t|
+    t.date     "data"
+    t.integer  "aluno_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "presencas", ["aluno_id"], name: "index_presencas_on_aluno_id"
+
+  create_table "rules", force: :cascade do |t|
+    t.string   "nome",       limit: 255
+    t.string   "entidade",   limit: 255
+    t.string   "regra",      limit: 255
     t.text     "descricao"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "rules_users", force: true do |t|
+  create_table "rules_users", force: :cascade do |t|
     t.integer "rule_id"
     t.integer "user_id"
   end
 
-  create_table "treinos", force: true do |t|
+  create_table "tabelaplanos", force: :cascade do |t|
+    t.string   "nome"
+    t.integer  "qtdMinParcela"
+    t.integer  "qtdMaxParcela"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "tipovendas", force: :cascade do |t|
+    t.string   "nome"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "treinos", force: :cascade do |t|
     t.date     "criacao"
     t.date     "validade"
     t.text     "observacao"
@@ -156,23 +187,35 @@ ActiveRecord::Schema.define(version: 20140318175619) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
+    t.string   "name",                   limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "vendaplanos", force: :cascade do |t|
+    t.integer  "aluno_id"
+    t.integer  "tabelaplano_id"
+    t.integer  "formapagamento_id"
+    t.integer  "tipovenda_id"
+    t.date     "dtVenda"
+    t.integer  "nuDia"
+    t.integer  "qtVenda"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
 
 end

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @tabelaplano.nome %>
+</p>
+
+<p>
+  <strong>Qtdminparcela:</strong>
+  <%= @tabelaplano.qtdMinParcela %>
+</p>
+
+<p>
+  <strong>Qtdmaxparcela:</strong>
+  <%= @tabelaplano.qtdMaxParcela %>
+</p>
+
+<%= link_to 'Edit', edit_tabelaplano_path(@tabelaplano) %> |
+<%= link_to 'Back', tabelaplanos_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  qtdMinParcela: 1
+  qtdMaxParcela: 1
+
+two:
+  nome: MyString
+  qtdMinParcela: 1
+  qtdMaxParcela: 1

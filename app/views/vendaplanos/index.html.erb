@@ -1,0 +1,35 @@
+<%- model_class = Vendaplano -%>
+
+<%= grid(@vendaplanos_grid,
+	allow_showing_all_records:  false,
+	show_filters: :when_filtered) do |g|
+
+	#if can? :update, @aluno
+	#	g.last_row do |number_of_columns|
+	#		content_tag(:tr,
+	#		content_tag(:td, link_to('Novo Aluno', new_aluno_path,:class => 'btn btn-primary'  ),colspan: 9), class: 'last-row')
+	#	end
+  #end
+
+	g.column name:  'Aluno', attribute: 'aluno_id' do |venPlano|
+		venPlano.aluno.nome
+	end
+  #
+
+  #
+	g.column   do |venPlano|
+		link_to( image_tag("btnOperation/form_show.png", :alt => "Visualizar") , venPlano)
+	end
+  #
+	g.column   do |venPlano|
+		link_to(image_tag("btnOperation/form_edit.png", :alt => "Alterar."), edit_vendaplano_path(venPlano))
+	end
+  #
+	g.column   do |venPlano|
+		link_to image_tag("btnOperation/form_delete.png", :alt => "Excluir."),
+						  venPlano,
+						  method: :delete, data: { :confirm => t('.confirm', :default => t("helpers.links.confirmdelete", :default => 'Are you sure?')) }
+	end
+
+end %>
+<%=link_to('Novo Plano', new_vendaplano_path,:class => 'btn btn-primary'  )%>

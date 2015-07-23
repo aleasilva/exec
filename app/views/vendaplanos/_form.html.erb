@@ -1,0 +1,45 @@
+<%= form_for(@vendaplano) do |f| %>
+  <% if @vendaplano.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vendaplano.errors.count, "error") %> prohibited this vendaplano from being saved:</h2>
+
+      <ul>
+      <% @vendaplano.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :plano_id %><br>
+    <%= f.collection_select :tabelaplano_id, Tabelaplano.all, :id, :nome, prompt: true%>
+  </div>
+  <div class="field">
+    <%= f.label :aluno_id %><br>
+    <%= f.collection_select :aluno_id, Aluno.all,:id ,:nome, prompt: true %>
+  </div>
+  <div class="field">
+    <%= f.label :pagamento %><br>
+    <%= f.collection_select :formapagamento_id, Formapagamento.all,:id ,:nome, prompt: true %>
+  </div>
+  <div class="field">
+    <%= f.label :tipovenda %><br>
+    <%= f.collection_select :tipovenda_id, Tipovenda.all, :id, :nome, prompt: true%>
+  </div>
+  <div class="field">
+    <%= f.label :dtVenda %><br>
+    <%= f.date_select :dtVenda %>
+  </div>
+  <div class="field">
+    <%= f.label :nuDia %><br>
+    <%= f.number_field :nuDia %>
+  </div>
+  <div class="field">
+    <%= f.label :qtVenda %><br>
+    <%= f.number_field :qtVenda %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

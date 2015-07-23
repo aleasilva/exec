@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Tabelaplanos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Qtdminparcela</th>
+      <th>Qtdmaxparcela</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tabelaplanos.each do |tabelaplano| %>
+      <tr>
+        <td><%= tabelaplano.nome %></td>
+        <td><%= tabelaplano.qtdMinParcela %></td>
+        <td><%= tabelaplano.qtdMaxParcela %></td>
+        <td><%= link_to 'Show', tabelaplano %></td>
+        <td><%= link_to 'Edit', edit_tabelaplano_path(tabelaplano) %></td>
+        <td><%= link_to 'Destroy', tabelaplano, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tabelaplano', new_tabelaplano_path %>

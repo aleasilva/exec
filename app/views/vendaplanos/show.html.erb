@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Plano:</strong>
+  <%= @vendaplano.tabelaplano.nome %>
+</p>
+
+<p>
+  <strong>Aluno:</strong>
+  <%= @vendaplano.aluno.nome %>
+</p>
+
+<p>
+  <strong>Pagamento:</strong>
+  <%= @vendaplano.formapagamento.nome %>
+</p>
+
+<p>
+  <strong>Tipovenda:</strong>
+  <%= @vendaplano.tipovenda.nome %>
+</p>
+
+<p>
+  <strong>Dtvenda:</strong>
+  <%= @vendaplano.dtVenda %>
+</p>
+
+<p>
+  <strong>Nudia:</strong>
+  <%= @vendaplano.nuDia %>
+</p>
+
+<p>
+  <strong>Qtvenda:</strong>
+  <%= @vendaplano.qtVenda %>
+</p>
+
+<%= link_to 'Edit', edit_vendaplano_path(@vendaplano) %> |
+<%= link_to 'Back', vendaplanos_path %>

@@ -1,0 +1,29 @@
+<%= form_for(@tabelaplano) do |f| %>
+  <% if @tabelaplano.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tabelaplano.errors.count, "error") %> prohibited this tabelaplano from being saved:</h2>
+
+      <ul>
+      <% @tabelaplano.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :qtdMinParcela %><br>
+    <%= f.number_field :qtdMinParcela %>
+  </div>
+  <div class="field">
+    <%= f.label :qtdMaxParcela %><br>
+    <%= f.number_field :qtdMaxParcela %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,4 +1,8 @@
 Exec::Application.routes.draw do
+  resources :vendaplanos
+  resources :tipovendas
+  resources :formapagamentos
+  resources :tabelaplanos
   resources :groups
   resources :rules
   resources :atividades

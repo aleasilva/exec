@@ -9,6 +9,9 @@ class Aluno < ActiveRecord::Base
    has_many :treinos, dependent: :destroy
    has_many :presencas, dependent: :destroy
 
+   #Relacionamento com as vendas
+   has_many :vendaplanos
+
    #Validadores
    validates  :nome         , :length => { :maximum => 80  },:presence => true, :uniqueness => false
    validates  :idAcademia   , :length => { :maximum => 30  },:presence => true
