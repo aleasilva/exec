@@ -47,16 +47,24 @@
 			<!--Cabecalho-->
 			<div class="row" name="cabec">
 				<div class="col-md-12">
-					<nav class="navbar navbar-default">
+					<nav class="navbar navbar-inverse">
 					  <div class="container-fluid">
-					    <div class="navbar-header">
-					      <a class="navbar-brand" href="#">
-					        <img alt="Brand" src="...">
-					      </a>
+							<div class="navbar-header">
+								<a class="navbar-brand" href="#">
+									<img alt="Brand" src="...">
+								</a>
+							</div>
+							<div class="navbar-header">
+					      <a class="navbar-brand" href="#">Boa Forma Acadêmia</a>
 					    </div>
-					  </div>
+							<p class="navbar-text navbar-right">
+								<%if user_signed_in? %>
+									Usuário Logado: 
+								<%else%>
+									<%=link_to('Entrar no Sistema', user_session_path,:class => 'navbar-link'  )%>
+								<%end%>
+							</p>
 					</nav>
-				</div>
 			</div>
 			<!--Message-->
 			<div class="row" name = "messageArea">
@@ -85,6 +93,12 @@
 												<%= link_to "Músculos", musculos_path  %>
 											</li>
 										</div>
+										<h3>Operações</h3>
+											<div>
+												<li>
+													<%= link_to "Vendas de Planos",  vendaplanos_path%>
+												</li>
+											</div>
 										<h3>Relatórios</h3>
 										<div>
 											Relatório

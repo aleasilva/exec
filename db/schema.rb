@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150722004255) do
+ActiveRecord::Schema.define(version: 20150724004529) do
 
   create_table "adaptacaodia", force: :cascade do |t|
     t.integer  "adaptacao_id"
@@ -170,6 +170,8 @@ ActiveRecord::Schema.define(version: 20150722004255) do
     t.integer  "qtdMaxParcela"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.float    "valor"
+    t.integer  "parcelas"
   end
 
   create_table "tipovendas", force: :cascade do |t|
@@ -213,9 +215,13 @@ ActiveRecord::Schema.define(version: 20150722004255) do
     t.integer  "tipovenda_id"
     t.date     "dtVenda"
     t.integer  "nuDia"
-    t.integer  "qtVenda"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "nuParcela"
+    t.date     "dtPagto"
+    t.date     "dtBaixa"
+    t.string   "vendidoPor"
+    t.string   "recebidoPor"
   end
 
 end
