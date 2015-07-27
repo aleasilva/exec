@@ -1,39 +1,29 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Vendaplano -%>
 
-<p>
-  <strong>Plano:</strong>
-  <%= @vendaplano.tabelaplano.nome %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong>Aluno:</strong></dt>
+  <dd><%= @vendaplano.aluno.nome %></dd>
 
-<p>
-  <strong>Aluno:</strong>
-  <%= @vendaplano.aluno.nome %>
-</p>
+  <dt><strong>Tipo do plano:</strong></dt>
+  <dd><%= @vendaplano.tabelaplano.nome %></dd>
 
-<p>
-  <strong>Pagamento:</strong>
-  <%= @vendaplano.formapagamento.nome %>
-</p>
+  <dt><strong>Forma pagamento:</strong></dt>
+  <dd><%= @vendaplano.formapagamento.nome  %></dd>
 
-<p>
-  <strong>Tipovenda:</strong>
-  <%= @vendaplano.tipovenda.nome %>
-</p>
+  <dt><strong>Tipo pagamento</strong></dt>
+  <dd><%= @vendaplano.tipovenda.nome %></dd>
 
-<p>
-  <strong>Dtvenda:</strong>
-  <%= @vendaplano.dtVenda %>
-</p>
+  <dt><strong>Data venda:</strong></dt>
+  <dd><%= @vendaplano.dtVenda %></dd>
 
-<p>
-  <strong>Nudia:</strong>
-  <%= @vendaplano.nuDia %>
-</p>
+  <dt><strong>Dia vencimento:</strong></dt>
+  <dd><%= @vendaplano.nuDia  %></dd>
+</dl>
 
-<p>
-  <strong>Qtvenda:</strong>
-  <%= @vendaplano.qtVenda %>
-</p>
-
-<%= link_to 'Edit', edit_vendaplano_path(@vendaplano) %> |
-<%= link_to 'Back', vendaplanos_path %>
+<div class="panel-footer">
+  <%= link_to t('.back', :default => t("helpers.links.back")), vendaplanos_path, :class => 'btn btn-primary'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_vendaplano_path(@vendaplano), :class => 'btn btn-primary' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")), vendaplano_path(@vendaplano),
+              :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirmdelete", :default => 'Você tem certeza que deseja excluir o registro?')) },
+              :class => 'btn btn-danger' %>
+</div>

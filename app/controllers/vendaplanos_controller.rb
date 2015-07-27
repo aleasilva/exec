@@ -28,6 +28,10 @@ class VendaplanosController < ApplicationController
   # POST /vendaplanos
   def create
     @vendaplano = Vendaplano.new(vendaplano_params)
+    @vendaplano.vendidoPor = current_user.name
+    qtdParcelas = @vendaplano.tabelaplano.qtdMaxParcela
+
+    byebug
 
     if @vendaplano.save
       redirect_to @vendaplano, notice: 'Vendaplano was successfully created.'

@@ -59,7 +59,7 @@
 					    </div>
 							<p class="navbar-text navbar-right">
 								<%if user_signed_in? %>
-									Usuário Logado:
+									Usuário Logado : <%= current_user.name%>
 								<%else%>
 									<%=link_to('Entrar no Sistema', user_session_path,:class => 'navbar-link'  )%>
 								<%end%>
@@ -82,35 +82,21 @@
 									<div id="accordion">
 										<h3>Cadastros</h3>
 										<div>
-											<li>
-												<%= link_to "Alunos", alunos_path  %>
-											</li>
-											<li>
-												<%= link_to "Atividades", atividades_path  %>
-											</li>
-											<li>
-												<%= link_to "Músculos", musculos_path  %>
-											</li>
+											<li><%= link_to "Alunos", alunos_path  %></li>
+											<li><%= link_to "Atividades", atividades_path  %></li>
+											<li><%= link_to "Músculos", musculos_path  %></li>
 										</div>
 										<h3>Operações</h3>
 											<div>
-												<li>
-													<%= link_to "Vendas de Planos",  vendaplanos_path%>
-												</li>
+												<li><%= link_to "Vendas de Planos",vendaplanos_path%></li>
 											</div>
 										<h3>Relatórios</h3>
-										<div>
-											Relatório
-										</div>
+											<div>Relatório</div>
 										<h3>Sistema</h3>
-										<div>
-											<li>
-												<%= link_to "Lista de usuários",  users_path%>
-											</li>
-											<li>
-												<%= link_to "Trocar senha",  edit_user_password_path%>
-											</li>
-										</div>
+											<div>
+												<li><%= link_to "Lista de usuários",  users_path%></li>
+												<li><%= link_to "Trocar senha",  edit_user_password_path%></li>
+											</div>
 									</div>
 								</div><!--/.well -->
 							</div><!--/span-->
@@ -126,7 +112,7 @@
 					<div class="panel panel-primary">
 
 						<div class="panel-heading">
-					    <h3 class="panel-title"> <%=params[:controller].humanize %> </h3>
+					    <h3 class="panel-title"> <%=setFormTitle() %></h3>
 						</div>
 
 					  <div class="panel-body">
@@ -151,5 +137,4 @@
 			</div>
 		</div>
 	</body>
-
 </html>
