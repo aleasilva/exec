@@ -68,7 +68,7 @@
 
   #
 	g.column   do |venPlano|
-		link_to( image_tag("btnOperation/form_show.png", :alt => "Visualizar") , venPlano)
+		link_to(image_tag("btnOperation/form_show.png", :alt => "Visualizar") , venPlano)
 	end
   #
 	g.column   do |venPlano|
@@ -76,10 +76,9 @@
 	end
   #
 	g.column   do |venPlano|
-		link_to image_tag("btnOperation/form_delete.png", :alt => "Excluir."),
-						  venPlano,
+		link_to image_tag("btnOperation/form_delete.png", :alt => "Excluir."),venPlano,
 						  method: :delete, data: { :confirm => t('.confirm', :default => t("helpers.links.confirmdelete", :default => 'Are you sure?')) }
 	end
 
 end %>
-<%=link_to('Novo Plano', new_vendaplano_path,:class => 'btn btn-primary'  )%>
+<%=link_to('Nova venda', new_vendaplano_path,:class => 'btn btn-primary'  )%>

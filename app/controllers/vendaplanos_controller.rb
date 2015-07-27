@@ -4,7 +4,11 @@ class VendaplanosController < ApplicationController
   # GET /vendaplanos
   def index
     @vendaplanos = Vendaplano.all
-    @vendaplanos_grid = initialize_grid(@vendaplanos,per_page: 10)
+    @vendaplanos_grid = initialize_grid(@vendaplanos,
+                                        per_page: 10,
+                                        enable_export_to_csv: true,
+                                        csv_file_name:'projects')
+    export_grid_if_requested
   end
 
   # GET /vendaplanos/1
@@ -14,6 +18,7 @@ class VendaplanosController < ApplicationController
   # GET /vendaplanos/new
   def new
     @vendaplano = Vendaplano.new
+    @vendaplano.dtVenda =  Date.today
   end
 
   # GET /vendaplanos/1/edit

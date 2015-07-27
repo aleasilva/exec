@@ -59,7 +59,7 @@
 					    </div>
 							<p class="navbar-text navbar-right">
 								<%if user_signed_in? %>
-									Usuário Logado: 
+									Usuário Logado:
 								<%else%>
 									<%=link_to('Entrar no Sistema', user_session_path,:class => 'navbar-link'  )%>
 								<%end%>
@@ -85,7 +85,6 @@
 											<li>
 												<%= link_to "Alunos", alunos_path  %>
 											</li>
-
 											<li>
 												<%= link_to "Atividades", atividades_path  %>
 											</li>

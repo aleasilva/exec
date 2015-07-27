@@ -2,3 +2,16 @@ p.borderGreen {
     border-style: solid;
     border-color: #98bf21;
 }
+
+/*
+  Correcao do tamanho da grid.
+*/
+.table {
+     word-wrap: break-word;
+     max-width: none;
+     table-layout: fixed;
+ }
+
+.tableClass tbody{
+  overflow: scroll /* you can be more specific and use overflow-y */
+}
