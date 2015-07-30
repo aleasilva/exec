@@ -31,13 +31,14 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <!-- <div class="form-group">
     <%= f.label "Dia vencimento",  :class=>"col-sm-2 control-label" %>
     <div class="col-sm-2">
       <%= f.text_field :nuDia, :onkeypress=> onlyTextNumber, :class=>"form-control"%>
     </div>
   </div>
-
+ -->
+ 
   <div class="panel-footer">
       <%= f.submit "Gravar", :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")), vendaplanos_path, :class => 'btn btn-warning' %>
