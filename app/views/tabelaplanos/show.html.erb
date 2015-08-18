@@ -1,19 +1,21 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Tabelaplano -%>
 
-<p>
-  <strong>Nome:</strong>
-  <%= @tabelaplano.nome %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:nome) %>:</strong></dt>
+  <dd><%= @tabelaplano.nome %></dd>
+  <dt><strong>Quantida de parcelas:</strong></dt>
+  <dd><%= @tabelaplano.qtdMaxParcela%></dd>
 
-<p>
-  <strong>Qtdminparcela:</strong>
-  <%= @tabelaplano.qtdMinParcela %>
-</p>
+</dl>
 
-<p>
-  <strong>Qtdmaxparcela:</strong>
-  <%= @tabelaplano.qtdMaxParcela %>
-</p>
-
-<%= link_to 'Edit', edit_tabelaplano_path(@tabelaplano) %> |
-<%= link_to 'Back', tabelaplanos_path %>
+<div class="panel-footer">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              tabelaplano_path, :class => 'btn btn-primary'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_tabelaplano_path(@tabelaplano), :class => 'btn btn-primary' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              tabelaplano_path(@tabelaplano),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirmdelete", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

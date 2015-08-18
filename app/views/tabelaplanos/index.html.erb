@@ -1,31 +1,27 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Tabelaplano -%>
 
-<h1>Listing Tabelaplanos</h1>
+<%= grid(@tabelaplanos_grid,
+	allow_showing_all_records:  false,
+	show_filters: :when_filtered) do |g|
 
-<table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Qtdminparcela</th>
-      <th>Qtdmaxparcela</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+	#
+	g.column name:  'Tipo do Plano', attribute: 'nome' do |tipoPlano|
+		tipoPlano.nome
+	end
 
-  <tbody>
-    <% @tabelaplanos.each do |tabelaplano| %>
-      <tr>
-        <td><%= tabelaplano.nome %></td>
-        <td><%= tabelaplano.qtdMinParcela %></td>
-        <td><%= tabelaplano.qtdMaxParcela %></td>
-        <td><%= link_to 'Show', tabelaplano %></td>
-        <td><%= link_to 'Edit', edit_tabelaplano_path(tabelaplano) %></td>
-        <td><%= link_to 'Destroy', tabelaplano, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  #
+	g.column   do |tipoPlano|
+		link_to(image_tag("btnOperation/form_show.png", :alt => "Visualizar") , tipoPlano)
+	end
+  #
+	g.column   do |tipoPlano|
+		link_to(image_tag("btnOperation/form_edit.png", :alt => "Alterar."), edit_tabelaplano_path(tipoPlano))
+	end
+  #
+	g.column   do |tipoPlano|
+		link_to image_tag("btnOperation/form_delete.png", :alt => "Excluir."),tipoPlano,
+						  method: :delete, data: { :confirm => t('.confirm', :default => t("helpers.links.confirmdelete", :default => 'Are you sure?')) }
+	end
 
-<br>
-
-<%= link_to 'New Tabelaplano', new_tabelaplano_path %>
+end %>
+<%=link_to('Novo Tabela Plano', new_tabelaplano_path,:class => 'btn btn-primary'  )%>

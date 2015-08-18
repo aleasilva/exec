@@ -1,21 +1,15 @@
-<%= form_for(@formapagamento) do |f| %>
-  <% if @formapagamento.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@formapagamento.errors.count, "error") %> prohibited this formapagamento from being saved:</h2>
+<%= form_for @formapagamento, :html => { :class => 'form-horizontal' } do |f| %>
 
-      <ul>
-      <% @formapagamento.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="form-group">
+    <%= f.label :nome,:for=>"txtName", :class=>"col-sm-2 control-label"%>
+    <div class="col-sm-9">
+      <%= f.text_field :nome, :id=>"txtName", :class=>"form-control" %>
     </div>
-  <% end %>
+  </div>
 
-  <div class="field">
-    <%= f.label :nome %><br>
-    <%= f.text_field :nome %>
+  <div class="panel-footer">
+      <%= f.submit "Gravar", :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")), formapagamento_path, :class => 'btn btn-warning' %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>

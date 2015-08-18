@@ -1,4 +1,5 @@
 class VendaplanosController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index] 
   before_action :set_vendaplano, only: [:show, :edit, :update, :destroy]
 
   # GET /vendaplanos
@@ -8,7 +9,6 @@ class VendaplanosController < ApplicationController
                                         per_page: 10,
                                         enable_export_to_csv: true,
                                         csv_file_name:'projects')
-    export_grid_if_requested
   end
 
   # GET /vendaplanos/1
@@ -41,7 +41,8 @@ class VendaplanosController < ApplicationController
             @vendaplano.dtBaixa = @vendaplano.dtVenda
             @vendaplano.recebidoPor = current_user.name
           else
-            @vendaplano = criaParcela(@vendaplano)
+            #@vendaplano = criaParcela(@vendaplano)
+            @vendaplano = criaParcela(@vendaplano.dtVenda, iParcela -1)
           end
 
           @vendaplano.vendidoPor = current_user.name
@@ -59,12 +60,12 @@ class VendaplanosController < ApplicationController
   end
 
   #Cria uma nova parcela
-  def criaParcela(parcelaAnterior)
+  def criaParcela(dataVenda, numeroParcela)
 
     novaParcela  = Vendaplano.new(vendaplano_params)
     novaParcela.dtBaixa = nil
     novaParcela.recebidoPor = nil
-    novaParcela.dtPagto = parcelaAnterior.dtPagto + 30
+    novaParcela.dtPagto = dataVenda >> numeroParcela
 
     return novaParcela
   end

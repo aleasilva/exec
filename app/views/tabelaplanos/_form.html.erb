@@ -1,29 +1,22 @@
-<%= form_for(@tabelaplano) do |f| %>
-  <% if @tabelaplano.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@tabelaplano.errors.count, "error") %> prohibited this tabelaplano from being saved:</h2>
+<%= form_for @tabelaplano, :html => { :class => 'form-horizontal' } do |f| %>
 
-      <ul>
-      <% @tabelaplano.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="form-group">
+    <%= f.label :nome,:for=>"txtName", :class=>"col-sm-3 control-label"%>
+    <div class="col-sm-9">
+      <%= f.text_field :nome, :id=>"txtName", :class=>"form-control" %>
     </div>
-  <% end %>
+  </div>
 
-  <div class="field">
-    <%= f.label :nome %><br>
-    <%= f.text_field :nome %>
+  <div class="form-group">
+    <%= f.label "Número de parcela(s)", :class=>"col-sm-3 control-label", :for=>"spnParcela" %>
+    <div class="col-sm-9">
+      <%= f.number_field :qtdMaxParcela, :id=>"spnParcela" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :qtdMinParcela %><br>
-    <%= f.number_field :qtdMinParcela %>
+
+  <div class="panel-footer">
+      <%= f.submit "Gravar", :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")), tabelaplanos_path, :class => 'btn btn-warning' %>
   </div>
-  <div class="field">
-    <%= f.label :qtdMaxParcela %><br>
-    <%= f.number_field :qtdMaxParcela %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>

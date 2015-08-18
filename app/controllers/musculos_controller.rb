@@ -1,4 +1,5 @@
 class MusculosController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index]
   before_action :set_musculo, only: [:show, :edit, :update, :destroy]
 
   # GET /musculos

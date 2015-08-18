@@ -1,9 +1,14 @@
 class TabelaplanosController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index]
   before_action :set_tabelaplano, only: [:show, :edit, :update, :destroy]
 
   # GET /tabelaplanos
   def index
     @tabelaplanos = Tabelaplano.all
+    @tabelaplanos_grid = initialize_grid(@tabelaplanos,
+                                        per_page: 10,
+                                        enable_export_to_csv: true,
+                                        csv_file_name:'tipovenda')
   end
 
   # GET /tabelaplanos/1

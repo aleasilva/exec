@@ -1,27 +1,27 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Formapagamento -%>
 
-<h1>Listing Formapagamentos</h1>
+<%= grid(@formapagamentos_grid,
+	allow_showing_all_records:  false,
+	show_filters: :when_filtered) do |g|
 
-<table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+	#
+	g.column name:  'Forma pagamento', attribute: 'nome' do |formaPagamento|
+		formaPagamento.nome
+	end
 
-  <tbody>
-    <% @formapagamentos.each do |formapagamento| %>
-      <tr>
-        <td><%= formapagamento.nome %></td>
-        <td><%= link_to 'Show', formapagamento %></td>
-        <td><%= link_to 'Edit', edit_formapagamento_path(formapagamento) %></td>
-        <td><%= link_to 'Destroy', formapagamento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  #
+	g.column   do |formaPagamento|
+		link_to(image_tag("btnOperation/form_show.png", :alt => "Visualizar") , formaPagamento)
+	end
+  #
+	g.column   do |formaPagamento|
+		link_to(image_tag("btnOperation/form_edit.png", :alt => "Alterar."), edit_formapagamento_path(formaPagamento))
+	end
+  #
+	g.column   do |formaPagamento|
+		link_to image_tag("btnOperation/form_delete.png", :alt => "Excluir."),formaPagamento,
+						  method: :delete, data: { :confirm => t('.confirm', :default => t("helpers.links.confirmdelete", :default => 'Are you sure?')) }
+	end
 
-<br>
-
-<%= link_to 'New Formapagamento', new_formapagamento_path %>
+end %>
+<%=link_to('Nova forma de pagamento', new_formapagamento_path,:class => 'btn btn-primary'  )%>

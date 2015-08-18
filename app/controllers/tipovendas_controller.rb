@@ -1,9 +1,14 @@
 class TipovendasController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index]
   before_action :set_tipovenda, only: [:show, :edit, :update, :destroy]
 
   # GET /tipovendas
   def index
     @tipovendas = Tipovenda.all
+    @tipovendas_grid = initialize_grid(@tipovendas,
+                                        per_page: 10,
+                                        enable_export_to_csv: true,
+                                        csv_file_name:'tipovenda')
   end
 
   # GET /tipovendas/1

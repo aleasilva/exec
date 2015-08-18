@@ -4,6 +4,11 @@ class FormapagamentosController < ApplicationController
   # GET /formapagamentos
   def index
     @formapagamentos = Formapagamento.all
+    @formapagamentos_grid = initialize_grid(@formapagamentos,
+                                        per_page: 10,
+                                        enable_export_to_csv: true,
+                                        csv_file_name:'formaPagamento')
+
   end
 
   # GET /formapagamentos/1
