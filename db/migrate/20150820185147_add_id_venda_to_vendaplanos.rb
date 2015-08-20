@@ -1,5 +1,5 @@
 class AddIdVendaToVendaplanos < ActiveRecord::Migration
   def change
-    add_column :vendaplanos, :idVenda, :integer
+    add_column :vendaplanos, :idGroupoVenda, :integer
   end
 end
