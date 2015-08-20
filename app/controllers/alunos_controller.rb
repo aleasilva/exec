@@ -35,7 +35,7 @@ class AlunosController < ApplicationController
 
     respond_to do |format|
       if @aluno.save
-        format.html { redirect_to @aluno, notice: 'Aluno was successfully created.' }
+        format.html { redirect_to @aluno, notice: 'Aluno foi criado com sucesso.' }
         format.json { render action: 'show', status: :created, location: @aluno }
       else
         format.html { render action: 'new' }
@@ -89,7 +89,6 @@ class AlunosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def aluno_params
       #params.require(:aluno).permit(:idAcademia, :nome, :nascimento, :sexo, :observacao)
-      Rails.logger.info("ALUNOS ALUNOS ALUNOS")
       params.require(:aluno).permit!
     end
 end

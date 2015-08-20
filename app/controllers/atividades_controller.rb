@@ -26,7 +26,7 @@ class AtividadesController < ApplicationController
 
     respond_to do |format|
       if @atividade.save
-        format.html { redirect_to @atividade, notice: 'Atividade was successfully created.' }
+        format.html { redirect_to @atividade, notice: 'Atividade foi criado com sucesso.' }
       else
         format.html { render action: 'new' }
       end
@@ -37,7 +37,7 @@ class AtividadesController < ApplicationController
   def update
     respond_to do |format|
       if @atividade.update(atividade_params)
-        format.html { redirect_to @atividade, notice: 'Atividade was successfully updated.' }
+        format.html { redirect_to @atividade, notice: 'Atividade foi atualizado.' }
       else
         format.html { render action: 'edit' }
       end

@@ -7,5 +7,6 @@ class AddNuParcelaDtPagtoDtBaixaVendidoPorRecebidoPorToVendaplanos < ActiveRecor
     add_column :vendaplanos, :dtBaixa, :date
     add_column :vendaplanos, :vendidoPor, :string
     add_column :vendaplanos, :recebidoPor, :string
+    add_column :vendaplanos, :idVenda, :integer
   end
 end
