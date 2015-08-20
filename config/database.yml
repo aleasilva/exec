@@ -21,7 +21,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: exec_production
+  database: d8mr7c47l9regu
   pool: 5
-  username: exec
-  password: exec
+  username: obnlztnljalwep
+  password: s3tJhtWzkILawQLweVfew17c3A

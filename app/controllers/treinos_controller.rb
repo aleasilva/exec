@@ -1,7 +1,7 @@
 require "date"
 
 class TreinosController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index]
+  #before_filter :authenticate_user!, :except => [:index]
   before_action :set_treino, only: [:show, :edit, :update, :destroy]
 
   def edit
