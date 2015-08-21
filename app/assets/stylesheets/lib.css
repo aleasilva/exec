@@ -6,12 +6,12 @@ p.borderGreen {
 /*
   Correcao do tamanho da grid.
 */
-.table {
+.table_not_used {
      word-wrap: break-word;
      max-width: none;
      table-layout: fixed;
  }
 
-.tableClass tbody{
+.tableClass  tbody{
   overflow: scroll /* you can be more specific and use overflow-y */
 }

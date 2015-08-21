@@ -76,53 +76,39 @@
 			<div class="row" name = "workArea"></div>
 				<!--Menu-->
 				<% if user_signed_in? %>
-					<div class="col-md-2">
-						<div class="span2">
-							<div id='cssmenu'>
-							<ul>
-
-								<li class='active has-sub'><a href='#'><span>Cadastros</span></a>
-									 <ul>
-											<li class='has-sub'><a href='#'><span>Definições</span></a>
-												 <ul>
-														<li><%= link_to "Atividades", atividades_path  %></li>
-														<li><%= link_to "Forma de Pagamento", formapagamentos_path  %></li>
-														<li><%= link_to "Músculos", musculos_path  %></li>
-														<li><%= link_to "Tabela planos", tabelaplanos_path  %></li>
-														<li class='last'><%= link_to "Tipo de Vendas",tipovendas_path%></li>
-												 </ul>
-											</li>
-											<li class='has-sub'><a href='#'><span>Fichas</span></a>
-												 <ul>
-														<li class='last'><%= link_to "Alunos", alunos_path  %></li>
-												 </ul>
-											</li>
-									 </ul>
-								</li>
-
-							   <li class='active has-sub'><a href='#'><span>Operações</span></a>
-							      <ul>
-											<li class='last'><%= link_to "Vendas de Planos",vendaplanos_path%></li>
-							      </ul>
-							   </li>
-
-							   <li class='active has-sub'><a href='#'><span>Relatórios</span></a></li>
-							   <li class='active has-sub'><a href='#'><span>Sistema</span></a>
-									 <ul>
-										 <li><%= link_to "Lista de usuários",  users_path%></li>
-										 <li class='last'><%= link_to "Trocar senha",  edit_user_password_path%></li>
-									 </ul>
-									</li>
-							</ul>
-							</div>
+					<div class="col-md-3">
+							<div class="span3">
+								<div class="well sidebar-nav">
+									<div id="accordion">
+										<h3>Cadastros</h3>
+										<div>
+											<li><%= link_to "Alunos", alunos_path  %></li>
+											<li><%= link_to "Atividades", atividades_path  %></li>
+											<li><%= link_to "Músculos", musculos_path  %></li>
+											<li><%= link_to "Tipo de Vendas",tipovendas_path%></li>
+											<li><%= link_to "Forma de Pagamento", formapagamentos_path  %></li>
+											<li><%= link_to "Tabela planos", tabelaplanos_path  %></li>
+										</div>
+										<h3>Operações</h3>
+											<div>
+												<li><%= link_to "Vendas de Planos",vendaplanos_path%></li>
+											</div>
+										<h3>Relatórios</h3>
+											<div>Relatório</div>
+										<h3>Sistema</h3>
+											<div>
+												<li><%= link_to "Lista de usuários",  users_path%></li>
+												<li><%= link_to "Trocar senha",  edit_user_password_path%></li>
+											</div>
+									</div>
+								</div><!--/.well -->
+							</div><!--/span-->
 					</div>
-				</div>
-
 				<% end %>
 
 				<!--Campos-->
 				<%if user_signed_in? %>
-					<div class="col-md-10">
+					<div class="col-md-9">
 				<%else%>
 					<div class="col-md-12">
 				<% end %>

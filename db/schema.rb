@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150820185147) do
+ActiveRecord::Schema.define(version: 20150820225431) do
 
   create_table "adaptacaodia", force: :cascade do |t|
     t.integer  "adaptacao_id"
@@ -203,11 +203,8 @@ ActiveRecord::Schema.define(version: 20150820185147) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name",                   limit: 255
+    t.string   "name"
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "vendaplanos", force: :cascade do |t|
     t.integer  "aluno_id"

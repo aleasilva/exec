@@ -1,14 +1,20 @@
 class VendaplanosController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index] 
+  before_filter :authenticate_user!, :except => [:index]
   before_action :set_vendaplano, only: [:show, :edit, :update, :destroy]
 
   # GET /vendaplanos
   def index
     @vendaplanos = Vendaplano.all
     @vendaplanos_grid = initialize_grid(@vendaplanos,
+                                        name: 'g1_vendas_planos',
                                         per_page: 10,
                                         enable_export_to_csv: true,
-                                        csv_file_name:'projects')
+                                        csv_field_separator: ';',
+                                        csv_file_name:'venda_planos')
+
+    export_grid_if_requested('g1_vendas_planos' => 'vendaplanos_export') do
+      # usual render or redirect code executed if the request is not a CSV export request
+    end
   end
 
   # GET /vendaplanos/1

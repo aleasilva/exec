@@ -1,0 +1,58 @@
+<%= grid(@vendaplanos_grid, upper_pagination_panel: true) do |g|
+
+		#
+		g.column name:  'Id Academia', attribute: 'aluno_id' do |venPlano|
+			venPlano.aluno.idAcademia
+		end
+
+		#
+		g.column name:  'Aluno', attribute: 'aluno_id' do |venPlano|
+			venPlano.aluno.nome
+		end
+		#
+		g.column name:  'Plano', attribute: 'tabelaplano_id' do |venPlano|
+			venPlano.tabelaplano.nome
+		end
+		#
+		g.column name:  'Periodo', attribute: 'tabelaplano_id' do |venPlano|
+			venPlano.tabelaplano.periodo
+		end
+		#
+		g.column name:  'Parcelas', attribute: 'tabelaplano_id' do |venPlano|
+			venPlano.nuParcela.to_s + " de " +venPlano.tabelaplano.parcelas.to_s
+		end
+		#
+		g.column name:  'Valor', attribute: 'tabelaplano_id' do |venPlano|
+			venPlano.tabelaplano.valor
+		end
+
+		g.column name:  'Forma Pag', attribute: 'formapagamento_id' do |venPlano|
+			venPlano.formapagamento.nome
+		end
+
+		#
+		g.column name:  'Dia Pgto', attribute: 'nuDia' do |venPlano|
+			venPlano.nuDia
+		end
+
+		#tipovendas
+		g.column name:  'Data venda', attribute: 'dtVenda' do |venPlano|
+			venPlano.dtVenda
+		end
+
+		#
+		g.column name:  'Data baixa', attribute: 'dtBaixa' do |venPlano|
+			venPlano.dtBaixa
+		end
+
+		#
+		#g.column name:  'Tp Venda', attribute: 'tipovenda_id' do |venPlano|
+		#	venPlano.tipovenda.nome
+		#end
+
+		#
+		g.column name:  'Consultor', attribute: 'vendidoPor' do |venPlano|
+			venPlano.vendidoPor
+		end
+
+end -%>
