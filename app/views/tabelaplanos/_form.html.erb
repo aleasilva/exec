@@ -14,6 +14,13 @@
     </div>
   </div>
 
+  <div class="form-group">
+    <%= f.label "Valor da parcela(s)", :class=>"col-sm-3 control-label", :for=>"vlrParcela" %>
+    <div class="col-sm-9">
+      <%= f.text_field :valor, :id=>"vlrParcela" %>
+    </div>
+  </div>
+
   <div class="panel-footer">
       <%= f.submit "Gravar", :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")), tabelaplanos_path, :class => 'btn btn-warning' %>

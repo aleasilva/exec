@@ -29,7 +29,7 @@ class TabelaplanosController < ApplicationController
     @tabelaplano = Tabelaplano.new(tabelaplano_params)
 
     if @tabelaplano.save
-      redirect_to @tabelaplano, notice: 'Tabelaplano was successfully created.'
+      redirect_to @tabelaplano, notice: 'O plano foi criado.'
     else
       render :new
     end
@@ -38,7 +38,7 @@ class TabelaplanosController < ApplicationController
   # PATCH/PUT /tabelaplanos/1
   def update
     if @tabelaplano.update(tabelaplano_params)
-      redirect_to @tabelaplano, notice: 'Tabelaplano was successfully updated.'
+      redirect_to @tabelaplano, notice: 'O plano foi atualizado.'
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class TabelaplanosController < ApplicationController
   # DELETE /tabelaplanos/1
   def destroy
     @tabelaplano.destroy
-    redirect_to tabelaplanos_url, notice: 'Tabelaplano was successfully destroyed.'
+    redirect_to tabelaplanos_url, notice: 'O plano foi excluido.'
   end
 
   private
@@ -58,6 +58,6 @@ class TabelaplanosController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def tabelaplano_params
-      params.require(:tabelaplano).permit(:nome, :qtdMinParcela, :qtdMaxParcela)
+      params.require(:tabelaplano).permit(:nome, :valor, :qtdMaxParcela)
     end
 end

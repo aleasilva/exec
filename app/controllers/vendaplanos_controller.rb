@@ -35,6 +35,8 @@ class VendaplanosController < ApplicationController
   def create
     @vendaplano = Vendaplano.new(vendaplano_params)
     qtdParcelas = @vendaplano.tabelaplano.qtdMaxParcela
+    client = Vendaplano.readonly.last
+    idGrupoVenda = client.id + 1
 
     begin
       @vendaplano.transaction do
@@ -54,10 +56,13 @@ class VendaplanosController < ApplicationController
           @vendaplano.vendidoPor = current_user.name
           @vendaplano.nuParcela = iParcela
           @vendaplano.nuDia = @vendaplano.dtPagto.mday
+          @vendaplano.idVenda = idGrupoVenda
+          @vendaplano.valorParcela = @vendaplano.tabelaplano.qtdMaxParcela
+
           @vendaplano.save
 
         end
-        redirect_to @vendaplano, notice: 'Registros de vendas criados.'
+        redirect_to @vendaplano, notice: 'Venda criada.'
 
       end
     rescue ActiveRecord::RecordInvalid => invalid
@@ -79,7 +84,7 @@ class VendaplanosController < ApplicationController
   # PATCH/PUT /vendaplanos/1
   def update
     if @vendaplano.update(vendaplano_params)
-      redirect_to @vendaplano, notice: 'Vendaplano was successfully updated.'
+      redirect_to @vendaplano, notice: 'Parcela de venda atualizada.'
     else
       render :edit
     end
@@ -88,7 +93,7 @@ class VendaplanosController < ApplicationController
   # DELETE /vendaplanos/1
   def destroy
     @vendaplano.destroy
-    redirect_to vendaplanos_url, notice: 'Vendaplano was successfully destroyed.'
+    redirect_to vendaplanos_url, notice: 'Parcela excluida.'
   end
 
   private

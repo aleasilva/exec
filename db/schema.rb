@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150820225431) do
+ActiveRecord::Schema.define(version: 20150821160251) do
 
   create_table "adaptacaodia", force: :cascade do |t|
     t.integer  "adaptacao_id"
@@ -221,6 +221,7 @@ ActiveRecord::Schema.define(version: 20150820225431) do
     t.string   "vendidoPor"
     t.string   "recebidoPor"
     t.integer  "idVenda"
+    t.float    "valorParcela"
   end
 
 end

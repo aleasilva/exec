@@ -29,7 +29,7 @@ class TipovendasController < ApplicationController
     @tipovenda = Tipovenda.new(tipovenda_params)
 
     if @tipovenda.save
-      redirect_to @tipovenda, notice: 'Tipovenda was successfully created.'
+      redirect_to @tipovenda, notice: 'Tipo da venda foi criado.'
     else
       render :new
     end
@@ -38,7 +38,7 @@ class TipovendasController < ApplicationController
   # PATCH/PUT /tipovendas/1
   def update
     if @tipovenda.update(tipovenda_params)
-      redirect_to @tipovenda, notice: 'Tipovenda was successfully updated.'
+      redirect_to @tipovenda, notice: 'Tipo da venda foi atualizado.'
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class TipovendasController < ApplicationController
   # DELETE /tipovendas/1
   def destroy
     @tipovenda.destroy
-    redirect_to tipovendas_url, notice: 'Tipovenda was successfully destroyed.'
+    redirect_to tipovendas_url, notice: 'Tipo da venda foi excluido.'
   end
 
   private

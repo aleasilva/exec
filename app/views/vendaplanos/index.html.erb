@@ -6,7 +6,7 @@
 
 	#
 	g.column name:  'Id', attribute: 'aluno_id' do |venPlano|
-		[venPlano.aluno.idAcademia,{style: 'max-width:40px;'}]
+		[venPlano.aluno.idAcademia,{style: 'max-width:45px;'}]
 	end
 
 	#
@@ -28,12 +28,11 @@
 	g.column name:  'Valor', attribute: 'tabelaplano_id' do |venPlano|
 		venPlano.tabelaplano.valor
 	end
-
 	#
-	g.column name:  'Consultor', attribute: 'vendidoPor' do |venPlano|
-		venPlano.vendidoPor
+	g.column name:  'Parcela', attribute: 'tabelaplano_id' do |venPlano|
+		[venPlano.nuParcela.to_s + " de " +venPlano.tabelaplano.qtdMaxParcela.to_s,
+		{style: 'max-width:10px;'}]
 	end
-
   #
 	g.column   do |venPlano|
 		[link_to(image_tag("btnOperation/form_show.png", :alt => "Visualizar") , venPlano),
