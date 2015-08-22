@@ -168,11 +168,11 @@ ActiveRecord::Schema.define(version: 20150821160251) do
     t.string   "nome"
     t.integer  "qtdMinParcela"
     t.integer  "qtdMaxParcela"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.float    "valor"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "periodo"
+    t.decimal  "valor",         precision: 14, scale: 2
     t.integer  "parcelas"
-    t.text     "periodo"
   end
 
   create_table "tipovendas", force: :cascade do |t|
@@ -213,15 +213,16 @@ ActiveRecord::Schema.define(version: 20150821160251) do
     t.integer  "tipovenda_id"
     t.date     "dtVenda"
     t.integer  "nuDia"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.integer  "nuParcela"
     t.date     "dtPagto"
     t.date     "dtBaixa"
     t.string   "vendidoPor"
     t.string   "recebidoPor"
     t.integer  "idVenda"
-    t.float    "valorParcela"
+    t.integer  "idGroupoVenda"
+    t.decimal  "valorParcela",      precision: 14, scale: 2
   end
 
 end

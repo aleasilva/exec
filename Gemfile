@@ -36,6 +36,9 @@ gem 'devise'
 #controle de acesso
 gem 'cancan'
 
+#tratamento de valores monetarios
+gem 'brazilian-rails'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 #gem 'turbolinks'
 

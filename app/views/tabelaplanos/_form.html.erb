@@ -17,7 +17,8 @@
   <div class="form-group">
     <%= f.label "Valor da parcela(s)", :class=>"col-sm-3 control-label", :for=>"vlrParcela" %>
     <div class="col-sm-9">
-      <%= f.text_field :valor, :id=>"vlrParcela" %>
+         <!-- f.text_field :valor , :value => number_to_currency_br(f.object.valor),:id=>"vlrParcela", :class=>"form-control" -->
+        <%= f.text_field :valor, :value=>f.object.valor.real,:id=>"vlrParcela", :class=>"form-control" %>
     </div>
   </div>
 

@@ -6,7 +6,7 @@
   <dt><strong>Quantida de parcelas:</strong></dt>
   <dd><%= @tabelaplano.qtdMaxParcela%></dd>
   <dt><strong>Valor da parcela:</strong></dt>
-  <dd><%= @tabelaplano.valor%></dd>
+  <dd><%= number_to_currency_br(@tabelaplano.valor)%></dd>
 </dl>
 
 <div class="panel-footer">

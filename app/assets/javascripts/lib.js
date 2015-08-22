@@ -1,5 +1,5 @@
 $(function() {
-	
+
 	//Tabelas
 	$("#tabs").tabs();
 
@@ -37,7 +37,7 @@ $(function() {
 	$.mask.masks.intCentena  =  {mask: '999'    , type: 'reverse'};
 	$.mask.masks.intUnitario =  {mask: '9999'   , type: 'reverse'};
 	$.mask.masks.strTempoExe =  {mask: '999/999', type: 'reverse'};
-
+	$.mask.masks.currency    =  {mask: '99,999.999.999', type: 'reverse'};
 	$('input[type="text"]').setMask();
 
 });

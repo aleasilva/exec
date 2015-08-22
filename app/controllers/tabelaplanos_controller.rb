@@ -13,6 +13,7 @@ class TabelaplanosController < ApplicationController
 
   # GET /tabelaplanos/1
   def show
+
   end
 
   # GET /tabelaplanos/new
@@ -37,6 +38,7 @@ class TabelaplanosController < ApplicationController
 
   # PATCH/PUT /tabelaplanos/1
   def update
+
     if @tabelaplano.update(tabelaplano_params)
       redirect_to @tabelaplano, notice: 'O plano foi atualizado.'
     else
