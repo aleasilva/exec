@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index]
   before_action :set_group, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource #cancan
 
   # GET /groups
   # GET /groups.json

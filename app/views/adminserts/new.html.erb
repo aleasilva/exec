@@ -1,0 +1,5 @@
+<%= form_for( resource,
+              :as => resource_name,
+              :url => users_save_path(resource_name)) do |form| %>
+  <%= render "devise/registrations/form", :f => form %>
+<% end %>

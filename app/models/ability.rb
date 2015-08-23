@@ -7,15 +7,23 @@ class Ability
 
     user.groups.each do |grupo|
       #Verifica a permissao nos grupos
-      byebug
+      #byebug
       if grupo[:nome] == "VENDA_PLANO"
-
+          can :manage, Tipovenda
+          can :manage, Tabelaplano
+          can :manage, Formapagamento
+          can :manage, Vendaplano
+          can :manage, Aluno
       elsif grupo[:nome] == "SYSTEM_ADMIN"
           can :manage, :all
       elsif grupo[:nome] == "SUPER_USER"
           can :manage, :all
       elsif grupo[:nome] == "TREINOS"
-
+          can :manage, Aluno
+          can :manage, Atividade
+          can :manage, Treino
+          can :manage, Adaptacao
+          can :manage, Musculo
       end
     end
 

@@ -1,0 +1,46 @@
+<%- model_class = User -%>
+
+<%= grid(@users_grid,
+	allow_showing_all_records:  false,
+	show_filters: :when_filtered) do |g|
+
+	g.last_row do |number_of_columns|
+		content_tag(:tr,
+		content_tag(:td, link_to('Novo usuário', users_new_path,:class => 'btn btn-primary'  ),colspan: 5), class: 'last-row')
+	end
+
+	g.column name: 'Nome:', attribute: 'name'  do |user|
+		user.name
+	end
+
+	g.column name: 'Email', attribute: 'email'  do |user|
+		user.email
+	end
+
+	#g.column do |user|
+	#	link_to( image_tag("btnOperation/form_show.png", :alt => "Visualizar"), user)
+	#end
+
+
+	g.column   do |user|
+		link_to(image_tag("btnOperation/form_edit.png", :alt => "User Parh"), user_path(user))
+	end
+
+
+	#g.column   do |user|
+	#	link_to(image_tag("btnOperation/form_edit.png", :alt => "Alterar."), edit_user_password_path(user))
+	#end
+
+
+	g.column   do |user|
+		link_to(image_tag("btnOperation/form_delete.png", :alt => "Alterar."), destroy_user_session_path(user))
+	end
+
+
+	#g.column   do |user|
+	#	link_to image_tag("btnOperation/form_delete.png", :alt => "Excluir."),
+	#					  user, method: :delete,
+	#					  data: { :confirm => t('.confirm',
+	#					  	      :default => t("helpers.links.confirmdelete", :default => 'Are you sure?')) }
+	#end
+end %>

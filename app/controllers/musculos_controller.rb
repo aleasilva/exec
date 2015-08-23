@@ -1,6 +1,7 @@
 class MusculosController < ApplicationController
   before_filter :authenticate_user!, :except => [:index]
   before_action :set_musculo, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource #cancan
 
   # GET /musculos
   # GET /musculos.json

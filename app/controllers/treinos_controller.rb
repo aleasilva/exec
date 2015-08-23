@@ -3,6 +3,7 @@ require "date"
 class TreinosController < ApplicationController
   #before_filter :authenticate_user!, :except => [:index]
   before_action :set_treino, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource #cancan
 
   def edit
      @atividadesAerobico =  Atividadetreino.joins("JOIN atividades on atividadetreinos.atividade_id = atividades.id").

@@ -85,11 +85,13 @@
 									 <ul>
 											<li class='has-sub'><a href='#'><span>Definições</span></a>
 												 <ul>
-														<li><%= link_to "Atividades", atividades_path  %></li>
-														<li><%= link_to "Forma de Pagamento", formapagamentos_path  %></li>
-														<li><%= link_to "Músculos", musculos_path  %></li>
-														<li><%= link_to "Tabela Planos", tabelaplanos_path  %></li>
-														<li class='last'><%= link_to "Tipo de Vendas",tipovendas_path%></li>
+														<% if can? :read, Atividade %>
+															<li><%= link_to "Atividades", atividades_path  %></li>
+															<li class='last'><%= link_to "Músculos", musculos_path  %></li>
+														<%end%>
+															<li><%= link_to "Tipo venda", tipovendas_path  %></li>
+															<li><%= link_to "Forma de Pagamento", formapagamentos_path  %></li>
+															<li class='last'><%= link_to "Tabela Planos", tabelaplanos_path  %></li>
 												 </ul>
 											</li>
 											<li class='has-sub'><a href='#'><span>Fichas</span></a>
@@ -107,12 +109,14 @@
 							   </li>
 
 							   <li class='active has-sub'><a href='#'><span>Relatórios</span></a></li>
-							   <li class='active has-sub'><a href='#'><span>Sistema</span></a>
-									 <ul>
-										 <li><%= link_to "Lista de usuários",  users_path%></li>
 
-										 <li><%= link_to "Trocar senha",  edit_user_registration_path%></li>
-										 <li class='last'><%= link_to "Trocar senha",  edit_user_password_path%></li>
+								 <li class='active has-sub'><a href='#'><span>Sistema</span></a>
+									 <ul>
+										 <% if can? :read, Group %>
+										 		<li><%= link_to "Lista de usuários",  users_path%></li>
+										 		<li ><%= link_to "Trocar senha",  edit_user_registration_path%></li>
+											<%end%>
+										 	<li class='last'><%= link_to "Trocar senha",  edit_user_password_path%></li>
 									 </ul>
 									</li>
 							</ul>

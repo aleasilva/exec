@@ -1,6 +1,7 @@
 class VendaplanosController < ApplicationController
   before_filter :authenticate_user!, :except => [:index]
   before_action :set_vendaplano, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource #cancan
 
   # GET /vendaplanos
   def index

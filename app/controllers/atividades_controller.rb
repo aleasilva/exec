@@ -1,6 +1,7 @@
 class AtividadesController < ApplicationController
   before_filter :authenticate_user!, :except => [:index]
   before_action :set_atividade, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource #cancan
 
   # GET /atividades
   def index

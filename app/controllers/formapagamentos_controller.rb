@@ -1,5 +1,6 @@
 class FormapagamentosController < ApplicationController
   before_action :set_formapagamento, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource #cancan
 
   # GET /formapagamentos
   def index
