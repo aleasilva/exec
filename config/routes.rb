@@ -22,7 +22,8 @@ Exec::Application.routes.draw do
   end
 
   #root :to => "home#index"
-  root :to => "treinos#printIndex"
+  #<% if can? :read, Atividade %>
+  root :to => 'index#routeStartPage'
 
   #necessario para direcionar as ações padroes do devise.
   devise_for :users, :controllers => {:registrations => "registrations" }

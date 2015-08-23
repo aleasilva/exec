@@ -27,7 +27,7 @@ class Ability
         end
       end
     else
-      can :manage, :all  
+      can :manage, :all
     end
 
 
