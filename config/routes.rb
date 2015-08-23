@@ -29,11 +29,19 @@ Exec::Application.routes.draw do
 
   #Alterando as propriedades para registro de 1 usuario pelo adm.
   devise_scope :user do
-    get   'users'     , to: 'admusers#index', as: 'users'
-    post  'users_save', to: 'admusers#create'
-    get   'users/new' , to: 'admusers#new'
-    patch 'user/:id'  , to: 'admusers#update', as: 'user'
-    get   'user/:id'  , to: 'admusers#change'
+    get   'users'     , to: 'admusers#index', as: 'users' #Chama o indice
+    post  'users_save', to: 'admusers#create'  #Botao da gravacao da criacao
+    get   'users/new' , to: 'admusers#new' #clicado no novo
+
+    get   'user/:id'  , to: 'admusers#change', as: 'user' #Carrega o item para edicao
+
+    #Atualizacao
+    patch  'users_update/', to: 'admusers#update'  #Botao da Atualizacao.
+
+    #Atualizacao senha
+    get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+    put 'users' => 'devise/registrations#update', :as => 'user_registration'  
+
   end
 
   #resources :admusers

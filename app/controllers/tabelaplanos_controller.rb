@@ -1,6 +1,7 @@
 class TabelaplanosController < ApplicationController
   before_filter :authenticate_user!, :except => [:index]
   before_action :set_tabelaplano, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource #cancan
 
   # GET /tabelaplanos
   def index

@@ -1,4 +1,6 @@
-class AdmusersController < DeviseController
+#class AdmusersController < DeviseController
+class AdmusersController < Devise::RegistrationsController
+  before_action :admuser_params, only: [:show, :edit, :update, :destroy]
   #prepend_before_filter :require_no_authentication, :only => [ :new, :create, :cancel ,:update]
   #prepend_before_filter :authenticate_scope!, :only => [:destroy]
 
@@ -10,9 +12,7 @@ class AdmusersController < DeviseController
 
   def change
     @user = User.find(params[:id])
-    Rails.logger.info("CHANGE**********Registration Controller ****")
   end
-
 
   # GET /resource/sign_up
   def new
@@ -74,14 +74,18 @@ class AdmusersController < DeviseController
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update(user_params)
+    user_params = params[:user]
+    @user = User.find(params[:user][:id])
+    byebug
+    resource.update_without_password(user_params)
+
+    #if @user.update(user_params)
       # Sign in the user by passing validation in case his password changed
       #sign_in @user, :bypass => true
       redirect_to users_path
-    else
-      render "edit"
-    end
+    #else
+    #  render "edit"
+    #end
   end
 
   # PUT /resource
@@ -140,8 +144,9 @@ class AdmusersController < DeviseController
 
    # Never trust parameters from the scary internet, only allow the white list through.
   def admuser_params
-    Rails.logger.info("PARAMS PARAMS PARAMS PARAMS")
+    #params.require(:aluno).permit!
     #params.require(:user).permit(:name, :email)
+    #params[:user].permit(:first_name, :last_name, :address)
     params.require(:user).permit!
   end
 

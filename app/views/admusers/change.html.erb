@@ -1,2 +1,5 @@
-<%- model_class = User -%>
-<%= render :partial => 'form' %>
+<%= form_for( resource,
+              :as => resource_name,
+              :url => users_update_path(resource_name)) do |form| %>
+  <%= render "devise/registrations/form", :f => form %>
+<% end %>
