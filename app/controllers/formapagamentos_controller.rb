@@ -30,7 +30,7 @@ class FormapagamentosController < ApplicationController
     @formapagamento = Formapagamento.new(formapagamento_params)
 
     if @formapagamento.save
-      redirect_to @formapagamento, notice: 'Formapagamento was successfully created.'
+      redirect_to @formapagamento, notice: 'Forma de pagamento foi criada.'
     else
       render :new
     end
@@ -39,7 +39,7 @@ class FormapagamentosController < ApplicationController
   # PATCH/PUT /formapagamentos/1
   def update
     if @formapagamento.update(formapagamento_params)
-      redirect_to @formapagamento, notice: 'Formapagamento was successfully updated.'
+      redirect_to @formapagamento, notice: 'Forma de pagamento foi atualizada.'
     else
       render :edit
     end
@@ -48,7 +48,7 @@ class FormapagamentosController < ApplicationController
   # DELETE /formapagamentos/1
   def destroy
     @formapagamento.destroy
-    redirect_to formapagamentos_url, notice: 'Formapagamento was successfully destroyed.'
+    redirect_to formapagamentos_url, notice: 'Forma de pagamento foi excluida.'
   end
 
   private

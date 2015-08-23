@@ -15,4 +15,11 @@ class ApplicationController < ActionController::Base
   #  devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email ,:name ,:password, :password_confirmation,:group_ids => [] ) }
   #end
 
+  #Uso do can can, erro de permissao.
+  before_filter do
+    resource = controller_name.singularize.to_sym
+    method = "#{resource}_params"
+    params[resource] &&= send(method) if respond_to?(method, true)
+  end
+
 end

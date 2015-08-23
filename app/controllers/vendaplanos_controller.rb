@@ -37,7 +37,12 @@ class VendaplanosController < ApplicationController
     @vendaplano = Vendaplano.new(vendaplano_params)
     qtdParcelas = @vendaplano.tabelaplano.qtdMaxParcela
     client = Vendaplano.readonly.last
-    idGrupoVenda = client.id + 1
+    
+    if client == nil
+      idGrupoVenda = 1
+    else
+      idGrupoVenda = client.id + 1
+    end
 
     begin
       @vendaplano.transaction do

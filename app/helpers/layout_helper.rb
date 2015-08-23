@@ -25,6 +25,10 @@ module LayoutHelper
 
      if title == "VENDAPLANOS"
        title = "Registro de Venda de Planos"
+     elsif title == "TIPOVENDAS"
+       title = "Tipo venda"
+     elsif title == "FORMAPAGAMENTOS"
+       title = "Forma de pagamento"
      end
 
     return title.humanize

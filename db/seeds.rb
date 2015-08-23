@@ -16,9 +16,15 @@ diaSemanaList = [
   [ "Sexta"  , "sex",6 ],
   [ "Sábado" , "sáb",7 ]
 ]
-Diasemana.delete_all
+
+#Teste para identificar os registros que ja existem.
+#Diasemana.delete_all
 diaSemanaList.each do |nome, nomered, numDia|
-  Diasemana.create( nome: nome, nomeabreviado: nomered, simbnumberal: numDia)
+
+  if Diasemana.where("simbnumberal = ?", numDia).size == 0
+    Diasemana.create( nome: nome, nomeabreviado: nomered, simbnumberal: numDia)
+  end
+
 end
 
 #Populando os grupos
@@ -29,9 +35,11 @@ gruposAcessoList = [
   ["TREINOS","Acessa a area de treinos"]
 ]
 
-Group.delete_all
+#Group.delete_all
 gruposAcessoList.each do |nome, descricao|
-  Group.create( nome: nome, descricao: descricao)
+  if Group.where("nome = ?", nome).size == 0
+    Group.create( nome: nome, descricao: descricao)
+  end
 end
 
 #Populando as regras
@@ -43,8 +51,10 @@ regrasList = [
 
 ]
 
-Rule.delete_all
+#Rule.delete_all
 regrasList.each do |nome, entidade, regra, descricao|
-  Rule.create( nome: nome, entidade: entidade, regra: regra, descricao: descricao)
+  if Rule.where("nome = ? and regra = ?", nome , regra ).size == 0
+    Rule.create( nome: nome, entidade: entidade, regra: regra, descricao: descricao)
+  end
   #Rule.create (nome: nome, entidade: entidade, regra: regra, descricao:descricao)
 end
