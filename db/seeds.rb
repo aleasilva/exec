@@ -77,7 +77,6 @@ userList.each do |grupo,nome,email,senha|
            "password_confirmation"=>senha, "group_ids"=>[idGrupo], "id"=>""}
 
       novoUsuario = User.new(usuario)
-      byebug
       novoUsuario.save
     end
   end
