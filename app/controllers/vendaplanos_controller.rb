@@ -37,7 +37,7 @@ class VendaplanosController < ApplicationController
     @vendaplano = Vendaplano.new(vendaplano_params)
     qtdParcelas = @vendaplano.tabelaplano.qtdMaxParcela
     client = Vendaplano.readonly.last
-    
+
     if client == nil
       idGrupoVenda = 1
     else
@@ -63,7 +63,7 @@ class VendaplanosController < ApplicationController
           @vendaplano.nuParcela = iParcela
           @vendaplano.nuDia = @vendaplano.dtPagto.mday
           @vendaplano.idVenda = idGrupoVenda
-          @vendaplano.valorParcela = @vendaplano.tabelaplano.qtdMaxParcela
+          @vendaplano.valorParcela = @vendaplano.tabelaplano.valor
 
           @vendaplano.save
 
