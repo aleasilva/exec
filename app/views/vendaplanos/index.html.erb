@@ -26,7 +26,7 @@
 
 	#
 	g.column name:  'Valor', attribute: 'tabelaplano_id' do |venPlano|
-		number_to_currency_br(venPlano.tabelaplano.valor)
+		number_to_currency_br(venPlano.valorParcela)
 	end
 	#
 	g.column name:  'Parcela', attribute: 'tabelaplano_id' do |venPlano|
