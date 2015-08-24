@@ -32,7 +32,7 @@ gruposAcessoList = [
   ["SYSTEM_ADMIN", "Administrador do sistema"],
   ["SUPER_USER","Um super usuario nao deve acessar as configuracoes do sistema"],
   ["VENDA_PLANO","Acessa a area de venda de planos"],
-  ["TREINOS","Acessa a area de treinos"]
+  ["TREINO","Acessa a area de treinos"]
 ]
 
 #Group.delete_all
@@ -57,4 +57,28 @@ regrasList.each do |nome, entidade, regra, descricao|
     Rule.create( nome: nome, entidade: entidade, regra: regra, descricao: descricao)
   end
   #Rule.create (nome: nome, entidade: entidade, regra: regra, descricao:descricao)
+end
+
+#Criacao dos usuarios padroes
+userList = [
+  ["VENDA_PLANO","venda","venda@academia.com.br","123456",],
+  ["TREINO","treino","treino@academia.com.br","123456",],
+  ["SYSTEM_ADMIN","admin","admin@academia.com.br","123456",],
+  ["SUPER_USER","super","super@academia.com.br","123456",],
+]
+
+userList.each do |grupo,nome,email,senha|
+  if User.where("name = ? ", nome ).size == 0
+    grupo = Group.where("nome = ?", grupo)
+    if grupo != nil
+      idGrupo = grupo[0].id.to_s
+
+      usuario = {"name"=>nome, "email"=>email,"password"=>senha,
+           "password_confirmation"=>senha, "group_ids"=>[idGrupo], "id"=>""}
+
+      novoUsuario = User.new(usuario)
+      byebug
+      novoUsuario.save
+    end
+  end
 end

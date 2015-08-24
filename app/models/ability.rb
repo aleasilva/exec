@@ -18,7 +18,7 @@ class Ability
             can :manage, :all
         elsif grupo[:nome] == "SUPER_USER"
             can :manage, :all
-        elsif grupo[:nome] == "TREINOS"
+        elsif grupo[:nome] == "TREINO"
             can :manage, Aluno
             can :manage, Atividade
             can :manage, Treino

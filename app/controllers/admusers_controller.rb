@@ -5,7 +5,6 @@ class AdmusersController < Devise::RegistrationsController
   #prepend_before_filter :authenticate_scope!, :only => [:destroy]
 
   def index
-    Rails.logger.info("INDEX**********Registration Controller ****")
     @users = User.all
     @users_grid = initialize_grid(@users,per_page: 10)
   end
@@ -17,18 +16,12 @@ class AdmusersController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     @user = User.new
-    # @aluno.nascimento ==  Date.today
-
-    Rails.logger.info("NEW**********Registration Controller ****")
-    # build_resource({})
-    # respond_with self.resource
   end
 
   # POST /resource
   def create
-    Rails.logger.info("CREATE**********Registration Controller 28 ****")
-
     novoUsuario = User.new(admuser_params)
+
     #
     # respond_to do |format|
     #   if @aluno.save
@@ -43,7 +36,7 @@ class AdmusersController < Devise::RegistrationsController
     # build_resource(sign_up_params)
 
    if novoUsuario.save
- #    yield resource if block_given?
+#    yield resource if block_given?
 #        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
 #        expire_data_after_sign_in!
 
@@ -65,6 +58,7 @@ class AdmusersController < Devise::RegistrationsController
 #      clean_up_passwords resource
 #      respond_with resource
     end
+
     redirect_to users_path
   end
 
@@ -76,7 +70,6 @@ class AdmusersController < Devise::RegistrationsController
   def update
     user_params = params[:user]
     @user = User.find(params[:user][:id])
-    byebug
     resource.update_without_password(user_params)
 
     #if @user.update(user_params)
@@ -144,9 +137,6 @@ class AdmusersController < Devise::RegistrationsController
 
    # Never trust parameters from the scary internet, only allow the white list through.
   def admuser_params
-    #params.require(:aluno).permit!
-    #params.require(:user).permit(:name, :email)
-    #params[:user].permit(:first_name, :last_name, :address)
     params.require(:user).permit!
   end
 
