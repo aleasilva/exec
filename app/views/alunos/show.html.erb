@@ -5,9 +5,11 @@
 		<li>
 			<a href="#tabs-1">Informações</a>
 		</li>
-		<li>
-			<a href="#tabs-2">Treinos</a>
-		</li>
+		<% if can? :read, Atividade %>
+			<li>
+				<a href="#tabs-2">Treinos</a>
+			</li>
+		<%end%>
 	</ul>
 	<div id="tabs-1">
 		<p>
@@ -24,36 +26,38 @@
 				<dd>
 					<%= @aluno.nome %>
 				</dd>
-				<dt>
-					<strong><%= model_class.human_attribute_name(:medicamentos) %>:</strong>
-				</dt>
-				<dd>
-					<%= @aluno.medicamento %>
-				</dd>
-				<dt>
-					<strong><%= model_class.human_attribute_name(:doenca) %>:</strong>
-				</dt>
-				<dd>
-					<%= @aluno.doenca %>
-				</dd>
-				<dt>
-					<strong><%= model_class.human_attribute_name(:alergia) %>:</strong>
-				</dt>
-				<dd>
-					<%= @aluno.alergia %>
-				</dd>
-				<dt>
-					<strong><%= model_class.human_attribute_name(:dores) %>:</strong>
-				</dt>
-				<dd>
-					<%= @aluno.dor %>
-				</dd>
-				<dt>
-					<strong><%= model_class.human_attribute_name(:observacao) %>:</strong>
-				</dt>
-				<dd>
-					<%= @aluno.observacao %>
-				</dd>
+				<% if can? :read, Atividade %>
+					<dt>
+						<strong><%= model_class.human_attribute_name(:medicamentos) %>:</strong>
+					</dt>
+					<dd>
+						<%= @aluno.medicamento %>
+					</dd>
+					<dt>
+						<strong><%= model_class.human_attribute_name(:doenca) %>:</strong>
+					</dt>
+					<dd>
+						<%= @aluno.doenca %>
+					</dd>
+					<dt>
+						<strong><%= model_class.human_attribute_name(:alergia) %>:</strong>
+					</dt>
+					<dd>
+						<%= @aluno.alergia %>
+					</dd>
+					<dt>
+						<strong><%= model_class.human_attribute_name(:dores) %>:</strong>
+					</dt>
+					<dd>
+						<%= @aluno.dor %>
+					</dd>
+					<dt>
+						<strong><%= model_class.human_attribute_name(:observacao) %>:</strong>
+					</dt>
+					<dd>
+						<%= @aluno.observacao %>
+					</dd>
+				<%end%>	
 			</dl>
 			<div class="panel-footer">
 				<%= link_to t('.back', :default => t("helpers.links.back")),
@@ -69,9 +73,11 @@
 			</div>
 		</p>
 	</div>
-	<div id="tabs-2">
-		<p>
-			<%= render 'treinos/treino' %>
-		</p>
-	</div>
+	<% if can? :read, Atividade %>
+		<div id="tabs-2">
+			<p>
+				<%= render 'treinos/treino' %>
+			</p>
+		</div>
+	<%end%>
 </div>
