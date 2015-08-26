@@ -5,8 +5,8 @@ ruby '2.2.1'
 gem 'rails', '4.2.1'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
-gem 'less'
+#gem 'sass-rails', '~> 5.0'
+#gem 'less'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
@@ -17,8 +17,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'therubyracer'
-gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+# Ruby Racer nao estava funcionando no windows 8.1 a instalacao pedi pyton.
+#gem 'therubyracer'
+#gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem 'bootstrap-sass'
 
 
 # Use jquery as the JavaScript library
