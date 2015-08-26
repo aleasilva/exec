@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821160251) do
+ActiveRecord::Schema.define(version: 20150826034605) do
 
   create_table "adaptacaodia", force: :cascade do |t|
     t.integer  "adaptacao_id"
@@ -223,6 +223,7 @@ ActiveRecord::Schema.define(version: 20150821160251) do
     t.integer  "idVenda"
     t.integer  "idGroupoVenda"
     t.decimal  "valorParcela",      precision: 14, scale: 2
+    t.integer  "qtdParcela"
   end
 
 end

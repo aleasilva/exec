@@ -30,7 +30,7 @@
 	end
 	#
 	g.column name:  'Parcela', attribute: 'tabelaplano_id' do |venPlano|
-		[venPlano.nuParcela.to_s + " de " +venPlano.tabelaplano.qtdMaxParcela.to_s,
+		[venPlano.nuParcela.to_s + " de " +venPlano.qtdParcela.to_s,
 		{style: 'max-width:10px;'}]
 	end
   #

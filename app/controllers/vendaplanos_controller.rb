@@ -64,6 +64,7 @@ class VendaplanosController < ApplicationController
           @vendaplano.nuDia = @vendaplano.dtPagto.mday
           @vendaplano.idVenda = idGrupoVenda
           @vendaplano.valorParcela = @vendaplano.tabelaplano.valor
+          @vendaplano.qtdParcela = @vendaplano.tabelaplano.qtdMaxParcela
 
           @vendaplano.save
 
