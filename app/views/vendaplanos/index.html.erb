@@ -25,6 +25,11 @@
 	end
 
 	#
+	g.column name:  'Vencimento' , attribute: 'dtPagto' do |venPlano|
+		[l(venPlano.dtPagto), {style: 'max-width:170px;'}]
+	end
+
+	#
 	g.column name:  'Valor', attribute: 'tabelaplano_id' do |venPlano|
 		number_to_currency_br(venPlano.valorParcela)
 	end

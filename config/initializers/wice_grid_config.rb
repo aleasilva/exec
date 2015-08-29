@@ -134,6 +134,7 @@ if defined?(Wice::Defaults)
   # In many cases <tt>Time.zone.parse</tt> is enough, for instance,  <tt>%Y-%m-%d</tt>. If you change the format, make sure to check this code
   # and modify it if needed.
   Wice::Defaults::DATETIME_PARSER = lambda{|datetime_string|
+    
     if datetime_string.blank?
       nil
     elsif Time.zone

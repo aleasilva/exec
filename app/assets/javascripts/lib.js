@@ -11,7 +11,7 @@ $(function() {
 		alert('sei á.');
 	});
 
-	//Funcao para a data
+	//Funcao para a data -wice grid
 	$("input[id|='datepicker']").datepicker({
 		changeYear: true,
 		closeText: 'Fechar',
@@ -41,7 +41,6 @@ $(function() {
 	$('input[type="text"]').setMask();
 
 });
-
 
 //Funcao de script
 function remove_fieldsNotUsed(link) {
