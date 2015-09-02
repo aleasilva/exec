@@ -4,32 +4,43 @@ ruby '2.2.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 
-# Use SCSS for stylesheets
-#gem 'sass-rails', '~> 5.0'
-#gem 'less'
+#group :asset do
 
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+  # Use CoffeeScript for .coffee assets and views
+  #->gem 'coffee-rails', '~> 4.1.0'
 
-#Twitter
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+  # Use Uglifier as compressor for JavaScript assets
+  #->gem 'uglifier', '>= 1.3.0'
 
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# Ruby Racer nao estava funcionando no windows 8.1 a instalacao pedi pyton.
-#gem 'therubyracer'
-#gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-gem 'bootstrap-sass'
+  #Twitter
+  gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+  #->gem 'bootstrap-sass'
 
+  # Use jquery as the JavaScript library
+  gem 'jquery-rails'
+  gem 'jquery-ui-rails'
 
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
+  # Use SCSS for stylesheets
+  #gem 'sass-rails', '~> 5.0'
+  #gem 'less'
 
-#gem 'jquery-turbolinks'
-#gem 'jquery-ui-themes'
+  # See https://github.com/rails/execjs#readme for more supported runtimes
+  # Ruby Racer nao estava funcionando no windows 8.1 a instalacao pedi pyton.
+  #gem 'therubyracer'
+  #gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 
+  #gem 'jquery-turbolinks'
+  #gem 'jquery-ui-themes'
+
+  # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+  #gem 'turbolinks'
+
+  # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+  #gem 'jbuilder', '~> 1.2'
+
+#end
+
+#Grid de dados do sistema
 gem 'wice_grid', '3.4.11'
 
 #validação de usuário
@@ -41,23 +52,15 @@ gem 'cancan'
 #tratamento de valores monetarios
 gem 'brazilian-rails'
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-#gem 'turbolinks'
-
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-#gem 'jbuilder', '~> 1.2'
-
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
-gem 'rails_12factor', group: :production
-
 group :development do
   gem 'byebug'
   gem 'better_errors'
-  gem 'binding_of_caller'
+  #gem 'binding_of_caller'
   #gem 'meta_request'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
@@ -65,6 +68,10 @@ group :development do
 end
 
 group :production do
+  #Logs para o heroku
+  gem 'rails_12factor'
+
+  #Postgree
   gem 'pg'
 end
 
