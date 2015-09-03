@@ -62,6 +62,11 @@ end
 #Criacao dos usuarios padroes
 userList = [
   ["VENDA_PLANO","venda","venda@academia.com.br","123456",],
+  ["VENDA_PLANO","Alan","alan@academia.com.br","123456",],
+  ["VENDA_PLANO","Caui","caui@academia.com.br","123456",],
+  ["VENDA_PLANO","David","david@academia.com.br","123456",],
+  ["VENDA_PLANO","Samara","samara@academia.com.br","123456",],
+  ["VENDA_PLANO","Jéssica","jessica@academia.com.br","123456",],
   ["TREINO","treino","treino@academia.com.br","123456",],
   ["SYSTEM_ADMIN","admin","admin@academia.com.br","123456",],
   ["SUPER_USER","super","super@academia.com.br","123456",],
