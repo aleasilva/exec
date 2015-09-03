@@ -81,3 +81,63 @@ userList.each do |grupo,nome,email,senha|
     end
   end
 end
+
+#Criacao dos planos
+tabelaPlanosList =[
+  ["Solo livre - Semestral",4, 120],
+  ["Solo livre - Anual",7,118.29],
+  ["Solo + 1 aula - Semestral",4,178.50],
+  ["Solo + 1 aula - Anual",7,169.71],
+  ["Solo + 2 aulas - Semestral",4,208.50],
+  ["Solo + 2 aulas - Anual",7,204],
+  ["Solo + 3 aulas - Semestral",4,223.50],
+  ["Solo + 3 aulas - Anual",7,221.14],
+  ["Hidro + 1 aula - Semestral",4,105],
+  ["Hidro + 1 aula - Anual",7,96],
+  ["Hidro + 2 aulas - Semestral",4,135],
+  ["Hidro + 2 aulas - Anual",7,109.71],
+  ["Hidro + 3 aulas - Semestral",4,150],
+  ["Hidro + 3 aulas - Anual",7,135.43],
+  ["Água + 1 aula - Semestral",4,120],
+  ["Água + 1 aula - Anual",7,118.29],
+  ["Água + 2 aulas - Semestral",4,150],
+  ["Água + 2 aulas - Anual",7,135.43],
+  ["Água + 3 aulas - Semestral",4,180],
+  ["Água + 3 aulas - Anual",7,169.71]
+]
+
+tabelaPlanosList.each do |nome, qtdParcela, valor|
+  if Tabelaplano.where("nome = ?", nome).size == 0
+    plano = {"nome" => nome, "qtdMaxParcela" => qtdParcela, "valor" => valor}
+
+    novoPlano = Tabelaplano.new(plano)
+    novoPlano.save
+
+  end
+end
+
+#Tipos de venda
+tipoVendaList = [
+                ["Novo",""],
+                ["Migração",""],
+                ["Renovação",""]
+              ]
+
+tipoVendaList.each do |nome, temp|
+  if Tipovenda.where("nome = ? " , nome).size == 0
+    Tipovenda.new({"nome" => nome}).save
+  end
+end
+
+#Forma Pagto
+frmPagtoList =[
+  ["Á vista",""],
+  ["Cartão de débito",""],
+  ["Cartão de crédito",""]
+]
+
+frmPagtoList.each do |nome , x|
+  if Formapagamento.where("nome = ? ", nome).size == 0
+    Formapagamento.new({"nome" => nome}).save
+  end
+end

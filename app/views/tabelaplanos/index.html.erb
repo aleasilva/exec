@@ -5,8 +5,16 @@
 	show_filters: :when_filtered) do |g|
 
 	#
-	g.column name:  'Tipo do Plano', attribute: 'nome' do |tipoPlano|
+	g.column name:  'Nome do Plano', attribute: 'nome' do |tipoPlano|
 		tipoPlano.nome
+	end
+
+	g.column name:  'Qtd Parcela', attribute: 'qtdMaxParcela' do |tipoPlano|
+		tipoPlano.qtdMaxParcela
+	end
+
+	g.column name:  'Valor', attribute: 'valor' do |tipoPlano|
+		tipoPlano.valor
 	end
 
   #
