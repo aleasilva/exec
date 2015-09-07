@@ -213,7 +213,7 @@ lstAlunos = [
       ["34183","simone rosa de oliveira"],
       ["34185","maria eduarda de oliveira lopes"],
       ["34184","jaqueline rosa de oliveira"],
-      ["17594"," luis claudio ferreira grinthal"],
+      ["17594","luis claudio ferreira grinthal"],
       ["34216","victoria alves titto"],
       ["34213","joao vitor gomes de almeida"],
       ["34214","maria luiza gomes de almeida"],
@@ -909,6 +909,6 @@ lstAlunos = [
 
 lstAlunos.each do |idAcademia, nome|
   if Aluno.where("idAcademia = ? ", idAcademia).size == 0
-    Aluno.new({"idAcademia" => idAcademia, "nome" => nome.humanize}).save
+    Aluno.new({"idAcademia" => idAcademia, "nome" => nome.upcase}).save
   end
 end

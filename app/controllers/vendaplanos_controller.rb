@@ -26,6 +26,7 @@ class VendaplanosController < ApplicationController
   def new
     @vendaplano = Vendaplano.new
     @vendaplano.dtVenda =  Date.today
+    @vendaplano.aluno_id = params[:aluno_param]
   end
 
   # GET /vendaplanos/1/edit

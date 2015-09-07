@@ -19,7 +19,7 @@
 		end
 		#
 		g.column name:  'Parcelas', attribute: 'tabelaplano_id' do |venPlano|
-			venPlano.nuParcela.to_s + " de " +venPlano.tabelaplano.parcelas.to_s
+			venPlano.nuParcela.to_s + " de " + venPlano.qtdParcela.to_s,
 		end
 		#
 		g.column name:  'Valor', attribute: 'tabelaplano_id' do |venPlano|
