@@ -908,7 +908,7 @@ lstAlunos = [
 ]
 
 lstAlunos.each do |idAcademia, nome|
-  if Aluno.where("idAcademia = ? ", idacademia).size == 0
+  if Aluno.where("idacademia = ? ", idAcademia).size == 0
     Aluno.new({"idacademia" => idAcademia, "nome" => nome.upcase}).save
   end
 end
