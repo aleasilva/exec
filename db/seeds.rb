@@ -907,8 +907,8 @@ lstAlunos = [
       ["18236","luzia silva dos santos"]
 ]
 
-lstAlunos.each do |idAcademia, nome|
-  if Aluno.where("idAcademia = ? ", idAcademia.to_i).size == 0
-    Aluno.new({"idAcademia" => idAcademia.to_i, "nome" => nome.upcase}).save
+lstAlunos.each do |id, nome|
+  if Aluno.where("idAcademia = ? ", id).size == 0
+    Aluno.new({"idAcademia" => id, "nome" => nome.upcase}).save
   end
 end
