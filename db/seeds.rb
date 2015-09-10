@@ -908,12 +908,7 @@ lstAlunos = [
 ]
 
 lstAlunos.each do |id, nome|
-<<<<<<< HEAD
   if Aluno.where(" idacademia = ? ", id).size == 0
     Aluno.new({"idacademia" => id, "nome" => nome.upcase}).save
-=======
-  if Aluno.where("idAcademia = ? ", id).size == 0
-    Aluno.new({"idAcademia" => id, "nome" => nome.upcase}).save
->>>>>>> parent of afbe917... alteracao do nome do campo
   end
 end
