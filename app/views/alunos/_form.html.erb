@@ -1,9 +1,9 @@
 <%= form_for @aluno, :html => { :class => 'form-horizontal' } do |f| %>
 
 	<div class="form-group">
-		<label for="idAcademia" class="col-sm-2 control-label">Id. Acadêmia</label>
+		<label for="idacademia" class="col-sm-2 control-label">Id. Acadêmia</label>
 		<div class="col-sm-4">
-			<%= f.text_field :idAcademia, :id=>"idAcademia", :alt=>"idAcademia", :onkeypress=> onlyTextNumber, :class=>"form-control"%>
+			<%= f.text_field :idacademia, :id=>"idacademia", :alt=>"idacademia", :onkeypress=> onlyTextNumber, :class=>"form-control"%>
 		</div>
 			<% if can? :read, Treino %>
 				<%= f.label "Treino", :class=>"col-sm-1 control-label" %>

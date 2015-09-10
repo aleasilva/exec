@@ -1,1 +1,1 @@
-json.extract! @aluno, :idAcademia, :nome, :nascimento, :sexo, :observacao, :created_at, :updated_at
+json.extract! @aluno, :idacademia, :nome, :nascimento, :sexo, :observacao, :created_at, :updated_at

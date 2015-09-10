@@ -11,7 +11,7 @@
 			<div class="alert alert-info">
 				<div class="input-append">
 					<label class="control-label">Código do aluno:</label>
-					<input class="span5" id="only_number" name="idAcademia" type="text" onkeypress="onlyTextNumber" alt="idAcademia"/>
+					<input class="span5" id="only_number" name="idacademia" type="text" onkeypress="onlyTextNumber" alt="idacademia"/>
 					<button class="btn" type="submit">Localizar</button>
 				</div>
 			</div>
@@ -29,8 +29,8 @@
 			allow_showing_all_records:  false,
 			show_filters: :when_filtered) do |g|
 
-			g.column name:  'Cód.Aluno', attribute: 'idAcademia' do |aluno|
-				aluno.idAcademia
+			g.column name:  'Cód.Aluno', attribute: 'idacademia' do |aluno|
+				aluno.idacademia
 			end
 
 			g.column name:  'Nome', attribute: 'nome'  do |aluno|

@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  idAcademia: MyText
+  idacademia: MyText
   nome: MyText
   nascimento: 2013-09-06
   sexo: false
-  observacao: 
+  observacao:
 
 two:
-  idAcademia: MyText
+  idacademia: MyText
   nome: MyText
   nascimento: 2013-09-06
   sexo: false
-  observacao: 
+  observacao:

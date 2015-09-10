@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20150826034605) do
   end
 
   create_table "alunos", force: :cascade do |t|
-    t.string  "idAcademia",       limit: 30,  default: "'"
+    t.string  "idacademia",       limit: 30,  default: "'"
     t.string  "nome",             limit: 80,  default: "Aluno",       null: false
     t.string  "medicamento",      limit: 120, default: "Não toma."
     t.string  "doenca",           limit: 120, default: "Não possui."

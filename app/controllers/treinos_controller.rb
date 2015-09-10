@@ -134,13 +134,13 @@ class TreinosController < ApplicationController
   def print(pIdAluno = "")
 
       begin
-        if params[:idAcademia].present?
-          @aluno = Aluno.find(params[:idAcademia])
+        if params[:idacademia].present?
+          @aluno = Aluno.find(params[:idacademia])
         else
           @aluno = Aluno.find(params[:alunoId])
         end
 
-        #@aluno = Aluno.where("idAcademia = ? ", params[:idAcademia]).first()
+        #@aluno = Aluno.where("idacademia = ? ", params[:idacademia]).first()
 
         treinos = Treino.where("aluno_id = ? and ? between criacao and validade", @aluno.id ,Date.today)
 
@@ -286,7 +286,7 @@ class TreinosController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def treino_params
-    #params.require(:aluno).permit(:idAcademia, :nome, :nascimento, :sexo, :observacao)
+    #params.require(:aluno).permit(:idacademia, :nome, :nascimento, :sexo, :observacao)
     params.require(:treino).permit!
   end
 
