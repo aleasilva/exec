@@ -40,17 +40,17 @@ ActiveRecord::Schema.define(version: 20150826034605) do
   end
 
   create_table "alunos", force: :cascade do |t|
-    t.string  "idacademia",       limit: 30,  default: "'"
-    t.string  "nome",             limit: 80,  default: "Aluno",       null: false
-    t.string  "medicamento",      limit: 120, default: "Não toma."
-    t.string  "doenca",           limit: 120, default: "Não possui."
-    t.string  "alergia",          limit: 120, default: "Não tem."
-    t.string  "dor",              limit: 120, default: "Não sente."
-    t.string  "email",            limit: 100, default: "'"
+    t.string  "idacademia",         limit: 30,  default: "'"
+    t.string  "nome",               limit: 80,  default: "Aluno",       null: false
+    t.string  "medicamento",        limit: 120, default: "Não toma."
+    t.string  "doenca",             limit: 120, default: "Não possui."
+    t.string  "alergia",            limit: 120, default: "Não tem."
+    t.string  "dor",                limit: 120, default: "Não sente."
+    t.string  "email",              limit: 100, default: "'"
     t.text    "observacao"
-    t.date    "nascimento",                   default: '2014-01-04'
-    t.string  "sexo",             limit: 1,   default: "f",           null: false
-    t.string  "last_treino",      limit: 1,   default: ""
+    t.date    "nascimento",                     default: '2014-01-04'
+    t.string  "sexo",               limit: 1,   default: "f",           null: false
+    t.string  "last_treino",        limit: 1,   default: ""
     t.date    "data_ultimo_treino"
     t.integer "semana_adaptacao"
   end
@@ -168,10 +168,10 @@ ActiveRecord::Schema.define(version: 20150826034605) do
     t.string   "nome"
     t.integer  "qtd_min_parcela"
     t.integer  "qtd_max_parcela"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.string   "periodo"
-    t.decimal  "valor",         precision: 14, scale: 2
+    t.decimal  "valor",           precision: 14, scale: 2
     t.integer  "parcelas"
   end
 
@@ -222,7 +222,7 @@ ActiveRecord::Schema.define(version: 20150826034605) do
     t.string   "recebido_por"
     t.integer  "id_venda"
     t.integer  "id_groupo_venda"
-    t.decimal  "valor_parcela",      precision: 14, scale: 2
+    t.decimal  "valor_parcela",     precision: 14, scale: 2
     t.integer  "qtd_parcela"
   end
 
