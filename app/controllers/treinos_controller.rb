@@ -97,14 +97,14 @@ class TreinosController < ApplicationController
   #
   def confirmaTreino
     alunoId = params[:alunoId]
-    sAdapta = params[:semanaAdaptacao]
+    sAdapta = params[:semana_adaptacao]
     lTreino = params[:last_treino]
 
     case params[:treinoAcao]
       when "print"
         redirect_to printTreino_path({ :doPrint => 'true',
                                        :alunoId => alunoId,
-                                       :semanaAdaptacao => sAdapta,
+                                       :semana_adaptacao => sAdapta,
                                        :last_treino => lTreino})
       when "mail"
         print(alunoId)
@@ -164,7 +164,7 @@ class TreinosController < ApplicationController
 
           #Verifico a confirmacao da impressao.
           if params.include?("doPrint") and
-            if @aluno.dataUltimoTreino != Date.today
+            if @aluno.data_ultimo_treino != Date.today
               @aluno.atualizaStatusTreino(params)
             end
 

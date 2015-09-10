@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 20150826034605) do
     t.date    "nascimento",                   default: '2014-01-04'
     t.string  "sexo",             limit: 1,   default: "f",           null: false
     t.string  "last_treino",      limit: 1,   default: ""
-    t.date    "dataUltimoTreino"
-    t.integer "semanaAdaptacao"
+    t.date    "data_ultimo_treino"
+    t.integer "semana_adaptacao"
   end
 
   create_table "atividades", force: :cascade do |t|
@@ -166,8 +166,8 @@ ActiveRecord::Schema.define(version: 20150826034605) do
 
   create_table "tabelaplanos", force: :cascade do |t|
     t.string   "nome"
-    t.integer  "qtdMinParcela"
-    t.integer  "qtdMaxParcela"
+    t.integer  "qtd_min_parcela"
+    t.integer  "qtd_max_parcela"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.string   "periodo"
@@ -211,19 +211,19 @@ ActiveRecord::Schema.define(version: 20150826034605) do
     t.integer  "tabelaplano_id"
     t.integer  "formapagamento_id"
     t.integer  "tipovenda_id"
-    t.date     "dtVenda"
-    t.integer  "nuDia"
+    t.date     "dt_venda"
+    t.integer  "nu_dia"
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
-    t.integer  "nuParcela"
-    t.date     "dtPagto"
-    t.date     "dtBaixa"
-    t.string   "vendidoPor"
-    t.string   "recebidoPor"
-    t.integer  "idVenda"
-    t.integer  "idGroupoVenda"
-    t.decimal  "valorParcela",      precision: 14, scale: 2
-    t.integer  "qtdParcela"
+    t.integer  "nu_parcela"
+    t.date     "dt_pagto"
+    t.date     "dt_baixa"
+    t.string   "vendido_por"
+    t.string   "recebido_por"
+    t.integer  "id_venda"
+    t.integer  "id_groupo_venda"
+    t.decimal  "valor_parcela",      precision: 14, scale: 2
+    t.integer  "qtd_parcela"
   end
 
 end

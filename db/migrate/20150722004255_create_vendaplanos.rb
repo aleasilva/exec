@@ -5,9 +5,9 @@ class CreateVendaplanos < ActiveRecord::Migration
       t.integer :tabelaplano_id
       t.integer :formapagamento_id
       t.integer :tipovenda_id
-      t.date :dtVenda
-      t.integer :nuDia
-      t.integer :qtVenda
+      t.date :dt_venda
+      t.integer :nu_dia
+      t.integer :qt_venda
 
       t.timestamps null: false
     end

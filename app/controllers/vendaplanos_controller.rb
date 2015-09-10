@@ -25,7 +25,7 @@ class VendaplanosController < ApplicationController
   # GET /vendaplanos/new
   def new
     @vendaplano = Vendaplano.new
-    @vendaplano.dtVenda =  Date.today
+    @vendaplano.dt_venda =  Date.today
     @vendaplano.aluno_id = params[:aluno_param]
   end
 
@@ -36,7 +36,7 @@ class VendaplanosController < ApplicationController
   # POST /vendaplanos
   def create
     @vendaplano = Vendaplano.new(vendaplano_params)
-    qtdParcelas = @vendaplano.tabelaplano.qtdMaxParcela
+    qtd_parcelas = @vendaplano.tabelaplano.qtd_max_parcela
     client = Vendaplano.readonly.last
 
     if client == nil
@@ -48,24 +48,24 @@ class VendaplanosController < ApplicationController
     begin
       @vendaplano.transaction do
         #
-        for iParcela in 1..qtdParcelas
+        for iParcela in 1..qtd_parcelas
 
           #Gera os planos para os proximos meses.
           if iParcela == 1
-            @vendaplano.dtPagto = @vendaplano.dtVenda
-            @vendaplano.dtBaixa = @vendaplano.dtVenda
-            @vendaplano.recebidoPor = current_user.name
+            @vendaplano.dt_pagto = @vendaplano.dt_venda
+            @vendaplano.dt_baixa = @vendaplano.dt_venda
+            @vendaplano.recebido_por = current_user.name
           else
             #@vendaplano = criaParcela(@vendaplano)
-            @vendaplano = criaParcela(@vendaplano.dtVenda, iParcela -1)
+            @vendaplano = criaParcela(@vendaplano.dt_venda, iParcela -1)
           end
 
-          @vendaplano.vendidoPor = current_user.name
-          @vendaplano.nuParcela = iParcela
-          @vendaplano.nuDia = @vendaplano.dtPagto.mday
-          @vendaplano.idVenda = idGrupoVenda
-          @vendaplano.valorParcela = @vendaplano.tabelaplano.valor
-          @vendaplano.qtdParcela = @vendaplano.tabelaplano.qtdMaxParcela
+          @vendaplano.vendido_por = current_user.name
+          @vendaplano.nu_parcela = iParcela
+          @vendaplano.nu_dia = @vendaplano.dt_pagto.mday
+          @vendaplano.id_venda = idGrupoVenda
+          @vendaplano.valor_parcela = @vendaplano.tabelaplano.valor
+          @vendaplano.qtd_parcela = @vendaplano.tabelaplano.qtd_max_parcela
 
           @vendaplano.save
 
@@ -82,9 +82,9 @@ class VendaplanosController < ApplicationController
   def criaParcela(dataVenda, numeroParcela)
 
     novaParcela  = Vendaplano.new(vendaplano_params)
-    novaParcela.dtBaixa = nil
-    novaParcela.recebidoPor = nil
-    novaParcela.dtPagto = dataVenda >> numeroParcela
+    novaParcela.dt_baixa = nil
+    novaParcela.recebido_por = nil
+    novaParcela.dt_pagto = dataVenda >> numeroParcela
 
     return novaParcela
   end
@@ -112,6 +112,6 @@ class VendaplanosController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def vendaplano_params
-      params.require(:vendaplano).permit(:plano_id, :aluno_id, :formapagamento_id, :tipovenda_id, :tabelaplano_id, :dtVenda, :nuDia, :qtVenda)
+      params.require(:vendaplano).permit(:plano_id, :aluno_id, :formapagamento_id, :tipovenda_id, :tabelaplano_id, :dt_venda, :nu_dia, :qt_venda)
     end
 end

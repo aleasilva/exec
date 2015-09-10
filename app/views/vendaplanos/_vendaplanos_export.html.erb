@@ -19,11 +19,11 @@
 		end
 		#
 		g.column name:  'Parcelas', attribute: 'tabelaplano_id' do |venPlano|
-			venPlano.nuParcela.to_s + " de " + venPlano.qtdParcela.to_s,
+			venPlano.nu_parcela.to_s + " de " + venPlano.qtd_parcela.to_s,
 		end
 		#
 		g.column name:  'Valor', attribute: 'tabelaplano_id' do |venPlano|
-			venPlano.valorParcela
+			venPlano.valor_parcela
 		end
 
 		g.column name:  'Forma Pag', attribute: 'formapagamento_id' do |venPlano|
@@ -31,18 +31,18 @@
 		end
 
 		#
-		g.column name:  'Dia Pgto', attribute: 'nuDia' do |venPlano|
-			venPlano.nuDia
+		g.column name:  'Dia Pgto', attribute: 'nu_dia' do |venPlano|
+			venPlano.nu_dia
 		end
 
 		#tipovendas
-		g.column name:  'Data venda', attribute: 'dtVenda' do |venPlano|
-			venPlano.dtVenda
+		g.column name:  'Data venda', attribute: 'dt_venda' do |venPlano|
+			venPlano.dt_venda
 		end
 
 		#
-		g.column name:  'Data baixa', attribute: 'dtBaixa' do |venPlano|
-			venPlano.dtBaixa
+		g.column name:  'Data baixa', attribute: 'dt_baixa' do |venPlano|
+			venPlano.dt_baixa
 		end
 
 		#
@@ -51,8 +51,8 @@
 		#end
 
 		#
-		g.column name:  'Consultor', attribute: 'vendidoPor' do |venPlano|
-			venPlano.vendidoPor
+		g.column name:  'Consultor', attribute: 'vendido_por' do |venPlano|
+			venPlano.vendido_por
 		end
 
 end -%>

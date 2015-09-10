@@ -61,6 +61,6 @@ class TabelaplanosController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def tabelaplano_params
-      params.require(:tabelaplano).permit(:nome, :valor, :qtdMaxParcela)
+      params.require(:tabelaplano).permit(:nome, :valor, :qtd_max_parcela)
     end
 end

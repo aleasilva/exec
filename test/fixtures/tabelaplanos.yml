@@ -2,10 +2,10 @@
 
 one:
   nome: MyString
-  qtdMinParcela: 1
-  qtdMaxParcela: 1
+  qtd_min_parcela: 1
+  qtd_max_parcela: 1
 
 two:
   nome: MyString
-  qtdMinParcela: 1
-  qtdMaxParcela: 1
+  qtd_min_parcela: 1
+  qtd_max_parcela: 1

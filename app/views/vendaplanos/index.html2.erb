@@ -18,9 +18,9 @@
   # <td><%= vendaplano.tabelaplano_id %></td>
   # <td><%= vendaplano.formapagamento_id %></td>
   # <td><%= vendaplano.tipovenda_id %></td>
-  # <td><%= vendaplano.dtVenda %></td>
-  # <td><%= vendaplano.nuDia %></td>
-  # <td><%= vendaplano.qtVenda %></td>
+  # <td><%= vendaplano.dt_venda %></td>
+  # <td><%= vendaplano.nu_dia %></td>
+  # <td><%= vendaplano.qt_venda %></td>
 
 	# g.column name:  'Tipo Pagamento', attribute: 'formapagamento_id' do |vendaplano|
 	# 	vendaplano.formapagamento.nome
@@ -68,9 +68,9 @@ end %>
         <td><%= vendaplano.tabelaplano_id %></td>
         <td><%= vendaplano.formapagamento_id %></td>
         <td><%= vendaplano.tipovenda_id %></td>
-        <td><%= vendaplano.dtVenda %></td>
-        <td><%= vendaplano.nuDia %></td>
-        <td><%= vendaplano.qtVenda %></td>
+        <td><%= vendaplano.dt_venda %></td>
+        <td><%= vendaplano.nu_dia %></td>
+        <td><%= vendaplano.qt_venda %></td>
         <td><%= link_to 'Show', vendaplano %></td>
         <td><%= link_to 'Edit', edit_vendaplano_path(vendaplano) %></td>
         <td><%= link_to 'Destroy', vendaplano, method: :delete, data: { confirm: 'Are you sure?' } %></td>

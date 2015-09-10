@@ -20,22 +20,22 @@
 	end
 
 	#
-	g.column name:  'Pgto' , attribute: 'nuDia' do |venPlano|
-		[venPlano.nuDia, {style: 'max-width:10px;'}]
+	g.column name:  'Pgto' , attribute: 'nu_dia' do |venPlano|
+		[venPlano.nu_dia, {style: 'max-width:10px;'}]
 	end
 
 	#
-	g.column name:  'Vencimento' , attribute: 'dtPagto' do |venPlano|
-		[l(venPlano.dtPagto), {style: 'max-width:170px;'}]
+	g.column name:  'Vencimento' , attribute: 'dt_pagto' do |venPlano|
+		[l(venPlano.dt_pagto), {style: 'max-width:170px;'}]
 	end
 
 	#
 	g.column name:  'Valor', attribute: 'tabelaplano_id' do |venPlano|
-		number_to_currency_br(venPlano.valorParcela)
+		number_to_currency_br(venPlano.valor_parcela)
 	end
 	#
 	g.column name:  'Parcela', attribute: 'tabelaplano_id' do |venPlano|
-		[venPlano.nuParcela.to_s + " de " +venPlano.qtdParcela.to_s,
+		[venPlano.nu_parcela.to_s + " de " +venPlano.qtd_parcela.to_s,
 		{style: 'max-width:10px;'}]
 	end
   #

@@ -37,7 +37,7 @@ class AlunoTreinoMailer < ActionMailer::Base
 
           #Verifico a confirmacao da impressao.
           if params.include?("doPrint") and
-            if @aluno.dataUltimoTreino != Date.today
+            if @aluno.data_ultimo_treino != Date.today
               @aluno.atualizaStatusTreino(params)
             end
 

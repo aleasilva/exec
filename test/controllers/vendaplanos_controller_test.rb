@@ -18,7 +18,7 @@ class VendaplanosControllerTest < ActionController::TestCase
 
   test "should create vendaplano" do
     assert_difference('Vendaplano.count') do
-      post :create, vendaplano: { aluno_id: @vendaplano.aluno_id, dtVenda: @vendaplano.dtVenda, nuDia: @vendaplano.nuDia, pagamento: @vendaplano.pagamento, plano_id: @vendaplano.plano_id, qtVenda: @vendaplano.qtVenda, tipovenda: @vendaplano.tipovenda }
+      post :create, vendaplano: { aluno_id: @vendaplano.aluno_id, dt_venda: @vendaplano.dt_venda, nu_dia: @vendaplano.nu_dia, pagamento: @vendaplano.pagamento, plano_id: @vendaplano.plano_id, qt_venda: @vendaplano.qt_venda, tipovenda: @vendaplano.tipovenda }
     end
 
     assert_redirected_to vendaplano_path(assigns(:vendaplano))
@@ -35,7 +35,7 @@ class VendaplanosControllerTest < ActionController::TestCase
   end
 
   test "should update vendaplano" do
-    patch :update, id: @vendaplano, vendaplano: { aluno_id: @vendaplano.aluno_id, dtVenda: @vendaplano.dtVenda, nuDia: @vendaplano.nuDia, pagamento: @vendaplano.pagamento, plano_id: @vendaplano.plano_id, qtVenda: @vendaplano.qtVenda, tipovenda: @vendaplano.tipovenda }
+    patch :update, id: @vendaplano, vendaplano: { aluno_id: @vendaplano.aluno_id, dt_venda: @vendaplano.dt_venda, nu_dia: @vendaplano.nu_dia, pagamento: @vendaplano.pagamento, plano_id: @vendaplano.plano_id, qt_venda: @vendaplano.qt_venda, tipovenda: @vendaplano.tipovenda }
     assert_redirected_to vendaplano_path(assigns(:vendaplano))
   end
 

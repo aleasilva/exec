@@ -27,8 +27,8 @@ class Aluno < ActiveRecord::Base
 
   #Atualiza o status do treino do aluno
   def atualizaStatusTreino(params)
-    self.dataUltimoTreino =  Date.today
-    self.semanaAdaptacao = params[:semanaAdaptacao]
+    self.data_ultimo_treino =  Date.today
+    self.semana_adaptacao = params[:semana_adaptacao]
     self.last_treino = params[:last_treino]
     self.registraPresenca()
 
@@ -46,16 +46,16 @@ class Aluno < ActiveRecord::Base
 
 
   def getSemanaAdaptacao()
-    dataUltimoTreino = Date.today
-    if (self.dataUltimoTreino != nil)
-      dataUltimoTreino = self.dataUltimoTreino
+    data_ultimo_treino = Date.today
+    if (self.data_ultimo_treino != nil)
+      data_ultimo_treino = self.data_ultimo_treino
     end
 
-    nUltSemanaTreino = dataUltimoTreino.cweek
-    nProSemanaTreino = (dataUltimoTreino+7).cweek
+    nUltSemanaTreino = data_ultimo_treino.cweek
+    nProSemanaTreino = (data_ultimo_treino+7).cweek
     nSemanaAtual = Date.today.cweek
     #nSemanaAtual = Date.new(2014,4,23).cweek
-    nSemanaAdaptacao = self.semanaAdaptacao
+    nSemanaAdaptacao = self.semana_adaptacao
 
     #Mudou de semana?
     if  nUltSemanaTreino != nSemanaAtual

@@ -4,5 +4,5 @@ class Vendaplano < ActiveRecord::Base
   belongs_to :tabelaplano
   belongs_to :aluno
 
-  usar_como_dinheiro :valorParcela
+  usar_como_dinheiro :valor_parcela
 end

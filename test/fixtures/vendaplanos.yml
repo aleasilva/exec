@@ -5,15 +5,15 @@ one:
   aluno_id: 1
   pagamento: 1
   tipovenda: 1
-  dtVenda: 2015-07-21
-  nuDia: 1
-  qtVenda: 1
+  dt_venda: 2015-07-21
+  nu_dia: 1
+  qt_venda: 1
 
 two:
   plano_id: 1
   aluno_id: 1
   pagamento: 1
   tipovenda: 1
-  dtVenda: 2015-07-21
-  nuDia: 1
-  qtVenda: 1
+  dt_venda: 2015-07-21
+  nu_dia: 1
+  qt_venda: 1

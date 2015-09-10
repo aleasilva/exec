@@ -111,9 +111,9 @@ tabelaPlanosList =[
   ["Água + 3 aulas - Anual",7,169.71]
 ]
 
-tabelaPlanosList.each do |nome, qtdParcela, valor|
+tabelaPlanosList.each do |nome, qtd_parcela, valor|
   if Tabelaplano.where("nome = ?", nome).size == 0
-    plano = {"nome" => nome, "qtdMaxParcela" => qtdParcela, "valor" => valor}
+    plano = {"nome" => nome, "qtd_max_parcela" => qtd_parcela, "valor" => valor}
 
     novoPlano = Tabelaplano.new(plano)
     novoPlano.save

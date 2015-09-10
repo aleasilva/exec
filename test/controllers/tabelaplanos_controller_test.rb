@@ -18,7 +18,7 @@ class TabelaplanosControllerTest < ActionController::TestCase
 
   test "should create tabelaplano" do
     assert_difference('Tabelaplano.count') do
-      post :create, tabelaplano: { nome: @tabelaplano.nome, qtdMaxParcela: @tabelaplano.qtdMaxParcela, qtdMinParcela: @tabelaplano.qtdMinParcela }
+      post :create, tabelaplano: { nome: @tabelaplano.nome, qtd_max_parcela: @tabelaplano.qtd_max_parcela, qtd_min_parcela: @tabelaplano.qtd_min_parcela }
     end
 
     assert_redirected_to tabelaplano_path(assigns(:tabelaplano))
@@ -35,7 +35,7 @@ class TabelaplanosControllerTest < ActionController::TestCase
   end
 
   test "should update tabelaplano" do
-    patch :update, id: @tabelaplano, tabelaplano: { nome: @tabelaplano.nome, qtdMaxParcela: @tabelaplano.qtdMaxParcela, qtdMinParcela: @tabelaplano.qtdMinParcela }
+    patch :update, id: @tabelaplano, tabelaplano: { nome: @tabelaplano.nome, qtd_max_parcela: @tabelaplano.qtd_max_parcela, qtd_min_parcela: @tabelaplano.qtd_min_parcela }
     assert_redirected_to tabelaplano_path(assigns(:tabelaplano))
   end
 
