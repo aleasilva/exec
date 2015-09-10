@@ -1,4 +1,4 @@
-# This file should contain all the record creation needed to seed the idacademia with its default values.
+# This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
 # Examples:
@@ -908,7 +908,12 @@ lstAlunos = [
 ]
 
 lstAlunos.each do |id, nome|
+<<<<<<< HEAD
   if Aluno.where(" idacademia = ? ", id).size == 0
     Aluno.new({"idacademia" => id, "nome" => nome.upcase}).save
+=======
+  if Aluno.where("idAcademia = ? ", id).size == 0
+    Aluno.new({"idAcademia" => id, "nome" => nome.upcase}).save
+>>>>>>> parent of afbe917... alteracao do nome do campo
   end
 end

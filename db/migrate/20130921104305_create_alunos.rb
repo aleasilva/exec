@@ -1,7 +1,7 @@
 class CreateAlunos < ActiveRecord::Migration
   def change
     create_table :alunos do |t|
-      t.string  :idacademia   , :limit => 30, :default => ""
+      t.string  :idAcademia   , :limit => 30, :default => ""
       t.string  :nome         , :limit => 80, :default => "Aluno" , :null => false
       t.string  :medicamento  , :limit => 120, :default => "Não toma."
       t.string  :doenca       , :limit => 120, :default => "Não possui."
