@@ -3,7 +3,7 @@
 Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
-  # confirmation, reset password and unlock tokens in the database.
+  # confirmation, reset password and unlock tokens in the idacademia.
   config.secret_key = '15fa1d253427f4aff347886c5d1a704281b7dd8128ed9475fcb45781267efde76dedd14fd17218b82d4e860e2769233b04c8d67eede92c950e0a47225d091f6d'
 
   # ==> Mailer Configuration
@@ -50,15 +50,15 @@ Devise.setup do |config|
 
   # Tell if authentication through request.params is enabled. True by default.
   # It can be set to an array that will enable params authentication only for the
-  # given strategies, for example, `config.params_authenticatable = [:database]` will
-  # enable it only for database (email + password) authentication.
+  # given strategies, for example, `config.params_authenticatable = [:idacademia]` will
+  # enable it only for idacademia (email + password) authentication.
   # config.params_authenticatable = true
 
   # Tell if authentication through HTTP Auth is enabled. False by default.
   # It can be set to an array that will enable http authentication only for the
-  # given strategies, for example, `config.http_authenticatable = [:database]` will
-  # enable it only for database authentication. The supported strategies are:
-  # :database      = Support basic authentication with authentication key + password
+  # given strategies, for example, `config.http_authenticatable = [:idacademia]` will
+  # enable it only for idacademia authentication. The supported strategies are:
+  # :idacademia      = Support basic authentication with authentication key + password
   # config.http_authenticatable = false
 
   # If http headers should be returned for AJAX requests. True by default.
@@ -85,7 +85,7 @@ Devise.setup do |config|
   # from the server. You can disable this option at your own risk.
   # config.clean_up_csrf_token_on_authentication = true
 
-  # ==> Configuration for :database_authenticatable
+  # ==> Configuration for :idacademia_authenticatable
   # For bcrypt, this is the cost for hashing the password and defaults to 10. If
   # using other encryptors, it sets how many times you want the password re-encrypted.
   #
