@@ -53,6 +53,18 @@ class TabelaplanosController < ApplicationController
     redirect_to tabelaplanos_url, notice: 'O plano foi excluido.'
   end
 
+  def valor_plano
+    plano = params[:id_plano]
+
+    if request.xhr?
+      render :json => {
+                        :file_content => 'Alexandre'
+                    }
+    end
+
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tabelaplano

@@ -27,6 +27,7 @@ class VendaplanosController < ApplicationController
     @vendaplano = Vendaplano.new
     @vendaplano.dt_venda =  Date.today
     @vendaplano.aluno_id = params[:aluno_param]
+    @vendaplano.valor_parcela = 0
   end
 
   # GET /vendaplanos/1/edit
@@ -46,6 +47,7 @@ class VendaplanosController < ApplicationController
     end
 
     begin
+      byebug
       @vendaplano.transaction do
         #
         for iParcela in 1..qtd_parcelas
