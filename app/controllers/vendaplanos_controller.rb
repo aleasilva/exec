@@ -27,7 +27,11 @@ class VendaplanosController < ApplicationController
     @vendaplano = Vendaplano.new
     @vendaplano.dt_venda =  Date.today
     @vendaplano.aluno_id = params[:aluno_param]
-    @vendaplano.valor_parcela = 0
+
+    #Recuperando os dados dos planos
+    plano = Tabelaplano.first
+    @vendaplano.valor_parcela = plano.valor
+    @vendaplano.qtd_parcela = plano.qtd_max_parcela
   end
 
   # GET /vendaplanos/1/edit
@@ -37,7 +41,7 @@ class VendaplanosController < ApplicationController
   # POST /vendaplanos
   def create
     @vendaplano = Vendaplano.new(vendaplano_params)
-    qtd_parcelas = @vendaplano.tabelaplano.qtd_max_parcela
+    qtd_parcelas = @vendaplano.qtd_parcela
     client = Vendaplano.readonly.last
 
     if client == nil
@@ -47,7 +51,6 @@ class VendaplanosController < ApplicationController
     end
 
     begin
-      byebug
       @vendaplano.transaction do
         #
         for iParcela in 1..qtd_parcelas
@@ -58,17 +61,15 @@ class VendaplanosController < ApplicationController
             @vendaplano.dt_baixa = @vendaplano.dt_venda
             @vendaplano.recebido_por = current_user.name
           else
-            #@vendaplano = criaParcela(@vendaplano)
             @vendaplano = criaParcela(@vendaplano.dt_venda, iParcela -1)
           end
 
+          @vendaplano.tabelaplano_id = params[:tabelaplano][:tabelaplano_id].to_i
           @vendaplano.vendido_por = current_user.name
           @vendaplano.nu_parcela = iParcela
-          @vendaplano.nu_dia = @vendaplano.dt_pagto.mday
           @vendaplano.id_venda = idGrupoVenda
-          @vendaplano.valor_parcela = @vendaplano.tabelaplano.valor
-          @vendaplano.qtd_parcela = @vendaplano.tabelaplano.qtd_max_parcela
-
+          @vendaplano.valor_parcela = @vendaplano.valor_parcela
+          @vendaplano.nome_plano = @vendaplano.tabelaplano.nome
           @vendaplano.save
 
         end
@@ -114,6 +115,7 @@ class VendaplanosController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def vendaplano_params
-      params.require(:vendaplano).permit(:plano_id, :aluno_id, :formapagamento_id, :tipovenda_id, :tabelaplano_id, :dt_venda, :nu_dia, :qt_venda)
+      params.require(:vendaplano).permit(:plano_id, :aluno_id, :formapagamento_id,
+        :tipovenda_id, :tabelaplano_id, :dt_venda, :valor_parcela, :qtd_parcela)
     end
 end

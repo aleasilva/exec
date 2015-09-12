@@ -10,8 +10,8 @@
 			venPlano.aluno.nome
 		end
 		#
-		g.column name:  'Plano', attribute: 'tabelaplano_id' do |venPlano|
-			venPlano.tabelaplano.nome
+		g.column name:  'Plano', attribute: 'nome_plano' do |venPlano|
+			venPlano.nome_plano
 		end
 		#
 		g.column name:  'Periodo', attribute: 'tabelaplano_id' do |venPlano|
@@ -19,7 +19,7 @@
 		end
 		#
 		g.column name:  'Parcelas', attribute: 'tabelaplano_id' do |venPlano|
-			venPlano.nu_parcela.to_s + " de " + venPlano.qtd_parcela.to_s,
+			venPlano.nu_parcela.to_s + " de " + venPlano.qtd_parcela.to_s
 		end
 		#
 		g.column name:  'Valor', attribute: 'tabelaplano_id' do |venPlano|
@@ -31,8 +31,8 @@
 		end
 
 		#
-		g.column name:  'Dia Pgto', attribute: 'nu_dia' do |venPlano|
-			venPlano.nu_dia
+		g.column name:  'Dia Pgto', attribute: 'dt_pagto' do |venPlano|
+			venPlano.dt_pagto.mday
 		end
 
 		#tipovendas

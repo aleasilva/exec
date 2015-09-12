@@ -15,14 +15,14 @@
 	end
 
 	#
-	g.column name:  'Plano', attribute: 'tabelaplano_id' do |venPlano|
-		venPlano.tabelaplano.nome
+	g.column name:  'Plano', attribute: 'nome_plano' do |venPlano|
+		venPlano.nome_plano
 	end
 
 	#
-	g.column name:  'Pgto' , attribute: 'nu_dia' do |venPlano|
-		[venPlano.nu_dia, {style: 'max-width:10px;'}]
-	end
+	# g.column name:  'Pgto' , attribute: 'dt_pagto' do |venPlano|
+	# 	[venPlano.dt_pagto.mday, {style: 'max-width:10px;'}]
+	# end
 
 	#
 	g.column name:  'Vencimento' , attribute: 'dt_pagto' do |venPlano|

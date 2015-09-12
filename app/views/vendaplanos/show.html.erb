@@ -5,7 +5,7 @@
   <dd><%= @vendaplano.aluno.nome %></dd>
 
   <dt><strong>Tipo do plano:</strong></dt>
-  <dd><%= @vendaplano.tabelaplano.nome %></dd>
+  <dd><%= @vendaplano.nome_plano %></dd>
 
   <dt><strong>Forma pagamento:</strong></dt>
   <dd><%= @vendaplano.formapagamento.nome  %></dd>
@@ -14,10 +14,8 @@
   <dd><%= @vendaplano.tipovenda.nome %></dd>
 
   <dt><strong>Data venda:</strong></dt>
-  <dd><%= @vendaplano.dt_venda %></dd>
+  <dd><%= l(@vendaplano.dt_venda) %></dd>
 
-  <dt><strong>Dia vencimento:</strong></dt>
-  <dd><%= @vendaplano.nu_dia  %></dd>
 </dl>
 
 <div class="panel-footer">

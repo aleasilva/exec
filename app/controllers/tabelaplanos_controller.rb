@@ -54,12 +54,13 @@ class TabelaplanosController < ApplicationController
   end
 
   def valor_plano
-    plano = params[:id_plano]
+    plano = Tabelaplano.find_by(id: params[:id_plano])
 
     if request.xhr?
-      render :json => {
-                        :file_content => 'Alexandre'
-                    }
+      render :json =>{
+                        :valor_parcela => plano.valor.to_s,
+                        :qtd_parcela => plano.qtd_max_parcela.to_s
+                      }
     end
 
 
