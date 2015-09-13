@@ -52,6 +52,7 @@ class VendaplanosController < ApplicationController
 
     begin
       @vendaplano.transaction do
+        msgErro = ""
         #
         for iParcela in 1..qtd_parcelas
 
@@ -70,10 +71,29 @@ class VendaplanosController < ApplicationController
           @vendaplano.id_venda = idGrupoVenda
           @vendaplano.valor_parcela = @vendaplano.valor_parcela
           @vendaplano.nome_plano = @vendaplano.tabelaplano.nome
-          @vendaplano.save
+
+          if ! @vendaplano.save
+
+            #Tratamento das mensagens de erro na atualizacao!
+
+            @vendaplano.errors.messages.each do |message|
+              msgErro += "Campo: " + message[0].to_s + " " +  message[1].to_s + "!<br>"
+            end
+
+            if msgErro != ""
+              flash[:alert] = msgErro.tr_s('["','').tr_s('"]','')
+            end
+            break
+
+          end
 
         end
-        redirect_to @vendaplano, notice: 'Venda criada.'
+
+        if msgErro == ""
+          redirect_to @vendaplano, notice: 'Venda criada.'
+        else
+          render action: 'edit'
+        end
 
       end
     rescue ActiveRecord::RecordInvalid => invalid
@@ -105,6 +125,11 @@ class VendaplanosController < ApplicationController
   def destroy
     @vendaplano.destroy
     redirect_to vendaplanos_url, notice: 'Parcela excluida.'
+  end
+
+  def import
+    #Product.import(params[:file])
+    #redirect_to root_url, notice: "Products imported."
   end
 
   private

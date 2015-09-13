@@ -1,11 +1,14 @@
 Exec::Application.routes.draw do
-  resources :vendaplanos
   resources :tipovendas
   resources :formapagamentos
 
   resources :groups
   resources :rules
   resources :atividades
+
+  resources :vendaplanos do
+    collection { post :import }
+  end
 
   resources :tabelaplanos
     get 'valor_plano', to: 'tabelaplanos#valor_plano'
