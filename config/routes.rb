@@ -6,17 +6,21 @@ Exec::Application.routes.draw do
   resources :rules
   resources :atividades
 
+  #Antes de verificar os path padroes vejo este caminho especifico
+  get 'vendaplanos/import_csv' , to: 'vendaplanos#importCsv'
   resources :vendaplanos do
-    collection { post :import }
+    collection { post :importCsv }
   end
 
-  resources :tabelaplanos
+  resources :tabelaplanos do
     get 'valor_plano', to: 'tabelaplanos#valor_plano'
+  end
 
-  resources :treinos
+  resources :treinos do
     get 'printIndex', to: 'treinos#printIndex'
     get 'printTreino', to: 'treinos#print'
     get 'confirmaTreino', to: 'treinos#confirmaTreino'
+  end
 
   resources :alunos do
     resources :treinos

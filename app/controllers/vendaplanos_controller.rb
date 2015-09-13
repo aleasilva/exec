@@ -20,6 +20,11 @@ class VendaplanosController < ApplicationController
 
   # GET /vendaplanos/1
   def show
+    # byebug
+    if (params[:id] == "import")
+        redirect_to users_path
+    end
+
   end
 
   # GET /vendaplanos/new
@@ -127,7 +132,7 @@ class VendaplanosController < ApplicationController
     redirect_to vendaplanos_url, notice: 'Parcela excluida.'
   end
 
-  def import
+  def showPageImportCsv
     #Product.import(params[:file])
     #redirect_to root_url, notice: "Products imported."
   end
@@ -135,7 +140,7 @@ class VendaplanosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_vendaplano
-      @vendaplano = Vendaplano.find(params[:id])
+        @vendaplano = Vendaplano.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
