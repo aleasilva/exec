@@ -132,9 +132,9 @@ class VendaplanosController < ApplicationController
     redirect_to vendaplanos_url, notice: 'Parcela excluida.'
   end
 
-  def showPageImportCsv
-    #Product.import(params[:file])
-    #redirect_to root_url, notice: "Products imported."
+  def import_csv
+    Vendaplano.import_from_csv(params[:file])
+    redirect_to root_url, notice: "Vendas importadas."
   end
 
   private

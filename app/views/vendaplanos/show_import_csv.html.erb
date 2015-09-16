@@ -1,0 +1,6 @@
+
+<%= form_tag import_csv_vendaplanos_path, multipart: true do %>
+   <%= file_field_tag :file %>
+   <br>
+   <%= submit_tag "Importar" %>
+<% end %>

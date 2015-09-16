@@ -7,9 +7,9 @@ Exec::Application.routes.draw do
   resources :atividades
 
   #Antes de verificar os path padroes vejo este caminho especifico
-  get 'vendaplanos/import_csv' , to: 'vendaplanos#importCsv'
+  get 'vendaplanos/show_import_csv' , to: 'vendaplanos#show_import_csv'
   resources :vendaplanos do
-    collection { post :importCsv }
+    collection { post :import_csv }
   end
 
   resources :tabelaplanos do
