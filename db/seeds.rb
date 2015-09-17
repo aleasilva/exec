@@ -139,8 +139,8 @@ end
 frmPagtoList =[
   ["Á vista",""],
   ["Cartão de débito",""],
-  ["Cartão de crédito",""]
-  ["Cheque",""]
+  ["Cartão de crédito",""],
+  ["Cheque",""],
   ["Nota promissória",""]
 ]
 
