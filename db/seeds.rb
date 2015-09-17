@@ -89,6 +89,7 @@ end
 
 #Criacao dos planos
 tabelaPlanosList =[
+  ["Importado",0, 0],
   ["Solo livre - Semestral",4, 120],
   ["Solo livre - Anual",7,118.29],
   ["Solo + 1 aula - Semestral",4,178.50],
@@ -139,6 +140,8 @@ frmPagtoList =[
   ["Á vista",""],
   ["Cartão de débito",""],
   ["Cartão de crédito",""]
+  ["Cheque",""]
+  ["Nota promissória",""]
 ]
 
 frmPagtoList.each do |nome , x|

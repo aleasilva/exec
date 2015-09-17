@@ -16,10 +16,11 @@ Exec::Application.routes.draw do
     get 'valor_plano', to: 'tabelaplanos#valor_plano'
   end
 
+  #Recursos para impressao dos treinos.
+  get 'printIndex', to: 'treinos#printIndex'
+  get 'printTreino', to: 'treinos#print'
+  get 'confirmaTreino', to: 'treinos#confirmaTreino'
   resources :treinos do
-    get 'printIndex', to: 'treinos#printIndex'
-    get 'printTreino', to: 'treinos#print'
-    get 'confirmaTreino', to: 'treinos#confirmaTreino'
   end
 
   resources :alunos do
