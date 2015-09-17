@@ -19,36 +19,59 @@ class Vendaplano < ActiveRecord::Base
         #"plano"=>"recorrente solo", "período"=>"recorrente", "valor"=>"60", "n° parcelas"=>"12",
         #"pagamento"=>"cartao", "situação"=>"novo", "consultor"=>"alan"}
 
-      	#`id_venda`	integer,
-      	#`nu_parcela`	integer,
-      	#`dt_pagto`	date,
-        byebug
-        
-        qtdParcelas  = hashVenda["parcelas"]
-        valorParcela = hashVenda["valor"]
-        dtVenda      = Date.strptime(hashVenda["data"], '%d/%m/%Y')
-        planoId      = 1
+        qtdParcelas  = hashVenda["parcela"].to_i
+        valorParcela = hashVenda["valor"].to_f
+        dtVenda      = Date.strptime(hashVenda["data"], '%d/%m/%y')
         planoNome    = hashVenda["plano"]
-        pagId        = getIdPagamento(hashPagamento["pagamento"].upcase)
+        pagId        = getIdPagamento(hashVenda["pagamento"].upcase)
         tipoVendaId  = getTipoVendaId(hashVenda["situacao"].upcase)
+        idGrupoVenda = self.getIdGrupoVenda()
+        iParcela     = 1
+        planoId      = 1
 
-        Vendaplano.new( { aluno_id: verifyAluno(hashVenda) , nome_plano:   hashVenda["plano"] ,
-                        vendido_por: hashVenda["consultor"], qtd_parcela:  qtdParcelas,
-                        valor_parcela: valorParcela        , dt_venda:     dtVenda,
-                        tabelaplano_id: planoId            , nome_plano:   planoNome,
-                        formapagamento_id: pagId           , tipovenda_id: tipoVendaId})
+        for iParcela in 1..qtdParcelas
+
+          if iParcela == 1
+            dtPagto      = dtVenda
+          else
+            dtPagto      = dtVenda >> iParcela-1
+          end
+
+          if dtPagto > Date.today - 7
+
+            Vendaplano.new( { aluno_id: verifyAluno(hashVenda) , nome_plano:   hashVenda["plano"] ,
+                            vendido_por: hashVenda["consultor"], qtd_parcela:  qtdParcelas,
+                            valor_parcela: valorParcela        , dt_venda:     dtVenda,
+                            tabelaplano_id: planoId            , nome_plano:   planoNome,
+                            formapagamento_id: pagId           , tipovenda_id: tipoVendaId,
+                            dt_pagto:   dtPagto                , nu_parcela:   iParcela,
+                            id_venda:   idGrupoVenda }).save
+
+          end
+
+        end
     end
 
   end
 
+  def self.getIdGrupoVenda
+
+    client = Vendaplano.readonly.last
+
+    if client == nil
+      idGrupoVenda = 1
+    else
+      idGrupoVenda = client.id + 1
+    end
+
+    return idGrupoVenda
+  end
+
   private
-
-
-
   #Caso o aluno nao exista no cadastro inclui
   def self.verifyAluno(hshVenda)
     idAcademia = hshVenda["codigo"]
-    nome = hshVenda["nome do cliente"]
+    nome = hshVenda["cliente"]
 
     aluno = Aluno.where("idacademia = ? ", idAcademia)
     if aluno.size == 0
@@ -63,9 +86,9 @@ class Vendaplano < ActiveRecord::Base
   def self.getTipoVendaId(nomeVenda)
     idVen = 0
 
-    if nomeSit.include? "NOV"
+    if nomeVenda.include? "NOV"
       idVen = 1
-    elsif nomeSit.include? "MIG"
+    elsif nomeVenda.include? "MIG"
       idVen = 2
     else
       idVen = 3

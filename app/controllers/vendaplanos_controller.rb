@@ -47,13 +47,8 @@ class VendaplanosController < ApplicationController
   def create
     @vendaplano = Vendaplano.new(vendaplano_params)
     qtd_parcelas = @vendaplano.qtd_parcela
-    client = Vendaplano.readonly.last
 
-    if client == nil
-      idGrupoVenda = 1
-    else
-      idGrupoVenda = client.id + 1
-    end
+    idGrupoVenda = Vendaplano.getIdGrupoVenda()
 
     begin
       @vendaplano.transaction do
