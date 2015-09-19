@@ -14,11 +14,6 @@ class Vendaplano < ActiveRecord::Base
     CSV.foreach(file.path, {:headers => true, :col_sep => ';', :encoding => 'ISO-8859-1'}) do |row|
         hashVenda = row.to_hash
 
-        #
-        #{"data"=>"07/05/15", "codigo"=>"15910", "nome do cliente"=>"juraci rita leite de andrade ",
-        #"plano"=>"recorrente solo", "período"=>"recorrente", "valor"=>"60", "n° parcelas"=>"12",
-        #"pagamento"=>"cartao", "situação"=>"novo", "consultor"=>"alan"}
-
         qtdParcelas  = hashVenda["parcela"].to_i
         valorParcela = hashVenda["valor"].to_f
         dtVenda      = Date.strptime(hashVenda["data"], '%d/%m/%y')

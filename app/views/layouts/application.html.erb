@@ -108,15 +108,17 @@
 							      </ul>
 							   </li>
 
-							   <li class='active has-sub'><a href='#'><span>Relatórios</span></a></li>
+									<% if can? :read, Atividade %>
+								   <li class='active has-sub'><a href='#'><span>Relatórios</span></a></li>
+									<%end%>
 
 								 <li class='active has-sub'><a href='#'><span>Sistema</span></a>
 									 <ul>
 										 <% if can? :read, Group %>
-										 		<li ><%= link_to "Trocar senha",  edit_user_registration_path%></li>
-										 		<li class='last'><%= link_to "Trocar senha",  edit_user_password_path%></li>
-											<%end%>
 										 		<li><%= link_to "Lista de usuários",  users_path%></li>
+											<%end%>
+										 		<li ><%= link_to "Editar usuário",  edit_user_registration_path%></li>
+										 		<li class='last'><%= link_to "Trocar senha",  edit_user_password_path%></li>
 									 </ul>
 									</li>
 							</ul>

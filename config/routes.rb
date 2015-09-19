@@ -40,6 +40,7 @@ Exec::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations" }
 
   #Alterando as propriedades para registro de 1 usuario pelo adm.
+
   devise_scope :user do
     get   'users'     , to: 'admusers#index', as: 'users' #Chama o indice
     post  'users_save', to: 'adminserts#create'  #Botao da gravacao da criacao
@@ -49,12 +50,12 @@ Exec::Application.routes.draw do
 
     #Atualizacao
     patch  'users_update/', to: 'admusers#update'  #Botao da Atualizacao.
-
+    
     #Atualizacao senha
     get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
     put 'users' => 'devise/registrations#update', :as => 'user_registration'
-
   end
+
 
   #resources :admusers
   #get "home/index"
