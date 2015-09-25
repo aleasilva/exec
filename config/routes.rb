@@ -12,8 +12,8 @@ Exec::Application.routes.draw do
     collection { post :import_csv }
   end
 
+  get 'valor_plano', to: 'tabelaplanos#valor_plano'
   resources :tabelaplanos do
-    get 'valor_plano', to: 'tabelaplanos#valor_plano'
   end
 
   #Recursos para impressao dos treinos.
@@ -50,7 +50,7 @@ Exec::Application.routes.draw do
 
     #Atualizacao
     patch  'users_update/', to: 'admusers#update'  #Botao da Atualizacao.
-    
+
     #Atualizacao senha
     get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
     put 'users' => 'devise/registrations#update', :as => 'user_registration'

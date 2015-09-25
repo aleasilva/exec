@@ -18,6 +18,7 @@ class VendaplanosController < ApplicationController
     end
   end
 
+
   # GET /vendaplanos/1
   def show
     # byebug
