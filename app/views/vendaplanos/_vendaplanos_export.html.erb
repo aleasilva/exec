@@ -11,7 +11,7 @@
 		end
 		#
 		g.column name:  'Plano', attribute: 'nome_plano' do |venPlano|
-			venPlano.nome_plano.force_encoding("ISO-8859-1")
+			venPlano.nome_plano
 		end
 
 		#
@@ -55,11 +55,12 @@
 		#
 		#g.column name:  'Tp Venda', attribute: 'tipovenda_id' do |venPlano|
 		#	venPlano.tipovenda.nome
+		#.force_encoding("ISO-8859-1")
 		#end
 
 		#
 		g.column name:  'Consultor', attribute: 'vendido_por' do |venPlano|
-			venPlano.vendido_por.force_encoding("ISO-8859-1")
+			venPlano.vendido_por
 		end
 
 end -%>
