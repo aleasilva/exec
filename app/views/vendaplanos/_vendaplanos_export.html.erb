@@ -7,7 +7,7 @@
 
 		#
 		g.column name:  'Aluno', attribute: 'aluno_id' do |venPlano|
-			venPlano.aluno.nome.force_encoding("ISO-8859-1")
+			venPlano.aluno.nome
 		end
 		#
 		g.column name:  'Plano', attribute: 'nome_plano' do |venPlano|
