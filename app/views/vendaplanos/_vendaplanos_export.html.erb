@@ -7,19 +7,26 @@
 
 		#
 		g.column name:  'Aluno', attribute: 'aluno_id' do |venPlano|
-			venPlano.aluno.nome
+			venPlano.aluno.nome.force_encoding("ISO-8859-1")
 		end
 		#
 		g.column name:  'Plano', attribute: 'nome_plano' do |venPlano|
-			venPlano.nome_plano
+			venPlano.nome_plano.force_encoding("ISO-8859-1")
 		end
+
 		#
-		g.column name:  'Periodo', attribute: 'tabelaplano_id' do |venPlano|
-			venPlano.tabelaplano.periodo
+		#g.column name:  'Periodo', attribute: 'tabelaplano_id' do |venPlano|
+		#	venPlano.tabelaplano.periodo
+		#end
+
+		#
+		g.column name:  'N da Parcela', attribute: 'tabelaplano_id' do |venPlano|
+			venPlano.nu_parcela.to_s
 		end
+
 		#
-		g.column name:  'Parcelas', attribute: 'tabelaplano_id' do |venPlano|
-			venPlano.nu_parcela.to_s + " de " + venPlano.qtd_parcela.to_s
+		g.column name:  'Qtd Parcelas', attribute: 'tabelaplano_id' do |venPlano|
+			 venPlano.qtd_parcela.to_s
 		end
 		#
 		g.column name:  'Valor', attribute: 'tabelaplano_id' do |venPlano|
@@ -52,7 +59,7 @@
 
 		#
 		g.column name:  'Consultor', attribute: 'vendido_por' do |venPlano|
-			venPlano.vendido_por
+			venPlano.vendido_por.force_encoding("ISO-8859-1")
 		end
 
 end -%>
