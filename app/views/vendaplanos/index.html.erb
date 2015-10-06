@@ -5,12 +5,12 @@
 	show_filters: :when_filtered) do |g|
 
 	#
-	g.column name:  'Id', attribute: 'aluno_id' do |venPlano|
+	g.column name:  'Id', attribute: 'aluno_id',filter: false do |venPlano|
 		[venPlano.aluno.idacademia,{style: 'max-width:45px;'}]
 	end
 
 	#
-	g.column name:  'Aluno', attribute: 'aluno_id' do |venPlano|
+	g.column name:  'Aluno', attribute: 'aluno_id',filter: false do |venPlano|
 		venPlano.aluno.nome
 	end
 
