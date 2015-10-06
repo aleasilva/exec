@@ -10,8 +10,8 @@
 	end
 
 	#
-	g.column name:  'Aluno', attribute: 'aluno_id',filter: false do |venPlano|
-		venPlano.aluno.nome
+	g.column name:  'Aluno', attribute: 'nome', model: "Aluno" ,filter: false do |v|
+		v.aluno.nome
 	end
 
 	#
