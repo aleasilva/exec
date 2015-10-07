@@ -7,11 +7,11 @@
 
 		#
 		g.column name:  'Aluno', attribute: 'aluno_id' do |venPlano|
-			venPlano.aluno ? venPlano.aluno.nome : 'Aluno foi excluido.'
+			venPlano.aluno ? I18n.transliterate(venPlano.aluno.nome) : 'Aluno foi excluido.'
 		end
 		#
 		g.column name:  'Plano', attribute: 'nome_plano' do |venPlano|
-			venPlano.nome_plano
+			I18n.transliterate(venPlano.nome_plano)
 		end
 
 		#
@@ -34,7 +34,8 @@
 		end
 
 		g.column name:  'Forma Pag', attribute: 'formapagamento_id' do |venPlano|
-			venPlano.formapagamento.nome
+			#venPlano.formapagamento.nome
+			I18n.transliterate(venPlano.formapagamento.nome)
 		end
 
 		#
@@ -60,7 +61,7 @@
 
 		#
 		g.column name:  'Consultor', attribute: 'vendido_por' do |venPlano|
-			venPlano.vendido_por
+			I18n.transliterate(venPlano.vendido_por)
 		end
 
 end -%>

@@ -25,3 +25,5 @@ production:
   pool: 2
   username: obnlztnljalwep
   password: s3tJhtWzkILawQLweVfew17c3A
+
+  #encoding: UTF8
