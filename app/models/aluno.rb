@@ -10,7 +10,7 @@ class Aluno < ActiveRecord::Base
    has_many :presencas, dependent: :destroy
 
    #Relacionamento com as vendas
-   has_many :vendaplanos
+   has_many :vendaplanos, dependent: :restrict_with_exception
 
    #Validadores
    validates  :nome         , :length => { :maximum => 80  },:presence => true, :uniqueness => false
