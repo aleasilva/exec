@@ -2,12 +2,12 @@
 
 		#
 		g.column name:  'Id Academia', attribute: 'aluno_id' do |venPlano|
-			venPlano.aluno.idacademia
+			venPlano.aluno ? venPlano.aluno.idacademia : '##'
 		end
 
 		#
 		g.column name:  'Aluno', attribute: 'aluno_id' do |venPlano|
-			venPlano.aluno.nome
+			venPlano.aluno ? venPlano.aluno.nome : 'Aluno foi excluido.'
 		end
 		#
 		g.column name:  'Plano', attribute: 'nome_plano' do |venPlano|
