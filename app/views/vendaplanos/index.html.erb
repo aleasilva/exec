@@ -6,12 +6,12 @@
 
 	#
 	g.column name:  'Id', attribute: 'aluno_id',filter: false do |venPlano|
-		[venPlano.aluno.idacademia,{style: 'max-width:45px;'}]
+		[ venPlano.aluno ? venPlano.aluno.idacademia : '##' , {style: 'max-width:45px;'}]
 	end
 
 	#
-	g.column name:  'Aluno', attribute: 'nome', model: "Aluno" ,filter: false do |v|
-		v.aluno.nome
+	g.column name:  'Aluno', attribute: 'nome', model: "Aluno" ,filter: false do |venPlano|
+		venPlano.aluno ? venPlano.aluno.nome : 'Aluno foi excluido.'
 	end
 
 	#
