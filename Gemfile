@@ -41,7 +41,9 @@ gem 'rails', '4.2.1'
 #end
 
 #Grid de dados do sistema
-gem 'wice_grid', '3.4.11'
+#gem 'wice_grid', '3.4.11'
+gem "wice_grid", '3.6.0.pre4'
+#gem 'font-awesome-sass',  '~> 4.3'
 
 #validação de usuário
 gem 'devise'

@@ -5,12 +5,12 @@
 	show_filters: :when_filtered) do |g|
 
 	#
-	g.column name:  'Id', attribute: 'aluno_id',filter: false do |venPlano|
+	g.column name:  'Id Academia', attribute: 'idacademia',assoc: :aluno, filter: true do |venPlano|
 		[ venPlano.aluno ? venPlano.aluno.idacademia : '##' , {style: 'max-width:45px;'}]
 	end
 
 	#
-	g.column name:  'Aluno', attribute: 'nome', model: "Aluno" ,filter: false do |venPlano|
+	g.column name:  'Aluno', attribute: 'nome', assoc: :aluno ,filter: true do |venPlano|
 		venPlano.aluno ? venPlano.aluno.nome : 'Aluno foi excluido.'
 	end
 

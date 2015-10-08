@@ -8,6 +8,7 @@ class VendaplanosController < ApplicationController
     @vendaplanos = Vendaplano.all
     @vendaplanos_grid = initialize_grid(@vendaplanos,
                                         name: 'g1_vendas_planos',
+                                        include: [:aluno],  
                                         per_page: 10,
                                         enable_export_to_csv: true,
                                         csv_field_separator: ';',
