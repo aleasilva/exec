@@ -20,24 +20,26 @@
 	end
 
 	#
-	# g.column name:  'Pgto' , attribute: 'dt_pagto' do |venPlano|
-	# 	[venPlano.dt_pagto.mday, {style: 'max-width:10px;'}]
-	# end
-
-	#
-	g.column name:  'Vencimento' , attribute: 'dt_pagto' do |venPlano|
-		[l(venPlano.dt_pagto), {style: 'max-width:170px;'}]
+	g.column name:  'Dt Venda' , attribute: 'dt_venda' do |venPlano|
+	 	l(venPlano.dt_venda)
 	end
 
 	#
-	g.column name:  'Valor', attribute: 'tabelaplano_id' do |venPlano|
+	g.column name:  'Dt Pagto' , attribute: 'dt_pagto' do |venPlano|
+		l(venPlano.dt_pagto)
+	end
+	#
+	g.column name:  'Valor', attribute: 'valor_parcela' do |venPlano|
 		number_to_currency_br(venPlano.valor_parcela)
 	end
 	#
-	g.column name:  'Parcela', attribute: 'tabelaplano_id' do |venPlano|
+	g.column name:  'Parcela', attribute: 'nu_parcela' do |venPlano|
 		[venPlano.nu_parcela.to_s + " de " +venPlano.qtd_parcela.to_s,
 		{style: 'max-width:10px;'}]
 	end
+
+	#[venPlano.nu_parcela.to_s + " de " +venPlano.qtd_parcela.to_s,{style: 'max-width:10px;'}]
+
   #
 	g.column   do |venPlano|
 		[link_to(image_tag("btnOperation/form_show.png", :alt => "Visualizar") , venPlano),
