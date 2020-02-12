@@ -17,7 +17,7 @@ gem 'rails', '4.2.1'
   #->gem 'bootstrap-sass'
 
   # Use jquery as the JavaScript library
-  gem 'jquery-rails'
+  gem 'jquery-rails', '4.0.4'
   gem 'jquery-ui-rails'
 
   # Use SCSS for stylesheets
@@ -46,7 +46,7 @@ gem "wice_grid", '3.6.0.pre4'
 #gem 'font-awesome-sass',  '~> 4.3'
 
 #validação de usuário
-gem 'devise'
+gem 'devise', '4.7.1'
 
 #controle de acesso
 gem 'cancan'
