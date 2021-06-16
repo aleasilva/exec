@@ -60,6 +60,7 @@
 							<p class="navbar-text navbar-right">
 								<%if user_signed_in? %>
 									Usuário Logado : <%= current_user.name%>
+									Logout
 								<%else%>
 									<%=link_to('Entrar no Sistema', user_session_path,:class => 'navbar-link'  )%>
 								<%end%>
